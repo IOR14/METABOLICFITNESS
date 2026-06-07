@@ -144,7 +144,17 @@
                 <p class="font-body text-lg text-metabolic-charcoal/70 max-w-xl mx-auto">Verifica la autenticidad de los certificados emitidos por Metabolic Fitness Academy.</p>
             </div>
             <!-- El resultado se genera dinámicamente según el parámetro ?serial= de la URL -->
-            <div id="resultado"></div>
+            <div id="resultado">
+                <noscript>
+                    <div class="bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
+                        <p class="font-body text-metabolic-charcoal/70 mb-4 text-center">Activa JavaScript o ingresa tu código manualmente:</p>
+                        <form action="validar.html" method="get" class="flex flex-col sm:flex-row gap-3">
+                            <input type="text" name="serial" placeholder="Ej: MF-FRM-02" class="flex-1 px-4 py-3 border border-gray-300 rounded-lg font-body" required>
+                            <button type="submit" class="bg-metabolic-green text-white px-6 py-3 rounded-lg font-body font-semibold">Validar</button>
+                        </form>
+                    </div>
+                </noscript>
+            </div>
         </div>
     </main>
 
@@ -202,9 +212,9 @@
         });
     </script>
 
-    <!-- Datos de certificados (generado por exportar_datos_web.py) -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <!-- Datos y validación primero; confeti se carga aparte para no bloquear en móvil -->
     <script src="certificados-data.js"></script>
-    <script src="validar.js" defer></script>
+    <script src="validar.js"></script>
+    <script async src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 </body>
 </html>

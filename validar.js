@@ -17,13 +17,19 @@
 
     function obtenerSerial() {
         const params = new URLSearchParams(window.location.search);
-        return (params.get('serial') || '').trim();
+        var serial = (params.get('serial') || '').trim();
+        if (serial) return serial.toUpperCase();
+        return '';
     }
 
     const COLORES_CONFETI = ['#5CB85C', '#800080', '#00AEEF', '#4ba572', '#FFD700', '#FFFFFF'];
 
-    function lanzarCelebracion() {
-        if (typeof confetti !== 'function') return;
+    function lanzarCelebracion(intentos) {
+        intentos = intentos || 0;
+        if (typeof confetti !== 'function') {
+            if (intentos < 25) setTimeout(function () { lanzarCelebracion(intentos + 1); }, 120);
+            return;
+        }
 
         const burst = (opts) => confetti(Object.assign({
             particleCount: 90,
@@ -139,11 +145,15 @@
         const cert = CERTS[serial];
         if (cert) {
             contenedor.innerHTML = vistaValido(serial, cert);
-            requestAnimationFrame(lanzarCelebracion);
+            setTimeout(lanzarCelebracion, 50);
         } else {
             contenedor.innerHTML = vistaInvalido(serial);
         }
     }
 
-    render();
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', render);
+    } else {
+        render();
+    }
 })();

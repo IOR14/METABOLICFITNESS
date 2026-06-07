@@ -85,7 +85,7 @@ def main():
             (serial, nombre, curso, fecha),
         )
 
-        url = "{}/validar?serial={}".format(BASE_URL, serial)
+        url = "{}/validar.html?serial={}".format(BASE_URL, serial)
         qr = qrcode.QRCode(
             version=1,
             error_correction=qrcode.constants.ERROR_CORRECT_H,

@@ -4,8 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Validar Certificado - Metabolic Fitness</title>
-    <meta http-equiv="refresh" content="0;url=../validar.html">
-    <script>location.replace('../validar.html' + (location.search || ''));</script>
+    <script>
+        (function () {
+            var destino = new URL('../validar.html', window.location.href);
+            destino.search = window.location.search;
+            window.location.replace(destino.href);
+        })();
+    </script>
 </head>
-<body></body>
+<body>
+    <p style="font-family:sans-serif;text-align:center;margin-top:3rem;">
+        Redirigiendo a validación…
+        <a id="continuar">Continuar</a>
+    </p>
+    <script>
+        var link = document.getElementById('continuar');
+        var destino = new URL('../validar.html', window.location.href);
+        destino.search = window.location.search;
+        link.href = destino.href;
+    </script>
+</body>
 </html>
