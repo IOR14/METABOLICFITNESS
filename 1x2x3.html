@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1X2X3 - Metabolic Fitness</title>
+    <meta name="description" content="1X2X3 - Metabolic Fitness">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'metabolic-green': '#5CB85C',
+                        'metabolic-charcoal': '#404041',
+                        'metabolic-cyan': '#00AEEF',
+                        'metabolic-purple': '#800080',
+                        'metabolic-bg': '#FFFFFF',
+                        'metabolic-bg-secondary': '#FAFAFA',
+                    },
+                    fontFamily: {
+                        'heading': ['Montserrat', 'sans-serif'],
+                        'body': ['Open Sans', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #404041;
+            background-color: #FFFFFF;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .navbar-scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+        
+        .navbar-default {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04);
+        }
+        
+        @keyframes scroll-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+        
+        .scroll-indicator {
+            animation: scroll-bounce 1.5s infinite;
+        }
+        
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fade-in-up 0.8s ease-out forwards;
+        }
+        
+        .mobile-menu-enter {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+        }
+        
+        .mobile-menu-open {
+            max-height: 1200px;
+            opacity: 1;
+            overflow-y: auto;
+        }
+        
+        .nav-dropdown { display: none; min-width: 260px; }
+        .nav-item-group:hover .nav-dropdown { display: block; }
+        .mobile-dropdown-content { max-height: 0; overflow: hidden; transition: max-height 0.25s ease-out; }
+        .mobile-dropdown-content.open { max-height: 400px; }
+        .dropdown-arrow { transition: transform 0.2s ease; }
+        .dropdown-arrow.rotate-180 { transform: rotate(180deg); }
+        
+        .logo-transparent {
+            background: transparent;
+            mix-blend-mode: normal;
+        }
+        
+        .logo-transparent img {
+            background: transparent;
+        }
+        
+        /* WhatsApp Button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(155deg, #5CB85C 0%, #4ba572 42%, #800080 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 28px rgba(128, 0, 128, 0.38), 0 4px 10px rgba(92, 184, 92, 0.30);
+            z-index: 999;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+            text-decoration: none;
+            animation: whatsapp-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+        }
+
+        @keyframes whatsapp-in {
+            0% { transform: scale(0) rotate(-30deg); opacity: 0; }
+            100% { transform: scale(1) rotate(0); opacity: 1; }
+        }
+
+        /* Brillo superior tipo cristal */
+        .whatsapp-button::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle at 32% 24%, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.05) 45%, transparent 62%);
+            pointer-events: none;
+        }
+
+        /* Anillo pulsante en tonos de marca */
+        .whatsapp-button::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 50%;
+            box-shadow: 0 0 0 0 rgba(128, 0, 128, 0.40);
+            animation: whatsapp-pulse 2.6s ease-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes whatsapp-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(128, 0, 128, 0.40); }
+            70% { box-shadow: 0 0 0 18px rgba(92, 184, 92, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(92, 184, 92, 0); }
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.12) translateY(-3px);
+            box-shadow: 0 16px 34px rgba(128, 0, 128, 0.48), 0 6px 16px rgba(92, 184, 92, 0.42);
+        }
+
+        .whatsapp-button svg {
+            width: 36px;
+            height: 36px;
+            fill: white;
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.22));
+        }
+
+        @media (max-width: 768px) {
+            
+            .whatsapp-button {
+                bottom: 20px;
+            }
+        }
+        
+        /* Método 1x2x3 - SPA (Guía Metabolic: trabajo=verde energía, descanso=morado/ciencia) */
+        .method-123-phase-work { background: linear-gradient(135deg, #4CA84C 0%, #5CB85C 50%, #6BC96B 100%); }
+        .method-123-phase-rest { background: linear-gradient(135deg, #6a0dad 0%, #800080 50%, #00AEEF 100%); }
+        .method-123-phase-done { background: #800080; }
+        .method-123-progress-bar { transition: width 0.3s linear; }
+        .method-123-exercise-card { transition: transform 0.2s, box-shadow 0.2s; }
+        .method-123-exercise-card:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+        .method-123-exercise-card.selected { box-shadow: 0 0 0 2px #5CB85C; }
+        .method-123-modal-backdrop { background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); }
+        /* Subrayado degradado Verde → Morado (guía carrusel) */
+        .heading-gradient-underline { position: relative; padding-bottom: 0.5rem; }
+        .heading-gradient-underline::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(to right, #5CB85C, #800080); border-radius: 2px; }
+
+        /* Acordeón de regiones musculares */
+        .method-region-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+        .method-region.open .method-region-content { max-height: 5000px; }
+        .method-region.open .method-region-arrow { transform: rotate(180deg); }
+        .method-region-arrow { transition: transform 0.3s ease; }
+
+        /* Tarjeta de ejercicio */
+        .method-123-exercise-card.selected { border-color: #5CB85C !important; box-shadow: 0 0 0 2px #5CB85C, 0 8px 20px rgba(92,184,92,0.15); }
+
+        /* Etiquetas de equipamiento */
+        .eq-badge { display: inline-flex; align-items: center; gap: 4px; font-family: 'Open Sans', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 2px 8px; border-radius: 9999px; width: fit-content; }
+        .eq-maquina { background: rgba(0, 174, 239, 0.12); color: #0090c5; }
+        .eq-libre { background: rgba(128, 0, 128, 0.12); color: #800080; }
+        .eq-corporal { background: rgba(92, 184, 92, 0.16); color: #3d8b3d; }
+        .eq-accesorio { background: rgba(64, 64, 65, 0.10); color: #404041; }
+
+        /* Mapa muscular — compacto, visible tras seleccionar ejercicio */
+        .muscle-map-panel {
+            background: #121212;
+            border-radius: 0.75rem;
+            border: 1px solid #2a2a2a;
+            padding: 0.65rem 0.75rem 0.55rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+        }
+        .muscle-map-panel--compact {
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: muscle-map-in 0.35s ease;
+        }
+        @keyframes muscle-map-in {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .muscle-map-panel h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.58rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 0.35rem;
+            text-align: center;
+            line-height: 1.3;
+        }
+        .muscle-map-exercise-name {
+            display: block;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0;
+            text-transform: none;
+            color: #aaa;
+            margin-top: 0.15rem;
+        }
+        #muscle-map-container svg { width: 100%; height: auto; max-height: 150px; display: block; margin: 0 auto; }
+        #method-123-timer #muscle-map-container svg { max-height: 120px; }
+        .muscle-view-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            fill: #555;
+        }
+        .body-base polygon {
+            fill: #3a3f47;
+            stroke: #4a5058;
+            stroke-width: 0.35;
+        }
+        .muscle-group polygon, .muscle-group path, .muscle-group ellipse {
+            fill: #4a5560;
+            stroke: #5c6570;
+            stroke-width: 0.35;
+            transition: fill 0.5s ease-in-out, stroke 0.5s ease-in-out, opacity 0.5s ease-in-out, filter 0.5s ease-in-out;
+        }
+        .muscle-group.is-active polygon, .muscle-group.is-active path, .muscle-group.is-active ellipse {
+            fill: url(#neon-cyan);
+            stroke: #00FFFF;
+            stroke-width: 0.5;
+            filter: url(#glow);
+            animation: muscle-pulse 2.2s ease-in-out infinite;
+        }
+        @keyframes muscle-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.72; }
+        }
+        #muscle-map-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            justify-content: center;
+            margin-top: 0.45rem;
+            min-height: 1.25rem;
+        }
+        .muscle-legend-tag {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.62rem;
+            font-weight: 600;
+            color: #00FFFF;
+            background: rgba(0, 255, 255, 0.08);
+            border: 1px solid rgba(0, 255, 255, 0.35);
+            border-radius: 9999px;
+            padding: 0.2rem 0.65rem;
+            animation: muscle-pulse 2.2s ease-in-out infinite;
+        }
+        .muscle-legend-empty {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.75rem;
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Barra superior (Utility Bar) -->
+    <div class="fixed top-0 left-0 right-0 z-50 bg-metabolic-bg-secondary border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-8 text-xs text-metabolic-charcoal/80">
+                <div class="flex items-center gap-4">
+                    <a href="portal.html" class="hover:text-metabolic-purple transition-colors">Portal Alumnos (LMS)</a>
+                    <span class="text-metabolic-charcoal/40">|</span>
+                    <a href="acceso-pacientes.html" class="hover:text-metabolic-purple transition-colors">Acceso Pacientes</a>
+                    <span class="text-metabolic-charcoal/40 hidden sm:inline">|</span>
+                    <a href="paper-del-mes.html" class="hover:text-metabolic-purple transition-colors hidden sm:inline">Paper del Mes</a>
+                    <span class="text-metabolic-charcoal/40 hidden sm:inline">|</span>
+                    <button type="button" class="hover:text-metabolic-purple transition-colors flex items-center gap-1" aria-label="Idioma"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Idioma</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Menú principal -->
+    <nav id="navbar" class="navbar-default fixed top-8 left-0 right-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <a href="index.html" class="flex items-baseline space-x-1">
+                    <span class="font-heading font-bold text-xl lg:text-2xl text-metabolic-charcoal">METABOLIC</span>
+                    <span class="font-heading font-bold text-xl lg:text-2xl text-metabolic-green">FITNESS</span>
+                </a>
+                <div class="hidden lg:flex items-center gap-1 xl:gap-4">
+                    <div class="nav-item-group relative py-4">
+                        <button type="button" class="text-metabolic-charcoal font-body font-medium hover:text-metabolic-purple transition-colors px-3 py-2 flex items-center gap-1 cursor-pointer">CLÍNICA & REHABILITACIÓN <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                        <div class="nav-dropdown absolute left-0 top-full pt-1">
+                            <div class="bg-white rounded-lg shadow-xl py-2 border border-gray-100 min-w-[260px]">
+                                <p class="text-[10px] uppercase tracking-wider text-gray-400 px-4 py-1">Para el paciente</p>
+                                <a href="tratamiento.html" class="block px-4 py-2 text-metabolic-charcoal hover:bg-gray-50 hover:text-metabolic-purple font-body text-sm">Programas Metabólicos</a>
+                                <a href="tratamiento.html#fisiologia" class="block px-4 py-2 text-metabolic-charcoal hover:bg-gray-50 hover:text-metabolic-purple font-body text-sm">Fisiología del Ejercicio</a>
+                                <a href="evaluacion.html" class="block px-4 py-2 text-metabolic-charcoal hover:bg-gray-50 hover:text-metabolic-purple font-body text-sm">Agendar Telemedicina</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-item-group relative py-4">
+                        <button type="button" class="text-metabolic-charcoal font-body font-medium hover:text-metabolic-purple transition-colors px-3 py-2 flex items-center gap-1 cursor-pointer">ACADEMIA PRO <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                        <div class="nav-dropdown absolute left-0 top-full pt-1">
+                            <div class="bg-white rounded-lg shadow-xl py-2 border border-gray-100 min-w-[280px]">
+                                <p class="text-[10px] uppercase tracking-wider text-gray-400 px-4 py-1">Para el estudiante</p>
+                                <a href="academia.html" class="block px-4 py-2 text-metabolic-charcoal hover:bg-gray-50 hover:text-metabolic-purple font-body text-sm">Diplomados & Certificaciones</a>
+                                <a href="aprendizaje-ia.html" class="block px-4 py-2 font-body text-sm hover:bg-gray-50 rounded mx-2"><span class="text-metabolic-purple font-semibold">Aprendizaje con IA</span><span class="block text-xs text-gray-500 mt-0.5">Aprende Fisiología 3x más rápido</span></a>
+                                <a href="mentoria-casos.html" class="block px-4 py-2 text-metabolic-charcoal hover:bg-gray-50 hover:text-metabolic-purple font-body text-sm">Mentoría de Casos Clínicos</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-item-group relative py-4">
+                        <button type="button" class="text-metabolic-charcoal font-body font-medium hover:text-metabolic-purple transition-colors px-3 py-2 flex items-center gap-1 cursor-pointer">INVESTIGACIÓN <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                        <div class="nav-dropdown absolute left-0 top-full pt-1">
+                            <div class="bg-white rounded-lg shadow-xl py-2 border border-gray-100 min-w-[260px]">
+                                <p class="text-[10px] uppercase tracking-wider text-gray-400 px-4 py-1">Science Hub</p>
+                                <a href="biblioteca-evidencia.html" class="block px-4 py-2 text-metabolic-charcoal hover:bg-gray-50 hover:text-metabolic-purple font-body text-sm">Biblioteca de Evidencia</a>
+                                <a href="calculadoras.html" class="block px-4 py-2 text-metabolic-charcoal hover:bg-gray-50 hover:text-metabolic-purple font-body text-sm">Calculadoras Fisiológicas</a>
+                                <a href="webinars.html" class="block px-4 py-2 text-metabolic-charcoal hover:bg-gray-50 hover:text-metabolic-purple font-body text-sm">Webinars & Masterclasses</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="1x2x3.html" class="text-metabolic-charcoal font-body font-medium hover:text-metabolic-purple transition-colors px-3 py-2 whitespace-nowrap">1X2X3</a>
+
+                    <a href="evaluacion.html" class="bg-metabolic-green text-white px-5 py-2.5 rounded-md font-body font-semibold text-sm shadow-lg hover:shadow-xl hover:scale-105 transition-all whitespace-nowrap ml-2">AGENDAR EVALUACIÓN</a>
+                </div>
+                <button type="button" id="mobile-menu-btn" class="lg:hidden text-metabolic-charcoal p-2 hover:bg-gray-100 hover:text-metabolic-purple rounded relative w-10 h-10 flex items-center justify-center" aria-label="Abrir menú">
+                    <svg id="menu-icon" class="w-6 h-6 absolute" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    <svg id="close-icon" class="w-6 h-6 absolute hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="mobile-menu-enter lg:hidden bg-white border-t border-gray-200 shadow-lg">
+            <div class="px-4 pt-4 pb-6 space-y-1">
+                <div class="mobile-dropdown-wrap">
+                    <button type="button" class="mobile-dropdown-btn w-full text-left text-metabolic-charcoal font-body font-medium py-3 flex items-center justify-between cursor-pointer hover:text-metabolic-purple">CLÍNICA & REHABILITACIÓN <span class="dropdown-arrow">▼</span></button>
+                    <div class="mobile-dropdown-content">
+                        <a href="tratamiento.html" class="block py-2 pl-4 text-metabolic-charcoal/90 text-sm hover:text-metabolic-purple">Programas Metabólicos</a>
+                        <a href="tratamiento.html#fisiologia" class="block py-2 pl-4 text-metabolic-charcoal/90 text-sm hover:text-metabolic-purple">Fisiología del Ejercicio</a>
+                        <a href="evaluacion.html" class="block py-2 pl-4 text-metabolic-charcoal/90 text-sm hover:text-metabolic-purple">Agendar Telemedicina</a>
+                </div>
+                </div>
+                <div class="mobile-dropdown-wrap">
+                    <button type="button" class="mobile-dropdown-btn w-full text-left text-metabolic-charcoal font-body font-medium py-3 flex items-center justify-between cursor-pointer hover:text-metabolic-purple">ACADEMIA PRO <span class="dropdown-arrow">▼</span></button>
+                    <div class="mobile-dropdown-content">
+                        <a href="academia.html" class="block py-2 pl-4 text-metabolic-charcoal/90 text-sm hover:text-metabolic-purple">Diplomados & Certificaciones</a>
+                        <a href="aprendizaje-ia.html" class="block py-2 pl-4 text-metabolic-purple text-sm font-semibold">Aprendizaje con IA <span class="text-metabolic-charcoal/70 text-xs font-normal">· 3x más rápido</span></a>
+                        <a href="mentoria-casos.html" class="block py-2 pl-4 text-metabolic-charcoal/90 text-sm hover:text-metabolic-purple">Mentoría de Casos Clínicos</a>
+                </div>
+                </div>
+                <div class="mobile-dropdown-wrap">
+                    <button type="button" class="mobile-dropdown-btn w-full text-left text-metabolic-charcoal font-body font-medium py-3 flex items-center justify-between cursor-pointer hover:text-metabolic-purple">INVESTIGACIÓN <span class="dropdown-arrow">▼</span></button>
+                    <div class="mobile-dropdown-content">
+                        <a href="biblioteca-evidencia.html" class="block py-2 pl-4 text-metabolic-charcoal/90 text-sm hover:text-metabolic-purple">Biblioteca de Evidencia</a>
+                        <a href="calculadoras.html" class="block py-2 pl-4 text-metabolic-charcoal/90 text-sm hover:text-metabolic-purple">Calculadoras Fisiológicas</a>
+                        <a href="webinars.html" class="block py-2 pl-4 text-metabolic-charcoal/90 text-sm hover:text-metabolic-purple">Webinars & Masterclasses</a>
+                    </div>
+                </div>
+                <a href="1x2x3.html" class="block py-3 text-metabolic-charcoal font-body font-medium hover:text-metabolic-purple">1X2X3</a>
+                <a href="evaluacion.html" class="block bg-metabolic-green text-white px-6 py-3 rounded-md font-body font-semibold text-center mt-4">AGENDAR EVALUACIÓN</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Boton Volver al Inicio -->
+        <div class="pt-28 pb-4 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <a href="index.html" class="inline-flex items-center space-x-2 text-metabolic-charcoal hover:text-metabolic-purple transition-colors duration-200 font-body font-medium">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                <span>Volver al Inicio</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Método 1x2x3 - SPA (fondo gris pálido #FAFAFA para contraste con cards blancas) -->
+    <section id="method-123-app" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 bg-metabolic-bg-secondary min-h-[60vh]">
+        <div class="flex items-center justify-between mb-6">
+            <h1 class="font-heading font-bold text-2xl sm:text-3xl text-metabolic-charcoal uppercase heading-gradient-underline">
+                Método <span class="text-metabolic-purple">1x2x3</span>
+            </h1>
+            <button type="button" id="method-123-info-btn" class="flex items-center gap-2 px-4 py-2.5 rounded-lg border-2 border-metabolic-purple text-metabolic-purple font-body font-semibold text-base bg-transparent hover:bg-metabolic-purple/5 transition-colors" aria-label="¿Por qué funciona?">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                ¿Por qué funciona?
+            </button>
+        </div>
+
+        <!-- Selector de ejercicio -->
+        <div id="method-123-setup" class="space-y-6">
+            <div class="space-y-2">
+                <p class="font-body text-lg text-metabolic-charcoal/80">Elige tu ejercicio para iniciar el protocolo <span class="font-semibold text-metabolic-purple">1 min trabajo · 2 min descanso · 3 series</span>:</p>
+                <div class="flex flex-wrap items-center gap-3 text-[11px] font-body text-metabolic-charcoal/60">
+                    <span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-metabolic-cyan/70"></span> Máquina</span>
+                    <span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-metabolic-purple/70"></span> Peso libre</span>
+                    <span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-metabolic-green/80"></span> Carga corporal</span>
+                    <span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-metabolic-charcoal/40"></span> Accesorio</span>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <div class="method-region rounded-2xl border-2 border-gray-200 bg-white overflow-hidden">
+                    <button type="button" class="method-region-toggle w-full flex items-center justify-between gap-3 p-5 text-left hover:bg-gray-50/60 transition-colors">
+                        <span class="flex items-center gap-3 min-w-0">
+                            <span class="text-2xl leading-none" aria-hidden="true">🦾</span>
+                            <span class="min-w-0">
+                                <span class="block font-heading font-bold text-lg text-metabolic-charcoal">Tren Superior</span>
+                                <span class="block font-body text-xs text-metabolic-charcoal/60 truncate">Aislamiento muscular con apoyo para evitar el uso de estabilizadores.</span>
+                            </span>
+                        </span>
+                        <span class="flex items-center gap-3 shrink-0">
+                            <span class="font-body text-xs font-bold text-metabolic-purple bg-metabolic-purple/10 px-2.5 py-1 rounded-full">24</span>
+                            <svg class="method-region-arrow w-5 h-5 text-metabolic-charcoal/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </span>
+                    </button>
+                    <div class="method-region-content">
+                        <div class="px-5 pb-6 pt-1 space-y-6">
+                    <div>
+                        <p class="font-heading font-semibold text-xs text-metabolic-purple uppercase tracking-wider mb-3 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-metabolic-green to-metabolic-purple"></span>
+                            Enfoque: Músculos Pectorales (Pectoral Mayor y Menor)
+                        </p>
+                        <div class="grid gap-2.5 sm:grid-cols-2">
+                            <button type="button" data-exercise="ex-1" data-name="Empuje horizontal de pectoral sentado en máquina" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Empuje horizontal de pectoral sentado en máquina</span>
+                                <span class="eq-badge eq-maquina">Máquina</span>
+                            </button>
+                            <button type="button" data-exercise="ex-2" data-name="Aducción horizontal glenohumeral en máquina" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Aducción horizontal glenohumeral en máquina</span>
+                                <span class="eq-badge eq-maquina">Máquina</span>
+                            </button>
+                            <button type="button" data-exercise="ex-3" data-name="Cruces en poleas para aducción de pectoral" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Cruces en poleas para aducción de pectoral</span>
+                                <span class="eq-badge eq-maquina">Máquina</span>
+                            </button>
+                            <button type="button" data-exercise="ex-4" data-name="Empuje horizontal en decúbito supino con mancuernas" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Empuje horizontal en decúbito supino con mancuernas</span>
+                                <span class="eq-badge eq-libre">Peso libre</span>
+                            </button>
+                            <button type="button" data-exercise="ex-5" data-name="Empuje inclinado en decúbito supino con mancuernas" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Empuje inclinado en decúbito supino con mancuernas</span>
+                                <span class="eq-badge eq-libre">Peso libre</span>
+                            </button>
+                            <button type="button" data-exercise="ex-6" data-name="Aducción horizontal con mancuernas en banco plano" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Aducción horizontal con mancuernas en banco plano</span>
+                                <span class="eq-badge eq-libre">Peso libre</span>
+                            </button>
+                            <button type="button" data-exercise="ex-7" data-name="Flexoextensión de codos con apoyo en plano vertical" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Flexoextensión de codos con apoyo en plano vertical</span>
+                                <span class="eq-badge eq-corporal">Carga corporal</span>
+                            </button>
+                            <button type="button" data-exercise="ex-8" data-name="Flexoextensión de codos en decúbito prono estricta" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Flexoextensión de codos en decúbito prono estricta</span>
+                                <span class="eq-badge eq-corporal">Carga corporal</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-heading font-semibold text-xs text-metabolic-purple uppercase tracking-wider mb-3 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-metabolic-green to-metabolic-purple"></span>
+                            Enfoque: Dorsal Ancho, Romboides y Trapecio
+                        </p>
+                        <div class="grid gap-2.5 sm:grid-cols-2">
+                            <button type="button" data-exercise="ex-9" data-name="Tracción vertical en polea alta" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Tracción vertical en polea alta</span>
+                                <span class="eq-badge eq-maquina">Máquina</span>
+                            </button>
+                            <button type="button" data-exercise="ex-10" data-name="Tracción horizontal en polea baja con apoyo esternal" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Tracción horizontal en polea baja con apoyo esternal</span>
+                                <span class="eq-badge eq-maquina">Máquina</span>
+                            </button>
+                            <button type="button" data-exercise="ex-11" data-name="Extensión glenohumeral con codos extendidos en polea alta" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Extensión glenohumeral con codos extendidos en polea alta</span>
+                                <span class="eq-badge eq-maquina">Máquina</span>
+                            </button>
+                            <button type="button" data-exercise="ex-12" data-name="Tracción horizontal en máquina de palancas con apoyo esternal" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Tracción horizontal en máquina de palancas con apoyo esternal</span>
+                                <span class="eq-badge eq-maquina">Máquina</span>
+                            </button>
+                            <button type="button" data-exercise="ex-13" data-name="Tracción horizontal unilateral con mancuerna y apoyo" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Tracción horizontal unilateral con mancuerna y apoyo</span>
+                                <span class="eq-badge eq-libre">Peso libre</span>
+                            </button>
+                            <button type="button" data-exercise="ex-14" data-name="Extensión glenohumeral en decúbito supino con mancuerna" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Extensión glenohumeral en decúbito supino con mancuerna</span>
+                                <span class="eq-badge eq-libre">Peso libre</span>
+                            </button>
+                            <button type="button" data-exercise="ex-15" data-name="Elevación escapular con mancuernas" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Elevación escapular con mancuernas</span>
+                                <span class="eq-badge eq-libre">Peso libre</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-heading font-semibold text-xs text-metabolic-purple uppercase tracking-wider mb-3 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-metabolic-green to-metabolic-purple"></span>
+                            Enfoque: Músculo Deltoides (Anterior, Medio y Posterior)
+                        </p>
+                        <div class="grid gap-2.5 sm:grid-cols-2">
+                            <button type="button" data-exercise="ex-16" data-name="Abducción glenohumeral en máquina articulada" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Abducción glenohumeral en máquina articulada</span>
+                                <span class="eq-badge eq-maquina">Máquina</span>
+                            </button>
+                            <button type="button" data-exercise="ex-17" data-name="Abducción glenohumeral con mancuernas" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Abducción glenohumeral con mancuernas</span>
+                                <span class="eq-badge eq-libre">Peso libre</span>
+                            </button>
+                            <button type="button" data-exercise="ex-18" data-name="Flexión glenohumeral en bipedestación con disco" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Flexión glenohumeral en bipedestación con disco</span>
+                                <span class="eq-badge eq-libre">Peso libre</span>
+                            </button>
+                            <button type="button" data-exercise="ex-19" data-name="Abducción horizontal glenohumeral en decúbito prono inclinado" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Abducción horizontal glenohumeral en decúbito prono inclinado</span>
+                                <span class="eq-badge eq-libre">Peso libre</span>
+                            </button>
+                            <button type="button" data-exercise="ex-20" data-name="Rotación externa y tracción posterior en polea alta" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Rotación externa y tracción posterior en polea alta</span>
+                                <span class="eq-badge eq-maquina">Máquina</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-heading font-semibold text-xs text-metabolic-purple uppercase tracking-wider mb-3 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-metabolic-green to-metabolic-purple"></span>
+                            Enfoque: Bíceps Braquial y Tríceps Braquial
+                        </p>
+                        <div class="grid gap-2.5 sm:grid-cols-2">
+                            <button type="button" data-exercise="ex-21" data-name="Flexión de codo en polea baja" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Flexión de codo en polea baja</span>
+                                <span class="eq-badge eq-maquina">Máquina</span>
+                            </button>
+                            <button type="button" data-exercise="ex-22" data-name="Flexión de codo concentrada con mancuerna" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Flexión de codo concentrada con mancuerna</span>
+                                <span class="eq-badge eq-libre">Peso libre</span>
+                            </button>
+                            <button type="button" data-exercise="ex-23" data-name="Extensión de codo en polea alta con cuerda" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Extensión de codo en polea alta con cuerda</span>
+                                <span class="eq-badge eq-maquina">Máquina</span>
+                            </button>
+                            <button type="button" data-exercise="ex-24" data-name="Extensión de codo en retroversión glenohumeral con mancuerna" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Extensión de codo en retroversión glenohumeral con mancuerna</span>
+                                <span class="eq-badge eq-libre">Peso libre</span>
+                            </button>
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="method-region rounded-2xl border-2 border-gray-200 bg-white overflow-hidden">
+                    <button type="button" class="method-region-toggle w-full flex items-center justify-between gap-3 p-5 text-left hover:bg-gray-50/60 transition-colors">
+                        <span class="flex items-center gap-3 min-w-0">
+                            <span class="text-2xl leading-none" aria-hidden="true">🦵</span>
+                            <span class="min-w-0">
+                                <span class="block font-heading font-bold text-lg text-metabolic-charcoal">Tren Inferior</span>
+                                <span class="block font-body text-xs text-metabolic-charcoal/60 truncate">Contracción isotónica controlada, con máquinas o posturas estables.</span>
+                            </span>
+                        </span>
+                        <span class="flex items-center gap-3 shrink-0">
+                            <span class="font-body text-xs font-bold text-metabolic-purple bg-metabolic-purple/10 px-2.5 py-1 rounded-full">20</span>
+                            <svg class="method-region-arrow w-5 h-5 text-metabolic-charcoal/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </span>
+                    </button>
+                    <div class="method-region-content">
+                        <div class="px-5 pb-6 pt-1 space-y-6">
+                    <div>
+                        <p class="font-heading font-semibold text-xs text-metabolic-purple uppercase tracking-wider mb-3 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-metabolic-green to-metabolic-purple"></span>
+                            Enfoque: Músculo Cuádriceps Femoral
+                        </p>
+                        <div class="grid gap-2.5 sm:grid-cols-2">
+                            <button type="button" data-exercise="ex-25" data-name="Extensión de rodilla sentado en máquina" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Extensión de rodilla sentado en máquina</span>
+                                <span class="eq-badge eq-maquina">Máquina</span>
+                            </button>
+                            <button type="button" data-exercise="ex-26" data-name="Empuje de miembros inferiores a 45° en máquina" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Empuje de miembros inferiores a 45° en máquina</span>
+                                <span class="eq-badge eq-maquina">Máquina</span>
+                            </button>
+                            <button type="button" data-exercise="ex-27" data-name="Empuje de miembros inferiores horizontal sentado en máquina" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Empuje de miembros inferiores horizontal sentado en máquina</span>
+                                <span class="eq-badge eq-maquina">Máquina</span>
+                            </button>
+                            <button type="button" data-exercise="ex-28" data-name="Flexoextensión de rodillas en máquina con carro guiado" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Flexoextensión de rodillas en máquina con carro guiado</span>
+                                <span class="eq-badge eq-maquina">Máquina</span>
+                            </button>
+                            <button type="button" data-exercise="ex-29" data-name="Flexoextensión de rodillas con fijación distal estricta" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Flexoextensión de rodillas con fijación distal estricta</span>
+                                <span class="eq-badge eq-corporal">Carga corporal</span>
+                            </button>
+                            <button type="button" data-exercise="ex-30" data-name="Flexoextensión asimétrica de rodilla y cadera en el sitio" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Flexoextensión asimétrica de rodilla y cadera en el sitio</span>
+                                <span class="eq-badge eq-corporal">Carga corporal</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-heading font-semibold text-xs text-metabolic-purple uppercase tracking-wider mb-3 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-metabolic-green to-metabolic-purple"></span>
+                            Enfoque: Isquiosurales (Bíceps Femoral, Semitendinoso, Semimembranoso)
+                        </p>
+                        <div class="grid gap-2.5 sm:grid-cols-2">
+                            <button type="button" data-exercise="ex-31" data-name="Flexión de rodilla sentado en máquina" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Flexión de rodilla sentado en máquina</span>
+                                <span class="eq-badge eq-maquina">Máquina</span>
+                            </button>
+                            <button type="button" data-exercise="ex-32" data-name="Flexión de rodilla en decúbito prono en máquina" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Flexión de rodilla en decúbito prono en máquina</span>
+                                <span class="eq-badge eq-maquina">Máquina</span>
+                            </button>
+                            <button type="button" data-exercise="ex-33" data-name="Flexión de rodilla unilateral en bipedestación en máquina" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Flexión de rodilla unilateral en bipedestación en máquina</span>
+                                <span class="eq-badge eq-maquina">Máquina</span>
+                            </button>
+                            <button type="button" data-exercise="ex-34" data-name="Extensión de cadera con rodillas en ligera flexión y mancuernas" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Extensión de cadera con rodillas en ligera flexión y mancuernas</span>
+                                <span class="eq-badge eq-libre">Peso libre</span>
+                            </button>
+                            <button type="button" data-exercise="ex-35" data-name="Extensión de cadera con rodillas en ligera flexión en máquina guiada" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Extensión de cadera con rodillas en ligera flexión en máquina guiada</span>
+                                <span class="eq-badge eq-maquina">Máquina</span>
+                            </button>
+                            <button type="button" data-exercise="ex-36" data-name="Flexión de rodilla con deslizamiento en decúbito supino" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Flexión de rodilla con deslizamiento en decúbito supino</span>
+                                <span class="eq-badge eq-corporal">Carga corporal</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-heading font-semibold text-xs text-metabolic-purple uppercase tracking-wider mb-3 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-metabolic-green to-metabolic-purple"></span>
+                            Enfoque: Glúteos (Mayor, Medio, Menor) y Aductores
+                        </p>
+                        <div class="grid gap-2.5 sm:grid-cols-2">
+                            <button type="button" data-exercise="ex-37" data-name="Abducción de cadera sentado en máquina" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Abducción de cadera sentado en máquina</span>
+                                <span class="eq-badge eq-maquina">Máquina</span>
+                            </button>
+                            <button type="button" data-exercise="ex-38" data-name="Aducción de cadera sentado en máquina" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Aducción de cadera sentado en máquina</span>
+                                <span class="eq-badge eq-maquina">Máquina</span>
+                            </button>
+                            <button type="button" data-exercise="ex-39" data-name="Extensión de cadera con apoyo escapular en máquina" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Extensión de cadera con apoyo escapular en máquina</span>
+                                <span class="eq-badge eq-maquina">Máquina</span>
+                            </button>
+                            <button type="button" data-exercise="ex-40" data-name="Extensión de cadera unilateral en polea baja" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Extensión de cadera unilateral en polea baja</span>
+                                <span class="eq-badge eq-maquina">Máquina</span>
+                            </button>
+                            <button type="button" data-exercise="ex-41" data-name="Extensión de cadera en decúbito supino con rotación externa coxofemoral" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Extensión de cadera en decúbito supino con rotación externa coxofemoral</span>
+                                <span class="eq-badge eq-corporal">Carga corporal</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-heading font-semibold text-xs text-metabolic-purple uppercase tracking-wider mb-3 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-metabolic-green to-metabolic-purple"></span>
+                            Enfoque: Tríceps Sural (Gastrocnemio y Sóleo)
+                        </p>
+                        <div class="grid gap-2.5 sm:grid-cols-2">
+                            <button type="button" data-exercise="ex-42" data-name="Flexión plantar sentado en máquina" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Flexión plantar sentado en máquina</span>
+                                <span class="eq-badge eq-maquina">Máquina</span>
+                            </button>
+                            <button type="button" data-exercise="ex-43" data-name="Flexión plantar en bipedestación en máquina guiada" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Flexión plantar en bipedestación en máquina guiada</span>
+                                <span class="eq-badge eq-maquina">Máquina</span>
+                            </button>
+                            <button type="button" data-exercise="ex-44" data-name="Flexión plantar unilateral en bipedestación con mancuerna" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Flexión plantar unilateral en bipedestación con mancuerna</span>
+                                <span class="eq-badge eq-libre">Peso libre</span>
+                            </button>
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="method-region rounded-2xl border-2 border-gray-200 bg-white overflow-hidden">
+                    <button type="button" class="method-region-toggle w-full flex items-center justify-between gap-3 p-5 text-left hover:bg-gray-50/60 transition-colors">
+                        <span class="flex items-center gap-3 min-w-0">
+                            <span class="text-2xl leading-none" aria-hidden="true">🛡️</span>
+                            <span class="min-w-0">
+                                <span class="block font-heading font-bold text-lg text-metabolic-charcoal">Zona Media (Core)</span>
+                                <span class="block font-body text-xs text-metabolic-charcoal/60 truncate">Tensión mecánica continua mediante flexión, extensión y rotación, sin retenciones isométricas.</span>
+                            </span>
+                        </span>
+                        <span class="flex items-center gap-3 shrink-0">
+                            <span class="font-body text-xs font-bold text-metabolic-purple bg-metabolic-purple/10 px-2.5 py-1 rounded-full">16</span>
+                            <svg class="method-region-arrow w-5 h-5 text-metabolic-charcoal/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </span>
+                    </button>
+                    <div class="method-region-content">
+                        <div class="px-5 pb-6 pt-1 space-y-6">
+                    <div>
+                        <p class="font-heading font-semibold text-xs text-metabolic-purple uppercase tracking-wider mb-3 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-metabolic-green to-metabolic-purple"></span>
+                            Enfoque: Músculo Recto del Abdomen
+                        </p>
+                        <div class="grid gap-2.5 sm:grid-cols-2">
+                            <button type="button" data-exercise="ex-45" data-name="Flexión de tronco en decúbito supino" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Flexión de tronco en decúbito supino</span>
+                                <span class="eq-badge eq-corporal">Carga corporal</span>
+                            </button>
+                            <button type="button" data-exercise="ex-46" data-name="Flexión de tronco en polea alta con apoyo de rodillas" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Flexión de tronco en polea alta con apoyo de rodillas</span>
+                                <span class="eq-badge eq-maquina">Máquina</span>
+                            </button>
+                            <button type="button" data-exercise="ex-47" data-name="Flexión de tronco en máquina articulada" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Flexión de tronco en máquina articulada</span>
+                                <span class="eq-badge eq-maquina">Máquina</span>
+                            </button>
+                            <button type="button" data-exercise="ex-48" data-name="Flexión de cadera en decúbito supino" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Flexión de cadera en decúbito supino</span>
+                                <span class="eq-badge eq-corporal">Carga corporal</span>
+                            </button>
+                            <button type="button" data-exercise="ex-49" data-name="Flexión de cadera con apoyo pélvico" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Flexión de cadera con apoyo pélvico</span>
+                                <span class="eq-badge eq-corporal">Carga corporal</span>
+                            </button>
+                            <button type="button" data-exercise="ex-50" data-name="Flexión de tronco en banco declinado" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Flexión de tronco en banco declinado</span>
+                                <span class="eq-badge eq-corporal">Carga corporal</span>
+                            </button>
+                            <button type="button" data-exercise="ex-51" data-name="Despliegue de tronco con rueda abdominal" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Despliegue de tronco con rueda abdominal</span>
+                                <span class="eq-badge eq-accesorio">Accesorio</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-heading font-semibold text-xs text-metabolic-purple uppercase tracking-wider mb-3 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-metabolic-green to-metabolic-purple"></span>
+                            Enfoque: Oblicuos del Abdomen (Externo e Interno)
+                        </p>
+                        <div class="grid gap-2.5 sm:grid-cols-2">
+                            <button type="button" data-exercise="ex-52" data-name="Rotación de tronco sentado con carga" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Rotación de tronco sentado con carga</span>
+                                <span class="eq-badge eq-libre">Peso libre</span>
+                            </button>
+                            <button type="button" data-exercise="ex-53" data-name="Flexión lateral de tronco en polea baja" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Flexión lateral de tronco en polea baja</span>
+                                <span class="eq-badge eq-maquina">Máquina</span>
+                            </button>
+                            <button type="button" data-exercise="ex-54" data-name="Flexión lateral de tronco en bipedestación con mancuerna" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Flexión lateral de tronco en bipedestación con mancuerna</span>
+                                <span class="eq-badge eq-libre">Peso libre</span>
+                            </button>
+                            <button type="button" data-exercise="ex-55" data-name="Flexión lateral de tronco en decúbito supino" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Flexión lateral de tronco en decúbito supino</span>
+                                <span class="eq-badge eq-corporal">Carga corporal</span>
+                            </button>
+                            <button type="button" data-exercise="ex-56" data-name="Flexión lateral de tronco alterna en decúbito supino" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Flexión lateral de tronco alterna en decúbito supino</span>
+                                <span class="eq-badge eq-corporal">Carga corporal</span>
+                            </button>
+                            <button type="button" data-exercise="ex-57" data-name="Rotación diagonal de tronco en polea alta/baja" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Rotación diagonal de tronco en polea alta/baja</span>
+                                <span class="eq-badge eq-maquina">Máquina</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-heading font-semibold text-xs text-metabolic-purple uppercase tracking-wider mb-3 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-metabolic-green to-metabolic-purple"></span>
+                            Enfoque: Músculos Erectores de la Columna
+                        </p>
+                        <div class="grid gap-2.5 sm:grid-cols-2">
+                            <button type="button" data-exercise="ex-58" data-name="Extensión de tronco con apoyo pélvico" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Extensión de tronco con apoyo pélvico</span>
+                                <span class="eq-badge eq-corporal">Carga corporal</span>
+                            </button>
+                            <button type="button" data-exercise="ex-59" data-name="Extensión de tronco con apoyo pélvico y carga anterior" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Extensión de tronco con apoyo pélvico y carga anterior</span>
+                                <span class="eq-badge eq-libre">Peso libre</span>
+                            </button>
+                            <button type="button" data-exercise="ex-60" data-name="Extensión de tronco en máquina articulada" class="method-123-exercise-card group text-left p-3.5 rounded-xl border-2 border-gray-200 bg-white hover:border-metabolic-green/50 transition-all flex flex-col gap-2">
+                                <span class="font-body text-sm font-semibold text-metabolic-charcoal leading-snug">Extensión de tronco en máquina articulada</span>
+                                <span class="eq-badge eq-maquina">Máquina</span>
+                            </button>
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="muscle-map-setup-slot">
+                <div id="muscle-map-wrapper" class="muscle-map-panel muscle-map-panel--compact hidden" aria-live="polite">
+                    <h2>
+                        Objetivo muscular
+                        <span id="muscle-map-exercise-name" class="muscle-map-exercise-name"></span>
+                    </h2>
+                    <div id="muscle-map-container"></div>
+                    <div id="muscle-map-legend"></div>
+                </div>
+            </div>
+            <button type="button" id="method-123-start-btn" disabled class="w-full py-4 px-6 rounded-xl bg-metabolic-green text-white font-body font-bold text-xl shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all">
+                Iniciar
+            </button>
+        </div>
+
+        <!-- Timer (oculto hasta iniciar) -->
+        <div id="method-123-timer" class="hidden space-y-4">
+            <div id="method-123-phase-bg" class="method-123-phase-work rounded-2xl p-6 sm:p-8 text-white transition-colors duration-500">
+                <p id="method-123-exercise-name" class="font-body text-sm sm:text-base font-semibold opacity-90 mb-1"></p>
+                <p id="method-123-phase-label" class="font-heading font-bold text-xl sm:text-2xl uppercase tracking-wider mb-2">TRABAJO MUSCULAR</p>
+                <p id="method-123-instruction" class="font-body text-lg sm:text-xl opacity-95 mb-6">Mantén la tensión muscular continua. Llega al fallo.</p>
+                <p id="method-123-countdown" class="font-heading font-bold text-5xl sm:text-6xl tabular-nums">1:00</p>
+                <p id="method-123-series" class="font-body text-base sm:text-lg mt-4 opacity-90">Serie 1 de 3</p>
+            </div>
+            <div id="muscle-map-timer-slot"></div>
+            <div class="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                <div id="method-123-progress" class="method-123-progress-bar h-full bg-metabolic-green rounded-full" style="width: 100%;"></div>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <button type="button" id="method-123-pause-btn" class="flex-1 py-4 px-6 rounded-xl border-2 border-metabolic-purple text-metabolic-purple font-body font-bold text-xl bg-transparent hover:bg-metabolic-purple/5 transition-all">
+                    Pausar
+                </button>
+                <button type="button" id="method-123-reset-btn" class="flex-1 py-4 px-6 rounded-xl bg-metabolic-charcoal text-white font-body font-bold text-xl shadow-lg hover:bg-metabolic-charcoal/90 transition-all">
+                    Reiniciar
+                </button>
+            </div>
+        </div>
+
+        <!-- Completado (sección premium: fondo morado, texto blanco, CTA verde) -->
+        <div id="method-123-done" class="hidden text-center py-12">
+            <div class="method-123-phase-done rounded-2xl p-8 sm:p-12 text-white">
+                <p class="font-heading font-bold text-2xl sm:text-3xl uppercase mb-4">Ejercicio completado</p>
+                <p class="font-body text-xl sm:text-2xl opacity-95">Cambia de grupo muscular.</p>
+                <button type="button" id="method-123-again-btn" class="mt-8 py-4 px-8 rounded-xl bg-metabolic-green text-white font-body font-bold text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+                    Otro ejercicio
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal ¿Por qué funciona? -->
+    <div id="method-123-modal" class="fixed inset-0 z-[9999] hidden items-center justify-center p-4 method-123-modal-backdrop" aria-hidden="true">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8">
+            <div class="flex justify-between items-start mb-6">
+                <h2 class="font-heading font-bold text-xl sm:text-2xl text-metabolic-charcoal">¿Por qué funciona?</h2>
+                <button type="button" id="method-123-modal-close" class="p-2 rounded-lg hover:bg-gray-100 transition-colors" aria-label="Cerrar">
+                    <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="font-body text-metabolic-charcoal/90 space-y-6 text-base sm:text-lg">
+                <div>
+                    <h3 class="font-heading font-semibold text-metabolic-purple mb-2">Por qué 1 minuto de trabajo</h3>
+                    <p>Para vaciar glucógeno y generar acidosis, activando la proteína <strong class="text-metabolic-purple">AMPK</strong>. Esto favorece la oxidación de grasas y la sensibilidad a la insulina.</p>
+                </div>
+                <div>
+                    <h3 class="font-heading font-semibold text-metabolic-purple mb-2">Por qué 2 minutos de descanso</h3>
+                    <p>Para recuperar la <strong class="text-metabolic-purple">fosfocreatina</strong> y permitir máxima intensidad en la siguiente serie. El descanso pasivo evita desviar flujo sanguíneo del músculo.</p>
+                </div>
+                <div>
+                    <h3 class="font-heading font-semibold text-metabolic-purple mb-2">Efecto metabólico</h3>
+                    <p>Captación de glucosa en el músculo <strong>sin necesidad de insulina</strong>, vía <strong class="text-metabolic-purple">GLUT4</strong>. Por eso el método es útil en diabetes tipo 2 y resistencia a la insulina.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Footer -->
+    <footer class="bg-metabolic-bg-secondary border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <!-- Columna 1: Marca -->
+                <div class="space-y-4">
+                    <div class="logo-transparent mb-4">
+                        <img src="Logo MF.png" alt="Metabolic Fitness Logo" class="h-12 w-auto object-contain" style="background: transparent;">
+                    </div>
+                    <p class="font-body text-metabolic-charcoal/70 text-sm">
+                        Fisiología aplicada a la clínica.
+                    </p>
+                    <div class="space-y-4 pt-4">
+                        <div>
+                            <p class="font-body font-semibold text-metabolic-charcoal text-sm">
+                                Carlos Saavedra, MSc - Univ Laval, Canadá.
+                            </p>
+                            <p class="font-body text-metabolic-charcoal/70 text-xs mt-1">
+                                Fisiología del Ejercicio - Metabolismo Energético. Co Fundador.
+                            </p>
+                        </div>
+                        <div>
+                            <p class="font-body font-semibold text-metabolic-charcoal text-sm">
+                                Israel Orellana, MSc
+                            </p>
+                            <p class="font-body text-metabolic-charcoal/70 text-xs mt-1">
+                                Fisiólogo Clínico del Ejercicio · Desarrollo con IA aplicada a la salud. Co Fundador.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Columna 2: Enlaces -->
+                <div class="space-y-4">
+                    <h3 class="font-heading font-bold text-metabolic-purple text-base uppercase">Explora</h3>
+                    <div class="flex flex-col space-y-2">
+                        <a href="index.html" class="font-body text-metabolic-charcoal/70 text-sm hover:text-metabolic-purple transition-colors duration-200">Inicio</a>
+                        <a href="tratamiento.html" class="font-body text-metabolic-charcoal/70 text-sm hover:text-metabolic-purple transition-colors duration-200">Tratamiento</a>
+                        <a href="academia.html" class="font-body text-metabolic-charcoal/70 text-sm hover:text-metabolic-purple transition-colors duration-200">Academia</a>
+                        <a href="blog.html" class="font-body text-metabolic-charcoal/70 text-sm hover:text-metabolic-purple transition-colors duration-200">Blog</a>
+                    </div>
+                </div>
+                
+                <!-- Columna 3: Contacto -->
+                <div class="space-y-4">
+                    <h3 class="font-heading font-bold text-metabolic-purple text-base uppercase">Visítanos</h3>
+                    <div class="flex flex-col space-y-2 font-body text-metabolic-charcoal/70 text-sm">
+                        <p>Santiago, Chile</p>
+                        <a href="tel:+56910111167" class="hover:text-metabolic-purple transition-colors duration-200">+56 910111167</a>
+                        <a href="mailto:director@whitesoultech.cl" class="hover:text-metabolic-purple transition-colors duration-200">director@whitesoultech.cl</a>
+                        <p>Horario: Lun-Vie 9-18hrs</p>
+                    </div>
+                </div>
+                
+                <!-- Columna 4: Social -->
+                <div class="space-y-4">
+                    <h3 class="font-heading font-bold text-metabolic-purple text-base uppercase">Síguenos</h3>
+                    <div class="flex space-x-4">
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/metabolicfitness.cl/" target="_blank" rel="noopener noreferrer" class="text-metabolic-charcoal/70 hover:text-metabolic-purple transition-colors duration-200" aria-label="Instagram">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        
+                        <!-- LinkedIn -->
+                        <a href="https://www.linkedin.com/company/115783375/" target="_blank" rel="noopener noreferrer" class="text-metabolic-charcoal/70 hover:text-metabolic-purple transition-colors duration-200" aria-label="LinkedIn">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com/profile.php?id=61578818624346" target="_blank" rel="noopener noreferrer" class="text-metabolic-charcoal/70 hover:text-metabolic-purple transition-colors duration-200" aria-label="Facebook">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <!-- Franja morada pie de página -->
+        <div class="bg-metabolic-purple py-4 mt-8">
+            <p class="font-body text-white text-sm text-center">
+                © 2026 Metabolic Fitness. Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
+<!-- WhatsApp Button -->
+    <a href="https://wa.me/56910111167?text=Hola%2C%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Metabolic%20Fitness%3A%20su%20Academia%20para%20profesionales%20y%20la%20atenci%C3%B3n%20cl%C3%ADnica%20de%20pacientes%20con%20enfermedades%20metab%C3%B3licas." 
+       target="_blank" 
+       rel="noopener noreferrer"
+       class="whatsapp-button"
+       aria-label="Contactar por WhatsApp">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+    </a>
+
+    <script src="js/muscle-map.js"></script>
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > 20) { navbar.classList.remove('navbar-default'); navbar.classList.add('navbar-scrolled'); }
+            else { navbar.classList.remove('navbar-scrolled'); navbar.classList.add('navbar-default'); }
+            lastScroll = currentScroll;
+        });
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        mobileMenuBtn.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.contains('mobile-menu-open');
+            if (isOpen) { mobileMenu.classList.remove('mobile-menu-open'); menuIcon.classList.remove('hidden'); closeIcon.classList.add('hidden'); }
+            else { mobileMenu.classList.add('mobile-menu-open'); menuIcon.classList.add('hidden'); closeIcon.classList.remove('hidden'); }
+        });
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => { mobileMenu.classList.remove('mobile-menu-open'); menuIcon.classList.remove('hidden'); closeIcon.classList.add('hidden'); });
+        });
+        document.querySelectorAll('.mobile-dropdown-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const wrap = btn.closest('.mobile-dropdown-wrap');
+                const content = wrap.querySelector('.mobile-dropdown-content');
+                const arrow = wrap.querySelector('.dropdown-arrow');
+                const isOpen = content.classList.contains('open');
+                document.querySelectorAll('.mobile-dropdown-content').forEach(c => c.classList.remove('open'));
+                document.querySelectorAll('.dropdown-arrow').forEach(a => a.classList.remove('rotate-180'));
+                if (!isOpen) { content.classList.add('open'); if (arrow) arrow.classList.add('rotate-180'); }
+            });
+        });
+
+        /* ========== Método 1x2x3 - Timer SPA ========== */
+        (function() {
+            const WORK_SEC = 60, REST_SEC = 120, SETS = 3, PREP_SEC = 10;
+            const setup = document.getElementById('method-123-setup');
+            const timer = document.getElementById('method-123-timer');
+            const done = document.getElementById('method-123-done');
+            const phaseBg = document.getElementById('method-123-phase-bg');
+            const phaseLabel = document.getElementById('method-123-phase-label');
+            const instruction = document.getElementById('method-123-instruction');
+            const countdownEl = document.getElementById('method-123-countdown');
+            const seriesEl = document.getElementById('method-123-series');
+            const progressEl = document.getElementById('method-123-progress');
+            const startBtn = document.getElementById('method-123-start-btn');
+            const pauseBtn = document.getElementById('method-123-pause-btn');
+            const resetBtn = document.getElementById('method-123-reset-btn');
+            const againBtn = document.getElementById('method-123-again-btn');
+            const infoBtn = document.getElementById('method-123-info-btn');
+            const modal = document.getElementById('method-123-modal');
+            const modalClose = document.getElementById('method-123-modal-close');
+            const cards = document.querySelectorAll('.method-123-exercise-card');
+            const exerciseNameEl = document.getElementById('method-123-exercise-name');
+            const muscleMapWrapper = document.getElementById('muscle-map-wrapper');
+            const muscleMapSetupSlot = document.getElementById('muscle-map-setup-slot');
+            const muscleMapTimerSlot = document.getElementById('muscle-map-timer-slot');
+            const muscleMapExerciseName = document.getElementById('muscle-map-exercise-name');
+
+            function placeMuscleMapInSetup() {
+                if (muscleMapWrapper && muscleMapSetupSlot && muscleMapWrapper.parentElement !== muscleMapSetupSlot) {
+                    muscleMapSetupSlot.appendChild(muscleMapWrapper);
+                }
+            }
+            function placeMuscleMapInTimer() {
+                if (muscleMapWrapper && muscleMapTimerSlot && muscleMapWrapper.parentElement !== muscleMapTimerSlot) {
+                    muscleMapTimerSlot.appendChild(muscleMapWrapper);
+                }
+            }
+            function showMuscleMap(name) {
+                if (!muscleMapWrapper) return;
+                placeMuscleMapInSetup();
+                muscleMapWrapper.classList.remove('hidden');
+                if (muscleMapExerciseName) muscleMapExerciseName.textContent = name || '';
+            }
+            function hideMuscleMap() {
+                if (!muscleMapWrapper) return;
+                muscleMapWrapper.classList.add('hidden');
+                placeMuscleMapInSetup();
+                if (muscleMapExerciseName) muscleMapExerciseName.textContent = '';
+            }
+
+            // Acordeón de regiones musculares
+            document.querySelectorAll('.method-region-toggle').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    btn.closest('.method-region').classList.toggle('open');
+                });
+            });
+
+            let state = { phase: 'work', set: 1, remaining: WORK_SEC, total: WORK_SEC, paused: false, intervalId: null, selectedExercise: null, selectedName: null };
+
+            // ---- Sistema de audio (alarmas y timbres) ----
+            let audioCtx = null;
+            function getCtx() {
+                if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+                return audioCtx;
+            }
+            // Reproduce un tono. offset/dur en segundos, vol 0-1, type de onda.
+            function tono(freq, offset, dur, vol, type) {
+                const ctx = getCtx();
+                const o = ctx.createOscillator(); const g = ctx.createGain();
+                o.connect(g); g.connect(ctx.destination);
+                o.type = type || 'sine'; o.frequency.value = freq;
+                const t = ctx.currentTime + (offset || 0);
+                const v = (vol == null ? 0.4 : vol);
+                g.gain.setValueAtTime(0.0001, t);
+                g.gain.exponentialRampToValueAtTime(v, t + 0.02);
+                g.gain.setValueAtTime(v, t + (dur || 0.3) - 0.05);
+                g.gain.exponentialRampToValueAtTime(0.001, t + (dur || 0.3));
+                o.start(t); o.stop(t + (dur || 0.3) + 0.02);
+            }
+            // Aviso de voz en español (Web Speech API).
+            function hablar(texto) {
+                if (!('speechSynthesis' in window)) return;
+                try {
+                    window.speechSynthesis.cancel();
+                    const u = new SpeechSynthesisUtterance(texto);
+                    u.lang = 'es-ES'; u.rate = 1.05; u.pitch = 1.0; u.volume = 1.0;
+                    window.speechSynthesis.speak(u);
+                } catch (e) {}
+            }
+            // Timbre de cuenta regresiva (últimos segundos): más marcado.
+            function beepTick() { tono(700, 0, 0.18, 0.35, 'triangle'); }
+            // Alarma fuerte y larga de INICIO de ejercicio (sirena ascendente repetida).
+            function alarmInicio() {
+                tono(700, 0.00, 0.22, 0.5, 'square');
+                tono(1000, 0.24, 0.22, 0.5, 'square');
+                tono(1350, 0.48, 0.30, 0.55, 'square');
+                tono(700, 0.85, 0.22, 0.5, 'square');
+                tono(1000, 1.09, 0.22, 0.5, 'square');
+                tono(1350, 1.33, 0.55, 0.55, 'square');
+            }
+            // Alarma de FIN de trabajo → empieza el descanso (tonos descendentes, larga).
+            function beepWorkEnd() {
+                tono(900, 0.00, 0.30, 0.5, 'sine');
+                tono(650, 0.32, 0.30, 0.5, 'sine');
+                tono(450, 0.64, 0.7, 0.5, 'sine');
+            }
+            // Alarma de FIN de descanso → ¡a moverse de nuevo! (igual a la de inicio).
+            function beepRestEnd() { alarmInicio(); }
+
+            function fmt(s) { const m = Math.floor(s / 60); const sec = s % 60; return m + ':' + (sec < 10 ? '0' : '') + sec; }
+            function updateUI() {
+                countdownEl.textContent = fmt(state.remaining);
+                const pct = Math.max(0, (state.remaining / state.total) * 100);
+                progressEl.style.width = pct + '%';
+                if (state.phase === 'prep') {
+                    phaseBg.className = 'rounded-2xl p-6 sm:p-8 text-white transition-colors duration-500 bg-gradient-to-br from-metabolic-cyan to-metabolic-green';
+                    phaseLabel.textContent = 'PREPÁRATE';
+                    instruction.textContent = 'Colócate en posición. El ejercicio comienza en…';
+                    progressEl.className = 'method-123-progress-bar h-full rounded-full bg-white/80';
+                    seriesEl.textContent = 'Preparación';
+                    return;
+                }
+                if (state.phase === 'work') {
+                    phaseBg.className = 'method-123-phase-work rounded-2xl p-6 sm:p-8 text-white transition-colors duration-500';
+                    phaseLabel.textContent = 'TRABAJO MUSCULAR';
+                    instruction.textContent = 'Mantén la tensión muscular continua. Llega al fallo.';
+                    progressEl.className = 'method-123-progress-bar h-full rounded-full bg-metabolic-green';
+                } else {
+                    phaseBg.className = 'method-123-phase-rest rounded-2xl p-6 sm:p-8 text-white transition-colors duration-500';
+                    phaseLabel.textContent = 'RECUPERACIÓN PASIVA';
+                    instruction.textContent = 'Descanso total. No te muevas. Deja que tu músculo recupere Fosfocreatina.';
+                    progressEl.className = 'method-123-progress-bar h-full rounded-full bg-metabolic-purple';
+                }
+                seriesEl.textContent = 'Serie ' + state.set + ' de ' + SETS;
+            }
+            function tick() {
+                if (state.paused) return;
+                state.remaining--;
+                updateUI();
+                if (state.remaining > 0) {
+                    // Timbres en los últimos 3 segundos de cualquier fase.
+                    if (state.remaining <= 3) beepTick();
+                    return;
+                }
+                clearInterval(state.intervalId);
+                state.intervalId = null;
+                if (state.phase === 'prep') {
+                    alarmInicio();
+                    hablar('¡Comienza el ejercicio!');
+                    state.phase = 'work'; state.remaining = WORK_SEC; state.total = WORK_SEC;
+                    updateUI();
+                    state.intervalId = setInterval(tick, 1000);
+                } else if (state.phase === 'work') {
+                    beepWorkEnd();
+                    if (state.set >= SETS) {
+                        hablar('¡Entrenamiento completado! Excelente trabajo.');
+                        setup.classList.add('hidden'); timer.classList.add('hidden'); done.classList.remove('hidden');
+                        return;
+                    }
+                    hablar('Tiempo. Descansa.');
+                    state.phase = 'rest'; state.remaining = REST_SEC; state.total = REST_SEC;
+                    updateUI();
+                    state.intervalId = setInterval(tick, 1000);
+                } else {
+                    beepRestEnd();
+                    state.set++;
+                    hablar('¡Comienza la serie ' + state.set + '!');
+                    state.phase = 'work'; state.remaining = WORK_SEC; state.total = WORK_SEC;
+                    updateUI();
+                    state.intervalId = setInterval(tick, 1000);
+                }
+            }
+            function start() {
+                if (state.intervalId) return;
+                state.paused = false;
+                state.intervalId = setInterval(tick, 1000);
+                pauseBtn.textContent = 'Pausar';
+            }
+            function pause() {
+                if (!state.intervalId) return;
+                state.paused = true;
+                clearInterval(state.intervalId);
+                state.intervalId = null;
+                pauseBtn.textContent = 'Reanudar';
+            }
+            function togglePause() {
+                if (state.intervalId && !state.paused) { pause(); return; }
+                if (!state.intervalId && state.paused) { start(); return; }
+            }
+            function reset() {
+                if (state.intervalId) { clearInterval(state.intervalId); state.intervalId = null; }
+                state = { phase: 'work', set: 1, remaining: WORK_SEC, total: WORK_SEC, paused: false, intervalId: null, selectedExercise: state.selectedExercise, selectedName: state.selectedName };
+                setup.classList.remove('hidden'); timer.classList.add('hidden'); done.classList.add('hidden');
+                pauseBtn.textContent = 'Pausar';
+                cards.forEach(c => c.classList.remove('selected'));
+                state.selectedExercise = null;
+                state.selectedName = null;
+                startBtn.disabled = true;
+                hideMuscleMap();
+                if (typeof window.clearMuscleHighlight === 'function') window.clearMuscleHighlight();
+            }
+            function goSetup() {
+                reset();
+            }
+            cards.forEach(c => {
+                c.addEventListener('click', () => {
+                    cards.forEach(x => x.classList.remove('selected'));
+                    c.classList.add('selected');
+                    state.selectedExercise = c.dataset.exercise;
+                    state.selectedName = c.dataset.name || '';
+                    startBtn.disabled = false;
+                    showMuscleMap(state.selectedName);
+                    if (typeof window.highlightMusclesByExercise === 'function') {
+                        window.highlightMusclesByExercise(window.getMusclesForExercise(state.selectedExercise));
+                    }
+                    if (muscleMapWrapper) muscleMapWrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                });
+            });
+            startBtn.addEventListener('click', () => {
+                if (!state.selectedExercise) return;
+                const chosenName = state.selectedName;
+                getCtx();
+                hablar('Prepárate. Colócate en posición.');
+                setup.classList.add('hidden');
+                timer.classList.remove('hidden');
+                done.classList.add('hidden');
+                placeMuscleMapInTimer();
+                if (muscleMapWrapper) muscleMapWrapper.classList.remove('hidden');
+                // Arranca con 10s de preparación antes del primer trabajo.
+                state = { phase: 'prep', set: 1, remaining: PREP_SEC, total: PREP_SEC, paused: false, intervalId: null, selectedExercise: state.selectedExercise, selectedName: chosenName };
+                if (exerciseNameEl) exerciseNameEl.textContent = chosenName || '';
+                updateUI();
+                start();
+            });
+            pauseBtn.addEventListener('click', togglePause);
+            resetBtn.addEventListener('click', reset);
+            againBtn.addEventListener('click', goSetup);
+            infoBtn.addEventListener('click', () => { modal.classList.remove('hidden'); modal.classList.add('flex'); modal.setAttribute('aria-hidden', 'false'); });
+            modalClose.addEventListener('click', () => { modal.classList.add('hidden'); modal.classList.remove('flex'); modal.setAttribute('aria-hidden', 'true'); });
+            modal.addEventListener('click', (e) => { if (e.target === modal) modalClose.click(); });
+        })();
+    </script>
+</body>
+</html>
