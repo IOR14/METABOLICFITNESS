@@ -28,60 +28,133 @@ except (AttributeError, ValueError):
 # Reutilizamos la base de datos y la creación de tabla ya definidas en database.py
 from database import init_db, DB_PATH
 
-# ===========================================================================
-#  IMPORTANTE: cambia BASE_URL por tu URL real de GitHub Pages.
-#  Ejemplos:
-#     - Sitio de usuario:  'https://TU-USUARIO.github.io'
-#     - Sitio de proyecto: 'https://TU-USUARIO.github.io/NOMBRE-REPO'
-#  El QR apuntará a:  <BASE_URL>/validar.html?serial=MF-FRM-XX
-# ===========================================================================
-BASE_URL = "https://TU-USUARIO.github.io/NOMBRE-REPO"
+# URL pública del sitio en GitHub Pages
+BASE_URL = "https://ior14.github.io/METABOLICFITNESS"
 
-# Datos comunes a todos los certificados
-CURSO = "Fisiología en Rehabilitación Metabólica - Método 1X2X3"
-FECHA = "06-06-2026"
-
-# Lista exacta de estudiantes (clave = número, valor = nombre)
-ESTUDIANTES = {
-    2: "Antonio Ruíz",
-    3: "Ricardo Escobar",
-    4: "Claudia Corrales",
-    5: "Omar Potočnik",
-    6: "Sofia Garfias",
-    7: "Gerardo Alvarado",
-    8: "Ixchell Cuaranta",
-    9: "Ramón Sepúlveda",
-    10: "Javier Calbete",
-    11: "Vicente Vidal",
-    12: "Hannia Varela",
-    13: "Alan Guzman",
-    14: "Felix Miranda",
-    15: "David Barria",
-    16: "Luis Rogelio",
-    17: "Fernando González",
-    18: "Cristina Barra",
-}
+# Certificados alineados con los diplomas impresos (MF-FRM-02 … MF-FRM-18)
+CERTIFICADOS = [
+    {
+        "numero": 2,
+        "nombre": "Antonio Paez",
+        "curso": "Obesidad y Rehabilitación Metabólica - Nivel Inicial",
+        "fecha": "20-05-2024",
+    },
+    {
+        "numero": 3,
+        "nombre": "Ricardo Escobar",
+        "curso": "Obesidad y Rehabilitación Metabólica - Nivel Inicial",
+        "fecha": "20-05-2024",
+    },
+    {
+        "numero": 4,
+        "nombre": "Claudia Corrales",
+        "curso": "Obesidad y Rehabilitación Metabólica - Nivel Inicial",
+        "fecha": "20-05-2024",
+    },
+    {
+        "numero": 5,
+        "nombre": "Omar Potichetti",
+        "curso": "Obesidad y Rehabilitación Metabólica - Nivel Inicial",
+        "fecha": "20-05-2024",
+    },
+    {
+        "numero": 6,
+        "nombre": "Sofia Garfias",
+        "curso": "Obesidad y Rehabilitación Metabólica - Nivel Inicial",
+        "fecha": "20-05-2024",
+    },
+    {
+        "numero": 7,
+        "nombre": "Gerardo Alvarado",
+        "curso": "Obesidad y Rehabilitación Metabólica - Nivel Inicial",
+        "fecha": "20-05-2024",
+    },
+    {
+        "numero": 8,
+        "nombre": "Lisbeth Casarrubia",
+        "curso": "Obesidad y Rehabilitación Metabólica - Nivel Inicial",
+        "fecha": "20-05-2024",
+    },
+    {
+        "numero": 9,
+        "nombre": "Ramon Sepulveda",
+        "curso": "Obesidad y Rehabilitación Metabólica - Nivel Inicial",
+        "fecha": "20-05-2024",
+    },
+    {
+        "numero": 10,
+        "nombre": "Javier Cañete",
+        "curso": "Obesidad y Rehabilitación Metabólica - Nivel Inicial",
+        "fecha": "20-05-2024",
+    },
+    {
+        "numero": 11,
+        "nombre": "Vicente Vila",
+        "curso": "Diploma en Entrenamiento Metabólico - Método 1X2X3",
+        "fecha": "05-05-2024",
+    },
+    {
+        "numero": 12,
+        "nombre": "Hannia Varela",
+        "curso": "Diploma en Entrenamiento Metabólico - Método 1X2X3",
+        "fecha": "05-05-2024",
+    },
+    {
+        "numero": 13,
+        "nombre": "Alan Guzmán",
+        "curso": "Diploma en Entrenamiento Metabólico - Método 1X2X3",
+        "fecha": "05-05-2024",
+    },
+    {
+        "numero": 14,
+        "nombre": "Felix Miranda",
+        "curso": "Diploma en Entrenamiento Metabólico - Método 1X2X3",
+        "fecha": "05-05-2024",
+    },
+    {
+        "numero": 15,
+        "nombre": "David Barria",
+        "curso": "Diploma en Entrenamiento Metabólico - Método 1X2X3",
+        "fecha": "05-05-2024",
+    },
+    {
+        "numero": 16,
+        "nombre": "Luis Rogelio",
+        "curso": "Diploma en Entrenamiento Metabólico - Método 1X2X3",
+        "fecha": "05-05-2024",
+    },
+    {
+        "numero": 17,
+        "nombre": "Fernando González",
+        "curso": "Diploma en Entrenamiento Metabólico - Método 1X2X3",
+        "fecha": "05-05-2024",
+    },
+    {
+        "numero": 18,
+        "nombre": "Cristina Barra",
+        "curso": "Diploma en Entrenamiento Metabólico - Método 1X2X3",
+        "fecha": "05-05-2024",
+    },
+]
 
 # Carpeta donde se guardarán las imágenes de los QR
 CARPETA_QRS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "qrs_diplomas")
 
 
 def main():
-    # 1) Aseguramos que la tabla 'certificados' exista
     init_db()
-
-    # 2) Creamos la carpeta de salida si no existe
     os.makedirs(CARPETA_QRS, exist_ok=True)
 
     conn = sqlite3.connect(DB_PATH)
     cur = conn.cursor()
 
     total = 0
-    for numero, nombre in ESTUDIANTES.items():
-        # Serial con número a dos dígitos -> MF-FRM-02, MF-FRM-03, ...
-        serial = "MF-FRM-{:02d}".format(numero)
+    for cert in CERTIFICADOS:
+        serial = "MF-FRM-{:02d}".format(cert["numero"])
+        nombre = cert["nombre"]
+        curso = cert["curso"]
+        fecha = cert["fecha"]
 
-        # 3) Insertar o actualizar el registro en la base de datos
         cur.execute(
             """
             INSERT INTO certificados (serial, nombre_estudiante, curso, fecha)
@@ -91,11 +164,10 @@ def main():
                 curso             = excluded.curso,
                 fecha             = excluded.fecha
             """,
-            (serial, nombre, CURSO, FECHA),
+            (serial, nombre, curso, fecha),
         )
 
-        # 4) Generar el código QR con la URL de validación
-        url = "{}/validar.html?serial={}".format(BASE_URL, serial)
+        url = "{}/validar?serial={}".format(BASE_URL, serial)
         qr = qrcode.QRCode(
             version=1,
             error_correction=qrcode.constants.ERROR_CORRECT_H,
@@ -117,7 +189,6 @@ def main():
     conn.commit()
     conn.close()
 
-    # Mantiene sincronizado el archivo de datos que usa la web estática (Netlify).
     try:
         from exportar_datos_web import main as exportar_web
         exportar_web()
@@ -126,9 +197,6 @@ def main():
 
     print("\nListo. {} certificados procesados.".format(total))
     print("Imágenes QR guardadas en: {}".format(CARPETA_QRS))
-    if "TUDOMINIO.com" in BASE_URL:
-        print("\n*** RECUERDA: cambia 'TUDOMINIO.com' por tu dominio real en BASE_URL "
-              "y vuelve a ejecutar el script para regenerar los QR. ***")
 
 
 if __name__ == "__main__":
