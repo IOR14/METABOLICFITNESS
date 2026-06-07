@@ -75,16 +75,14 @@
                 '<p class="font-body text-white/90 text-sm">Este certificado fue emitido oficialmente por Metabolic Fitness.</p></div>' +
               '</div>' +
               '<div class="p-8 space-y-5">' +
-                '<div class="grid sm:grid-cols-2 gap-5">' +
-                  '<div><p class="font-body text-xs uppercase tracking-wider text-metabolic-charcoal/50 mb-1">Estudiante</p>' +
-                  '<p class="font-heading font-bold text-lg text-metabolic-charcoal">' + esc(cert.nombre_estudiante) + '</p></div>' +
-                  '<div><p class="font-body text-xs uppercase tracking-wider text-metabolic-charcoal/50 mb-1">Fecha de emisión</p>' +
-                  '<p class="font-body font-semibold text-metabolic-charcoal">' + esc(cert.fecha) + '</p></div>' +
-                '</div>' +
+                '<div><p class="font-body text-xs uppercase tracking-wider text-metabolic-charcoal/50 mb-2">Estudiante</p>' +
+                '<p class="cert-nombre-estudiante">' + esc(cert.nombre_estudiante) + '</p></div>' +
+                '<div><p class="font-body text-xs uppercase tracking-wider text-metabolic-charcoal/50 mb-1">Fecha de emisión</p>' +
+                '<p class="font-body font-semibold text-metabolic-charcoal">' + esc(cert.fecha) + '</p></div>' +
                 '<div><p class="font-body text-xs uppercase tracking-wider text-metabolic-charcoal/50 mb-1">Curso / Programa</p>' +
                 '<p class="font-body font-semibold text-metabolic-charcoal">' + esc(cert.curso) + '</p></div>' +
                 '<div class="pt-4 border-t border-gray-100"><p class="font-body text-xs uppercase tracking-wider text-metabolic-charcoal/50 mb-1">Código de verificación</p>' +
-                '<p class="font-mono text-sm text-metabolic-purple font-semibold">' + esc(serial) + '</p></div>' +
+                '<p class="cert-serial font-mono text-sm text-metabolic-purple font-semibold">' + esc(serial) + '</p></div>' +
               '</div>' +
             '</div>' +
             '<div class="text-center mt-6"><a href="validar.html" class="font-body text-sm text-metabolic-purple hover:underline">Validar otro certificado</a></div>'

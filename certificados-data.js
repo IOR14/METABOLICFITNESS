@@ -2,12 +2,12 @@
 // NO editar a mano. Para actualizar: python exportar_datos_web.py
 window.CERTIFICADOS = {
   "MF-FRM-02": {
-    "nombre_estudiante": "Antonio Paez",
+    "nombre_estudiante": "Antonio Ruíz",
     "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
     "fecha": "06-06-2026"
   },
   "MF-FRM-03": {
-    "nombre_estudiante": "Ricardo Escobar",
+    "nombre_estudiante": "Rícardo Escobar",
     "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
     "fecha": "06-06-2026"
   },
@@ -32,22 +32,22 @@ window.CERTIFICADOS = {
     "fecha": "06-06-2026"
   },
   "MF-FRM-08": {
-    "nombre_estudiante": "Lisbeth Casarrubia",
+    "nombre_estudiante": "Ixchelt Cuaranta",
     "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
     "fecha": "06-06-2026"
   },
   "MF-FRM-09": {
-    "nombre_estudiante": "Ramon Sepulveda",
+    "nombre_estudiante": "Ramón Sepúlveda",
     "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
     "fecha": "06-06-2026"
   },
   "MF-FRM-10": {
-    "nombre_estudiante": "Javier Cañete",
+    "nombre_estudiante": "Javier Calbete",
     "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
     "fecha": "06-06-2026"
   },
   "MF-FRM-11": {
-    "nombre_estudiante": "Vicente Vila",
+    "nombre_estudiante": "Vícente Vídal",
     "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
     "fecha": "06-06-2026"
   },
@@ -57,7 +57,7 @@ window.CERTIFICADOS = {
     "fecha": "06-06-2026"
   },
   "MF-FRM-13": {
-    "nombre_estudiante": "Alan Guzmán",
+    "nombre_estudiante": "Alan Gúzman",
     "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
     "fecha": "06-06-2026"
   },
@@ -67,12 +67,12 @@ window.CERTIFICADOS = {
     "fecha": "06-06-2026"
   },
   "MF-FRM-15": {
-    "nombre_estudiante": "David Barria",
+    "nombre_estudiante": "David Barría",
     "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
     "fecha": "06-06-2026"
   },
   "MF-FRM-16": {
-    "nombre_estudiante": "Luis Rogelio",
+    "nombre_estudiante": "Luís Rogelio",
     "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
     "fecha": "06-06-2026"
   },

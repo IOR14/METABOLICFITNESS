@@ -35,22 +35,23 @@ BASE_URL = "https://ior14.github.io/METABOLICFITNESS"
 CURSO = "Fisiología en Rehabilitación Metabólica - Método 1X2X3"
 FECHA = "06-06-2026"
 
+# Nombres exactos según los diplomas impresos (MF-FRM-02 … MF-FRM-18)
 ESTUDIANTES = {
-    2: "Antonio Paez",
-    3: "Ricardo Escobar",
+    2: "Antonio Ruíz",
+    3: "Rícardo Escobar",
     4: "Claudia Corrales",
     5: "Omar Potóchník",
     6: "Sofia Garfias",
     7: "Gerardo Alvarado",
-    8: "Lisbeth Casarrubia",
-    9: "Ramon Sepulveda",
-    10: "Javier Cañete",
-    11: "Vicente Vila",
+    8: "Ixchelt Cuaranta",
+    9: "Ramón Sepúlveda",
+    10: "Javier Calbete",
+    11: "Vícente Vídal",
     12: "Hannia Varela",
-    13: "Alan Guzmán",
+    13: "Alan Gúzman",
     14: "Felix Miranda",
-    15: "David Barria",
-    16: "Luis Rogelio",
+    15: "David Barría",
+    16: "Luís Rogelio",
     17: "Fernando González",
     18: "Cristina Barra",
 }
