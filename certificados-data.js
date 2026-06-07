@@ -17,7 +17,7 @@ window.CERTIFICADOS = {
     "fecha": "06-06-2026"
   },
   "MF-FRM-05": {
-    "nombre_estudiante": "Omar Potočnik",
+    "nombre_estudiante": "Omar Potóchník",
     "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
     "fecha": "06-06-2026"
   },

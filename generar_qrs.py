@@ -39,7 +39,7 @@ ESTUDIANTES = {
     2: "Antonio Paez",
     3: "Ricardo Escobar",
     4: "Claudia Corrales",
-    5: "Omar Potočnik",
+    5: "Omar Potóchník",
     6: "Sofia Garfias",
     7: "Gerardo Alvarado",
     8: "Lisbeth Casarrubia",
