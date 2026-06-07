@@ -17,7 +17,7 @@ window.CERTIFICADOS = {
     "fecha": "20-05-2024"
   },
   "MF-FRM-05": {
-    "nombre_estudiante": "Omar Potichetti",
+    "nombre_estudiante": "Omar Potočnik",
     "curso": "Obesidad y Rehabilitación Metabólica - Nivel Inicial",
     "fecha": "20-05-2024"
   },

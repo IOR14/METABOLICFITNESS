@@ -53,7 +53,7 @@ CERTIFICADOS = [
     },
     {
         "numero": 5,
-        "nombre": "Omar Potichetti",
+        "nombre": "Omar Potočnik",
         "curso": "Obesidad y Rehabilitación Metabólica - Nivel Inicial",
         "fecha": "20-05-2024",
     },
