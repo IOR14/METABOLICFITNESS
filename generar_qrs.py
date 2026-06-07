@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-generar_qrs.py — Puebla la base de datos certificados.db con los 17 estudiantes
+generar_qrs.py — Puebla la base de datos certificados.db con los estudiantes
 del curso y genera un código QR (imagen PNG) por cada certificado.
 
 Cómo ejecutar:
@@ -8,7 +8,7 @@ Cómo ejecutar:
     2) python generar_qrs.py
 
 Resultado:
-    - Inserta/actualiza los 17 registros en la tabla 'certificados'.
+    - Inserta/actualiza los registros en la tabla 'certificados'.
     - Crea la carpeta 'qrs_diplomas' con un QR por estudiante:
       QR_MF-FRM-02.png, QR_MF-FRM-03.png, ...
 """
@@ -31,11 +31,11 @@ from database import init_db, DB_PATH
 # URL pública del sitio en GitHub Pages
 BASE_URL = "https://ior14.github.io/METABOLICFITNESS"
 
-# Datos oficiales del certificado (MF-FRM-02 … MF-FRM-18)
+# Datos oficiales del certificado (MF-FRM-02 … MF-FRM-19)
 CURSO = "Fisiología en Rehabilitación Metabólica - Método 1X2X3"
 FECHA = "06-06-2026"
 
-# Nombres exactos según los diplomas impresos (MF-FRM-02 … MF-FRM-18)
+# Nombres exactos según los diplomas impresos
 ESTUDIANTES = {
     2: "Antonio Ruíz",
     3: "Rícardo Escobar",
@@ -54,6 +54,7 @@ ESTUDIANTES = {
     16: "Luís Rogelio",
     17: "Fernando González",
     18: "Cristina Barra",
+    19: "Nohemi Escamilla",
 }
 
 # Carpeta donde se guardarán las imágenes de los QR

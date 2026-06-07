@@ -85,5 +85,10 @@ window.CERTIFICADOS = {
     "nombre_estudiante": "Cristina Barra",
     "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
     "fecha": "06-06-2026"
+  },
+  "MF-FRM-19": {
+    "nombre_estudiante": "Nohemi Escamilla",
+    "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
+    "fecha": "06-06-2026"
   }
 };
