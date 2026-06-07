@@ -44,7 +44,8 @@ def main():
     contenido = (
         "// Archivo generado automaticamente por exportar_datos_web.py\n"
         "// NO editar a mano. Para actualizar: python exportar_datos_web.py\n"
-        "window.CERTIFICADOS = "
+        "// version: {} certificados ({})\n".format(len(data), max(data.keys()) if data else "none")
+        + "window.CERTIFICADOS = "
         + json.dumps(data, ensure_ascii=False, indent=2)
         + ";\n"
     )

@@ -1,5 +1,6 @@
 // Archivo generado automaticamente por exportar_datos_web.py
 // NO editar a mano. Para actualizar: python exportar_datos_web.py
+// version: 18 certificados (MF-FRM-19)
 window.CERTIFICADOS = {
   "MF-FRM-02": {
     "nombre_estudiante": "Antonio Ruíz",

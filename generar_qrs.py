@@ -29,7 +29,7 @@ except (AttributeError, ValueError):
 from database import init_db, DB_PATH
 
 # URL pública del sitio en GitHub Pages
-BASE_URL = "https://ior14.github.io/METABOLICFITNESS"
+BASE_URL = "https://www.metabolicfitness.cl"
 
 # Datos oficiales del certificado (MF-FRM-02 … MF-FRM-19)
 CURSO = "Fisiología en Rehabilitación Metabólica - Método 1X2X3"
