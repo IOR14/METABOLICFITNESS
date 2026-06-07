@@ -41,6 +41,29 @@
         .whatsapp-button::before { content: ''; position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle at 32% 24%, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.05) 45%, transparent 62%); pointer-events: none; }
         .whatsapp-button:hover { transform: scale(1.12) translateY(-3px); box-shadow: 0 16px 34px rgba(128, 0, 128, 0.48), 0 6px 16px rgba(92, 184, 92, 0.42); }
         .whatsapp-button svg { width: 36px; height: 36px; fill: white; position: relative; z-index: 1; filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.22)); }
+        @keyframes certificadoEntrada {
+            0% { opacity: 0; transform: translateY(28px) scale(0.96); }
+            60% { opacity: 1; transform: translateY(-4px) scale(1.01); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes selloPulso {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(92, 184, 92, 0.45); }
+            50% { transform: scale(1.08); box-shadow: 0 0 0 12px rgba(92, 184, 92, 0); }
+        }
+        @keyframes brilloBarrido {
+            0% { transform: translateX(-120%) skewX(-18deg); }
+            100% { transform: translateX(220%) skewX(-18deg); }
+        }
+        .cert-valido-entrada { animation: certificadoEntrada 0.75s cubic-bezier(0.22, 1, 0.36, 1) both; }
+        .cert-sello-ok { animation: selloPulso 1.4s ease-in-out 0.35s 2; }
+        .cert-brillo::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.35) 50%, transparent 65%);
+            animation: brilloBarrido 1.1s ease-out 0.45s 1;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -164,6 +187,7 @@
     </script>
 
     <!-- Datos de certificados (generado por exportar_datos_web.py) -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <script src="certificados-data.js"></script>
     <script src="validar.js" defer></script>
 </body>

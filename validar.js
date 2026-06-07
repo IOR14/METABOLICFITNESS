@@ -20,11 +20,55 @@
         return (params.get('serial') || '').trim();
     }
 
+    const COLORES_CONFETI = ['#5CB85C', '#800080', '#00AEEF', '#4ba572', '#FFD700', '#FFFFFF'];
+
+    function lanzarCelebracion() {
+        if (typeof confetti !== 'function') return;
+
+        const burst = (opts) => confetti(Object.assign({
+            particleCount: 90,
+            spread: 72,
+            startVelocity: 42,
+            gravity: 0.9,
+            ticks: 220,
+            colors: COLORES_CONFETI,
+            disableForReducedMotion: true,
+        }, opts));
+
+        burst({ origin: { x: 0.5, y: 0.55 } });
+
+        setTimeout(function () {
+            burst({ particleCount: 55, angle: 58, spread: 52, origin: { x: 0.08, y: 0.62 } });
+            burst({ particleCount: 55, angle: 122, spread: 52, origin: { x: 0.92, y: 0.62 } });
+        }, 180);
+
+        setTimeout(function () {
+            burst({ particleCount: 40, spread: 100, origin: { x: 0.5, y: 0.35 }, scalar: 0.9 });
+        }, 420);
+
+        var duration = 2200;
+        var end = Date.now() + duration;
+        (function frame() {
+            confetti({
+                particleCount: 2,
+                angle: 60 + Math.random() * 60,
+                spread: 48,
+                origin: { x: Math.random(), y: -0.05 },
+                colors: COLORES_CONFETI,
+                ticks: 180,
+                gravity: 1.1,
+                scalar: 0.85,
+                disableForReducedMotion: true,
+            });
+            if (Date.now() < end) requestAnimationFrame(frame);
+        })();
+    }
+
     function vistaValido(serial, cert) {
         return (
-            '<div class="bg-white rounded-2xl shadow-xl border border-green-200 overflow-hidden">' +
-              '<div class="bg-gradient-to-r from-metabolic-green to-[#4ba572] px-8 py-6 flex items-center gap-4">' +
-                '<div class="flex items-center justify-center w-14 h-14 rounded-full bg-white/20 shrink-0">' +
+            '<div class="cert-valido-entrada bg-white rounded-2xl shadow-xl border border-green-200 overflow-hidden">' +
+              '<div class="cert-brillo relative overflow-hidden bg-gradient-to-r from-metabolic-green to-[#4ba572] px-8 py-6 flex items-center gap-4">' +
+                '<div class="cert-sello-ok flex items-center justify-center w-14 h-14 rounded-full bg-white/20 shrink-0">' +
                   '<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>' +
                 '</div>' +
                 '<div><h2 class="font-heading font-bold text-2xl text-white">Certificado Válido</h2>' +
@@ -95,7 +139,12 @@
             return;
         }
         const cert = CERTS[serial];
-        contenedor.innerHTML = cert ? vistaValido(serial, cert) : vistaInvalido(serial);
+        if (cert) {
+            contenedor.innerHTML = vistaValido(serial, cert);
+            requestAnimationFrame(lanzarCelebracion);
+        } else {
+            contenedor.innerHTML = vistaInvalido(serial);
+        }
     }
 
     render();

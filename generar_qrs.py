@@ -31,111 +31,29 @@ from database import init_db, DB_PATH
 # URL pública del sitio en GitHub Pages
 BASE_URL = "https://ior14.github.io/METABOLICFITNESS"
 
-# Certificados alineados con los diplomas impresos (MF-FRM-02 … MF-FRM-18)
-CERTIFICADOS = [
-    {
-        "numero": 2,
-        "nombre": "Antonio Paez",
-        "curso": "Obesidad y Rehabilitación Metabólica - Nivel Inicial",
-        "fecha": "20-05-2024",
-    },
-    {
-        "numero": 3,
-        "nombre": "Ricardo Escobar",
-        "curso": "Obesidad y Rehabilitación Metabólica - Nivel Inicial",
-        "fecha": "20-05-2024",
-    },
-    {
-        "numero": 4,
-        "nombre": "Claudia Corrales",
-        "curso": "Obesidad y Rehabilitación Metabólica - Nivel Inicial",
-        "fecha": "20-05-2024",
-    },
-    {
-        "numero": 5,
-        "nombre": "Omar Potočnik",
-        "curso": "Obesidad y Rehabilitación Metabólica - Nivel Inicial",
-        "fecha": "20-05-2024",
-    },
-    {
-        "numero": 6,
-        "nombre": "Sofia Garfias",
-        "curso": "Obesidad y Rehabilitación Metabólica - Nivel Inicial",
-        "fecha": "20-05-2024",
-    },
-    {
-        "numero": 7,
-        "nombre": "Gerardo Alvarado",
-        "curso": "Obesidad y Rehabilitación Metabólica - Nivel Inicial",
-        "fecha": "20-05-2024",
-    },
-    {
-        "numero": 8,
-        "nombre": "Lisbeth Casarrubia",
-        "curso": "Obesidad y Rehabilitación Metabólica - Nivel Inicial",
-        "fecha": "20-05-2024",
-    },
-    {
-        "numero": 9,
-        "nombre": "Ramon Sepulveda",
-        "curso": "Obesidad y Rehabilitación Metabólica - Nivel Inicial",
-        "fecha": "20-05-2024",
-    },
-    {
-        "numero": 10,
-        "nombre": "Javier Cañete",
-        "curso": "Obesidad y Rehabilitación Metabólica - Nivel Inicial",
-        "fecha": "20-05-2024",
-    },
-    {
-        "numero": 11,
-        "nombre": "Vicente Vila",
-        "curso": "Diploma en Entrenamiento Metabólico - Método 1X2X3",
-        "fecha": "05-05-2024",
-    },
-    {
-        "numero": 12,
-        "nombre": "Hannia Varela",
-        "curso": "Diploma en Entrenamiento Metabólico - Método 1X2X3",
-        "fecha": "05-05-2024",
-    },
-    {
-        "numero": 13,
-        "nombre": "Alan Guzmán",
-        "curso": "Diploma en Entrenamiento Metabólico - Método 1X2X3",
-        "fecha": "05-05-2024",
-    },
-    {
-        "numero": 14,
-        "nombre": "Felix Miranda",
-        "curso": "Diploma en Entrenamiento Metabólico - Método 1X2X3",
-        "fecha": "05-05-2024",
-    },
-    {
-        "numero": 15,
-        "nombre": "David Barria",
-        "curso": "Diploma en Entrenamiento Metabólico - Método 1X2X3",
-        "fecha": "05-05-2024",
-    },
-    {
-        "numero": 16,
-        "nombre": "Luis Rogelio",
-        "curso": "Diploma en Entrenamiento Metabólico - Método 1X2X3",
-        "fecha": "05-05-2024",
-    },
-    {
-        "numero": 17,
-        "nombre": "Fernando González",
-        "curso": "Diploma en Entrenamiento Metabólico - Método 1X2X3",
-        "fecha": "05-05-2024",
-    },
-    {
-        "numero": 18,
-        "nombre": "Cristina Barra",
-        "curso": "Diploma en Entrenamiento Metabólico - Método 1X2X3",
-        "fecha": "05-05-2024",
-    },
-]
+# Datos oficiales del certificado (MF-FRM-02 … MF-FRM-18)
+CURSO = "Fisiología en Rehabilitación Metabólica - Método 1X2X3"
+FECHA = "06-06-2026"
+
+ESTUDIANTES = {
+    2: "Antonio Paez",
+    3: "Ricardo Escobar",
+    4: "Claudia Corrales",
+    5: "Omar Potočnik",
+    6: "Sofia Garfias",
+    7: "Gerardo Alvarado",
+    8: "Lisbeth Casarrubia",
+    9: "Ramon Sepulveda",
+    10: "Javier Cañete",
+    11: "Vicente Vila",
+    12: "Hannia Varela",
+    13: "Alan Guzmán",
+    14: "Felix Miranda",
+    15: "David Barria",
+    16: "Luis Rogelio",
+    17: "Fernando González",
+    18: "Cristina Barra",
+}
 
 # Carpeta donde se guardarán las imágenes de los QR
 CARPETA_QRS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "qrs_diplomas")
@@ -149,11 +67,10 @@ def main():
     cur = conn.cursor()
 
     total = 0
-    for cert in CERTIFICADOS:
-        serial = "MF-FRM-{:02d}".format(cert["numero"])
-        nombre = cert["nombre"]
-        curso = cert["curso"]
-        fecha = cert["fecha"]
+    for numero, nombre in ESTUDIANTES.items():
+        serial = "MF-FRM-{:02d}".format(numero)
+        curso = CURSO
+        fecha = FECHA
 
         cur.execute(
             """
