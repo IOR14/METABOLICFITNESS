@@ -51,7 +51,7 @@ ESTUDIANTES = {
     13: "Alan Gúzman",
     14: "Felix Miranda",
     15: "David Barría",
-    16: "Luís Rogelio",
+    16: "Luis Rogelio Gutiérrez Camacho",
     17: "Fernando González",
     18: "Cristina Barra",
     19: "Nohemi Escamilla",

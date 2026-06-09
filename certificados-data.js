@@ -73,7 +73,7 @@ window.CERTIFICADOS = {
     "fecha": "06-06-2026"
   },
   "MF-FRM-16": {
-    "nombre_estudiante": "Luís Rogelio",
+    "nombre_estudiante": "Luis Rogelio Gutiérrez Camacho",
     "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
     "fecha": "06-06-2026"
   },
