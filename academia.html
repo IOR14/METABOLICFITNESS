@@ -516,7 +516,7 @@
                 <div class="relative z-10 grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
                     <!-- Video -->
                     <div class="course-video-wrap order-2 lg:order-1">
-                        <video id="course-promo-video" autoplay playsinline loop controls preload="auto" aria-label="Presentación del curso Fisiología del Adulto Mayor">
+                        <video id="course-promo-video" autoplay muted loop playsinline controls preload="auto" aria-label="Presentación del curso Fisiología del Adulto Mayor">
                             <source src="Adulto%20Mayor.mp4" type="video/mp4">
                             Tu navegador no soporta la reproducción de video.
                         </video>
@@ -524,18 +524,11 @@
                             (function () {
                                 var v = document.getElementById('course-promo-video');
                                 if (!v) return;
-                                v.muted = false;
-                                v.defaultMuted = false;
-                                v.volume = 1;
+                                v.muted = true;
+                                v.defaultMuted = true;
                                 v.setAttribute('autoplay', '');
-                                v.play().catch(function () {
-                                    v.muted = true;
-                                    v.play().then(function () {
-                                        v.muted = false;
-                                        v.volume = 1;
-                                        v.play();
-                                    });
-                                });
+                                var p = v.play();
+                                if (p && p.catch) p.catch(function () {});
                             })();
                         </script>
                     </div>
@@ -634,7 +627,7 @@
                 <div class="relative z-10 grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
                     <!-- Video -->
                     <div class="course-video-wrap order-2 lg:order-1">
-                        <video id="pediatria-promo-video" autoplay muted loop playsinline controls preload="auto" aria-label="Presentación del programa Pediatría y Salud">
+                        <video id="pediatria-promo-video" autoplay loop playsinline controls preload="auto" aria-label="Presentación del programa Pediatría y Salud">
                             <source src="Pediatr%C3%ADa%20%20y%20Salud.mp4" type="video/mp4">
                             Tu navegador no soporta la reproducción de video.
                         </video>
@@ -859,9 +852,38 @@
             });
         });
 
-        /* Video del curso: autoplay con sonido — reintentos agresivos al cargar */
+        /* Video de Adulto Mayor: autoplay SIEMPRE silenciado y en bucle */
         (function () {
             var video = document.getElementById('course-promo-video');
+            if (!video) return;
+
+            function ensurePlayback() {
+                video.muted = true;
+                video.defaultMuted = true;
+                var p = video.play();
+                if (p && p.catch) p.catch(function () {});
+            }
+
+            ['loadedmetadata', 'loadeddata', 'canplay', 'canplaythrough'].forEach(function (ev) {
+                video.addEventListener(ev, ensurePlayback, { once: true });
+            });
+            window.addEventListener('load', ensurePlayback);
+            window.addEventListener('pageshow', ensurePlayback);
+
+            if ('IntersectionObserver' in window) {
+                new IntersectionObserver(function (entries) {
+                    if (entries[0].isIntersecting) ensurePlayback();
+                }, { threshold: 0.1 }).observe(video);
+            }
+
+            [50, 150, 400, 800, 1500].forEach(function (ms) {
+                setTimeout(ensurePlayback, ms);
+            });
+        })();
+
+        /* Video de Pediatría: autoplay CON sonido — reintentos agresivos al cargar */
+        (function () {
+            var video = document.getElementById('pediatria-promo-video');
             if (!video) return;
 
             function playWithSound() {
@@ -909,34 +931,6 @@
             }
             ['click', 'touchstart', 'keydown'].forEach(function (evt) {
                 document.addEventListener(evt, activateSound, { once: true, capture: true, passive: true });
-            });
-        })();
-
-        /* Video de Pediatría: autoplay silenciado y en bucle (reproducción automática garantizada) */
-        (function () {
-            var video = document.getElementById('pediatria-promo-video');
-            if (!video) return;
-
-            function ensurePlayback() {
-                video.muted = true;
-                var p = video.play();
-                if (p && p.catch) p.catch(function () {});
-            }
-
-            ['loadedmetadata', 'loadeddata', 'canplay', 'canplaythrough'].forEach(function (ev) {
-                video.addEventListener(ev, ensurePlayback, { once: true });
-            });
-            window.addEventListener('load', ensurePlayback);
-            window.addEventListener('pageshow', ensurePlayback);
-
-            if ('IntersectionObserver' in window) {
-                new IntersectionObserver(function (entries) {
-                    if (entries[0].isIntersecting) ensurePlayback();
-                }, { threshold: 0.1 }).observe(video);
-            }
-
-            [50, 150, 400, 800, 1500].forEach(function (ms) {
-                setTimeout(ensurePlayback, ms);
             });
         })();
 
