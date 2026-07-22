@@ -546,6 +546,10 @@
             var loginForm = document.getElementById('login-form');
             var signupForm = document.getElementById('signup-form');
 
+            function authRedirectBase() {
+                return window.location.origin;
+            }
+
             function showAlert(msg, type) {
                 alertEl.textContent = msg;
                 alertEl.classList.remove('hidden', 'bg-red-50', 'text-red-700', 'bg-green-50', 'text-green-700', 'bg-amber-50', 'text-amber-800');
@@ -557,6 +561,19 @@
                     alertEl.classList.add('bg-red-50', 'text-red-700');
                 }
             }
+
+            // Errores que vuelven de Google/Supabase en la URL
+            (function showOauthErrorFromUrl() {
+                var params = new URLSearchParams(window.location.search);
+                var err = params.get('error_description') || params.get('error');
+                if (!err) return;
+                showAlert(
+                    'No se pudo completar el acceso con Google: ' + decodeURIComponent(err.replace(/\+/g, ' ')) +
+                    '. En Supabase → Authentication → URL Configuration, Site URL debe ser https://www.metabolicfitness.cl (no localhost).',
+                    'err'
+                );
+                history.replaceState(null, '', window.location.pathname);
+            })();
 
             client.auth.getSession().then(function (res) {
                 if (res.data && res.data.session) {
@@ -570,7 +587,7 @@
                 var { error } = await client.auth.signInWithOAuth({
                     provider: 'google',
                     options: {
-                        redirectTo: window.location.origin + '/aula.html',
+                        redirectTo: authRedirectBase() + '/aula.html',
                         queryParams: { access_type: 'offline', prompt: 'select_account' }
                     }
                 });
@@ -645,7 +662,7 @@
                     return;
                 }
                 var { error } = await client.auth.resetPasswordForEmail(email, {
-                    redirectTo: window.location.origin + '/portal.html'
+                    redirectTo: authRedirectBase() + '/portal.html'
                 });
                 if (error) showAlert(error.message, 'err');
                 else showAlert('Te enviamos un enlace para restablecer la contraseña.', 'ok');
