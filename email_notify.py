@@ -20,6 +20,7 @@ LOG_DIR = ROOT_DIR / "logs" / "emails"
 COURSE_NAMES = {
     "adulto-mayor": "Fisiología del Adulto Mayor",
     "pediatria-salud": "Pediatría y Salud",
+    "rutas-fisiologia": "Suscripción Rutas de Aprendizaje (mensual)",
 }
 
 WHATSAPP_ACCESS = "https://wa.me/56910111167?text=Hola%2C%20acabo%20de%20comprar%20un%20curso%20y%20necesito%20el%20acceso."

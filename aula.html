@@ -161,7 +161,7 @@
             <section id="rutas-panel" class="mt-10">
                 <div class="flex flex-wrap items-center justify-between gap-3 mb-2">
                     <h2 class="font-heading font-bold text-xl text-metabolic-charcoal">Mis rutas de aprendizaje</h2>
-                    <a href="academia.html" class="text-sm font-body text-metabolic-purple hover:underline">Obtener / renovar acceso →</a>
+                    <a href="suscripcion-rutas.html" class="text-sm font-body text-metabolic-purple hover:underline">Obtener / renovar acceso →</a>
                 </div>
                 <p class="font-body text-sm text-metabolic-charcoal/65 mb-4">
                     Con un programa activo (suscripción / Adulto Mayor / Pediatría) puedes entrar a <strong>todas</strong> las certificaciones de learning paths desde aquí.
@@ -660,7 +660,7 @@
                     msg.textContent = 'Programa activo: acceso a todas las certificaciones de learning paths. Elige una ruta e ingresa.';
                 } else {
                     msg.classList.add('bg-amber-50', 'text-amber-900');
-                    msg.innerHTML = 'Aún no hay programa activo. Compra en la <a class="font-bold underline" href="academia.html">Academia</a> para desbloquear todas las rutas.';
+                    msg.innerHTML = 'Aún no hay programa activo. <a class="font-bold underline" href="suscripcion-rutas.html">Suscríbete por $20.000 CLP / mes</a> (o USD 22) para desbloquear todas las rutas.';
                 }
             }
 
@@ -696,7 +696,7 @@
                           (unlocked
                             ? '<p class="font-body text-xs text-metabolic-charcoal/50 mb-3">Progreso: ' + doneN + ' / ' + total + ' módulos</p>' +
                               '<a class="inline-flex bg-metabolic-green text-white px-4 py-2 rounded-md font-body font-semibold text-sm hover:bg-[#4CA84C]" href="ruta-aprendizaje.html?id=' + encodeURIComponent(r.id) + '">Entrar a la ruta</a>'
-                            : '<a class="inline-flex bg-white border border-metabolic-purple text-metabolic-purple px-4 py-2 rounded-md font-body font-semibold text-sm hover:bg-purple-50" href="academia.html">Obtener suscripción</a>') +
+                            : '<a class="inline-flex bg-white border border-metabolic-purple text-metabolic-purple px-4 py-2 rounded-md font-body font-semibold text-sm hover:bg-purple-50" href="suscripcion-rutas.html">Suscribirme $20.000/mes</a>') +
                         '</div>';
                     card.querySelector('h3').textContent = r.titulo;
                     card.querySelector('p.font-body').textContent = r.resumen || '';

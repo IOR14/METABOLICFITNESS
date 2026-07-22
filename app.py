@@ -49,6 +49,9 @@ print(
 LEMON_CHECKOUT = {
     "adulto-mayor": os.getenv("LEMON_SQUEEZY_CHECKOUT_ADULTO_MAYOR", "").strip(),
     "pediatria-salud": os.getenv("LEMON_SQUEEZY_CHECKOUT_PEDIATRIA_SALUD", "").strip(),
+    "rutas-fisiologia": os.getenv("LEMON_SQUEEZY_CHECKOUT_RUTAS", "").strip(),
+    "rutas-fisiologia-clp": os.getenv("LEMON_SQUEEZY_CHECKOUT_RUTAS_CLP", "").strip(),
+    "rutas-fisiologia-usd": os.getenv("LEMON_SQUEEZY_CHECKOUT_RUTAS_USD", "").strip(),
 }
 
 # Catálogo Stripe (modo test / futuro Atlas). Clave = curso + moneda.
@@ -60,6 +63,10 @@ COURSE_PRICES = {
     "pediatria-salud": {
         "clp": os.getenv("STRIPE_PRICE_PEDIATRIA_SALUD_CLP", ""),
         "usd": os.getenv("STRIPE_PRICE_PEDIATRIA_SALUD_USD", ""),
+    },
+    "rutas-fisiologia": {
+        "clp": os.getenv("STRIPE_PRICE_RUTAS_CLP", ""),
+        "usd": os.getenv("STRIPE_PRICE_RUTAS_USD", ""),
     },
 }
 
@@ -94,10 +101,53 @@ def validar():
 @app.route("/api/lemon-checkout/<curso>")
 def lemon_checkout_url(curso):
     """Devuelve la URL de checkout de Lemon Squeezy para el curso."""
-    url = LEMON_CHECKOUT.get(curso.strip().lower(), "")
+    key = curso.strip().lower()
+    moneda = (request.args.get("moneda") or "").strip().lower()
+    url = ""
+    if moneda in ("clp", "usd"):
+        url = LEMON_CHECKOUT.get(f"{key}-{moneda}", "")
+    if not url:
+        url = LEMON_CHECKOUT.get(key, "")
     if not url or "REEMPLAZA" in url:
         return jsonify({"url": None, "error": f"Checkout de Lemon Squeezy no configurado para '{curso}' en .env"}), 503
+    sep = "&" if "?" in url else "?"
+    if "checkout[custom][curso]" not in url:
+        url = f"{url}{sep}checkout[custom][curso]={key}"
     return jsonify({"url": url})
+
+
+def _activar_inscripcion_supabase(email: str, curso: str) -> bool:
+    """Activa inscripción en Supabase si encontramos el perfil por email."""
+    email = (email or "").strip().lower()
+    curso = (curso or "").strip()
+    if not email or not curso:
+        return False
+    if not SUPABASE_URL or not SUPABASE_SERVICE_ROLE_KEY:
+        return False
+    try:
+        profiles = _supabase_rest(
+            f"profiles?email=eq.{email}&select=id"
+        ) or []
+        if not profiles:
+            print(f"[Supabase] Sin perfil para {email}; inscripción manual pendiente")
+            return False
+        user_id = profiles[0]["id"]
+        _supabase_rest(
+            "inscripciones",
+            method="POST",
+            json_body={
+                "user_id": user_id,
+                "curso_id": curso,
+                "estado": "activo",
+                "origen": "pago",
+            },
+            prefer="resolution=merge-duplicates,return=minimal",
+        )
+        print(f"[Supabase] Inscripción activa: {email} → {curso}")
+        return True
+    except Exception as exc:  # noqa: BLE001
+        print(f"[Supabase] No se pudo activar inscripción: {exc}")
+        return False
 
 
 def _supabase_rest(path: str, *, method: str = "GET", json_body=None, prefer=None):
@@ -286,13 +336,13 @@ def lemon_squeezy_webhook():
     event_name = meta.get("event_name") or ""
     data = (event.get("data") or {}).get("attributes") or {}
 
-    if event_name == "order_created":
+    if event_name in ("order_created", "subscription_created", "subscription_payment_success"):
         order_id = str((event.get("data") or {}).get("id") or data.get("identifier") or "")
-        email = data.get("user_email") or ""
+        email = data.get("user_email") or data.get("customer_email") or ""
         # total en centavos USD habitualmente
         total = data.get("total")
         currency = (data.get("currency") or "usd").lower()
-        custom = data.get("custom_data") or {}
+        custom = data.get("custom_data") or meta.get("custom_data") or {}
         curso = custom.get("curso") or "adulto-mayor"
         status = data.get("status") or "paid"
 
@@ -305,7 +355,8 @@ def lemon_squeezy_webhook():
             currency=currency,
             payment_status=status,
         )
-        print(f"[Lemon] Pedido {order_id} email={email} registrada={nueva}")
+        print(f"[Lemon] {event_name} {order_id} email={email} curso={curso} registrada={nueva}")
+        _activar_inscripcion_supabase(email, curso)
         if nueva:
             notify_purchase(
                 session_id=f"ls_{order_id}",
@@ -324,14 +375,20 @@ def lemon_squeezy_webhook():
 @app.route("/crear-checkout-session", methods=["POST"])
 def crear_checkout_session():
     """
-    Crea una Checkout Session Stripe (pago único) — reservado para test / futuro Atlas.
-    Form: curso=adulto-mayor & moneda=clp|usd
+    Crea una Checkout Session Stripe.
+    Form: curso=... & moneda=clp|usd & mode=payment|subscription
     """
     if not stripe.api_key or stripe.api_key.startswith("sk_test_REEMPLAZA"):
         abort(500, description="Configura STRIPE_SECRET_KEY en el archivo .env")
 
     curso = (request.form.get("curso") or "adulto-mayor").strip().lower()
     moneda = (request.form.get("moneda") or "clp").strip().lower()
+    mode = (request.form.get("mode") or "payment").strip().lower()
+    if mode not in ("payment", "subscription"):
+        mode = "payment"
+    # Suscripción de rutas siempre en modo subscription
+    if curso == "rutas-fisiologia":
+        mode = "subscription"
 
     precios = COURSE_PRICES.get(curso)
     if not precios:
@@ -339,15 +396,15 @@ def crear_checkout_session():
 
     price_id = precios.get(moneda)
     if not price_id:
-        abort(400, description="Moneda no válida (usa clp o usd)")
+        abort(400, description="Moneda no válida o Price ID no configurado (usa clp o usd)")
 
     try:
         session = stripe.checkout.Session.create(
-            mode="payment",
+            mode=mode,
             line_items=[{"price": price_id, "quantity": 1}],
             success_url=f"{DOMAIN}/pago-exito?session_id={{CHECKOUT_SESSION_ID}}",
             cancel_url=f"{DOMAIN}/pago-cancelado",
-            metadata={"curso": curso, "moneda": moneda},
+            metadata={"curso": curso, "moneda": moneda, "mode": mode},
             customer_creation="always",
             billing_address_collection="required",
             locale="es",
@@ -356,7 +413,6 @@ def crear_checkout_session():
         abort(502, description=str(exc.user_message or exc))
 
     return redirect(session.url, code=303)
-
 
 @app.route("/pago-exito")
 def pago_exito():
@@ -422,6 +478,7 @@ def stripe_webhook():
                 amount_total=session.get("amount_total"),
                 currency=session.get("currency") or "",
             )
+            _activar_inscripcion_supabase(email, meta.get("curso") or "")
         else:
             print("[Stripe] Evento duplicado; no se reenvían correos.")
     elif event["type"] == "invoice.paid":
@@ -429,7 +486,17 @@ def stripe_webhook():
         if hasattr(invoice, "to_dict"):
             invoice = invoice.to_dict()
         print("[Stripe] Factura pagada:", invoice.get("id"), invoice.get("number"))
-    elif event["type"] == "invoice.payment_failed":
+        # Renovación de suscripción: reactivar acceso a rutas
+        meta = invoice.get("subscription_details", {}).get("metadata") or {}
+        lines = ((invoice.get("lines") or {}).get("data") or [])
+        curso = meta.get("curso") or "rutas-fisiologia"
+        cust_email = ""
+        try:
+            cust_email = (invoice.get("customer_email") or "") or ""
+        except Exception:
+            cust_email = ""
+        if cust_email:
+            _activar_inscripcion_supabase(cust_email, curso)    elif event["type"] == "invoice.payment_failed":
         invoice = event["data"]["object"]
         if hasattr(invoice, "to_dict"):
             invoice = invoice.to_dict()

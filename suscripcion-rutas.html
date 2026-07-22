@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suscripción Rutas de Aprendizaje — Metabolic Fitness</title>
+  <meta name="description" content="Accede a todas las learning paths de fisiología por $20.000 CLP al mes (o USD 22).">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'mf-green': '#5CB85C',
+            'mf-charcoal': '#404041',
+            'mf-cyan': '#00AEEF',
+            'mf-purple': '#460877',
+            'mf-ink': '#1a1028',
+          },
+          fontFamily: {
+            heading: ['Montserrat', 'sans-serif'],
+            body: ['Open Sans', 'sans-serif'],
+            display: ['"Source Serif 4"', 'Georgia', 'serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: #404041;
+      background:
+        radial-gradient(ellipse 80% 60% at 10% 0%, rgba(92,184,92,.12), transparent 50%),
+        radial-gradient(ellipse 70% 50% at 90% 10%, rgba(0,174,239,.1), transparent 45%),
+        #f7f5f9;
+    }
+    .pay-card {
+      background: #fff;
+      border: 1px solid #e8e4ee;
+      border-radius: 1.25rem;
+      box-shadow: 0 20px 50px rgba(70,8,119,.08);
+    }
+    .currency-btn.active {
+      background: #460877;
+      color: #fff;
+      border-color: #460877;
+    }
+  </style>
+</head>
+<body class="antialiased min-h-screen">
+  <header class="bg-[#2a0845] text-white">
+    <div class="max-w-3xl mx-auto px-4 py-4 flex items-center justify-between gap-3">
+      <a href="aula.html#rutas" class="font-heading font-bold text-sm sm:text-base hover:opacity-90">← Volver a Mis rutas</a>
+      <a href="index.html" class="font-heading font-bold tracking-tight">
+        METABOLIC <span class="text-mf-green">FITNESS</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-4 py-10 sm:py-14">
+    <p class="font-heading text-xs uppercase tracking-[0.18em] text-mf-purple/70 mb-2">Suscripción mensual</p>
+    <h1 class="font-display text-3xl sm:text-4xl font-semibold text-mf-ink leading-tight mb-3">
+      Rutas de Aprendizaje en Fisiología
+    </h1>
+    <p class="font-body text-mf-charcoal/75 mb-8 max-w-2xl">
+      Con tu suscripción activa desbloqueas <strong>todas</strong> las certificaciones / learning paths
+      (sistemas fisiológicos e integrativos) dentro del Portal Alumnos.
+    </p>
+
+    <div class="pay-card overflow-hidden">
+      <div class="bg-gradient-to-r from-[#2a0845] via-[#460877] to-[#1a4a5c] text-white p-6 sm:p-8">
+        <p class="text-xs uppercase tracking-wider font-bold text-white/60 mb-2">Precio</p>
+        <div class="flex flex-wrap items-end gap-3">
+          <p id="price-display" class="font-heading font-extrabold text-4xl sm:text-5xl tracking-tight">$20.000</p>
+          <p id="price-period" class="font-body text-white/80 pb-1">CLP / mes</p>
+        </div>
+        <p id="price-alt" class="mt-2 font-body text-sm text-white/70">Equivale a aprox. USD 22 / mes</p>
+      </div>
+
+      <div class="p-6 sm:p-8">
+        <p class="font-body text-sm font-semibold text-mf-charcoal mb-3">Elige moneda de pago</p>
+        <div class="flex flex-wrap gap-2 mb-6">
+          <button type="button" data-currency="clp" class="currency-btn active border border-gray-200 px-4 py-2 rounded-lg font-body font-bold text-sm">
+            Pesos chilenos (CLP)
+          </button>
+          <button type="button" data-currency="usd" class="currency-btn border border-gray-200 px-4 py-2 rounded-lg font-body font-bold text-sm text-mf-charcoal">
+            Dólares (USD)
+          </button>
+        </div>
+
+        <ul class="space-y-2 mb-8 font-body text-sm text-mf-charcoal/80">
+          <li class="flex gap-2"><span class="text-mf-green font-bold">✓</span> Acceso a todas las learning paths de fisiología</li>
+          <li class="flex gap-2"><span class="text-mf-green font-bold">✓</span> Certificados e insignias al completar cada ruta</li>
+          <li class="flex gap-2"><span class="text-mf-green font-bold">✓</span> Progreso guardado en tu cuenta del Portal</li>
+          <li class="flex gap-2"><span class="text-mf-green font-bold">✓</span> Renovación mensual — puedes cancelar cuando quieras</li>
+        </ul>
+
+        <div class="flex flex-col sm:flex-row gap-3">
+          <button type="button" id="btn-pay" class="flex-1 bg-mf-green text-white px-6 py-3.5 rounded-xl font-body font-bold hover:bg-[#4CA84C] transition-colors">
+            Pagar suscripción
+          </button>
+          <a id="btn-whatsapp" href="#" target="_blank" rel="noopener" class="flex-1 text-center border border-mf-purple text-mf-purple px-6 py-3.5 rounded-xl font-body font-bold hover:bg-purple-50">
+            Coordinar por WhatsApp
+          </a>
+        </div>
+        <p id="pay-status" class="mt-4 font-body text-sm text-mf-charcoal/60"></p>
+        <p class="mt-3 font-body text-xs text-mf-charcoal/45">
+          Tras el pago, inicia sesión en el Portal. Si ya tienes cuenta, tu acceso a rutas se activa con la inscripción
+          <code class="bg-gray-100 px-1 rounded">rutas-fisiologia</code>.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
+  <script src="js/checkout-config.js?v=1"></script>
+  <script>
+  (function () {
+    var cfg = (window.MF_CHECKOUT && MF_CHECKOUT.rutasSuscripcion) || {};
+    var currency = 'clp';
+    var statusEl = document.getElementById('pay-status');
+    var btnPay = document.getElementById('btn-pay');
+    var btnWa = document.getElementById('btn-whatsapp');
+
+    if (cfg.whatsapp) btnWa.href = cfg.whatsapp;
+
+    function formatClp(n) {
+      return '$' + String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    }
+
+    function refreshPrice() {
+      var display = document.getElementById('price-display');
+      var period = document.getElementById('price-period');
+      var alt = document.getElementById('price-alt');
+      if (currency === 'usd') {
+        display.textContent = 'USD ' + (cfg.precioUsd || 22);
+        period.textContent = '/ mes';
+        alt.textContent = 'Equivale a $20.000 CLP / mes';
+      } else {
+        display.textContent = formatClp(cfg.precioClp || 20000);
+        period.textContent = 'CLP / mes';
+        alt.textContent = 'Equivale a aprox. USD ' + (cfg.precioUsd || 22) + ' / mes';
+      }
+    }
+
+    document.querySelectorAll('.currency-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        currency = btn.getAttribute('data-currency');
+        document.querySelectorAll('.currency-btn').forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        refreshPrice();
+      });
+    });
+
+    function setStatus(msg, isError) {
+      statusEl.textContent = msg || '';
+      statusEl.className = 'mt-4 font-body text-sm ' + (isError ? 'text-red-600' : 'text-mf-charcoal/60');
+    }
+
+    async function resolveLemonUrl() {
+      var fromCfg = (cfg.lemon && cfg.lemon[currency]) || '';
+      if (fromCfg && fromCfg.indexOf('http') === 0) {
+        var sep = fromCfg.indexOf('?') >= 0 ? '&' : '?';
+        return fromCfg + sep + 'checkout[custom][curso]=rutas-fisiologia';
+      }
+      try {
+        var res = await fetch('/api/lemon-checkout/rutas-fisiologia?moneda=' + currency);
+        var data = await res.json();
+        if (data && data.url) return data.url;
+      } catch (e) { /* static host */ }
+      return null;
+    }
+
+    btnPay.addEventListener('click', async function () {
+      btnPay.disabled = true;
+      setStatus('Preparando checkout…');
+
+      var lemonUrl = await resolveLemonUrl();
+      if (lemonUrl) {
+        if (window.createLemonSqueezy && window.LemonSqueezy) {
+          try {
+            window.createLemonSqueezy();
+            window.LemonSqueezy.Url.Open(lemonUrl);
+            setStatus('Abriendo pasarela de pago…');
+            btnPay.disabled = false;
+            return;
+          } catch (e) { /* fall through */ }
+        }
+        window.location.href = lemonUrl;
+        return;
+      }
+
+      // Fallback Stripe (Flask local / servidor)
+      var form = document.createElement('form');
+      form.method = 'POST';
+      form.action = '/crear-checkout-session';
+      form.innerHTML =
+        '<input type="hidden" name="curso" value="rutas-fisiologia">' +
+        '<input type="hidden" name="moneda" value="' + currency + '">' +
+        '<input type="hidden" name="mode" value="subscription">';
+      document.body.appendChild(form);
+      try {
+        form.submit();
+      } catch (e) {
+        setStatus('Checkout no configurado aún. Usa WhatsApp o pega el link Lemon en js/checkout-config.js', true);
+        btnPay.disabled = false;
+        btnWa.focus();
+      }
+    });
+
+    refreshPrice();
+  })();
+  </script>
+</body>
+</html>
