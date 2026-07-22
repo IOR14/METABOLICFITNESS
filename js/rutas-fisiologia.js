@@ -22,6 +22,7 @@ window.MF_RUTAS = {
       grupo: 'sistemas',
       titulo: 'Fisiología Celular y Molecular',
       badge: 'Sistema',
+      cover: 'img/rutas/celular-molecular.jpg',
       resumen: 'Membranas, señalización, transporte y metabolismo celular como base de toda función fisiológica.',
       audiencia: 'Estudiantes y profesionales de ciencias biomédicas, biología y fisiología.',
       duracionExamen: '90 min',
@@ -39,6 +40,7 @@ window.MF_RUTAS = {
       grupo: 'sistemas',
       titulo: 'Neurofisiología (Sistema Nervioso)',
       badge: 'Sistema',
+      cover: 'img/rutas/neurofisiologia.jpg',
       resumen: 'Potenciales de acción, sinapsis, integración neural y control motor/sensorial.',
       audiencia: 'Profesionales de la salud, kinesiólogos, fisiólogos y neurocientíficos en formación.',
       duracionExamen: '2 h',
@@ -56,6 +58,7 @@ window.MF_RUTAS = {
       grupo: 'sistemas',
       titulo: 'Sistema Cardiovascular',
       badge: 'Sistema',
+      cover: 'img/rutas/cardiovascular.jpg',
       resumen: 'Electrofisiología cardíaca, hemodinámica, regulación de la presión y adaptación al ejercicio.',
       audiencia: 'Clínicos del ejercicio, cardiólogos en formación, fisiólogos y kinesiólogos.',
       duracionExamen: '2 h',
@@ -74,6 +77,7 @@ window.MF_RUTAS = {
       grupo: 'sistemas',
       titulo: 'Sistema Respiratorio',
       badge: 'Sistema',
+      cover: 'img/rutas/respiratorio.jpg',
       resumen: 'Mecánica ventilatoria, intercambio gaseoso, control neural y respuesta al ejercicio.',
       audiencia: 'Fisiólogos, terapeutas respiratorios y profesionales del ejercicio clínico.',
       duracionExamen: '90 min',
@@ -91,6 +95,7 @@ window.MF_RUTAS = {
       grupo: 'sistemas',
       titulo: 'Sistema Endocrino',
       badge: 'Sistema',
+      cover: 'img/rutas/endocrino.jpg',
       resumen: 'Ejes hormonales, feedback y regulación del metabolismo y el crecimiento.',
       audiencia: 'Profesionales biomédicos, nutrición clínica y fisiología del ejercicio.',
       duracionExamen: '90 min',
@@ -311,4 +316,5 @@ window.MF_RUTAS.cursoIdFor = function (rutaId) {
 
 window.MF_RUTAS.all().forEach(function (r) {
   if (!r.cursoId) r.cursoId = window.MF_RUTAS.cursoIdFor(r.id);
+  if (!r.cover) r.cover = 'img/rutas/' + r.id + '.jpg';
 });
