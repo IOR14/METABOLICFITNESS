@@ -266,10 +266,48 @@
     var id = params.get('id');
     var ruta = MF_RUTAS.byId(id);
     if (!ruta) {
-      location.replace('rutas-certificacion.html');
+      location.replace('aula.html#rutas');
       return;
     }
 
+    var gate = document.createElement('div');
+    gate.id = 'access-gate';
+    gate.className = 'no-print fixed inset-0 z-[60] bg-[#1a1028]/90 flex items-center justify-center p-4';
+    gate.innerHTML =
+      '<div class="bg-white rounded-2xl max-w-md w-full p-6 text-center shadow-2xl">' +
+        '<p class="font-heading font-bold text-lg text-mf-ink mb-2">Verificando acceso…</p>' +
+        '<p class="font-body text-sm text-mf-charcoal/70">Las learning paths están en el Portal Alumnos y requieren inscripción activa.</p>' +
+      '</div>';
+    document.body.appendChild(gate);
+
+    function showBlocked(reason) {
+      var title = reason === 'no-session' ? 'Inicia sesión en el Portal' : 'Ruta bloqueada';
+      var body = reason === 'no-session'
+        ? 'Debes ingresar con tu cuenta de alumno para abrir esta learning path.'
+        : 'Esta ruta requiere un programa activo (Adulto Mayor, Pediatría, paquete de rutas) o la certificación específica.';
+      var primaryHref = reason === 'no-session' ? 'portal.html' : 'academia.html';
+      var primaryLabel = reason === 'no-session' ? 'Ir al Portal' : 'Ver Academia';
+      gate.innerHTML =
+        '<div class="bg-white rounded-2xl max-w-md w-full p-6 text-center shadow-2xl">' +
+          '<p class="font-heading font-bold text-lg text-mf-ink mb-2">' + title + '</p>' +
+          '<p class="font-body text-sm text-mf-charcoal/70 mb-5">' + body + '</p>' +
+          '<div class="flex flex-col sm:flex-row gap-2 justify-center">' +
+            '<a href="' + primaryHref + '" class="bg-mf-green text-white px-5 py-2.5 rounded-xl font-body font-bold text-sm">' + primaryLabel + '</a>' +
+            '<a href="aula.html#rutas" class="border border-mf-purple text-mf-purple px-5 py-2.5 rounded-xl font-body font-bold text-sm">Mis rutas</a>' +
+          '</div>' +
+        '</div>';
+    }
+
+    MF_RUTAS.checkAccess(ruta.id).then(function (access) {
+      if (!access.ok) {
+        showBlocked(access.reason);
+        return;
+      }
+      gate.remove();
+      bootPath();
+    });
+
+    function bootPath() {
     var nameKey = 'mf_cert_display_name';
     var nameInput = document.getElementById('cert-name-input');
     var syncStatus = { cloud: false };
@@ -334,9 +372,9 @@
       if (u) {
         syncStatus.cloud = true;
         banner.className = 'no-print bg-emerald-50 border-b border-emerald-200 text-emerald-900 text-sm';
-        text.textContent = 'Progreso sincronizado con tu cuenta (' + (u.email || 'alumno') + ').';
-        link.textContent = 'Mi Aula';
-        link.href = 'aula.html';
+        text.textContent = 'Progreso sincronizado · acceso verificado (' + (u.email || 'alumno') + ').';
+        link.textContent = 'Mis rutas';
+        link.href = 'aula.html#rutas';
         if (u.user_metadata && u.user_metadata.full_name && nameInput && !nameInput.value) {
           nameInput.value = u.user_metadata.full_name;
         }
@@ -488,6 +526,7 @@
         if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }, 400);
     }
+    } // end bootPath
   })();
   </script>
 </body>

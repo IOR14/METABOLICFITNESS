@@ -82,7 +82,7 @@
         <a href="aprendizaje-ia.html" class="hover:text-mf-purple">Cápsulas de Aprendizaje</a>
         <a href="mentoria-casos.html" class="hover:text-mf-purple">Solicitar Tutoría Académica</a>
       </nav>
-      <a href="portal.html" class="bg-mf-cyan text-white px-4 py-2 rounded-md text-sm font-body font-bold hover:opacity-90 transition-opacity">
+      <a href="aula.html#rutas" class="bg-mf-cyan text-white px-4 py-2 rounded-md text-sm font-body font-bold hover:opacity-90 transition-opacity">
         Mi Panel de Control
       </a>
     </div>
@@ -160,9 +160,10 @@
               </div>
             </div>
 
-            <a id="btn-open-timeline" href="#" class="inline-flex items-center justify-center bg-mf-green text-white px-6 py-3 rounded-xl font-body font-bold hover:bg-[#4CA84C] transition-colors">
-              Abrir ruta de aprendizaje completa
+            <a id="btn-open-timeline" href="aula.html#rutas" class="inline-flex items-center justify-center bg-mf-green text-white px-6 py-3 rounded-xl font-body font-bold hover:bg-[#4CA84C] transition-colors">
+              Abrir en Portal Alumnos
             </a>
+            <p id="ruta-lock-msg" class="mt-3 font-body text-sm text-amber-800 hidden"></p>
           </div>
         </div>
 
@@ -190,12 +191,16 @@
     © 2026 Metabolic Fitness · Ciencias Fisiológicas aplicadas a la clínica
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
   <script src="js/rutas-fisiologia.js"></script>
+  <script src="js/rutas-sync.js"></script>
   <script>
   (function () {
     var overview = document.getElementById('view-overview');
     var viewRuta = document.getElementById('view-ruta');
     var navOverview = document.getElementById('nav-overview');
+    var accessCache = null;
 
     function fillOverview() {
       var o = MF_RUTAS.overview;
@@ -240,6 +245,50 @@
       history.replaceState(null, '', 'rutas-certificacion.html');
     }
 
+    function pathHref(r) {
+      return 'ruta-aprendizaje.html?id=' + encodeURIComponent(r.id);
+    }
+
+    async function applyAccessToButtons(r) {
+      var access = accessCache || await MF_RUTAS.checkAccess(r.id);
+      accessCache = access;
+      var unlocked = access.unlockAll || (access.enrolled || []).indexOf(r.cursoId || MF_RUTAS.cursoIdFor(r.id)) !== -1;
+      var lock = document.getElementById('ruta-lock-msg');
+      var buttons = ['btn-start-path', 'btn-path-modules', 'btn-path-exam', 'btn-open-timeline'];
+
+      if (!access.ok && access.reason === 'no-session') {
+        buttons.forEach(function (bid) {
+          var el = document.getElementById(bid);
+          if (!el) return;
+          el.href = 'portal.html';
+          if (bid === 'btn-open-timeline') el.textContent = 'Iniciar sesión en Portal Alumnos';
+        });
+        lock.classList.remove('hidden');
+        lock.textContent = 'Las learning paths se abren dentro del Portal Alumnos. Inicia sesión y asegúrate de tener un programa activo.';
+        return;
+      }
+
+      if (!unlocked) {
+        buttons.forEach(function (bid) {
+          var el = document.getElementById(bid);
+          if (!el) return;
+          el.href = 'academia.html';
+          if (bid === 'btn-open-timeline') el.textContent = 'Obtener acceso en Academia';
+        });
+        lock.classList.remove('hidden');
+        lock.textContent = 'Ruta bloqueada: requiere suscripción/programa activo o la certificación específica de este sistema.';
+        return;
+      }
+
+      var href = pathHref(r);
+      document.getElementById('btn-start-path').href = href;
+      document.getElementById('btn-path-modules').href = href;
+      document.getElementById('btn-path-exam').href = href + '#examen';
+      document.getElementById('btn-open-timeline').href = href;
+      document.getElementById('btn-open-timeline').textContent = 'Abrir learning path (Portal)';
+      lock.classList.add('hidden');
+    }
+
     function showRuta(id) {
       var r = MF_RUTAS.byId(id);
       if (!r) return;
@@ -252,12 +301,12 @@
       document.getElementById('ruta-audience').textContent = r.audiencia;
       document.getElementById('ruta-exam').textContent = r.duracionExamen + ' · ' + r.preguntas + ' preguntas';
       document.getElementById('ruta-pass').textContent = r.aprobacion;
-      var href = 'ruta-aprendizaje.html?id=' + encodeURIComponent(r.id);
-      document.getElementById('btn-start-path').href = href;
-      document.getElementById('btn-path-modules').href = href;
-      document.getElementById('btn-path-exam').href = href + '#examen';
-      document.getElementById('btn-open-timeline').href = href;
+      document.getElementById('btn-start-path').href = 'aula.html#rutas';
+      document.getElementById('btn-path-modules').href = 'aula.html#rutas';
+      document.getElementById('btn-path-exam').href = 'aula.html#rutas';
+      document.getElementById('btn-open-timeline').href = 'aula.html#rutas';
       history.replaceState(null, '', 'rutas-certificacion.html?ruta=' + encodeURIComponent(r.id));
+      applyAccessToButtons(r);
     }
 
     navOverview.addEventListener('click', showOverview);
@@ -272,6 +321,8 @@
         btn.querySelector('span').textContent = item.classList.contains('open') ? '−' : '+';
       });
     });
+
+    MF_RUTAS.checkAccess().then(function (a) { accessCache = a; });
 
     var params = new URLSearchParams(location.search);
     var initial = params.get('ruta');

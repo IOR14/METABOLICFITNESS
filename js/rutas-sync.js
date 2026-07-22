@@ -163,4 +163,57 @@
     }
     return (data && data[0]) || null;
   };
+
+  /** Lista de curso_id con inscripción activa */
+  MF_RUTAS.getEnrolledCourseIds = async function () {
+    await MF_RUTAS.authReady();
+    if (!user || !getClient()) return [];
+    var { data, error } = await client
+      .from('inscripciones')
+      .select('curso_id')
+      .eq('user_id', user.id)
+      .eq('estado', 'activo');
+    if (error) {
+      console.warn('[MF_RUTAS] inscripciones:', error.message);
+      return [];
+    }
+    return (data || []).map(function (r) { return r.curso_id; });
+  };
+
+  /**
+   * @returns {{ ok: boolean, reason: string, enrolled: string[], unlockAll: boolean }}
+   * reason: 'ok' | 'no-session' | 'no-enrollment'
+   */
+  MF_RUTAS.checkAccess = async function (rutaId) {
+    await MF_RUTAS.authReady();
+    if (!user) {
+      return { ok: false, reason: 'no-session', enrolled: [], unlockAll: false };
+    }
+    var enrolled = await MF_RUTAS.getEnrolledCourseIds();
+    var unlockList = (MF_RUTAS.access && MF_RUTAS.access.unlockAllCursos) || [];
+    var unlockAll = enrolled.some(function (id) { return unlockList.indexOf(id) !== -1; });
+    if (unlockAll) {
+      return { ok: true, reason: 'ok', enrolled: enrolled, unlockAll: true };
+    }
+    var ruta = rutaId ? MF_RUTAS.byId(rutaId) : null;
+    var specific = ruta && ruta.cursoId ? ruta.cursoId : (rutaId ? MF_RUTAS.cursoIdFor(rutaId) : null);
+    if (specific && enrolled.indexOf(specific) !== -1) {
+      return { ok: true, reason: 'ok', enrolled: enrolled, unlockAll: false };
+    }
+    // Sin rutaId: ¿tiene al menos una ruta específica?
+    if (!rutaId) {
+      var anySpecific = MF_RUTAS.all().some(function (r) {
+        return enrolled.indexOf(r.cursoId || MF_RUTAS.cursoIdFor(r.id)) !== -1;
+      });
+      if (anySpecific) {
+        return { ok: true, reason: 'ok', enrolled: enrolled, unlockAll: false };
+      }
+    }
+    return { ok: false, reason: 'no-enrollment', enrolled: enrolled, unlockAll: false };
+  };
+
+  MF_RUTAS.canAccessRuta = async function (rutaId) {
+    var a = await MF_RUTAS.checkAccess(rutaId);
+    return a.ok;
+  };
 })(window);

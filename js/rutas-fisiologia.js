@@ -288,3 +288,24 @@ window.MF_RUTAS.isComplete = function (ruta) {
   var p = window.MF_RUTAS.getProgress(ruta.id);
   return ruta.modulos.every(function (m) { return p.done.indexOf(m.id) !== -1; });
 };
+
+/**
+ * Acceso a learning paths:
+ * - Cualquier inscripción activa a unlockAllCursos abre TODAS las rutas (alumno pagado / suscrito).
+ * - O inscripción al curso específico de esa ruta (venta individual).
+ */
+window.MF_RUTAS.access = {
+  unlockAllCursos: ['adulto-mayor', 'pediatria-salud', 'rutas-fisiologia'],
+  buyUrl: 'academia.html',
+  portalUrl: 'portal.html',
+  aulaRutasUrl: 'aula.html#rutas'
+};
+
+/** Curso de producto asociado a una ruta (para venta específica) */
+window.MF_RUTAS.cursoIdFor = function (rutaId) {
+  return 'ruta-' + rutaId;
+};
+
+window.MF_RUTAS.all().forEach(function (r) {
+  if (!r.cursoId) r.cursoId = window.MF_RUTAS.cursoIdFor(r.id);
+});
