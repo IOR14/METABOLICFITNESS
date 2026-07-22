@@ -22,7 +22,7 @@ def get_connection():
 
 
 def init_db():
-    """Crea la tabla 'certificados' si no existe."""
+    """Crea las tablas si no existen."""
     conn = get_connection()
     cur = conn.cursor()
     cur.execute(
@@ -35,8 +35,50 @@ def init_db():
         )
         """
     )
+    cur.execute(
+        """
+        CREATE TABLE IF NOT EXISTS compras (
+            session_id   TEXT PRIMARY KEY,
+            email        TEXT,
+            curso        TEXT,
+            moneda       TEXT,
+            amount_total INTEGER,
+            currency     TEXT,
+            payment_status TEXT,
+            created_at   TEXT NOT NULL DEFAULT (datetime('now'))
+        )
+        """
+    )
     conn.commit()
     conn.close()
+
+
+def registrar_compra(session_id, email, curso, moneda, amount_total, currency, payment_status):
+    """Registra (o ignora si ya existe) una compra confirmada por webhook."""
+    if not session_id:
+        return False
+    conn = get_connection()
+    cur = conn.cursor()
+    cur.execute(
+        """
+        INSERT OR IGNORE INTO compras
+            (session_id, email, curso, moneda, amount_total, currency, payment_status)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+        """,
+        (
+            session_id,
+            email or "",
+            curso or "",
+            moneda or "",
+            amount_total,
+            currency or "",
+            payment_status or "",
+        ),
+    )
+    inserted = cur.rowcount > 0
+    conn.commit()
+    conn.close()
+    return inserted
 
 
 def seed_data():

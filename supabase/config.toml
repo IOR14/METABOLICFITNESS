@@ -1,0 +1,12 @@
+{
+  "functions": [
+    {
+      "name": "live-join",
+      "verify_jwt": true
+    },
+    {
+      "name": "live-sync-recordings",
+      "verify_jwt": false
+    }
+  ]
+}

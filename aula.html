@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Aula - Metabolic Fitness</title>
+    <meta name="description" content="Tus cursos y materiales de Metabolic Academy">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'metabolic-green': '#5CB85C',
+                        'metabolic-charcoal': '#404041',
+                        'metabolic-cyan': '#00AEEF',
+                        'metabolic-purple': '#800080',
+                        'metabolic-bg-secondary': '#FAFAFA',
+                    },
+                    fontFamily: {
+                        'heading': ['Montserrat', 'sans-serif'],
+                        'body': ['Open Sans', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body { font-family: 'Open Sans', sans-serif; color: #404041; background: #FAFAFA; }
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
+        .course-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 1rem;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .course-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 40px rgba(70, 8, 119, 0.12);
+        }
+        .live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #b91c1c;
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-radius: 9999px;
+            padding: 0.2rem 0.6rem;
+        }
+        .live-dot {
+            width: 7px; height: 7px; border-radius: 50%; background: #ef4444;
+            animation: livePulse 1.4s ease-in-out infinite;
+        }
+        @keyframes livePulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.45; transform: scale(0.85); }
+        }
+        #jitsi-container { width: 100%; height: min(72vh, 720px); background: #111; border-radius: 0.75rem; overflow: hidden; }
+        #jitsi-container > iframe, #jitsi-container > div { height: 100% !important; }
+        .participant-chip {
+            display: flex; align-items: center; gap: 0.5rem;
+            padding: 0.5rem 0.65rem; border-radius: 0.5rem; background: #f9fafb; border: 1px solid #e5e7eb;
+            font-size: 0.875rem;
+        }
+        .participant-avatar {
+            width: 1.75rem; height: 1.75rem; border-radius: 9999px;
+            background: linear-gradient(135deg, #5CB85C, #800080); color: white;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.7rem; font-weight: 700; flex-shrink: 0;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen">
+    <header class="bg-[#460877] text-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
+            <a href="index.html" class="font-heading font-bold text-lg">
+                METABOLIC <span class="text-metabolic-green">FITNESS</span>
+            </a>
+            <div class="flex items-center gap-3 text-sm">
+                <span id="user-email" class="hidden sm:inline text-white/80 font-body"></span>
+                <button id="btn-logout" type="button" class="bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-md font-body font-semibold transition-colors">
+                    Cerrar sesión
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
+        <div id="home-view">
+            <div class="mb-8">
+                <h1 class="font-heading font-bold text-3xl sm:text-4xl text-metabolic-charcoal mb-2">Mi Aula</h1>
+                <p class="font-body text-metabolic-charcoal/70">Tus programas activos de Metabolic Academy</p>
+            </div>
+
+            <div id="status" class="mb-6 font-body text-sm text-metabolic-charcoal/70">Cargando tus cursos...</div>
+
+            <section id="live-panel" class="hidden mb-8">
+                <h2 class="font-heading font-bold text-xl text-metabolic-charcoal mb-3">Clases en vivo</h2>
+                <div id="live-list" class="space-y-3"></div>
+            </section>
+
+            <div id="courses-empty" class="hidden bg-white rounded-2xl border border-gray-200 p-8 text-center">
+                <p class="font-body text-metabolic-charcoal/80 mb-4">Aún no tienes cursos habilitados.</p>
+                <p class="font-body text-sm text-metabolic-charcoal/60 mb-6">Si ya compraste, el acceso se activa al confirmar el pago. Si no, revisa los programas disponibles.</p>
+                <a href="academia.html" class="inline-flex bg-metabolic-green text-white px-6 py-3 rounded-md font-body font-semibold hover:bg-[#4CA84C] transition-colors">
+                    Ver Academia
+                </a>
+            </div>
+
+            <div id="courses-list" class="grid gap-5 sm:grid-cols-2"></div>
+
+            <section id="certs-panel" class="mt-10">
+                <div class="flex items-center justify-between gap-3 mb-4">
+                    <h2 class="font-heading font-bold text-xl text-metabolic-charcoal">Mis certificados de rutas</h2>
+                    <a href="rutas-certificacion.html" class="text-sm font-body text-metabolic-purple hover:underline">Explorar rutas →</a>
+                </div>
+                <div id="certs-list" class="space-y-3">
+                    <p class="font-body text-sm text-metabolic-charcoal/60">Cargando certificados...</p>
+                </div>
+            </section>
+
+            <section id="lessons-panel" class="hidden mt-10">
+                <div class="flex items-center justify-between gap-3 mb-4">
+                    <h2 id="lessons-title" class="font-heading font-bold text-2xl text-metabolic-charcoal"></h2>
+                    <button id="btn-back-courses" type="button" class="text-sm font-body text-metabolic-purple hover:underline">← Volver a mis cursos</button>
+                </div>
+                <div id="course-live-actions" class="mb-4"></div>
+                <div id="lessons-list" class="space-y-3"></div>
+                <div id="lesson-player" class="hidden mt-6 bg-black rounded-xl overflow-hidden"></div>
+            </section>
+        </div>
+
+        <!-- Sala en vivo embebida (participantes + compartir pantalla + grabar) -->
+        <section id="classroom-view" class="hidden">
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                <div>
+                    <p class="live-badge mb-2"><span class="live-dot"></span> En vivo en Metabolic Fitness</p>
+                    <h2 id="classroom-title" class="font-heading font-bold text-2xl text-metabolic-charcoal"></h2>
+                </div>
+                <button id="btn-leave-class" type="button" class="bg-red-600 text-white px-4 py-2 rounded-md font-body font-semibold text-sm hover:bg-red-700">
+                    Salir de la clase
+                </button>
+            </div>
+
+            <div class="grid lg:grid-cols-[1fr_260px] gap-4">
+                <div>
+                    <div id="jitsi-container"></div>
+                    <p class="mt-2 font-body text-xs text-metabolic-charcoal/60">
+                        Usa la barra de Jitsi: micrófono, cámara, <strong>compartir pantalla</strong>, participantes y grabación local.
+                    </p>
+                </div>
+                <aside class="bg-white border border-gray-200 rounded-xl p-4 h-fit">
+                    <h3 class="font-heading font-bold text-sm uppercase tracking-wide text-metabolic-charcoal mb-3">Accesos / participantes</h3>
+                    <div id="participants-list" class="space-y-2 mb-4 max-h-64 overflow-y-auto"></div>
+                    <p id="participants-empty" class="font-body text-xs text-metabolic-charcoal/50 mb-4">Conectando…</p>
+
+                    <hr class="my-4 border-gray-100">
+
+                    <h3 class="font-heading font-bold text-sm uppercase tracking-wide text-metabolic-charcoal mb-2">Guardar en Metabolic</h3>
+                    <p class="font-body text-xs text-metabolic-charcoal/60 mb-3">
+                        1) En Jitsi: menú ⋮ → <strong>Grabar</strong> (local).<br>
+                        2) Al terminar, sube el archivo aquí para que quede en Mi Aula.
+                    </p>
+                    <label class="block">
+                        <span class="sr-only">Archivo de grabación</span>
+                        <input id="recording-file" type="file" accept="video/*,.webm,.mp4" class="block w-full text-xs font-body mb-2">
+                    </label>
+                    <button id="btn-upload-recording" type="button" class="w-full bg-metabolic-green text-white px-3 py-2 rounded-md font-body font-semibold text-sm hover:bg-[#4CA84C]">
+                        Subir grabación a Mi Aula
+                    </button>
+                    <p id="upload-status" class="mt-2 font-body text-xs text-metabolic-charcoal/70"></p>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://meet.jit.si/external_api.js"></script>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/rutas-fisiologia.js"></script>
+    <script src="js/rutas-sync.js"></script>
+    <script>
+    (function () {
+        var client = window.createMFClient();
+        var statusEl = document.getElementById('status');
+        var listEl = document.getElementById('courses-list');
+        var emptyEl = document.getElementById('courses-empty');
+        var lessonsPanel = document.getElementById('lessons-panel');
+        var lessonsList = document.getElementById('lessons-list');
+        var lessonsTitle = document.getElementById('lessons-title');
+        var lessonPlayer = document.getElementById('lesson-player');
+        var livePanel = document.getElementById('live-panel');
+        var liveList = document.getElementById('live-list');
+        var courseLiveActions = document.getElementById('course-live-actions');
+        var homeView = document.getElementById('home-view');
+        var classroomView = document.getElementById('classroom-view');
+        var participantsList = document.getElementById('participants-list');
+        var participantsEmpty = document.getElementById('participants-empty');
+        var uploadStatus = document.getElementById('upload-status');
+
+        var currentSession = null;
+        var enrolledCourseIds = [];
+        var jitsiApi = null;
+        var activeSesion = null;
+        var participantsMap = {};
+
+        function setStatus(msg, isError) {
+            statusEl.textContent = msg || '';
+            statusEl.className = 'mb-6 font-body text-sm ' + (isError ? 'text-red-600' : 'text-metabolic-charcoal/70');
+        }
+
+        function formatWhen(iso) {
+            if (!iso) return '';
+            try {
+                return new Date(iso).toLocaleString('es-CL', { dateStyle: 'medium', timeStyle: 'short' });
+            } catch (e) { return iso; }
+        }
+
+        function initials(name) {
+            return String(name || 'A').trim().split(/\s+/).slice(0, 2).map(function (p) { return p[0] || ''; }).join('').toUpperCase() || 'A';
+        }
+
+        function renderParticipants() {
+            var ids = Object.keys(participantsMap);
+            participantsList.innerHTML = '';
+            if (!ids.length) {
+                participantsEmpty.classList.remove('hidden');
+                participantsEmpty.textContent = 'Aún no hay participantes.';
+                return;
+            }
+            participantsEmpty.classList.add('hidden');
+            ids.forEach(function (id) {
+                var p = participantsMap[id];
+                var row = document.createElement('div');
+                row.className = 'participant-chip';
+                row.innerHTML = '<span class="participant-avatar"></span><span class="font-body text-metabolic-charcoal truncate"></span>';
+                row.querySelector('.participant-avatar').textContent = initials(p.displayName);
+                row.querySelector('span.font-body').textContent = p.displayName + (p.role === 'moderator' ? ' · anfitrión' : '');
+                participantsList.appendChild(row);
+            });
+        }
+
+        async function requireSession() {
+            var result = await client.auth.getSession();
+            var session = result.data && result.data.session;
+            if (!session) {
+                window.location.href = 'portal.html';
+                return null;
+            }
+            document.getElementById('user-email').textContent = session.user.email || '';
+            currentSession = session;
+            return session;
+        }
+
+        function destroyJitsi() {
+            if (jitsiApi) {
+                try { jitsiApi.dispose(); } catch (e) { /* ignore */ }
+                jitsiApi = null;
+            }
+            document.getElementById('jitsi-container').innerHTML = '';
+            participantsMap = {};
+            renderParticipants();
+        }
+
+        function leaveClassroom() {
+            destroyJitsi();
+            activeSesion = null;
+            classroomView.classList.add('hidden');
+            homeView.classList.remove('hidden');
+            if (enrolledCourseIds.length) loadLiveSessions(enrolledCourseIds);
+        }
+
+        function startJitsiClassroom(sesion, fullName) {
+            if (typeof JitsiMeetExternalAPI === 'undefined') {
+                alert('No se pudo cargar Jitsi. Revisa tu conexión.');
+                return;
+            }
+
+            var cfg = window.MF_SUPABASE || {};
+            var domain = cfg.jitsiDomain || 'meet.jit.si';
+            var room = String(sesion.bbb_meeting_id || ('mf-' + sesion.curso_id)).replace(/[^a-zA-Z0-9-_]/g, '-');
+            var roomName = 'MetabolicFitness-' + room;
+
+            activeSesion = sesion;
+            homeView.classList.add('hidden');
+            lessonsPanel.classList.add('hidden');
+            classroomView.classList.remove('hidden');
+            document.getElementById('classroom-title').textContent = sesion.titulo || 'Clase en vivo';
+            destroyJitsi();
+            participantsEmpty.classList.remove('hidden');
+            participantsEmpty.textContent = 'Conectando…';
+            uploadStatus.textContent = '';
+
+            jitsiApi = new JitsiMeetExternalAPI(domain, {
+                roomName: roomName,
+                parentNode: document.getElementById('jitsi-container'),
+                width: '100%',
+                height: '100%',
+                userInfo: { displayName: fullName, email: currentSession.user.email || '' },
+                configOverwrite: {
+                    prejoinPageEnabled: true,
+                    startWithAudioMuted: true,
+                    disableDeepLinking: true,
+                    // Herramientas útiles para anfitrión y alumnos
+                    toolbarButtons: [
+                        'microphone', 'camera', 'desktop', 'fullscreen',
+                        'fodeviceselection', 'hangup', 'profile', 'chat',
+                        'recording', 'livestreaming', 'settings', 'raisehand',
+                        'videoquality', 'filmstrip', 'feedback', 'stats', 'tileview',
+                        'select-background', 'mute-everyone', 'security'
+                    ]
+                },
+                interfaceConfigOverwrite: {
+                    SHOW_JITSI_WATERMARK: false,
+                    SHOW_WATERMARK_FOR_GUESTS: false,
+                    DEFAULT_REMOTE_DISPLAY_NAME: 'Participante',
+                    TOOLBAR_ALWAYS_VISIBLE: true
+                }
+            });
+
+            jitsiApi.addListener('videoConferenceJoined', function (e) {
+                participantsMap[e.id || 'local'] = {
+                    displayName: e.displayName || fullName,
+                    role: 'local'
+                };
+                renderParticipants();
+                // Abrir panel de participantes de Jitsi también
+                try { jitsiApi.executeCommand('toggleParticipantsPane', true); } catch (err) { /* ignore */ }
+            });
+
+            jitsiApi.addListener('participantJoined', function (e) {
+                participantsMap[e.id] = {
+                    displayName: e.displayName || 'Participante',
+                    role: e.role || 'participant'
+                };
+                renderParticipants();
+            });
+
+            jitsiApi.addListener('participantLeft', function (e) {
+                delete participantsMap[e.id];
+                renderParticipants();
+            });
+
+            jitsiApi.addListener('participantRoleChanged', function (e) {
+                if (participantsMap[e.id]) {
+                    participantsMap[e.id].role = e.role;
+                    renderParticipants();
+                }
+            });
+
+            jitsiApi.addListener('videoConferenceLeft', function () {
+                leaveClassroom();
+            });
+
+            jitsiApi.addListener('recordingStatusChanged', function (e) {
+                if (e && e.on === false) {
+                    uploadStatus.textContent = 'Grabación detenida. Sube el archivo generado a Mi Aula con el botón de la derecha.';
+                } else if (e && e.on === true) {
+                    uploadStatus.textContent = 'Grabando… Al terminar, detén la grabación y sube el archivo.';
+                }
+            });
+        }
+
+        async function joinLive(opts) {
+            opts = opts || {};
+            if (!currentSession) return;
+
+            var cfg = window.MF_SUPABASE || {};
+            var provider = (cfg.liveProvider || 'jitsi').toLowerCase();
+            var fullName = (currentSession.user.user_metadata && currentSession.user.user_metadata.full_name)
+                ? currentSession.user.user_metadata.full_name
+                : (currentSession.user.email || 'Alumno');
+
+            if (provider !== 'jitsi') {
+                alert('Este portal está en modo Jitsi. Cambia liveProvider a jitsi en js/supabase-config.js');
+                return;
+            }
+
+            try {
+                var sesion = null;
+                if (opts.sesion_id) {
+                    var r1 = await client.from('sesiones_vivo').select('*').eq('id', opts.sesion_id).maybeSingle();
+                    if (r1.error) throw r1.error;
+                    sesion = r1.data;
+                } else if (opts.curso_id) {
+                    var r2 = await client
+                        .from('sesiones_vivo')
+                        .select('*')
+                        .eq('curso_id', opts.curso_id)
+                        .in('estado', ['programada', 'en_vivo'])
+                        .order('starts_at', { ascending: true })
+                        .limit(1)
+                        .maybeSingle();
+                    if (r2.error) throw r2.error;
+                    sesion = r2.data;
+                }
+                if (!sesion) {
+                    alert('No hay una clase en vivo programada para este curso.');
+                    return;
+                }
+
+                var insc = await client
+                    .from('inscripciones')
+                    .select('id')
+                    .eq('user_id', currentSession.user.id)
+                    .eq('curso_id', sesion.curso_id)
+                    .eq('estado', 'activo')
+                    .maybeSingle();
+                if (insc.error) throw insc.error;
+                if (!insc.data) {
+                    alert('No estás inscrito en este curso.');
+                    return;
+                }
+
+                startJitsiClassroom(sesion, fullName);
+            } catch (e) {
+                alert((e && e.message) ? e.message : 'No se pudo abrir la clase en vivo.');
+            }
+        }
+
+        async function uploadRecording() {
+            var fileInput = document.getElementById('recording-file');
+            var file = fileInput.files && fileInput.files[0];
+            if (!file) {
+                uploadStatus.textContent = 'Elige primero el archivo de la grabación.';
+                return;
+            }
+            if (!activeSesion) {
+                uploadStatus.textContent = 'No hay sesión activa.';
+                return;
+            }
+
+            var btn = document.getElementById('btn-upload-recording');
+            btn.disabled = true;
+            uploadStatus.textContent = 'Subiendo a Metabolic Fitness…';
+
+            try {
+                var ext = (file.name.split('.').pop() || 'webm').toLowerCase();
+                var path = activeSesion.curso_id + '/grabaciones/' + activeSesion.bbb_meeting_id + '-' + Date.now() + '.' + ext;
+
+                var up = await client.storage.from('course-materials').upload(path, file, {
+                    contentType: file.type || 'video/webm',
+                    upsert: false
+                });
+                if (up.error) throw up.error;
+
+                var ordenRows = await client
+                    .from('lecciones')
+                    .select('orden')
+                    .eq('curso_id', activeSesion.curso_id)
+                    .order('orden', { ascending: false })
+                    .limit(1);
+                var orden = ((ordenRows.data && ordenRows.data[0] && ordenRows.data[0].orden) || 0) + 1;
+
+                var ins = await client.from('lecciones').insert({
+                    curso_id: activeSesion.curso_id,
+                    titulo: 'Grabación: ' + (activeSesion.titulo || 'Clase en vivo'),
+                    orden: orden,
+                    tipo: 'video',
+                    storage_path: path
+                });
+                if (ins.error) throw ins.error;
+
+                await client.from('sesiones_vivo').update({
+                    estado: 'finalizada',
+                    recording_url: path
+                }).eq('id', activeSesion.id);
+
+                uploadStatus.textContent = 'Listo. La grabación quedó guardada en Mi Aula (Entrar al curso).';
+                fileInput.value = '';
+            } catch (e) {
+                uploadStatus.textContent = 'Error al subir: ' + ((e && e.message) || e) +
+                    '. ¿Ejecutaste supabase/schema_recording_upload.sql?';
+            } finally {
+                btn.disabled = false;
+            }
+        }
+
+        async function loadLiveSessions(courseIds) {
+            liveList.innerHTML = '';
+            if (!courseIds || !courseIds.length) {
+                livePanel.classList.add('hidden');
+                return;
+            }
+            var { data, error } = await client
+                .from('sesiones_vivo')
+                .select('id, curso_id, titulo, starts_at, estado, recording_url, cursos(titulo)')
+                .in('curso_id', courseIds)
+                .in('estado', ['programada', 'en_vivo', 'finalizada'])
+                .order('starts_at', { ascending: false });
+
+            if (error || !data || !data.length) {
+                livePanel.classList.add('hidden');
+                return;
+            }
+
+            livePanel.classList.remove('hidden');
+            data.forEach(function (s) {
+                var card = document.createElement('div');
+                card.className = 'bg-white border border-gray-200 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3';
+                var badge = s.estado === 'en_vivo'
+                    ? '<span class="live-badge"><span class="live-dot"></span> En vivo</span>'
+                    : (s.estado === 'finalizada'
+                        ? '<span class="text-xs font-semibold uppercase tracking-wider text-gray-500">Grabación</span>'
+                        : '<span class="text-xs font-semibold uppercase tracking-wider text-metabolic-purple">Programada</span>');
+                var when = formatWhen(s.starts_at);
+                var courseTitle = (s.cursos && s.cursos.titulo) ? s.cursos.titulo : s.curso_id;
+                card.innerHTML =
+                    '<div>' + badge +
+                    '<p class="font-heading font-bold text-metabolic-charcoal mt-1"></p>' +
+                    '<p class="font-body text-sm text-metabolic-charcoal/60"></p></div>' +
+                    '<div class="flex flex-wrap gap-2"></div>';
+                card.querySelector('p.font-heading').textContent = s.titulo;
+                card.querySelector('p.font-body').textContent = courseTitle + (when ? ' · ' + when : '');
+                var actions = card.querySelector('div.flex.flex-wrap');
+                if (s.estado === 'programada' || s.estado === 'en_vivo') {
+                    var btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'bg-metabolic-green text-white px-4 py-2 rounded-md font-body font-semibold text-sm hover:bg-[#4CA84C] transition-colors';
+                    btn.textContent = s.estado === 'en_vivo' ? 'Entrar ahora' : 'Unirse a la clase';
+                    btn.addEventListener('click', function () { joinLive({ sesion_id: s.id }); });
+                    actions.appendChild(btn);
+                }
+                liveList.appendChild(card);
+            });
+        }
+
+        async function loadCourses() {
+            setStatus('Cargando tus cursos...');
+            var { data, error } = await client
+                .from('inscripciones')
+                .select('id, estado, created_at, cursos(id, titulo, descripcion)')
+                .eq('estado', 'activo')
+                .order('created_at', { ascending: false });
+
+            if (error) {
+                setStatus('Error al cargar cursos: ' + error.message, true);
+                return;
+            }
+
+            listEl.innerHTML = '';
+            enrolledCourseIds = [];
+            if (!data || !data.length) {
+                setStatus('');
+                emptyEl.classList.remove('hidden');
+                livePanel.classList.add('hidden');
+                return;
+            }
+
+            emptyEl.classList.add('hidden');
+            setStatus(data.length + (data.length === 1 ? ' curso activo' : ' cursos activos'));
+
+            data.forEach(function (row) {
+                var curso = row.cursos;
+                if (!curso) return;
+                enrolledCourseIds.push(curso.id);
+                var card = document.createElement('article');
+                card.className = 'course-card p-6';
+                card.innerHTML =
+                    '<p class="text-xs uppercase tracking-wider text-metabolic-purple font-semibold mb-2">Programa activo</p>' +
+                    '<h3 class="font-heading font-bold text-xl text-metabolic-charcoal mb-2"></h3>' +
+                    '<p class="font-body text-sm text-metabolic-charcoal/70 mb-5"></p>' +
+                    '<div class="flex flex-wrap gap-2">' +
+                    '<button type="button" data-action="open" class="bg-metabolic-green text-white px-4 py-2.5 rounded-md font-body font-semibold text-sm hover:bg-[#4CA84C] transition-colors">Entrar al curso</button>' +
+                    '<button type="button" data-action="live" class="bg-white border border-metabolic-purple text-metabolic-purple px-4 py-2.5 rounded-md font-body font-semibold text-sm hover:bg-purple-50 transition-colors">Clase en vivo</button>' +
+                    '</div>';
+                card.querySelector('h3').textContent = curso.titulo;
+                card.querySelector('p.font-body').textContent = curso.descripcion || '';
+                card.querySelector('[data-action="open"]').addEventListener('click', function () { openCourse(curso); });
+                card.querySelector('[data-action="live"]').addEventListener('click', function () { joinLive({ curso_id: curso.id }); });
+                listEl.appendChild(card);
+            });
+
+            loadLiveSessions(enrolledCourseIds);
+        }
+
+        async function openCourse(curso) {
+            listEl.classList.add('hidden');
+            emptyEl.classList.add('hidden');
+            livePanel.classList.add('hidden');
+            lessonsPanel.classList.remove('hidden');
+            lessonsTitle.textContent = curso.titulo;
+            lessonsList.innerHTML = '<p class="font-body text-sm text-metabolic-charcoal/60">Cargando lecciones...</p>';
+            lessonPlayer.classList.add('hidden');
+            lessonPlayer.innerHTML = '';
+            courseLiveActions.innerHTML = '';
+
+            var liveBtn = document.createElement('button');
+            liveBtn.type = 'button';
+            liveBtn.className = 'inline-flex items-center gap-2 bg-metabolic-purple text-white px-4 py-2.5 rounded-md font-body font-semibold text-sm hover:opacity-90 transition-colors';
+            liveBtn.innerHTML = '<span class="live-dot bg-white"></span> Entrar a clase en vivo';
+            liveBtn.addEventListener('click', function () { joinLive({ curso_id: curso.id }); });
+            courseLiveActions.appendChild(liveBtn);
+
+            var { data, error } = await client
+                .from('lecciones')
+                .select('id, titulo, orden, tipo, storage_path, contenido, duracion_min')
+                .eq('curso_id', curso.id)
+                .order('orden', { ascending: true });
+
+            if (error) {
+                lessonsList.innerHTML = '<p class="text-red-600 font-body text-sm">' + error.message + '</p>';
+                return;
+            }
+
+            if (!data || !data.length) {
+                lessonsList.innerHTML =
+                    '<div class="bg-white border border-gray-200 rounded-xl p-5 font-body text-sm text-metabolic-charcoal/80">' +
+                    'Este curso aún no tiene lecciones. Las grabaciones que subas desde la clase en vivo aparecerán aquí.' +
+                    '</div>';
+                return;
+            }
+
+            lessonsList.innerHTML = '';
+            data.forEach(function (lec) {
+                var item = document.createElement('button');
+                item.type = 'button';
+                item.className = 'w-full text-left bg-white border border-gray-200 rounded-xl px-4 py-3 hover:border-metabolic-green transition-colors';
+                var tipoLabel = lec.tipo === 'vivo' ? 'grabación en vivo' : (lec.tipo || 'video');
+                item.innerHTML =
+                    '<div class="flex items-center justify-between gap-3">' +
+                    '<div><p class="font-body font-semibold text-metabolic-charcoal"></p>' +
+                    '<p class="text-xs text-metabolic-charcoal/50 mt-0.5"></p></div>' +
+                    '<span class="text-metabolic-green text-sm font-semibold">Ver →</span></div>';
+                item.querySelector('p.font-body').textContent = lec.orden + '. ' + lec.titulo;
+                item.querySelector('p.text-xs').textContent = tipoLabel + (lec.duracion_min ? ' · ' + lec.duracion_min + ' min' : '');
+                item.addEventListener('click', function () { playLesson(lec); });
+                lessonsList.appendChild(item);
+            });
+        }
+
+        async function playLesson(lec) {
+            lessonPlayer.classList.remove('hidden');
+            lessonPlayer.innerHTML = '<div class="p-4 text-white font-body text-sm">Cargando material...</div>';
+
+            if (lec.tipo === 'texto' || lec.tipo === 'link' || lec.tipo === 'vivo') {
+                if ((lec.tipo === 'link' || lec.tipo === 'vivo') && lec.contenido && !lec.storage_path) {
+                    lessonPlayer.innerHTML =
+                        '<div class="bg-white p-6 text-metabolic-charcoal font-body">' +
+                        '<h3 class="font-heading font-bold text-lg mb-3"></h3>' +
+                        '<a class="text-metabolic-green font-semibold" target="_blank" rel="noopener" href=""></a></div>';
+                    lessonPlayer.querySelector('h3').textContent = lec.titulo;
+                    var a = lessonPlayer.querySelector('a');
+                    a.href = lec.contenido;
+                    a.textContent = 'Abrir grabación / material';
+                    return;
+                }
+            }
+
+            if (!lec.storage_path) {
+                lessonPlayer.innerHTML = '<div class="p-4 text-white font-body text-sm">Material aún no disponible.</div>';
+                return;
+            }
+
+            var { data, error } = await client.storage
+                .from('course-materials')
+                .createSignedUrl(lec.storage_path, 3600);
+
+            if (error || !data || !data.signedUrl) {
+                lessonPlayer.innerHTML = '<div class="p-4 text-white font-body text-sm">No se pudo abrir: ' +
+                    (error && error.message ? error.message : 'sin URL') + '</div>';
+                return;
+            }
+
+            if (lec.tipo === 'pdf') {
+                lessonPlayer.innerHTML = '<iframe title="PDF" class="w-full h-[70vh] bg-white" src="' + data.signedUrl + '"></iframe>';
+            } else {
+                lessonPlayer.innerHTML = '<video class="w-full max-h-[70vh]" controls playsinline src="' + data.signedUrl + '"></video>';
+            }
+        }
+
+        document.getElementById('btn-back-courses').addEventListener('click', function () {
+            lessonsPanel.classList.add('hidden');
+            listEl.classList.remove('hidden');
+            lessonPlayer.classList.add('hidden');
+            lessonPlayer.innerHTML = '';
+            if (enrolledCourseIds.length) loadLiveSessions(enrolledCourseIds);
+        });
+
+        document.getElementById('btn-leave-class').addEventListener('click', leaveClassroom);
+        document.getElementById('btn-upload-recording').addEventListener('click', uploadRecording);
+
+        document.getElementById('btn-logout').addEventListener('click', async function () {
+            destroyJitsi();
+            await client.auth.signOut();
+            window.location.href = 'portal.html';
+        });
+
+        async function loadRouteCerts() {
+            var box = document.getElementById('certs-list');
+            if (!box) return;
+            try {
+                var rows = await MF_RUTAS.listMyCertificates();
+                if (!rows.length) {
+                    box.innerHTML = '<p class="font-body text-sm text-metabolic-charcoal/60">Aún no tienes certificados de rutas. Completa una en el Centro de Capacitación.</p>';
+                    return;
+                }
+                box.innerHTML = '';
+                rows.forEach(function (c) {
+                    var a = document.createElement('a');
+                    a.href = 'validar.html?serial=' + encodeURIComponent(c.codigo);
+                    a.className = 'block bg-white border border-gray-200 rounded-xl px-4 py-3 hover:border-metabolic-purple/40 transition-colors';
+                    var fecha = c.completed_at ? new Date(c.completed_at).toLocaleDateString('es-CL') : '';
+                    a.innerHTML =
+                        '<div class="flex flex-wrap items-center justify-between gap-2">' +
+                          '<div><p class="font-heading font-semibold text-metabolic-charcoal text-sm"></p>' +
+                          '<p class="font-mono text-xs text-metabolic-purple mt-0.5"></p></div>' +
+                          '<span class="text-xs text-metabolic-charcoal/50 font-body"></span>' +
+                        '</div>';
+                    a.querySelector('.font-heading').textContent = c.titulo_ruta;
+                    a.querySelector('.font-mono').textContent = c.codigo;
+                    a.querySelector('span').textContent = fecha;
+                    box.appendChild(a);
+                });
+            } catch (e) {
+                box.innerHTML = '<p class="font-body text-sm text-metabolic-charcoal/60">No se pudieron cargar los certificados. ¿Ejecutaste supabase/schema_rutas.sql?</p>';
+            }
+        }
+
+        requireSession().then(function (session) {
+            if (session) {
+                loadCourses();
+                loadRouteCerts();
+            }
+        });
+    })();
+    </script>
+</body>
+</html>

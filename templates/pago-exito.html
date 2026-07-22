@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago exitoso | Metabolic Fitness</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-slate-50 flex items-center justify-center p-6">
+    <main class="max-w-lg w-full bg-white rounded-2xl shadow-sm border border-slate-200 p-8 text-center">
+        <h1 class="text-2xl font-bold text-slate-900 mb-3">¡Pago recibido!</h1>
+        <p class="text-slate-600 mb-6">
+            Gracias por tu compra. Te enviamos (o enviaremos) un correo con la confirmación
+            y el equipo te contactará para el acceso al curso.
+            {% if session_id %}
+            <span class="block mt-2 text-xs text-slate-400 break-all">Ref: {{ session_id }}</span>
+            {% endif %}
+        </p>
+        <a href="/academia.html" class="inline-flex items-center justify-center bg-purple-800 text-white px-6 py-3 rounded-xl font-semibold hover:bg-purple-900 transition">
+            Volver a Academia
+        </a>
+    </main>
+</body>
+</html>

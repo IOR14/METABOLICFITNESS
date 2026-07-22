@@ -146,9 +146,36 @@
         if (cert) {
             contenedor.innerHTML = vistaValido(serial, cert);
             setTimeout(lanzarCelebracion, 50);
-        } else {
-            contenedor.innerHTML = vistaInvalido(serial);
+            return;
         }
+
+        // Fallback: certificados de rutas fisiológicas en Supabase
+        contenedor.innerHTML = '<div class="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 text-center font-body text-metabolic-charcoal/70">Validando...</div>';
+
+        function tryCloud() {
+            if (!window.MF_RUTAS || typeof MF_RUTAS.validarCodigo !== 'function') {
+                contenedor.innerHTML = vistaInvalido(serial);
+                return;
+            }
+            MF_RUTAS.validarCodigo(serial).then(function (row) {
+                if (row) {
+                    contenedor.innerHTML = vistaValido(serial, {
+                        nombre_estudiante: row.nombre_display,
+                        curso: row.titulo_ruta,
+                        fecha: row.completed_at
+                            ? new Date(row.completed_at).toLocaleDateString('es-CL')
+                            : ''
+                    });
+                    setTimeout(lanzarCelebracion, 50);
+                } else {
+                    contenedor.innerHTML = vistaInvalido(serial);
+                }
+            }).catch(function () {
+                contenedor.innerHTML = vistaInvalido(serial);
+            });
+        }
+
+        tryCloud();
     }
 
     if (document.readyState === 'loading') {
