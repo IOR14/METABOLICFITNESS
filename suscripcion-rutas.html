@@ -78,12 +78,12 @@
           <p id="price-display" class="font-heading font-extrabold text-4xl sm:text-5xl tracking-tight">$20.000</p>
           <p id="price-period" class="font-body text-white/80 pb-1">CLP / mes</p>
         </div>
-        <p id="price-alt" class="mt-2 font-body text-sm text-white/70">Equivale a aprox. USD 22 / mes</p>
+        <p id="price-alt" class="mt-2 font-body text-sm text-white/70">En pasarela internacional: USD 25 / mes</p>
       </div>
 
       <div class="p-6 sm:p-8">
         <p class="font-body text-sm font-semibold text-mf-charcoal mb-3">Elige moneda de pago</p>
-        <div class="flex flex-wrap gap-2 mb-6">
+        <div class="flex flex-wrap gap-2 mb-3">
           <button type="button" data-currency="clp" class="currency-btn active border border-gray-200 px-4 py-2 rounded-lg font-body font-bold text-sm">
             Pesos chilenos (CLP)
           </button>
@@ -91,6 +91,10 @@
             Dólares (USD)
           </button>
         </div>
+        <p id="fx-note" class="font-body text-xs text-mf-charcoal/55 mb-6 leading-relaxed">
+          Recomendado en Chile: pagar en <strong>CLP</strong>. Si usas tarjeta/pasarela internacional (USD), el precio es
+          <strong>USD 25/mes</strong> para cubrir comisión de la pasarela y conversión de moneda — así el valor neto se mantiene alineado a los $20.000 CLP.
+        </p>
 
         <ul class="space-y-2 mb-8 font-body text-sm text-mf-charcoal/80">
           <li class="flex gap-2"><span class="text-mf-green font-bold">✓</span> Acceso a todas las learning paths de fisiología</li>
@@ -136,14 +140,29 @@
       var display = document.getElementById('price-display');
       var period = document.getElementById('price-period');
       var alt = document.getElementById('price-alt');
+      var fx = document.getElementById('fx-note');
+      var usd = cfg.precioUsd || 25;
+      var clp = cfg.precioClp || 20000;
       if (currency === 'usd') {
-        display.textContent = 'USD ' + (cfg.precioUsd || 22);
+        display.textContent = 'USD ' + usd;
         period.textContent = '/ mes';
-        alt.textContent = 'Equivale a $20.000 CLP / mes';
+        alt.textContent = 'Incluye costo de pasarela internacional (base Chile: ' + formatClp(clp) + ' CLP)';
+        if (fx) {
+          fx.innerHTML = (cfg.notaUsd ||
+            ('USD ' + usd + ' incluye comisión de pasarela y conversión. En Chile el precio es ' + formatClp(clp) + ' CLP/mes.'));
+        }
       } else {
-        display.textContent = formatClp(cfg.precioClp || 20000);
+        display.textContent = formatClp(clp);
         period.textContent = 'CLP / mes';
-        alt.textContent = 'Equivale a aprox. USD ' + (cfg.precioUsd || 22) + ' / mes';
+        alt.textContent = 'Pasarela internacional: USD ' + usd + ' / mes (con buffer de comisiones)';
+        if (fx) {
+          fx.innerHTML =
+            'Recomendado en Chile: pagar en <strong>CLP</strong>. Si usas tarjeta/pasarela internacional (USD), el precio es <strong>USD ' +
+            usd +
+            '/mes</strong> para cubrir comisión de la pasarela y conversión de moneda — así el valor neto se mantiene alineado a los ' +
+            formatClp(clp) +
+            ' CLP.';
+        }
       }
     }
 

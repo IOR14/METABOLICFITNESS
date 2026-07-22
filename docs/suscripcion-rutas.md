@@ -1,10 +1,22 @@
-# Suscripción Rutas de Aprendizaje — $20.000 CLP / mes (≈ USD 22)
+# Suscripción Rutas de Aprendizaje — $20.000 CLP / mes | USD 25 / mes
+
+## Por qué USD 25 y no ~22
+
+El precio local es **$20.000 CLP**. En pasarela extranjera (Lemon/Stripe) hay:
+
+- Comisión de la pasarela (~5% + fee fijo)
+- Spread / conversión de moneda
+- A veces markup del banco del alumno
+
+**USD 25** (~12–15% sobre la conversión cruda) hace que el neto se acerque a los $20.000 CLP y evita vender más barato en dólares.
+
+En la UI se recomienda pagar en **CLP** si el alumno está en Chile.
 
 ## 1) Lemon Squeezy (recomendado en Vercel)
 
 1. Crea un producto **Subscription** mensual:
    - CLP **20000** / mes, o
-   - USD **22** / mes
+   - USD **25** / mes
 2. Share → copia el link `checkout/buy/...`
 3. Pégalo en:
    - `.env` → `LEMON_SQUEEZY_CHECKOUT_RUTAS=...` (servidor Flask), y/o
