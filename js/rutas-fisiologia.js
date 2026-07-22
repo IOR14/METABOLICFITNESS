@@ -295,7 +295,10 @@ window.MF_RUTAS.isComplete = function (ruta) {
  * - O inscripción al curso específico de esa ruta (venta individual).
  */
 window.MF_RUTAS.access = {
+  // Cualquier programa/academia pagado = acceso a TODAS las learning paths
   unlockAllCursos: ['adulto-mayor', 'pediatria-salud', 'rutas-fisiologia'],
+  /** Si true, cualquier inscripción activa desbloquea todas las rutas */
+  anyActiveEnrollmentUnlocksAll: true,
   buyUrl: 'academia.html',
   portalUrl: 'portal.html',
   aulaRutasUrl: 'aula.html#rutas'

@@ -184,14 +184,19 @@
    * @returns {{ ok: boolean, reason: string, enrolled: string[], unlockAll: boolean }}
    * reason: 'ok' | 'no-session' | 'no-enrollment'
    */
-  MF_RUTAS.checkAccess = async function (rutaId) {
+  MF_RUTAS.checkAccess = async function (rutaId, enrolledOverride) {
     await MF_RUTAS.authReady();
-    if (!user) {
+    if (!user && !(enrolledOverride && enrolledOverride.length)) {
       return { ok: false, reason: 'no-session', enrolled: [], unlockAll: false };
     }
-    var enrolled = await MF_RUTAS.getEnrolledCourseIds();
+    var enrolled = Array.isArray(enrolledOverride)
+      ? enrolledOverride.slice()
+      : await MF_RUTAS.getEnrolledCourseIds();
     var unlockList = (MF_RUTAS.access && MF_RUTAS.access.unlockAllCursos) || [];
-    var unlockAll = enrolled.some(function (id) { return unlockList.indexOf(id) !== -1; });
+    var anyUnlocks = !!(MF_RUTAS.access && MF_RUTAS.access.anyActiveEnrollmentUnlocksAll);
+    var unlockAll =
+      (anyUnlocks && enrolled.length > 0) ||
+      enrolled.some(function (id) { return unlockList.indexOf(id) !== -1; });
     if (unlockAll) {
       return { ok: true, reason: 'ok', enrolled: enrolled, unlockAll: true };
     }
@@ -200,7 +205,6 @@
     if (specific && enrolled.indexOf(specific) !== -1) {
       return { ok: true, reason: 'ok', enrolled: enrolled, unlockAll: false };
     }
-    // Sin rutaId: ¿tiene al menos una ruta específica?
     if (!rutaId) {
       var anySpecific = MF_RUTAS.all().some(function (r) {
         return enrolled.indexOf(r.cursoId || MF_RUTAS.cursoIdFor(r.id)) !== -1;

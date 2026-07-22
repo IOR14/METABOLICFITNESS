@@ -123,7 +123,7 @@
                     <a href="academia.html" class="text-sm font-body text-metabolic-purple hover:underline">Obtener / renovar acceso →</a>
                 </div>
                 <p class="font-body text-sm text-metabolic-charcoal/65 mb-4">
-                    Disponibles si tienes un programa activo (Adulto Mayor, Pediatría, paquete de rutas) o una certificación específica comprada.
+                    Con un programa activo (suscripción / Adulto Mayor / Pediatría) puedes entrar a <strong>todas</strong> las certificaciones de learning paths desde aquí.
                 </p>
                 <div id="rutas-access-msg" class="hidden mb-4 font-body text-sm rounded-xl px-4 py-3"></div>
                 <div id="rutas-list" class="grid gap-4 sm:grid-cols-2"></div>
@@ -195,9 +195,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://meet.jit.si/external_api.js"></script>
-    <script src="js/supabase-config.js"></script>
-    <script src="js/rutas-fisiologia.js"></script>
-    <script src="js/rutas-sync.js"></script>
+    <script src="js/supabase-config.js?v=2"></script>
+    <script src="js/rutas-fisiologia.js?v=3"></script>
+    <script src="js/rutas-sync.js?v=3"></script>
     <script>
     (function () {
         var client = window.createMFClient();
@@ -554,6 +554,7 @@
 
             if (error) {
                 setStatus('Error al cargar cursos: ' + error.message, true);
+                renderLearningPaths([]);
                 return;
             }
 
@@ -563,6 +564,7 @@
                 setStatus('');
                 emptyEl.classList.remove('hidden');
                 livePanel.classList.add('hidden');
+                renderLearningPaths([]);
                 return;
             }
 
@@ -591,6 +593,70 @@
             });
 
             loadLiveSessions(enrolledCourseIds);
+            renderLearningPaths(enrolledCourseIds);
+        }
+
+        function renderLearningPaths(enrolled) {
+            var list = document.getElementById('rutas-list');
+            var msg = document.getElementById('rutas-access-msg');
+            if (!list) return;
+
+            if (!window.MF_RUTAS || typeof MF_RUTAS.all !== 'function') {
+                list.innerHTML = '<p class="font-body text-sm text-red-600 col-span-2">No se pudo cargar el catálogo de rutas. Recarga con Ctrl+F5.</p>';
+                return;
+            }
+
+            enrolled = enrolled || enrolledCourseIds || [];
+            var unlockList = (MF_RUTAS.access && MF_RUTAS.access.unlockAllCursos) || [];
+            var unlockAll =
+                (MF_RUTAS.access && MF_RUTAS.access.anyActiveEnrollmentUnlocksAll && enrolled.length > 0) ||
+                enrolled.some(function (id) { return unlockList.indexOf(id) !== -1; });
+
+            if (msg) {
+                msg.classList.remove('hidden', 'bg-amber-50', 'text-amber-900', 'bg-emerald-50', 'text-emerald-900');
+                if (unlockAll) {
+                    msg.classList.add('bg-emerald-50', 'text-emerald-900');
+                    msg.textContent = 'Programa activo: acceso a todas las certificaciones de learning paths. Elige una ruta e ingresa.';
+                } else {
+                    msg.classList.add('bg-amber-50', 'text-amber-900');
+                    msg.innerHTML = 'Aún no hay programa activo. Compra en la <a class="font-bold underline" href="academia.html">Academia</a> para desbloquear todas las rutas.';
+                }
+            }
+
+            list.innerHTML = '';
+            try {
+                MF_RUTAS.all().forEach(function (r) {
+                    var cursoId = r.cursoId || MF_RUTAS.cursoIdFor(r.id);
+                    var unlocked = unlockAll || enrolled.indexOf(cursoId) !== -1;
+                    var prog = MF_RUTAS.getProgress(r.id);
+                    var doneN = (prog.done || []).length;
+                    var total = (r.modulos || []).length;
+
+                    var card = document.createElement('article');
+                    card.className = 'course-card p-5';
+                    card.innerHTML =
+                        '<div class="flex items-start justify-between gap-2 mb-2">' +
+                          '<span class="text-[10px] uppercase tracking-wider font-bold px-2 py-0.5 rounded-full ' +
+                            (r.grupo === 'integrativa' ? 'bg-cyan-50 text-cyan-800' : 'bg-purple-50 text-metabolic-purple') +
+                          '">' + (r.badge || 'Ruta') + '</span>' +
+                          (unlocked
+                            ? '<span class="text-[10px] font-bold text-metabolic-green uppercase">Desbloqueada</span>'
+                            : '<span class="text-[10px] font-bold text-amber-700 uppercase">Bloqueada</span>') +
+                        '</div>' +
+                        '<h3 class="font-heading font-bold text-metabolic-charcoal text-base mb-1"></h3>' +
+                        '<p class="font-body text-xs text-metabolic-charcoal/65 mb-3"></p>' +
+                        (unlocked
+                          ? '<p class="font-body text-xs text-metabolic-charcoal/50 mb-3">Progreso: ' + doneN + ' / ' + total + ' módulos</p>' +
+                            '<a class="inline-flex bg-metabolic-green text-white px-4 py-2 rounded-md font-body font-semibold text-sm hover:bg-[#4CA84C]" href="ruta-aprendizaje.html?id=' + encodeURIComponent(r.id) + '">Entrar a la ruta</a>'
+                          : '<a class="inline-flex bg-white border border-metabolic-purple text-metabolic-purple px-4 py-2 rounded-md font-body font-semibold text-sm hover:bg-purple-50" href="academia.html">Obtener suscripción</a>');
+                    card.querySelector('h3').textContent = r.titulo;
+                    card.querySelector('p.font-body').textContent = r.resumen || '';
+                    list.appendChild(card);
+                });
+            } catch (err) {
+                console.error(err);
+                list.innerHTML = '<p class="font-body text-sm text-red-600 col-span-2">Error al mostrar rutas. Recarga con Ctrl+F5.</p>';
+            }
         }
 
         async function openCourse(curso) {
@@ -736,65 +802,9 @@
             }
         }
 
-        async function loadLearningPaths() {
-            var list = document.getElementById('rutas-list');
-            var msg = document.getElementById('rutas-access-msg');
-            if (!list) return;
-            list.innerHTML = '<p class="font-body text-sm text-metabolic-charcoal/60 col-span-2">Verificando acceso...</p>';
-
-            var access = await MF_RUTAS.checkAccess();
-            var enrolled = access.enrolled || [];
-            var unlockList = (MF_RUTAS.access && MF_RUTAS.access.unlockAllCursos) || [];
-
-            if (msg) {
-                msg.classList.remove('hidden', 'bg-amber-50', 'text-amber-900', 'bg-emerald-50', 'text-emerald-900');
-                if (access.unlockAll) {
-                    msg.classList.add('bg-emerald-50', 'text-emerald-900');
-                    msg.textContent = 'Acceso completo: tu programa activo desbloquea todas las learning paths.';
-                } else if (access.ok) {
-                    msg.classList.add('bg-emerald-50', 'text-emerald-900');
-                    msg.textContent = 'Tienes acceso a las rutas asociadas a tus certificaciones compradas.';
-                } else {
-                    msg.classList.add('bg-amber-50', 'text-amber-900');
-                    msg.innerHTML = 'Las rutas están exclusivas del Portal. Compra un programa en la <a class="font-bold underline" href="academia.html">Academia</a> o solicita activación.';
-                }
-            }
-
-            list.innerHTML = '';
-            MF_RUTAS.all().forEach(function (r) {
-                var cursoId = r.cursoId || MF_RUTAS.cursoIdFor(r.id);
-                var unlocked = access.unlockAll || enrolled.indexOf(cursoId) !== -1;
-                var prog = MF_RUTAS.getProgress(r.id);
-                var doneN = (prog.done || []).length;
-                var total = r.modulos.length;
-
-                var card = document.createElement('article');
-                card.className = 'course-card p-5 ' + (unlocked ? '' : 'opacity-90');
-                card.innerHTML =
-                    '<div class="flex items-start justify-between gap-2 mb-2">' +
-                      '<span class="text-[10px] uppercase tracking-wider font-bold px-2 py-0.5 rounded-full ' +
-                        (r.grupo === 'integrativa' ? 'bg-cyan-50 text-cyan-800' : 'bg-purple-50 text-metabolic-purple') +
-                      '">' + (r.badge || '') + '</span>' +
-                      (unlocked
-                        ? '<span class="text-[10px] font-bold text-metabolic-green uppercase">Desbloqueada</span>'
-                        : '<span class="text-[10px] font-bold text-amber-700 uppercase">Bloqueada</span>') +
-                    '</div>' +
-                    '<h3 class="font-heading font-bold text-metabolic-charcoal text-base mb-1"></h3>' +
-                    '<p class="font-body text-xs text-metabolic-charcoal/65 mb-3 line-clamp-2"></p>' +
-                    (unlocked
-                      ? '<p class="font-body text-xs text-metabolic-charcoal/50 mb-3">Progreso: ' + doneN + ' / ' + total + '</p>' +
-                        '<a class="inline-flex bg-metabolic-green text-white px-4 py-2 rounded-md font-body font-semibold text-sm hover:bg-[#4CA84C]" href="ruta-aprendizaje.html?id=' + encodeURIComponent(r.id) + '">Abrir learning path</a>'
-                      : '<a class="inline-flex bg-white border border-metabolic-purple text-metabolic-purple px-4 py-2 rounded-md font-body font-semibold text-sm hover:bg-purple-50" href="academia.html">Obtener acceso</a>');
-                card.querySelector('h3').textContent = r.titulo;
-                card.querySelector('p.font-body').textContent = r.resumen;
-                list.appendChild(card);
-            });
-        }
-
         requireSession().then(function (session) {
             if (session) {
                 loadCourses();
-                loadLearningPaths();
                 loadRouteCerts();
                 if (location.hash === '#rutas') {
                     setTimeout(function () {
