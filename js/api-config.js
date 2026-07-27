@@ -1,43 +1,47 @@
 /**
  * Base URL del backend Flask (checkout + webhooks).
- * - Local / mismo origen (Vercel Flask): ''
- * - GitHub Pages + API aparte: define window.MF_API_BASE_OVERRIDE antes de este script
- *   o deja el fallback de producción abajo.
+ * Producción (GitHub Pages): API en Vercel.
+ * Local: mismo origen (Flask en :5000).
  */
 (function () {
-  if (typeof window.MF_API_BASE === 'string') return;
-
   var host = (window.location && window.location.hostname) || '';
   var isLocal = host === '127.0.0.1' || host === 'localhost';
+  var PROD_API = 'https://metabolicfitness.vercel.app';
 
-  if (isLocal) {
-    window.MF_API_BASE = '';
-    return;
-  }
-
-  if (typeof window.MF_API_BASE_OVERRIDE === 'string') {
+  if (typeof window.MF_API_BASE_OVERRIDE === 'string' && window.MF_API_BASE_OVERRIDE) {
     window.MF_API_BASE = window.MF_API_BASE_OVERRIDE.replace(/\/$/, '');
-    return;
+  } else if (isLocal) {
+    window.MF_API_BASE = '';
+  } else if (host.indexOf('metabolicfitness.cl') !== -1 || host.indexOf('github.io') !== -1) {
+    window.MF_API_BASE = PROD_API;
+  } else if (host.indexOf('vercel.app') !== -1) {
+    window.MF_API_BASE = '';
+  } else {
+    window.MF_API_BASE = PROD_API;
   }
 
-  // Sitio en GitHub Pages → API Flask en Vercel
-  if (host.indexOf('metabolicfitness.cl') !== -1) {
-    window.MF_API_BASE = 'https://metabolicfitness.vercel.app';
-    return;
-  }
+  window.mfCheckoutAction = function () {
+    var base = (window.MF_API_BASE || '').replace(/\/$/, '');
+    return base + '/crear-checkout-session';
+  };
 
-  // Mismo origen (local o el propio deploy Flask)
-  window.MF_API_BASE = '';
+  window.mfApiUrl = function (path) {
+    var base = (window.MF_API_BASE || '').replace(/\/$/, '');
+    var p = path || '';
+    if (p.charAt(0) !== '/') p = '/' + p;
+    return base + p;
+  };
+
+  window.mfBindCheckoutForms = function () {
+    var action = window.mfCheckoutAction();
+    document.querySelectorAll('form[data-mf-checkout]').forEach(function (f) {
+      f.setAttribute('action', action);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', window.mfBindCheckoutForms);
+  } else {
+    window.mfBindCheckoutForms();
+  }
 })();
-
-window.mfCheckoutAction = function () {
-  var base = (window.MF_API_BASE || '').replace(/\/$/, '');
-  return base + '/crear-checkout-session';
-};
-
-window.mfApiUrl = function (path) {
-  var base = (window.MF_API_BASE || '').replace(/\/$/, '');
-  var p = path || '';
-  if (p.charAt(0) !== '/') p = '/' + p;
-  return base + p;
-};

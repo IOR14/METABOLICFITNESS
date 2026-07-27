@@ -384,6 +384,7 @@
             .reveal { opacity: 1; transform: none; transition: none; }
         }
     </style>
+    <script src="js/api-config.js?v=2"></script>
 </head>
 <body class="antialiased">
     <!-- Barra superior (Utility Bar) -->
@@ -581,7 +582,7 @@
                         </div>
 
                         <div class="flex flex-col sm:flex-row flex-wrap gap-3 pt-1">
-                            <form method="POST" action="/crear-checkout-session" data-mf-checkout class="contents">
+                            <form method="POST" action="https://metabolicfitness.vercel.app/crear-checkout-session" data-mf-checkout class="inline">
                                 <input type="hidden" name="curso" value="adulto-mayor">
                                 <input type="hidden" name="moneda" value="usd">
                                 <input type="hidden" name="mode" value="payment">
@@ -591,7 +592,7 @@
                                     Pagar USD 150
                                 </button>
                             </form>
-                            <form method="POST" action="/crear-checkout-session" data-mf-checkout class="contents">
+                            <form method="POST" action="https://metabolicfitness.vercel.app/crear-checkout-session" data-mf-checkout class="inline">
                                 <input type="hidden" name="curso" value="adulto-mayor">
                                 <input type="hidden" name="moneda" value="clp">
                                 <input type="hidden" name="mode" value="payment">
@@ -666,7 +667,7 @@
                         </div>
 
                         <div class="flex flex-col sm:flex-row flex-wrap gap-3 pt-1">
-                            <form method="POST" action="/crear-checkout-session" data-mf-checkout class="contents">
+                            <form method="POST" action="https://metabolicfitness.vercel.app/crear-checkout-session" data-mf-checkout class="inline">
                                 <input type="hidden" name="curso" value="pediatria-salud">
                                 <input type="hidden" name="moneda" value="usd">
                                 <input type="hidden" name="mode" value="payment">
@@ -676,7 +677,7 @@
                                     Pagar USD 150
                                 </button>
                             </form>
-                            <form method="POST" action="/crear-checkout-session" data-mf-checkout class="contents">
+                            <form method="POST" action="https://metabolicfitness.vercel.app/crear-checkout-session" data-mf-checkout class="inline">
                                 <input type="hidden" name="curso" value="pediatria-salud">
                                 <input type="hidden" name="moneda" value="clp">
                                 <input type="hidden" name="mode" value="payment">
@@ -686,14 +687,6 @@
                                 </button>
                             </form>
                         </div>
-                        <script src="js/api-config.js?v=1"></script>
-                        <script>
-                        (function () {
-                          document.querySelectorAll('form[data-mf-checkout]').forEach(function (f) {
-                            if (window.mfCheckoutAction) f.action = window.mfCheckoutAction();
-                          });
-                        })();
-                        </script>
                     </div>
                 </div>
             </div>
