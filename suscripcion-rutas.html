@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Suscripción Rutas de Aprendizaje — Metabolic Fitness</title>
-  <meta name="description" content="Accede a todas las learning paths de fisiología por $20.000 CLP al mes (o USD 22).">
+  <meta name="description" content="Suscripción mensual a learning paths de fisiología. Precio estándar USD 25; precio local según tu país.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -67,167 +67,191 @@
       Rutas de Aprendizaje en Fisiología
     </h1>
     <p class="font-body text-mf-charcoal/75 mb-8 max-w-2xl">
-      Con tu suscripción activa desbloqueas <strong>todas</strong> las certificaciones / learning paths
-      (sistemas fisiológicos e integrativos) dentro del Portal Alumnos.
+      Precio estándar <strong>USD 25 / mes</strong>. Detectamos tu país y te mostramos el precio local cuando está disponible;
+      puedes inscribirte desde cualquier lugar.
     </p>
 
     <div class="pay-card overflow-hidden">
       <div class="bg-gradient-to-r from-[#2a0845] via-[#460877] to-[#1a4a5c] text-white p-6 sm:p-8">
-        <p class="text-xs uppercase tracking-wider font-bold text-white/60 mb-2">Precio</p>
+        <p class="text-xs uppercase tracking-wider font-bold text-white/60 mb-2">Tu precio</p>
         <div class="flex flex-wrap items-end gap-3">
-          <p id="price-display" class="font-heading font-extrabold text-4xl sm:text-5xl tracking-tight">$20.000</p>
-          <p id="price-period" class="font-body text-white/80 pb-1">CLP / mes</p>
+          <p id="price-display" class="font-heading font-extrabold text-4xl sm:text-5xl tracking-tight">USD 25</p>
+          <p id="price-period" class="font-body text-white/80 pb-1">/ mes</p>
         </div>
-        <p id="price-alt" class="mt-2 font-body text-sm text-white/70">En pasarela internacional: USD 25 / mes</p>
+        <p id="price-alt" class="mt-2 font-body text-sm text-white/70">Detectando ubicación…</p>
+        <p id="geo-badge" class="mt-3 inline-flex text-[11px] font-bold uppercase tracking-wider bg-white/15 px-2.5 py-1 rounded-full">—</p>
       </div>
 
       <div class="p-6 sm:p-8">
-        <p class="font-body text-sm font-semibold text-mf-charcoal mb-3">Elige moneda de pago</p>
-        <div class="flex flex-wrap gap-2 mb-3">
-          <button type="button" data-currency="clp" class="currency-btn active border border-gray-200 px-4 py-2 rounded-lg font-body font-bold text-sm">
-            Pesos chilenos (CLP)
-          </button>
-          <button type="button" data-currency="usd" class="currency-btn border border-gray-200 px-4 py-2 rounded-lg font-body font-bold text-sm text-mf-charcoal">
-            Dólares (USD)
-          </button>
-        </div>
-        <p id="fx-note" class="font-body text-xs text-mf-charcoal/55 mb-6 leading-relaxed">
-          Recomendado en Chile: pagar en <strong>CLP</strong>. Si usas tarjeta/pasarela internacional (USD), el precio es
-          <strong>USD 25/mes</strong> para cubrir comisión de la pasarela y conversión de moneda — así el valor neto se mantiene alineado a los $20.000 CLP.
-        </p>
+        <p class="font-body text-sm font-semibold text-mf-charcoal mb-3">Moneda de pago</p>
+        <div id="currency-options" class="flex flex-wrap gap-2 mb-3"></div>
+        <p id="fx-note" class="font-body text-xs text-mf-charcoal/55 mb-6 leading-relaxed"></p>
 
         <ul class="space-y-2 mb-8 font-body text-sm text-mf-charcoal/80">
           <li class="flex gap-2"><span class="text-mf-green font-bold">✓</span> Acceso a todas las learning paths de fisiología</li>
           <li class="flex gap-2"><span class="text-mf-green font-bold">✓</span> Certificados e insignias al completar cada ruta</li>
           <li class="flex gap-2"><span class="text-mf-green font-bold">✓</span> Progreso guardado en tu cuenta del Portal</li>
-          <li class="flex gap-2"><span class="text-mf-green font-bold">✓</span> Renovación mensual — puedes cancelar cuando quieras</li>
+          <li class="flex gap-2"><span class="text-mf-green font-bold">✓</span> Renovación automática mensual</li>
         </ul>
 
         <div class="flex flex-col sm:flex-row gap-3">
           <button type="button" id="btn-pay" class="flex-1 bg-mf-green text-white px-6 py-3.5 rounded-xl font-body font-bold hover:bg-[#4CA84C] transition-colors">
-            Pagar suscripción
+            Inscribirme ahora
           </button>
           <a id="btn-whatsapp" href="#" target="_blank" rel="noopener" class="flex-1 text-center border border-mf-purple text-mf-purple px-6 py-3.5 rounded-xl font-body font-bold hover:bg-purple-50">
             Coordinar por WhatsApp
           </a>
         </div>
         <p id="pay-status" class="mt-4 font-body text-sm text-mf-charcoal/60"></p>
-        <p class="mt-3 font-body text-xs text-mf-charcoal/45">
-          Tras el pago, inicia sesión en el Portal. Si ya tienes cuenta, tu acceso a rutas se activa con la inscripción
-          <code class="bg-gray-100 px-1 rounded">rutas-fisiologia</code>.
-        </p>
       </div>
     </div>
   </main>
 
-  <script src="https://js.stripe.com/v3/"></script>
-  <script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
-  <script src="js/checkout-config.js?v=2"></script>
+  <script src="js/checkout-config.js?v=3"></script>
   <script>
   (function () {
     var cfg = (window.MF_CHECKOUT && MF_CHECKOUT.rutasSuscripcion) || {};
-    var currency = 'clp';
+    var countryCode = '';
+    var offer = cfg.defaultOffer || { currency: 'USD', stripeMoneda: 'usd', amountMajor: 25, label: 'Internacional', nota: '' };
+    var stripeMoneda = offer.stripeMoneda || 'usd';
     var statusEl = document.getElementById('pay-status');
     var btnPay = document.getElementById('btn-pay');
     var btnWa = document.getElementById('btn-whatsapp');
-
     if (cfg.whatsapp) btnWa.href = cfg.whatsapp;
 
-    function formatClp(n) {
-      return '$' + String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    function formatAmount(currency, n) {
+      if (currency === 'CLP' || currency === 'COP') {
+        return '$' + String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' ' + currency;
+      }
+      if (currency === 'USD') return 'USD ' + n;
+      if (currency === 'EUR') return '€' + n;
+      if (currency === 'BRL') return 'R$ ' + n;
+      if (currency === 'MXN') return 'MXN $' + n;
+      if (currency === 'PEN') return 'S/ ' + n;
+      return n + ' ' + currency;
     }
 
-    function refreshPrice() {
+    function buildCurrencyButtons() {
+      var box = document.getElementById('currency-options');
+      box.innerHTML = '';
+      var options = [];
+      // Local detected (if not USD)
+      if (offer.stripeMoneda && offer.stripeMoneda !== 'usd') {
+        options.push({ key: offer.stripeMoneda, label: offer.currency + ' (local)', currency: offer.currency, amount: offer.amountMajor, nota: offer.nota });
+      }
+      // Always USD standard
+      options.push({ key: 'usd', label: 'USD 25 (estándar)', currency: 'USD', amount: cfg.precioUsd || 25, nota: 'Precio estándar mundial.' });
+
+      options.forEach(function (opt, idx) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'currency-btn border border-gray-200 px-4 py-2 rounded-lg font-body font-bold text-sm' + (idx === 0 ? ' active' : '');
+        btn.textContent = opt.label;
+        btn.dataset.key = opt.key;
+        btn.addEventListener('click', function () {
+          stripeMoneda = opt.key;
+          document.querySelectorAll('.currency-btn').forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          showOffer(opt.currency, opt.amount, opt.nota);
+        });
+        box.appendChild(btn);
+      });
+
+      stripeMoneda = options[0].key;
+      showOffer(options[0].currency, options[0].amount, options[0].nota);
+    }
+
+    function showOffer(currency, amount, nota) {
       var display = document.getElementById('price-display');
       var period = document.getElementById('price-period');
-      var alt = document.getElementById('price-alt');
-      var fx = document.getElementById('fx-note');
-      var usd = cfg.precioUsd || 25;
-      var clp = cfg.precioClp || 20000;
-      if (currency === 'usd') {
-        display.textContent = 'USD ' + usd;
+      if (currency === 'CLP' || currency === 'COP') {
+        display.textContent = '$' + String(amount).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        period.textContent = currency + ' / mes';
+      } else if (currency === 'USD') {
+        display.textContent = 'USD ' + amount;
         period.textContent = '/ mes';
-        alt.textContent = 'Incluye costo de pasarela internacional (base Chile: ' + formatClp(clp) + ' CLP)';
-        if (fx) {
-          fx.innerHTML = (cfg.notaUsd ||
-            ('USD ' + usd + ' incluye comisión de pasarela y conversión. En Chile el precio es ' + formatClp(clp) + ' CLP/mes.'));
-        }
+      } else if (currency === 'EUR') {
+        display.textContent = '€' + amount;
+        period.textContent = '/ mes';
+      } else if (currency === 'BRL') {
+        display.textContent = 'R$ ' + amount;
+        period.textContent = '/ mes';
+      } else if (currency === 'MXN') {
+        display.textContent = 'MXN $' + amount;
+        period.textContent = '/ mes';
+      } else if (currency === 'PEN') {
+        display.textContent = 'S/ ' + amount;
+        period.textContent = '/ mes';
       } else {
-        display.textContent = formatClp(clp);
-        period.textContent = 'CLP / mes';
-        alt.textContent = 'Pasarela internacional: USD ' + usd + ' / mes (con buffer de comisiones)';
-        if (fx) {
-          fx.innerHTML =
-            'Recomendado en Chile: pagar en <strong>CLP</strong>. Si usas tarjeta/pasarela internacional (USD), el precio es <strong>USD ' +
-            usd +
-            '/mes</strong> para cubrir comisión de la pasarela y conversión de moneda — así el valor neto se mantiene alineado a los ' +
-            formatClp(clp) +
-            ' CLP.';
-        }
+        display.textContent = formatAmount(currency, amount);
+        period.textContent = '/ mes';
       }
+      document.getElementById('price-alt').textContent = 'Estándar mundial: USD ' + (cfg.precioUsd || 25) + ' / mes';
+      document.getElementById('fx-note').textContent = nota || '';
+      var badge = document.getElementById('geo-badge');
+      badge.textContent = countryCode
+        ? ((offer.label || countryCode) + ' · ' + countryCode)
+        : 'Internacional';
     }
-
-    document.querySelectorAll('.currency-btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        currency = btn.getAttribute('data-currency');
-        document.querySelectorAll('.currency-btn').forEach(function (b) { b.classList.remove('active'); });
-        btn.classList.add('active');
-        refreshPrice();
-      });
-    });
 
     function setStatus(msg, isError) {
       statusEl.textContent = msg || '';
       statusEl.className = 'mt-4 font-body text-sm ' + (isError ? 'text-red-600' : 'text-mf-charcoal/60');
     }
 
-    async function resolveLemonUrl() {
-      var fromCfg = (cfg.lemon && cfg.lemon[currency]) || '';
-      if (fromCfg && fromCfg.indexOf('http') === 0) {
-        var sep = fromCfg.indexOf('?') >= 0 ? '&' : '?';
-        return fromCfg + sep + 'checkout[custom][curso]=rutas-fisiologia';
-      }
+    async function detectCountry() {
       try {
-        var res = await fetch('/api/lemon-checkout/rutas-fisiologia?moneda=' + currency);
+        var res = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout ? AbortSignal.timeout(5000) : undefined });
+        if (!res.ok) throw new Error('geo');
         var data = await res.json();
-        if (data && data.url) return data.url;
-      } catch (e) { /* static host */ }
-      return null;
+        countryCode = String(data.country_code || '').toUpperCase();
+      } catch (e) {
+        try {
+          var res2 = await fetch('https://ipwho.is/');
+          var data2 = await res2.json();
+          countryCode = String(data2.country_code || '').toUpperCase();
+        } catch (e2) {
+          countryCode = '';
+        }
+      }
+      var map = cfg.porPais || {};
+      offer = (countryCode && map[countryCode]) ? map[countryCode] : (cfg.defaultOffer || offer);
+      buildCurrencyButtons();
     }
 
     btnPay.addEventListener('click', async function () {
       btnPay.disabled = true;
-      setStatus('Preparando checkout…');
+      setStatus('Preparando inscripción…');
 
-      // 1) Lemon si está configurado
-      var lemonUrl = await resolveLemonUrl();
-      if (lemonUrl) {
-        if (window.createLemonSqueezy && window.LemonSqueezy) {
-          try {
-            window.createLemonSqueezy();
-            window.LemonSqueezy.Url.Open(lemonUrl);
-            setStatus('Abriendo pasarela de pago…');
-            btnPay.disabled = false;
-            return;
-          } catch (e) { /* fall through */ }
+      // Lemon opcional
+      try {
+        var lemonMap = cfg.lemon || {};
+        var lemonUrl = lemonMap[stripeMoneda] || lemonMap.usd || '';
+        if (lemonUrl) {
+          window.location.href = lemonUrl + (lemonUrl.indexOf('?') >= 0 ? '&' : '?') + 'checkout[custom][curso]=rutas-fisiologia';
+          return;
         }
-        window.location.href = lemonUrl;
-        return;
-      }
+        var res = await fetch('/api/lemon-checkout/rutas-fisiologia?moneda=' + encodeURIComponent(stripeMoneda));
+        var data = await res.json();
+        if (data && data.url) {
+          window.location.href = data.url;
+          return;
+        }
+      } catch (e) { /* Stripe */ }
 
-      // 2) Stripe Checkout (Flask) — suscripción mensual
       var form = document.createElement('form');
       form.method = 'POST';
       form.action = '/crear-checkout-session';
       form.innerHTML =
         '<input type="hidden" name="curso" value="rutas-fisiologia">' +
-        '<input type="hidden" name="moneda" value="' + currency + '">' +
-        '<input type="hidden" name="mode" value="subscription">';
+        '<input type="hidden" name="moneda" value="' + stripeMoneda + '">' +
+        '<input type="hidden" name="mode" value="subscription">' +
+        '<input type="hidden" name="country" value="' + (countryCode || '') + '">';
       document.body.appendChild(form);
       form.submit();
     });
 
-    refreshPrice();
+    detectCountry();
   })();
   </script>
 </body>

@@ -67,6 +67,11 @@ COURSE_PRICES = {
     "rutas-fisiologia": {
         "clp": os.getenv("STRIPE_PRICE_RUTAS_CLP", ""),
         "usd": os.getenv("STRIPE_PRICE_RUTAS_USD", ""),
+        "brl": os.getenv("STRIPE_PRICE_RUTAS_BRL", ""),
+        "mxn": os.getenv("STRIPE_PRICE_RUTAS_MXN", ""),
+        "pen": os.getenv("STRIPE_PRICE_RUTAS_PEN", ""),
+        "cop": os.getenv("STRIPE_PRICE_RUTAS_COP", ""),
+        "eur": os.getenv("STRIPE_PRICE_RUTAS_EUR", ""),
     },
 }
 
@@ -396,7 +401,12 @@ def crear_checkout_session():
 
     price_id = precios.get(moneda)
     if not price_id:
-        abort(400, description="Moneda no válida o Price ID no configurado (usa clp o usd)")
+        # Fallback mundial: USD 25
+        if moneda != "usd" and precios.get("usd"):
+            moneda = "usd"
+            price_id = precios.get("usd")
+        else:
+            abort(400, description="Moneda no válida o Price ID no configurado")
 
     try:
         session = stripe.checkout.Session.create(
