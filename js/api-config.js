@@ -20,9 +20,13 @@
     return;
   }
 
-  // Mismo origen si el sitio ya corre sobre Flask (Vercel/Railway/Render).
-  // Si sigues en GitHub Pages puro, pon la URL pública de la API aquí:
-  // window.MF_API_BASE_OVERRIDE = 'https://TU-API.vercel.app';
+  // Sitio en GitHub Pages → API Flask en Vercel
+  if (host.indexOf('metabolicfitness.cl') !== -1) {
+    window.MF_API_BASE = 'https://metabolicfitness.vercel.app';
+    return;
+  }
+
+  // Mismo origen (local o el propio deploy Flask)
   window.MF_API_BASE = '';
 })();
 

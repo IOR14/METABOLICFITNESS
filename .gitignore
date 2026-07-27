@@ -30,6 +30,7 @@ yarn-error.log*
 
 # secretos locales (NUNCA subir)
 .env
+.env.local
 .env.*.local
 
 # vercel
