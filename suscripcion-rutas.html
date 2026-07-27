@@ -120,8 +120,9 @@
     </div>
   </main>
 
+  <script src="https://js.stripe.com/v3/"></script>
   <script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
-  <script src="js/checkout-config.js?v=1"></script>
+  <script src="js/checkout-config.js?v=2"></script>
   <script>
   (function () {
     var cfg = (window.MF_CHECKOUT && MF_CHECKOUT.rutasSuscripcion) || {};
@@ -198,6 +199,7 @@
       btnPay.disabled = true;
       setStatus('Preparando checkout…');
 
+      // 1) Lemon si está configurado
       var lemonUrl = await resolveLemonUrl();
       if (lemonUrl) {
         if (window.createLemonSqueezy && window.LemonSqueezy) {
@@ -213,7 +215,7 @@
         return;
       }
 
-      // Fallback Stripe (Flask local / servidor)
+      // 2) Stripe Checkout (Flask) — suscripción mensual
       var form = document.createElement('form');
       form.method = 'POST';
       form.action = '/crear-checkout-session';
@@ -222,13 +224,7 @@
         '<input type="hidden" name="moneda" value="' + currency + '">' +
         '<input type="hidden" name="mode" value="subscription">';
       document.body.appendChild(form);
-      try {
-        form.submit();
-      } catch (e) {
-        setStatus('Checkout no configurado aún. Usa WhatsApp o pega el link Lemon en js/checkout-config.js', true);
-        btnPay.disabled = false;
-        btnWa.focus();
-      }
+      form.submit();
     });
 
     refreshPrice();
