@@ -409,16 +409,20 @@ def crear_checkout_session():
             abort(400, description="Moneda no válida o Price ID no configurado")
 
     try:
-        session = stripe.checkout.Session.create(
-            mode=mode,
-            line_items=[{"price": price_id, "quantity": 1}],
-            success_url=f"{DOMAIN}/pago-exito?session_id={{CHECKOUT_SESSION_ID}}",
-            cancel_url=f"{DOMAIN}/pago-cancelado",
-            metadata={"curso": curso, "moneda": moneda, "mode": mode},
-            customer_creation="always",
-            billing_address_collection="required",
-            locale="es",
-        )
+        params = {
+            "mode": mode,
+            "line_items": [{"price": price_id, "quantity": 1}],
+            "success_url": f"{DOMAIN}/pago-exito?session_id={{CHECKOUT_SESSION_ID}}",
+            "cancel_url": f"{DOMAIN}/pago-cancelado",
+            "metadata": {"curso": curso, "moneda": moneda, "mode": mode},
+            "billing_address_collection": "required",
+            "locale": "es",
+        }
+        # customer_creation solo es válido en mode=payment (no en subscription)
+        if mode == "payment":
+            params["customer_creation"] = "always"
+
+        session = stripe.checkout.Session.create(**params)
     except stripe.StripeError as exc:
         abort(502, description=str(exc.user_message or exc))
 
