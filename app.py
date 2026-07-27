@@ -488,15 +488,11 @@ def stripe_webhook():
         print("[Stripe] Factura pagada:", invoice.get("id"), invoice.get("number"))
         # Renovación de suscripción: reactivar acceso a rutas
         meta = invoice.get("subscription_details", {}).get("metadata") or {}
-        lines = ((invoice.get("lines") or {}).get("data") or [])
         curso = meta.get("curso") or "rutas-fisiologia"
-        cust_email = ""
-        try:
-            cust_email = (invoice.get("customer_email") or "") or ""
-        except Exception:
-            cust_email = ""
+        cust_email = (invoice.get("customer_email") or "") or ""
         if cust_email:
-            _activar_inscripcion_supabase(cust_email, curso)    elif event["type"] == "invoice.payment_failed":
+            _activar_inscripcion_supabase(cust_email, curso)
+    elif event["type"] == "invoice.payment_failed":
         invoice = event["data"]["object"]
         if hasattr(invoice, "to_dict"):
             invoice = invoice.to_dict()
