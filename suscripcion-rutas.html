@@ -107,6 +107,7 @@
     </div>
   </main>
 
+  <script src="js/api-config.js?v=1"></script>
   <script src="js/checkout-config.js?v=3"></script>
   <script>
   (function () {
@@ -231,7 +232,7 @@
           window.location.href = lemonUrl + (lemonUrl.indexOf('?') >= 0 ? '&' : '?') + 'checkout[custom][curso]=rutas-fisiologia';
           return;
         }
-        var res = await fetch('/api/lemon-checkout/rutas-fisiologia?moneda=' + encodeURIComponent(stripeMoneda));
+        var res = await fetch(window.mfApiUrl('/api/lemon-checkout/rutas-fisiologia?moneda=' + encodeURIComponent(stripeMoneda)));
         var data = await res.json();
         if (data && data.url) {
           window.location.href = data.url;
@@ -241,7 +242,7 @@
 
       var form = document.createElement('form');
       form.method = 'POST';
-      form.action = '/crear-checkout-session';
+      form.action = window.mfCheckoutAction ? window.mfCheckoutAction() : '/crear-checkout-session';
       form.innerHTML =
         '<input type="hidden" name="curso" value="rutas-fisiologia">' +
         '<input type="hidden" name="moneda" value="' + stripeMoneda + '">' +

@@ -19,6 +19,7 @@ import os
 import stripe
 from dotenv import load_dotenv
 from flask import Flask, abort, jsonify, redirect, render_template, request, send_from_directory
+from flask_cors import CORS
 
 from database import buscar_certificado, init_db, registrar_compra, seed_data
 from email_notify import notify_purchase
@@ -29,6 +30,14 @@ load_dotenv()
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 app = Flask(__name__, template_folder="templates", static_folder=None)
+CORS(
+    app,
+    resources={
+        r"/crear-checkout-session": {"origins": "*"},
+        r"/api/*": {"origins": "*"},
+        r"/webhook": {"origins": "*"},
+    },
+)
 
 stripe.api_key = os.getenv("STRIPE_SECRET_KEY", "")
 STRIPE_WEBHOOK_SECRET = (os.getenv("STRIPE_WEBHOOK_SECRET") or "").strip()
@@ -57,12 +66,12 @@ LEMON_CHECKOUT = {
 # Catálogo Stripe (modo test / futuro Atlas). Clave = curso + moneda.
 COURSE_PRICES = {
     "adulto-mayor": {
-        "clp": os.getenv("STRIPE_PRICE_ADULTO_MAYOR_CLP", "price_1TvKwFIffBywVZ8XhjHxLizp"),
-        "usd": os.getenv("STRIPE_PRICE_ADULTO_MAYOR_USD", "price_1TvKwFIffBywVZ8X2GwYYMW4"),
+        "clp": os.getenv("STRIPE_PRICE_ADULTO_MAYOR_CLP", "").strip(),
+        "usd": os.getenv("STRIPE_PRICE_ADULTO_MAYOR_USD", "").strip(),
     },
     "pediatria-salud": {
-        "clp": os.getenv("STRIPE_PRICE_PEDIATRIA_SALUD_CLP", ""),
-        "usd": os.getenv("STRIPE_PRICE_PEDIATRIA_SALUD_USD", ""),
+        "clp": os.getenv("STRIPE_PRICE_PEDIATRIA_SALUD_CLP", "").strip(),
+        "usd": os.getenv("STRIPE_PRICE_PEDIATRIA_SALUD_USD", "").strip(),
     },
     "rutas-fisiologia": {
         "clp": os.getenv("STRIPE_PRICE_RUTAS_CLP", ""),
@@ -121,8 +130,110 @@ def lemon_checkout_url(curso):
     return jsonify({"url": url})
 
 
-def _activar_inscripcion_supabase(email: str, curso: str) -> bool:
-    """Activa inscripción en Supabase si encontramos el perfil por email."""
+def _supabase_headers() -> dict:
+    return {
+        "apikey": SUPABASE_SERVICE_ROLE_KEY,
+        "Authorization": f"Bearer {SUPABASE_SERVICE_ROLE_KEY}",
+        "Content-Type": "application/json",
+        "User-Agent": "MetabolicFitness-Flask/1.0",
+    }
+
+
+def _supabase_json_request(path: str, *, method: str = "GET", json_body=None):
+    """Request a Auth Admin o REST (JSON)."""
+    import json
+    from urllib.error import HTTPError
+    from urllib.request import Request, urlopen
+
+    url = SUPABASE_URL.rstrip("/") + path
+    headers = _supabase_headers()
+    data = None if json_body is None else json.dumps(json_body).encode("utf-8")
+    req = Request(url, data=data, headers=headers, method=method)
+    try:
+        with urlopen(req, timeout=30) as resp:
+            raw = resp.read().decode("utf-8")
+            return json.loads(raw) if raw else {}
+    except HTTPError as exc:
+        detail = exc.read().decode("utf-8", errors="replace")
+        raise RuntimeError(detail or str(exc)) from exc
+
+
+def _find_supabase_user_id_by_email(email: str):
+    """Busca user id en Auth (profiles a veces está vacío / sin trigger)."""
+    from urllib.parse import quote
+
+    email = (email or "").strip().lower()
+    if not email:
+        return None
+
+    # 1) profiles (si el trigger on_auth_user_created está activo)
+    try:
+        profiles = _supabase_rest(
+            f"profiles?email=eq.{quote(email, safe='')}&select=id"
+        ) or []
+        if profiles:
+            return profiles[0]["id"]
+    except Exception as exc:  # noqa: BLE001
+        print(f"[Supabase] profiles lookup: {exc}")
+
+    # 2) Auth Admin API — listar y filtrar por email
+    payload = _supabase_json_request("/auth/v1/admin/users?page=1&per_page=200")
+    for user in payload.get("users") or []:
+        if (user.get("email") or "").strip().lower() == email:
+            return user.get("id")
+    return None
+
+
+def _crear_usuario_supabase(email: str, full_name: str = "") -> str | None:
+    """
+    Crea cuenta Auth al pagar (sin contraseña).
+    El alumno entra luego con magic link / recuperar contraseña.
+    """
+    email = (email or "").strip().lower()
+    if not email:
+        return None
+    body = {
+        "email": email,
+        "email_confirm": True,
+        "user_metadata": {
+            "full_name": (full_name or "").strip(),
+            "origen": "pago",
+        },
+    }
+    created = _supabase_json_request(
+        "/auth/v1/admin/users", method="POST", json_body=body
+    )
+    user_id = (created.get("id") if isinstance(created, dict) else None) or (
+        (created.get("user") or {}).get("id") if isinstance(created, dict) else None
+    )
+    if not user_id:
+        raise RuntimeError(f"Respuesta sin id al crear usuario: {created}")
+    print(f"[Supabase] Cuenta creada automaticamente: {email} id={user_id}")
+    return user_id
+
+
+def _generar_magic_link(email: str) -> str:
+    """Link de acceso (magiclink) para el alumno recién creado."""
+    domain = (os.getenv("DOMAIN") or "http://127.0.0.1:5000").rstrip("/")
+    payload = _supabase_json_request(
+        "/auth/v1/admin/generate_link",
+        method="POST",
+        json_body={
+            "type": "magiclink",
+            "email": email,
+            "options": {"redirect_to": f"{domain}/aula.html"},
+        },
+    )
+    # Preferir action_link listo para usar
+    link = payload.get("action_link") or ""
+    if not link:
+        props = payload.get("properties") or {}
+        link = props.get("action_link") or ""
+    return link
+
+
+def _activar_inscripcion_supabase(email: str, curso: str, full_name: str = "") -> bool:
+    """Crea cuenta si no existe y activa inscripción del curso comprado."""
     email = (email or "").strip().lower()
     curso = (curso or "").strip()
     if not email or not curso:
@@ -130,15 +241,27 @@ def _activar_inscripcion_supabase(email: str, curso: str) -> bool:
     if not SUPABASE_URL or not SUPABASE_SERVICE_ROLE_KEY:
         return False
     try:
-        profiles = _supabase_rest(
-            f"profiles?email=eq.{email}&select=id"
-        ) or []
-        if not profiles:
-            print(f"[Supabase] Sin perfil para {email}; inscripción manual pendiente")
+        created_now = False
+        user_id = _find_supabase_user_id_by_email(email)
+        if not user_id:
+            user_id = _crear_usuario_supabase(email, full_name=full_name)
+            created_now = True
+        if not user_id:
             return False
-        user_id = profiles[0]["id"]
+
+        # Asegura fila en profiles (por si el trigger no corrió)
         _supabase_rest(
-            "inscripciones",
+            "profiles?on_conflict=id",
+            method="POST",
+            json_body={
+                "id": user_id,
+                "email": email,
+                "full_name": (full_name or "").strip() or None,
+            },
+            prefer="resolution=merge-duplicates,return=minimal",
+        )
+        _supabase_rest(
+            "inscripciones?on_conflict=user_id,curso_id",
             method="POST",
             json_body={
                 "user_id": user_id,
@@ -148,7 +271,17 @@ def _activar_inscripcion_supabase(email: str, curso: str) -> bool:
             },
             prefer="resolution=merge-duplicates,return=minimal",
         )
-        print(f"[Supabase] Inscripción activa: {email} → {curso}")
+        print(f"[Supabase] Inscripcion activa: {email} -> {curso}")
+
+        if created_now:
+            try:
+                from email_notify import notify_portal_access
+
+                magic = _generar_magic_link(email)
+                notify_portal_access(email=email, curso=curso, magic_link=magic)
+            except Exception as mail_exc:  # noqa: BLE001
+                print(f"[Supabase] Cuenta ok pero aviso de acceso fallo: {mail_exc}")
+
         return True
     except Exception as exc:  # noqa: BLE001
         print(f"[Supabase] No se pudo activar inscripción: {exc}")
@@ -164,11 +297,7 @@ def _supabase_rest(path: str, *, method: str = "GET", json_body=None, prefer=Non
     if not SUPABASE_URL or not SUPABASE_SERVICE_ROLE_KEY:
         raise RuntimeError("SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY no configurados")
     url = SUPABASE_URL.rstrip("/") + "/rest/v1/" + path.lstrip("/")
-    headers = {
-        "apikey": SUPABASE_SERVICE_ROLE_KEY,
-        "Authorization": f"Bearer {SUPABASE_SERVICE_ROLE_KEY}",
-        "Content-Type": "application/json",
-    }
+    headers = _supabase_headers()
     if prefer:
         headers["Prefer"] = prefer
     data = None if json_body is None else json.dumps(json_body).encode("utf-8")
@@ -412,10 +541,13 @@ def crear_checkout_session():
         params = {
             "mode": mode,
             "line_items": [{"price": price_id, "quantity": 1}],
-            "success_url": f"{DOMAIN}/pago-exito?session_id={{CHECKOUT_SESSION_ID}}",
-            "cancel_url": f"{DOMAIN}/pago-cancelado",
+            "success_url": f"{DOMAIN}/pago-exito.html?session_id={{CHECKOUT_SESSION_ID}}",
+            "cancel_url": f"{DOMAIN}/pago-cancelado.html",
             "metadata": {"curso": curso, "moneda": moneda, "mode": mode},
-            "billing_address_collection": "required",
+            # Solo tarjeta: evita Link/Apple Pay, que en cuentas test incompletas
+            # suelen devolver el error genérico "Se ha producido un error al procesar...".
+            "payment_method_types": ["card"],
+            "billing_address_collection": "auto",
             "locale": "es",
         }
         # customer_creation solo es válido en mode=payment (no en subscription)
@@ -492,9 +624,14 @@ def stripe_webhook():
                 amount_total=session.get("amount_total"),
                 currency=session.get("currency") or "",
             )
-            _activar_inscripcion_supabase(email, meta.get("curso") or "")
         else:
             print("[Stripe] Evento duplicado; no se reenvían correos.")
+
+        # Siempre intentar activar acceso (idempotente; crea cuenta si no existe)
+        details_name = (details.get("name") or "").strip()
+        _activar_inscripcion_supabase(
+            email, meta.get("curso") or "", full_name=details_name
+        )
     elif event["type"] == "invoice.paid":
         invoice = event["data"]["object"]
         if hasattr(invoice, "to_dict"):
@@ -528,4 +665,6 @@ def archivos_estaticos(filename):
 
 if __name__ == "__main__":
     # use_reloader=False evita procesos duplicados que rompen el webhook en Windows
-    app.run(host="127.0.0.1", port=5000, debug=True, use_reloader=False)
+    port = int(os.getenv("PORT", "5000"))
+    debug = (os.getenv("FLASK_DEBUG") or "").lower() in ("1", "true", "yes")
+    app.run(host="0.0.0.0", port=port, debug=debug, use_reloader=False)

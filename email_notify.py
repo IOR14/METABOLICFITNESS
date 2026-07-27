@@ -156,3 +156,28 @@ def notify_purchase(
         send_email([email], f"Confirmación de compra — {nombre_curso}", student_body)
     else:
         print("[Email] Compra sin email de alumno; solo se avisó al equipo.")
+
+
+def notify_portal_access(*, email: str, curso: str, magic_link: str = "") -> None:
+    """Avisa al alumno que su cuenta del portal ya está lista."""
+    nombre_curso = course_label(curso)
+    portal = _env("DOMAIN", "https://www.metabolicfitness.cl").rstrip("/") + "/aula.html"
+    link_line = (
+        f"Enlace de acceso directo (válido por tiempo limitado):\n{magic_link}\n\n"
+        if magic_link
+        else (
+            f"Entra a {portal} e inicia sesión con este mismo correo "
+            f"(opción “olvidé mi contraseña” o magic link si aplica).\n\n"
+        )
+    )
+    body = (
+        f"Hola,\n\n"
+        f"Tu compra de «{nombre_curso}» ya está activa.\n\n"
+        f"Creamos tu cuenta del Portal Alumnos con este correo.\n"
+        f"{link_line}"
+        f"También puedes abrir el portal aquí: {portal}\n\n"
+        f"Si necesitas ayuda: {WHATSAPP_ACCESS}\n\n"
+        f"Saludos,\n"
+        f"Equipo Metabolic Fitness\n"
+    )
+    send_email([email], f"Acceso al portal — {nombre_curso}", body)

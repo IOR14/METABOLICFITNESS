@@ -581,18 +581,25 @@
                         </div>
 
                         <div class="flex flex-col sm:flex-row flex-wrap gap-3 pt-1">
-                            <a id="btn-comprar-lemon"
-                               href="#"
-                               data-curso="adulto-mayor"
-                               class="course-cta-primary lemonsqueezy-button inline-flex items-center justify-center gap-2 text-white px-7 py-3.5 rounded-xl font-body font-bold text-base hover:shadow-xl hover:scale-[1.02] transition-all">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                                Comprar ahora — USD 150
-                            </a>
-                            <a href="https://wa.me/56910111167?text=Hola%2C%20quiero%20comprar%20el%20curso%20Fisiolog%C3%ADa%20del%20Adulto%20Mayor%20en%20CLP%20%28%24130.000%29."
-                               target="_blank" rel="noopener noreferrer"
-                               class="inline-flex items-center justify-center gap-2 bg-white/10 text-white border border-white/25 px-7 py-3.5 rounded-xl font-body font-semibold text-base hover:bg-white/15 hover:border-white/40 transition-all">
-                                Comprar en CLP (WhatsApp)
-                            </a>
+                            <form method="POST" action="/crear-checkout-session" data-mf-checkout class="contents">
+                                <input type="hidden" name="curso" value="adulto-mayor">
+                                <input type="hidden" name="moneda" value="usd">
+                                <input type="hidden" name="mode" value="payment">
+                                <button type="submit"
+                                        class="course-cta-primary inline-flex items-center justify-center gap-2 text-white px-7 py-3.5 rounded-xl font-body font-bold text-base hover:shadow-xl hover:scale-[1.02] transition-all">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                                    Pagar USD 150
+                                </button>
+                            </form>
+                            <form method="POST" action="/crear-checkout-session" data-mf-checkout class="contents">
+                                <input type="hidden" name="curso" value="adulto-mayor">
+                                <input type="hidden" name="moneda" value="clp">
+                                <input type="hidden" name="mode" value="payment">
+                                <button type="submit"
+                                        class="inline-flex items-center justify-center gap-2 bg-white/10 text-white border border-white/25 px-7 py-3.5 rounded-xl font-body font-semibold text-base hover:bg-white/15 hover:border-white/40 transition-all">
+                                    Pagar $130.000 CLP
+                                </button>
+                            </form>
                             <a href="https://drive.google.com/file/d/1zMG_6vmt2GBzPqATWJ32vZCfXKfIoh3E/view?usp=sharing"
                                target="_blank" rel="noopener noreferrer"
                                class="inline-flex items-center justify-center gap-2 bg-white/10 text-white border border-white/25 px-7 py-3.5 rounded-xl font-body font-semibold text-base hover:bg-white/15 hover:border-white/40 transition-all">
@@ -600,27 +607,6 @@
                                 Ver programa completo
                             </a>
                         </div>
-                        <script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
-                        <script>
-                        (function () {
-                            var btn = document.getElementById('btn-comprar-lemon');
-                            if (!btn) return;
-                            fetch('/api/lemon-checkout/adulto-mayor')
-                                .then(function (r) { return r.json(); })
-                                .then(function (data) {
-                                    if (!data || !data.url) {
-                                        btn.textContent = 'Checkout no configurado';
-                                        btn.removeAttribute('href');
-                                        return;
-                                    }
-                                    btn.setAttribute('href', data.url);
-                                    if (window.createLemonSqueezy) window.createLemonSqueezy();
-                                })
-                                .catch(function () {
-                                    btn.textContent = 'Error al cargar checkout';
-                                });
-                        })();
-                        </script>
                     </div>
                 </div>
             </div>
@@ -680,38 +666,32 @@
                         </div>
 
                         <div class="flex flex-col sm:flex-row flex-wrap gap-3 pt-1">
-                            <a id="btn-comprar-lemon-pediatria"
-                               href="#"
-                               data-curso="pediatria-salud"
-                               class="course-cta-primary lemonsqueezy-button inline-flex items-center justify-center gap-2 text-white px-7 py-3.5 rounded-xl font-body font-bold text-base hover:shadow-xl hover:scale-[1.02] transition-all">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                                Comprar ahora — USD 150
-                            </a>
-                            <a href="https://wa.me/56910111167?text=Hola%2C%20quiero%20comprar%20el%20programa%20Pediatr%C3%ADa%20y%20Salud%20en%20CLP%20%28%24130.000%29."
-                               target="_blank" rel="noopener noreferrer"
-                               class="inline-flex items-center justify-center gap-2 bg-white/10 text-white border border-white/25 px-7 py-3.5 rounded-xl font-body font-semibold text-base hover:bg-white/15 hover:border-white/40 transition-all">
-                                Comprar en CLP (WhatsApp)
-                            </a>
+                            <form method="POST" action="/crear-checkout-session" data-mf-checkout class="contents">
+                                <input type="hidden" name="curso" value="pediatria-salud">
+                                <input type="hidden" name="moneda" value="usd">
+                                <input type="hidden" name="mode" value="payment">
+                                <button type="submit"
+                                        class="course-cta-primary inline-flex items-center justify-center gap-2 text-white px-7 py-3.5 rounded-xl font-body font-bold text-base hover:shadow-xl hover:scale-[1.02] transition-all">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                                    Pagar USD 150
+                                </button>
+                            </form>
+                            <form method="POST" action="/crear-checkout-session" data-mf-checkout class="contents">
+                                <input type="hidden" name="curso" value="pediatria-salud">
+                                <input type="hidden" name="moneda" value="clp">
+                                <input type="hidden" name="mode" value="payment">
+                                <button type="submit"
+                                        class="inline-flex items-center justify-center gap-2 bg-white/10 text-white border border-white/25 px-7 py-3.5 rounded-xl font-body font-semibold text-base hover:bg-white/15 hover:border-white/40 transition-all">
+                                    Pagar $130.000 CLP
+                                </button>
+                            </form>
                         </div>
+                        <script src="js/api-config.js?v=1"></script>
                         <script>
                         (function () {
-                            var btn = document.getElementById('btn-comprar-lemon-pediatria');
-                            if (!btn) return;
-                            fetch('/api/lemon-checkout/pediatria-salud')
-                                .then(function (r) { return r.json(); })
-                                .then(function (data) {
-                                    if (!data || !data.url) {
-                                        btn.textContent = 'Checkout no configurado';
-                                        btn.removeAttribute('href');
-                                        return;
-                                    }
-                                    btn.setAttribute('href', data.url);
-                                    if (window.createLemonSqueezy) window.createLemonSqueezy();
-                                })
-                                .catch(function () {
-                                    btn.textContent = 'Compra por WhatsApp más abajo';
-                                    btn.removeAttribute('href');
-                                });
+                          document.querySelectorAll('form[data-mf-checkout]').forEach(function (f) {
+                            if (window.mfCheckoutAction) f.action = window.mfCheckoutAction();
+                          });
                         })();
                         </script>
                     </div>
