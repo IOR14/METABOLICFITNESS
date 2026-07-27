@@ -3,6 +3,16 @@
 El sitio público actual (`www.metabolicfitness.cl`) está en **GitHub Pages** (solo HTML).
 Los pagos, webhooks y alta automática de alumnos requieren **Flask** en la nube.
 
+## Estado actual (julio 2026)
+
+- **Sitio:** `https://www.metabolicfitness.cl` (GitHub Pages)
+- **API Flask + Stripe:** `https://metabolicfitness.vercel.app`
+- Los botones de pago en Academia / Suscripción apuntan a la API de Vercel
+- Webhook Stripe → `https://metabolicfitness.vercel.app/webhook`
+- Tras el pago, redirect a `https://www.metabolicfitness.cl/pago-exito.html`
+
+Para unificar todo en un solo dominio, agrega `www.metabolicfitness.cl` al proyecto Vercel y cambia el DNS en Cloudflare (ver abajo).
+
 ## Opción recomendada: Vercel (Flask completo)
 
 Sirve el sitio + API en el mismo origen.
