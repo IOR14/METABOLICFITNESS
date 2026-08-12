@@ -1,6 +1,6 @@
 // Archivo generado automaticamente por exportar_datos_web.py
 // NO editar a mano. Para actualizar: python exportar_datos_web.py
-// version: 18 certificados (MF-FRM-19)
+// version: 27 certificados (MF-FRM-28)
 window.CERTIFICADOS = {
   "MF-FRM-02": {
     "nombre_estudiante": "Antonio Ruíz",
@@ -91,5 +91,50 @@ window.CERTIFICADOS = {
     "nombre_estudiante": "Nohemi Escamilla",
     "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
     "fecha": "06-06-2026"
+  },
+  "MF-FRM-20": {
+    "nombre_estudiante": "Vicente Bugueño Alfaro",
+    "curso": "Fisiología del Ejercicio Físico y de la Obesidad",
+    "fecha": "08-08-2026"
+  },
+  "MF-FRM-21": {
+    "nombre_estudiante": "Ana Colina Correa",
+    "curso": "Fisiología del Ejercicio Físico y de la Obesidad",
+    "fecha": "08-08-2026"
+  },
+  "MF-FRM-22": {
+    "nombre_estudiante": "Hernán Carrasco",
+    "curso": "Fisiología del Ejercicio Físico y de la Obesidad",
+    "fecha": "08-08-2026"
+  },
+  "MF-FRM-23": {
+    "nombre_estudiante": "Sofía Garfias Cruz",
+    "curso": "Fisiología del Ejercicio Físico y de la Obesidad",
+    "fecha": "08-08-2026"
+  },
+  "MF-FRM-24": {
+    "nombre_estudiante": "Eric Bello Bautista",
+    "curso": "Fisiología del Ejercicio Físico y de la Obesidad",
+    "fecha": "08-08-2026"
+  },
+  "MF-FRM-25": {
+    "nombre_estudiante": "Tatiana Ramírez de Plaza",
+    "curso": "Fisiología del Ejercicio Físico y de la Obesidad",
+    "fecha": "08-08-2026"
+  },
+  "MF-FRM-26": {
+    "nombre_estudiante": "Nermari Aular",
+    "curso": "Fisiología del Ejercicio Físico y de la Obesidad",
+    "fecha": "08-08-2026"
+  },
+  "MF-FRM-27": {
+    "nombre_estudiante": "Héctor Mario Bustos",
+    "curso": "Fisiología del Ejercicio Físico y de la Obesidad",
+    "fecha": "08-08-2026"
+  },
+  "MF-FRM-28": {
+    "nombre_estudiante": "Silvia Sánchez Cárdenas",
+    "curso": "Fisiología del Ejercicio Físico y de la Obesidad",
+    "fecha": "08-08-2026"
   }
 };
