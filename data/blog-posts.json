@@ -1,5 +1,24 @@
 [
   {
+    "slug": "variabilidad-de-la-frecuencia-cardiaca-como-biomarcador-clinico-de-la-modulacion-autonoma-al-rendimiento-y-la-salud-cardiovascular",
+    "title": "Variabilidad de la frecuencia cardíaca como biomarcador clínico: De la modulación autónoma al rendimiento y la salud cardiovascular",
+    "category": "Clinica",
+    "category_color": "metabolic-cyan",
+    "gradient": "from-metabolic-cyan/20 to-metabolic-green/20",
+    "excerpt": "Análisis fisiológico de la variabilidad de la frecuencia cardíaca (VFC) para profesionales del movimiento y la salud clínica. Descubra cómo los cambios agudos en el tono simpático optimizan el rendimiento bajo estrés, y cómo las adaptaciones crónicas del entrenamiento funcional de alta intensidad fortalecen el tono parasimpático y disminuyen el riesgo cardiovascular.",
+    "published_at": "2026-09-03",
+    "image": "assets/blog/variabilidad-de-la-frecuencia-cardiaca-como-biomarcador-clinico-de-la-modulacion-autonoma-al-rendimiento-y-la-salud-cardiovascular.jpg",
+    "pdf": "blog/pdf/variabilidad-de-la-frecuencia-cardiaca-como-biomarcador-clinico-de-la-modulacion-autonoma-al-rendimiento-y-la-salud-cardiovascular.pdf",
+    "keywords": [
+      "Variabilidad de la frecuencia cardíaca",
+      "Sistema nervioso autónomo",
+      "Fisiología clínica del ejercicio",
+      "Entrenamiento funcional de alta intensidad",
+      "Fisiología táctica",
+      "Riesgo cardiovascular"
+    ]
+  },
+  {
     "slug": "desmitificando-el-tmao-en-la-sensibilidad-a-la-insulina-y-optimizando-la-transicion-en-diabetes-tipo-1-evidencia-clinica-y-conductual",
     "title": "Desmitificando el TMAO en la sensibilidad a la insulina y optimizando la transición en diabetes tipo 1: Evidencia clínica y conductual",
     "category": "Clinica",
