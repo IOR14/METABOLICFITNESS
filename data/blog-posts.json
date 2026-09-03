@@ -1,0 +1,48 @@
+[
+  {
+    "slug": "desmitificando-el-tmao-en-la-sensibilidad-a-la-insulina-y-optimizando-la-transicion-en-diabetes-tipo-1-evidencia-clinica-y-conductual",
+    "title": "Desmitificando el TMAO en la sensibilidad a la insulina y optimizando la transición en diabetes tipo 1: Evidencia clínica y conductual",
+    "category": "Clinica",
+    "category_color": "metabolic-cyan",
+    "gradient": "from-metabolic-cyan/20 to-metabolic-green/20",
+    "excerpt": "Análisis de dos ensayos clínicos publicados en 2026 que transforman el manejo metabólico. Evidencia reciente descarta la relación causal entre el metabolito de la microbiota TMAO y la resistencia a la insulina, mientras que un modelo de mentores pares demuestra mitigar significativamente el distrés por diabetes en adultos jóvenes.",
+    "published_at": "2026-09-03",
+    "image": "assets/blog/desmitificando-el-tmao-en-la-sensibilidad-a-la-insulina-y-optimizando-la-transicion-en-diabetes-tipo-1-evidencia-clinica-y-conductual.jpg",
+    "pdf": "blog/pdf/desmitificando-el-tmao-en-la-sensibilidad-a-la-insulina-y-optimizando-la-transicion-en-diabetes-tipo-1-evidencia-clinica-y-conductual.pdf",
+    "keywords": [
+      "TMAO",
+      "sensibilidad a la insulina",
+      "microbiota intestinal",
+      "diabetes tipo 1",
+      "Diabetes Care",
+      "fisiologia metabolica"
+    ]
+  },
+  {
+    "slug": "ejercicio-sensibilidad-insulina",
+    "title": "Ejercicio y Sensibilidad a la Insulina",
+    "category": "Investigacion",
+    "category_color": "metabolic-green",
+    "gradient": "from-metabolic-green/20 to-metabolic-cyan/20",
+    "excerpt": "Revision de la evidencia cientifica sobre los mecanismos fisiologicos que mejoran la sensibilidad insulinica mediante el ejercicio.",
+    "published_at": "2026-01-15"
+  },
+  {
+    "slug": "prescripcion-ejercicio-obesidad",
+    "title": "Prescripcion de Ejercicio en Obesidad",
+    "category": "Clinica",
+    "category_color": "metabolic-cyan",
+    "gradient": "from-metabolic-cyan/20 to-metabolic-green/20",
+    "excerpt": "Guia practica para la prescripcion de ejercicio en pacientes con obesidad, considerando parametros fisiologicos y metabolicos.",
+    "published_at": "2026-01-08"
+  },
+  {
+    "slug": "nuevas-tendencias-fisiologia-clinica",
+    "title": "Nuevas Tendencias en Fisiologia Clinica",
+    "category": "Educacion",
+    "category_color": "metabolic-green",
+    "gradient": "from-metabolic-green/20 to-metabolic-cyan/20",
+    "excerpt": "Analisis de las ultimas investigaciones y tendencias en el campo de la Fisiologia Clinica del Ejercicio y su aplicacion practica.",
+    "published_at": "2025-12-20"
+  }
+]
