@@ -2,12 +2,16 @@
   var grid = document.getElementById('blog-posts-grid');
   if (!grid) return;
 
-  fetch('data/blog-posts.json')
+  fetch('data/blog-posts.json?v=' + Date.now())
     .then(function (response) {
       if (!response.ok) throw new Error('No se pudo cargar el indice del blog');
       return response.json();
     })
     .then(function (posts) {
+      // Solo papers con articulo real (slug + imagen o pdf)
+      posts = (posts || []).filter(function (post) {
+        return post && post.slug && (post.image || post.pdf);
+      });
       if (!posts.length) {
         grid.innerHTML =
           '<p class="col-span-full text-center font-body text-metabolic-charcoal/70">Aun no hay articulos publicados.</p>';
@@ -27,12 +31,16 @@
     var date = post.published_at ? formatDate(post.published_at) : '';
     var image = post.image ? escapeHtml(post.image) : '';
     var hero = image
-      ? '<img src="' + image + '" alt="' + escapeHtml(post.title) + '" class="w-full h-full object-cover">'
+      ? '<img src="' + image + '?v=2" alt="' + escapeHtml(post.title) + '" class="w-full h-full object-cover">'
       : '<div class="w-full h-full bg-gradient-to-br from-metabolic-green/20 to-metabolic-cyan/20 flex items-center justify-center">' +
           '<svg class="w-16 h-16 text-' + color + '" fill="none" stroke="currentColor" viewBox="0 0 24 24">' +
             '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>' +
           '</svg>' +
         '</div>';
+
+    var pdfLink = post.pdf
+      ? '<a href="' + escapeHtml(post.pdf) + '" download class="inline-flex items-center px-3 py-1.5 rounded-lg text-white text-xs font-heading font-semibold" style="background:#460877;">Descargar PDF</a>'
+      : '';
 
     return (
       '<article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all border border-gray-100">' +
@@ -46,7 +54,7 @@
           '<p class="font-body text-metabolic-charcoal/70 text-sm mb-4 line-clamp-3">' + escapeHtml(post.excerpt) + '</p>' +
           '<div class="flex items-center justify-between gap-3">' +
             '<a href="' + href + '" class="text-metabolic-green font-body font-semibold text-sm hover:underline">Leer articulo →</a>' +
-            (post.pdf ? '<a href="' + escapeHtml(post.pdf) + '" download class="text-metabolic-purple font-body text-xs font-semibold hover:underline">PDF</a>' : '') +
+            pdfLink +
           '</div>' +
         '</div>' +
       '</article>'

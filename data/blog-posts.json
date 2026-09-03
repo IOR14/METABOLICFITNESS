@@ -1,21 +1,21 @@
 [
   {
-    "slug": "variabilidad-de-la-frecuencia-cardiaca-como-biomarcador-clinico-de-la-modulacion-autonoma-al-rendimiento-y-la-salud-cardiovascular",
-    "title": "Variabilidad de la frecuencia cardíaca como biomarcador clínico: De la modulación autónoma al rendimiento y la salud cardiovascular",
+    "slug": "variabilidad-de-la-frecuencia-cardiaca-y-control-autonomico-en-la-fisiologia-clinica-rigor-metodologico-y-prescripcion-del-ejercicio",
+    "title": "Variabilidad de la Frecuencia Cardíaca y Control Autonómico en la Fisiología Clínica: Rigor Metodológico y Prescripción del Ejercicio",
     "category": "Clinica",
     "category_color": "metabolic-cyan",
     "gradient": "from-metabolic-cyan/20 to-metabolic-green/20",
-    "excerpt": "Análisis fisiológico de la variabilidad de la frecuencia cardíaca (VFC) para profesionales del movimiento y la salud clínica. Descubra cómo los cambios agudos en el tono simpático optimizan el rendimiento bajo estrés, y cómo las adaptaciones crónicas del entrenamiento funcional de alta intensidad fortalecen el tono parasimpático y disminuyen el riesgo cardiovascular.",
+    "excerpt": "Una revisión científica exhaustiva sobre la interpretación clínica de la variabilidad de la frecuencia cardíaca (VFC), los factores que afectan su reproducibilidad y cómo las nuevas terapias y modalidades de ejercicio modulan la función autonómica, el metaboreflejo y la recuperación en poblaciones clínicas.",
     "published_at": "2026-09-03",
-    "image": "assets/blog/variabilidad-de-la-frecuencia-cardiaca-como-biomarcador-clinico-de-la-modulacion-autonoma-al-rendimiento-y-la-salud-cardiovascular.jpg",
-    "pdf": "blog/pdf/variabilidad-de-la-frecuencia-cardiaca-como-biomarcador-clinico-de-la-modulacion-autonoma-al-rendimiento-y-la-salud-cardiovascular.pdf",
+    "image": "assets/blog/variabilidad-de-la-frecuencia-cardiaca-y-control-autonomico-en-la-fisiologia-clinica-rigor-metodologico-y-prescripcion-del-ejercicio.jpg",
+    "pdf": "blog/pdf/variabilidad-de-la-frecuencia-cardiaca-y-control-autonomico-en-la-fisiologia-clinica-rigor-metodologico-y-prescripcion-del-ejercicio.pdf",
     "keywords": [
       "Variabilidad de la frecuencia cardíaca",
-      "Sistema nervioso autónomo",
-      "Fisiología clínica del ejercicio",
-      "Entrenamiento funcional de alta intensidad",
-      "Fisiología táctica",
-      "Riesgo cardiovascular"
+      "Fisiología cardiovascular",
+      "Metaboreflejo muscular",
+      "Control autonómico",
+      "Prescripción del ejercicio",
+      "Recuperación post-esfuerzo"
     ]
   },
   {
@@ -56,32 +56,5 @@
       "equilibrio postural",
       "MSSE"
     ]
-  },
-  {
-    "slug": "ejercicio-sensibilidad-insulina",
-    "title": "Ejercicio y Sensibilidad a la Insulina",
-    "category": "Investigacion",
-    "category_color": "metabolic-green",
-    "gradient": "from-metabolic-green/20 to-metabolic-cyan/20",
-    "excerpt": "Revision de la evidencia cientifica sobre los mecanismos fisiologicos que mejoran la sensibilidad insulinica mediante el ejercicio.",
-    "published_at": "2026-01-15"
-  },
-  {
-    "slug": "prescripcion-ejercicio-obesidad",
-    "title": "Prescripcion de Ejercicio en Obesidad",
-    "category": "Clinica",
-    "category_color": "metabolic-cyan",
-    "gradient": "from-metabolic-cyan/20 to-metabolic-green/20",
-    "excerpt": "Guia practica para la prescripcion de ejercicio en pacientes con obesidad, considerando parametros fisiologicos y metabolicos.",
-    "published_at": "2026-01-08"
-  },
-  {
-    "slug": "nuevas-tendencias-fisiologia-clinica",
-    "title": "Nuevas Tendencias en Fisiologia Clinica",
-    "category": "Educacion",
-    "category_color": "metabolic-green",
-    "gradient": "from-metabolic-green/20 to-metabolic-cyan/20",
-    "excerpt": "Analisis de las ultimas investigaciones y tendencias en el campo de la Fisiologia Clinica del Ejercicio y su aplicacion practica.",
-    "published_at": "2025-12-20"
   }
 ]
