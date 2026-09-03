@@ -19,6 +19,26 @@
     ]
   },
   {
+    "slug": "fisiologia-del-control-motor-y-sarcopenia-nuevos-desafios-en-la-prevencion-de-caidas",
+    "title": "Fisiología del Control Motor y Sarcopenia: Nuevos Desafíos en la Prevención de Caídas",
+    "category": "Clinica",
+    "category_color": "metabolic-cyan",
+    "gradient": "from-metabolic-cyan/20 to-metabolic-green/20",
+    "excerpt": "Analizamos evidencia científica reciente sobre cómo la transición hormonal en mujeres posmenopáusicas y el estrés térmico en pacientes con diabetes tipo 2 condicionan la estabilidad postural, la sarcopenia y el riesgo de caídas.",
+    "published_at": "2026-09-03",
+    "image": "assets/blog/fisiologia-del-control-motor-y-sarcopenia-nuevos-desafios-en-la-prevencion-de-caidas.jpg",
+    "pdf": "blog/pdf/fisiologia-del-control-motor-y-sarcopenia-nuevos-desafios-en-la-prevencion-de-caidas.pdf",
+    "keywords": [
+      "sarcopenia",
+      "control motor",
+      "prevencion de caidas",
+      "menopausia",
+      "diabetes tipo 2",
+      "equilibrio postural",
+      "MSSE"
+    ]
+  },
+  {
     "slug": "ejercicio-sensibilidad-insulina",
     "title": "Ejercicio y Sensibilidad a la Insulina",
     "category": "Investigacion",
