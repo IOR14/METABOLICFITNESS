@@ -5,9 +5,12 @@
     "editorial": 4.0
   },
   "fisiologia-del-control-motor-y-sarcopenia-nuevos-desafios-en-la-prevencion-de-caidas": {
-    "sum": 0,
-    "count": 0,
-    "editorial": 4.0
+    "sum": 5,
+    "count": 1,
+    "editorial": 4.0,
+    "votes": {
+      "test_voter_persist": 5
+    }
   },
   "variabilidad-de-la-frecuencia-cardiaca-y-control-autonomico-en-la-fisiologia-clinica-rigor-metodologico-y-prescripcion-del-ejercicio": {
     "sum": 0,
