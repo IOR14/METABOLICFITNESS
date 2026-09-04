@@ -24,6 +24,7 @@ from flask_cors import CORS
 from database import buscar_certificado, init_db, registrar_compra, seed_data
 from email_notify import notify_purchase
 from bbb_client import ensure_meeting, join_url, list_recordings
+from blog_ratings_store import get_slug_stats, upsert_vote
 
 load_dotenv()
 
@@ -650,6 +651,43 @@ def stripe_webhook():
         print("[Stripe] Factura fallida:", invoice.get("id"))
 
     return "", 200
+
+
+@app.route("/api/blog-rating", methods=["GET", "POST", "OPTIONS"])
+def api_blog_rating():
+    """Guarda y consulta evaluaciones de papers (1-5). No se borran."""
+    if request.method == "OPTIONS":
+        return ("", 204)
+
+    if request.method == "GET":
+        slug = (request.args.get("slug") or "").strip()
+        if not slug:
+            return jsonify({"error": "slug requerido"}), 400
+        try:
+            return jsonify(get_slug_stats(slug))
+        except Exception as exc:
+            return jsonify({"error": str(exc)}), 500
+
+    payload = request.get_json(silent=True) or {}
+    slug = str(payload.get("slug") or "").strip()
+    voter_id = str(payload.get("voter_id") or "").strip()
+    try:
+        score = int(payload.get("score"))
+    except Exception:
+        return jsonify({"error": "score invalido"}), 400
+    editorial = payload.get("editorial")
+    try:
+        editorial_f = float(editorial) if editorial is not None else None
+    except Exception:
+        editorial_f = None
+
+    try:
+        result = upsert_vote(slug, voter_id, score, editorial=editorial_f)
+        return jsonify(result)
+    except ValueError as exc:
+        return jsonify({"error": str(exc)}), 400
+    except Exception as exc:
+        return jsonify({"error": str(exc)}), 500
 
 
 @app.route("/<path:filename>")
