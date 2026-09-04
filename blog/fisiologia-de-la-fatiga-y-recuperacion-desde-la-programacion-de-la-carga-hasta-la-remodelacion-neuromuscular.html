@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fisiología de la Fatiga y Recuperación: Desde la Programación de la Carga hasta la Remodelación Neuromuscular - Metabolic Fitness</title>
+    <meta name="description" content="Analizamos cómo la densidad de la carga física, las fluctuaciones del ciclo hormonal y los procesos inflamatorios locales impactan de manera diferenciada la fatiga de los deportistas y pacientes. Una perspectiva clínica basada en la plasticidad neural y los límites estructurales de la recuperación celular.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'metabolic-green': '#5CB85C',
+                        'metabolic-charcoal': '#404041',
+                        'metabolic-cyan': '#00AEEF',
+                        'metabolic-purple': '#460877',
+                        'metabolic-bg': '#FFFFFF',
+                        'metabolic-bg-secondary': '#FAFAFA',
+                    },
+                    fontFamily: {
+                        'heading': ['Montserrat', 'sans-serif'],
+                        'body': ['Open Sans', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body { font-family: 'Open Sans', sans-serif; color: #404041; background: #FAFAFA; }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+        .article-content p { margin-bottom: 1.15rem; line-height: 1.9; font-size: 1.05rem; text-align: justify; hyphens: auto; }
+        .article-content h2 { margin-top: 2.2rem; margin-bottom: 0.9rem; font-weight: 700; font-size: 1.45rem; color: #460877; text-align: left; }
+        .article-content ul { list-style: disc; padding-left: 1.4rem; margin-bottom: 1rem; }
+        .article-content li { margin-bottom: 0.45rem; line-height: 1.75; text-align: justify; }
+        .justified { text-align: justify; hyphens: auto; }
+        .abstract-box { border-left: 5px solid #5CB85C; background: linear-gradient(90deg, #F3FBF3 0%, #FFFFFF 100%); }
+        .clinical-box { border: 1px solid #5CB85C33; background: #F8FFF8; box-shadow: 0 10px 30px rgba(92,184,92,0.08); }
+        .sidebar-card { background: white; border: 1px solid #E5E7EB; box-shadow: 0 8px 24px rgba(70,8,119,0.06); }
+        .keyword-chip { display: inline-block; background: rgba(255,255,255,0.14); color: #fff; border: 1px solid rgba(255,255,255,0.22); border-radius: 999px; padding: 0.28rem 0.75rem; font-size: 0.7rem; letter-spacing: 0.04em; text-transform: uppercase; font-family: Montserrat, sans-serif; font-weight: 600; }
+        .mf-pdf-cta {
+            background: #460877 !important;
+            color: #fff !important;
+            display: inline-block;
+            text-decoration: none !important;
+            border: none;
+            cursor: pointer;
+        }
+        .mf-pdf-cta:hover { background: #5a0a99 !important; }
+        aside .mf-pdf-cta { display: block; width: 100%; box-sizing: border-box; text-align: center; }
+        .mf-rating-box {
+            width: 100%;
+            max-width: 28rem;
+            background: #FAFAFA;
+            border: 1px solid #E5E7EB;
+            border-radius: 1rem;
+            padding: 1.1rem 1.25rem;
+            text-align: center;
+        }
+        .mf-star { color: #D1D5DB; cursor: pointer; user-select: none; line-height: 1; }
+        .mf-star-on, .mf-star.mf-active, .mf-star.mf-hover { color: #F5B301; }
+        .mf-star-half { color: #F5B301; opacity: 0.55; }
+        .mf-star-off { color: #D1D5DB; }
+        .mf-stars-display .mf-star { cursor: default; }
+        .mf-stars-input { display: inline-flex; gap: 0.15rem; font-size: 1.85rem; }
+        .mf-stars-input button { background: none; border: none; padding: 0; cursor: pointer; }
+        .mf-article-header { position: sticky; top: 0; z-index: 50; background: #460877; }
+        .mf-article-nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+        }
+        .mf-article-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem;
+            margin-left: auto;
+        }
+        .mf-back-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0.55rem 0.9rem;
+            border-radius: 0.6rem;
+            background: rgba(255,255,255,0.14);
+            color: #fff !important;
+            text-decoration: none !important;
+            font-weight: 600;
+            white-space: nowrap;
+            position: relative;
+            z-index: 2;
+        }
+        .mf-back-link:hover { background: rgba(255,255,255,0.22); }
+        .mf-header-pdf {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0.55rem 0.9rem;
+            border-radius: 0.6rem;
+            background: #5CB85C !important;
+            color: #fff !important;
+            text-decoration: none !important;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        @media (max-width: 640px) {
+            .mf-article-header { position: sticky; top: 0; }
+            .mf-article-nav { flex-direction: column; align-items: stretch; gap: 0.65rem; }
+            .mf-article-actions {
+                margin-left: 0;
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .mf-back-link, .mf-header-pdf {
+                width: 100%;
+                flex: none;
+                touch-action: manipulation;
+                -webkit-tap-highlight-color: rgba(255,255,255,0.25);
+            }
+            .mf-logo-link { pointer-events: auto; }
+            .mf-logo-link img { max-width: 170px !important; height: 2.5rem !important; }
+            .article-hero { grid-template-columns: 1fr !important; min-height: 0 !important; }
+            .article-hero-copy { padding: 1.25rem !important; }
+            .article-hero-copy h1 { font-size: 1.45rem !important; line-height: 1.25 !important; }
+            .article-hero-media { min-height: 12rem !important; }
+            .article-hero-fade { display: none !important; }
+            main.mf-article-main { padding-top: 1.25rem !important; padding-bottom: 2rem !important; }
+            .keyword-chip { font-size: 0.62rem; padding: 0.22rem 0.55rem; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <header class="mf-article-header text-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <nav class="mf-article-nav" aria-label="Navegacion del articulo">
+                <a href="../blog.html" class="mf-logo-link flex items-center gap-2 min-w-0">
+                    <img src="../assets/logo-mf-white.png" alt="Metabolic Fitness" class="h-10 sm:h-12 w-auto max-w-[200px] object-contain object-left">
+                    <span class="font-heading font-bold text-sm hidden md:inline text-white/95">Paper Cientificos</span>
+                </a>
+                <div class="mf-article-actions">
+                    <a href="../blog.html" class="mf-back-link font-body text-sm">← Volver al blog</a>
+                    <a href="pdf/fisiologia-de-la-fatiga-y-recuperacion-desde-la-programacion-de-la-carga-hasta-la-remodelacion-neuromuscular.pdf" download class="mf-header-pdf font-body text-sm">Descargar PDF</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 sm:pt-8">
+            <div class="article-hero rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl bg-white grid lg:grid-cols-[1.05fr_0.95fr] min-h-[22rem]">
+                <div class="article-hero-copy p-6 sm:p-12 flex flex-col justify-center bg-[#460877] text-white order-2 lg:order-1">
+                    <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
+                        <span class="px-3 py-1 rounded-full bg-white text-metabolic-purple text-xs font-heading font-semibold uppercase tracking-wide">Clinica</span>
+                        <span class="text-xs font-body text-white/80">2026-09-04</span>
+                        <span class="text-xs font-body text-white/80">5 min de lectura</span>
+                    </div>
+                    <h1 class="font-heading font-bold text-2xl sm:text-[2.35rem] leading-tight">Fisiología de la Fatiga y Recuperación: Desde la Programación de la Carga hasta la Remodelación Neuromuscular</h1>
+                    <div class="mt-5 flex flex-wrap gap-2"><span class="keyword-chip">fatiga neuromuscular</span><span class="keyword-chip">recuperación funcional</span><span class="keyword-chip">ciclo menstrual</span><span class="keyword-chip">plasticidad neural</span><span class="keyword-chip">inflamación tisular</span><span class="keyword-chip">dosificación de la carga</span></div>
+                </div>
+                <div class="article-hero-media relative min-h-[14rem] order-1 lg:order-2">
+                    <img src="../assets/blog/fisiologia-de-la-fatiga-y-recuperacion-desde-la-programacion-de-la-carga-hasta-la-remodelacion-neuromuscular.jpg" alt="Fisiología de la Fatiga y Recuperación: Desde la Programación de la Carga hasta la Remodelación Neuromuscular" class="w-full h-full object-cover">
+                    <div class="article-hero-fade absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#460877] to-transparent hidden lg:block"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="mf-article-main max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+        <div class="grid lg:grid-cols-12 gap-6 lg:gap-8">
+            <article class="lg:col-span-8 min-w-0">
+                <div class="abstract-box rounded-2xl p-5 sm:p-8 mb-6 sm:mb-8">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-green mb-3">Resumen ejecutivo</p>
+                    <p class="font-body text-base sm:text-lg leading-relaxed text-metabolic-charcoal/90 justified">Analizamos cómo la densidad de la carga física, las fluctuaciones del ciclo hormonal y los procesos inflamatorios locales impactan de manera diferenciada la fatiga de los deportistas y pacientes. Una perspectiva clínica basada en la plasticidad neural y los límites estructurales de la recuperación celular.</p>
+                </div>
+
+                <div class="article-content font-body text-metabolic-charcoal/90 bg-white rounded-2xl p-5 sm:p-8 shadow-sm border border-gray-100">
+                    <p>En el ámbito de la fisiología clínica del ejercicio y la rehabilitación, comprender la interconexión entre la fatiga neuromuscular, las respuestas inflamatorias locales y la recuperación de los tejidos es fundamental para prescribir cargas de forma segura y eficaz. La fatiga no es un fenómeno aislado; está modulada por el entorno hormonal sistémico, la integridad de las vías de señalización neural y el estado histológico de los tejidos efectores. Desde la dosificación de intervalos de alta intensidad en el deporte de rendimiento hasta la neurorehabilitación robótica y la tolerancia vascular periférica, la evidencia científica más reciente en revistas de alto impacto redefine los límites de la intervención terapéutica.</p><h2>Modulación de la fatiga neuromuscular y el papel del ciclo hormonal</h2><p>La prescripción del entrenamiento interválico de alta intensidad (HIIT) exige una dosificación precisa de la relación entre el volumen de trabajo y la pausa para mitigar la fatiga neuromuscular de forma individualizada. Un ensayo clínico aleatorizado publicado en el <strong>Journal of Strength and Conditioning Research</strong> (2026) evaluó cómo influyen las fases hormonales femeninas —la fase de hormonas bajas (LHP) y la fase de hormonas altas (HHP)— en el rendimiento y la fatiga de 35 mujeres mediante dos protocolos de HIIT equiparados en trabajo total: HIIT 1:1 (10 series de 1 minuto de trabajo por 1 de descanso) y HIIT 2:1 (20 series de 20 segundos de trabajo por 10 de descanso).</p><p>Los resultados indicaron que el HIIT 2:1 genera una potencia promedio y una potencia pico significativamente mayores que el HIIT 1:1 (con diferencias de potencia de -36.6 W y -34.1 W, respectivamente). Sin embargo, la caída de potencia (indicador de fatiga neuromuscular) fue significativamente mayor en la LHP que en la HHP a nivel global (diferencia de 11.2 W por segundo). Al analizar por protocolo, el HIIT 2:1 demostró una caída de potencia notablemente superior en la LHP frente a la HHP (diferencia de 11.4 W), mientras que en el protocolo de HIIT 1:1 no se registraron diferencias significativas entre fases hormonales. Esto sugiere que un ratio de trabajo-descanso equivalente de 1:1 amortigua la fatiga neuromuscular y favorece la recuperación aguda, especialmente durante la fase de hormonas bajas de las atletas.</p><h2>Inflamación tisular y su impacto en la función neuromuscular periférica</h2><p>Más allá de la fatiga sistémica aguda, la inflamación crónica localizada y los procesos fibróticos en los tejidos diana representan una barrera fisiológica crítica para la función neuromuscular y los mecanismos reflejos. Una revisión detallada de <strong>Physiological Reviews</strong> (2026) sobre el peristaltismo neuromuscular evidenció que la motilidad coordinada depende de una secuencia precisa de inhibición seguida de excitación controlada por el sistema nervioso central, el plexo mientérico y las fibras musculares circulares y longitudinales.</p><p>Cuando se desarrollan procesos inflamatorios y fibróticos en la muscularis propria y el plexo mientérico —como se observa en la acalasia—, se produce una pérdida drástica de las neuronas inhibidoras del plexo mientérico y el reemplazo del tejido muscular por tejido fibroso. Este remodelado reduce severamente la distensibilidad del tejido y altera la respuesta refleja ante el estiramiento mecánico. Como consecuencia, se generan contracciones espásticas o de larga duración del músculo longitudinal que contribuyen de forma directa a la aparición de dolor e hipersensibilidad. Para los profesionales del movimiento, este modelo clínico expone cómo la inflamación tisular sostenida degrada la mecanosensibilidad periférica y el control motor local.</p><h2>Plasticidad neural y optimización de la recuperación funcional</h2><p>En el campo de la neurorrehabilitación y la kinesiología clínica, la selección de la modalidad de entrenamiento óptima es el catalizador principal para inducir adaptaciones plásticas efectivas. Un ensayo controlado aleatorizado de 2026 publicado en <strong>Gait & Posture</strong> investigó los efectos del entrenamiento robótico de la marcha (RAGT) en modo pasivo versus modo asistido en 48 pacientes hospitalizados con secuelas de un accidente cerebrovascular subagudo unilateral. Tras un período de intervención de dos semanas, todos los grupos (incluido el grupo que recibió terapia de rehabilitación tradicional) lograron mejoras significativas en la función motora de extremidades inferiores (FMA-LE), el equilibrio (BBS) y el índice de Barthel modificado (MBI).</p><p>No obstante, la evaluación mediante espectroscopía funcional de infrarrojo cercano (fNIRS) reveló patrones de activación cortical y conectividad funcional claramente diferenciados entre las distintas modalidades de entrenamiento. Aunque ningún modo robótico demostró una superioridad clínica estadística sobre los otros en los parámetros motores finales a corto plazo, las diferencias en los patrones neuronales sugieren que los modos asistido y pasivo desencadenan mecanismos neuroplásticos diferenciados. Esto resalta la importancia de personalizar la asistencia y la carga física basándose en las necesidades de adaptación cortical del paciente para maximizar la recuperación neurológica.</p><h2>Límites de la intervención mecánica en la recuperación vascular aguda</h2><p>El proceso de recuperación tisular exige respetar la tolerancia estructural del lecho vascular, especialmente cuando se enfrentan insultos isquémicos. El ensayo clínico aleatorizado multicéntrico DISCOUNT, publicado en <strong>JAMA</strong> (2026), evaluó los beneficios de la trombectomía mecánica frente al tratamiento médico exclusivo en 244 pacientes con accidente cerebrovascular isquémico agudo debido a oclusiones de vasos medianos o distales (MDVO). El estudio debió detenerse prematuramente por futilidad y por una tasa aumentada de complicaciones adversas graves en el grupo de intervención.</p><p>A los tres meses, la trombectomía no demostró una mayor tasa de recuperación funcional clínica favorable en comparación con el tratamiento médico (62% frente a 68%). Por el contrario, los pacientes asignados al grupo de trombectomía presentaron tasas significativamente más elevadas de hemorragia intracraneal sintomática (11% vs 3%, p = 0.008), hemorragia subaracnoidea (13% vs 2%, p < 0.001) y migración de émbolos (5% vs 1%, p = 0.04). En la práctica clínica, este hallazgo es un recordatorio de que los intentos agresivos de restauración mecánica en microvasculaturas altamente vulnerables superan los umbrales de tolerancia estructural, comprometiendo la viabilidad de la recuperación tisular y favoreciendo desenlaces hemorrágicos deletéreos frente al manejo puramente médico.</p>
+                </div>
+
+                <section class="clinical-box rounded-2xl p-6 mt-8"><h2 class="font-heading font-bold text-xl text-metabolic-charcoal mb-3">Implicaciones clinicas</h2><p class="font-body text-metabolic-charcoal/85 leading-relaxed justified">Para los médicos del deporte, kinesiólogos y fisiólogos del ejercicio en Latinoamérica, la prescripción del ejercicio y la rehabilitación neuromuscular debe abandonar los esquemas genéricos. Es mandatorio ajustar la densidad del esfuerzo (relación trabajo-pausa) en mujeres según la fase del ciclo hormonal para modular la fatiga neuromuscular, personalizar las estrategias de movimiento (asistidas o pasivas) basándose en la plasticidad cortical del paciente, e identificar las limitaciones funcionales que imponen la inflamación y la fibrosis localizadas, priorizando siempre la integridad tisular frente a intervenciones invasivas que superen la tolerancia estructural de la vasculatura.</p></section>
+                <section id="referencias" class="mt-12 pt-8 border-t border-gray-200"><h2 class="font-heading font-bold text-2xl text-metabolic-charcoal mb-6">Referencias</h2><ol class="space-y-4 list-none"><li class="border-l-4 border-metabolic-green pl-4 py-2"><p class="font-body text-sm text-metabolic-charcoal/90">Effectiveness of passive vs. assistive robotic gait training on functional recovery and neuroplasticity post-stroke: A randomized controlled trial. (Gait &amp; posture, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42263540/" target="_blank" rel="noopener noreferrer" class="text-xs text-metabolic-cyan hover:underline break-all">https://pubmed.ncbi.nlm.nih.gov/42263540/</a></li><li class="border-l-4 border-metabolic-green pl-4 py-2"><p class="font-body text-sm text-metabolic-charcoal/90">Esophageal peristalsis in health and disease: mechanistic insights. (Physiological reviews, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42133357/" target="_blank" rel="noopener noreferrer" class="text-xs text-metabolic-cyan hover:underline break-all">https://pubmed.ncbi.nlm.nih.gov/42133357/</a></li><li class="border-l-4 border-metabolic-green pl-4 py-2"><p class="font-body text-sm text-metabolic-charcoal/90">Mechanical Thrombectomy in Ischemic Stroke With a Medium or Distal Arterial Occlusion: The DISCOUNT Randomized Clinical Trial. (JAMA, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42485024/" target="_blank" rel="noopener noreferrer" class="text-xs text-metabolic-cyan hover:underline break-all">https://pubmed.ncbi.nlm.nih.gov/42485024/</a></li><li class="border-l-4 border-metabolic-green pl-4 py-2"><p class="font-body text-sm text-metabolic-charcoal/90">Does Hormonal Phase Affect Acute High-Intensity Interval Training Exercise? An Evaluation of Performance and Fatigue. (Journal of strength and conditioning research, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42351366/" target="_blank" rel="noopener noreferrer" class="text-xs text-metabolic-cyan hover:underline break-all">https://pubmed.ncbi.nlm.nih.gov/42351366/</a></li></ol></section>
+            </article>
+
+            <aside class="lg:col-span-4 space-y-6 min-w-0">
+                <div class="sidebar-card rounded-2xl p-5 sm:p-6">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-purple mb-4">Descarga profesional</p>
+                    <p class="font-body text-sm text-metabolic-charcoal/75 mb-4">Documento PDF con estructura editorial, logo Metabolic Fitness y referencias completas.</p>
+                    <a href="pdf/fisiologia-de-la-fatiga-y-recuperacion-desde-la-programacion-de-la-carga-hasta-la-remodelacion-neuromuscular.pdf" download class="mf-pdf-cta text-center text-white px-4 py-3 rounded-xl font-body font-semibold" style="background:#460877;color:#fff;display:block;">Descargar articulo en PDF</a>
+                </div>
+
+                <div class="sidebar-card rounded-2xl p-6">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-green mb-4">Puntos clave</p>
+                    <ul class="space-y-3 font-body text-sm text-metabolic-charcoal/85"><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>La fase de hormonas bajas (LHP) predispone a una mayor fatiga aguda (caída de potencia) durante el HIIT, efecto que puede mitigarse utilizando relaciones de trabajo-pausa de 1:1.</span></li><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>Los procesos inflamatorios locales y la consiguiente fibrosis estructural destruyen las vías inhibidoras neuromusculares periféricas, reduciendo la distensibilidad del tejido muscular.</span></li><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>La rehabilitación robótica post-ictus (pasiva o asistida) genera adaptaciones corticales y patrones de conectividad funcional marcadamente distintos que reflejan diferentes mecanismos neuroplásticos.</span></li><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>En tejidos isquémicos vulnerables, la intervención mecánica agresiva de reperfusión supera los límites de tolerancia vascular, aumentando significativamente las tasas de hemorragia sin aportar ventajas clínicas.</span></li></ul>
+                </div>
+
+                <div class="sidebar-card rounded-2xl p-6">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-cyan mb-4">Evidencia de origen</p>
+                    <p class="font-body text-sm text-metabolic-charcoal/75">Articulo elaborado a partir de publicaciones recientes en revistas de alto impacto indexadas en PubMed.</p>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-gray-200 py-10 mt-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-5">
+            <section
+                class="mf-rating-box"
+                id="mf-paper-rating"
+                data-slug="fisiologia-de-la-fatiga-y-recuperacion-desde-la-programacion-de-la-carga-hasta-la-remodelacion-neuromuscular"
+                data-editorial-rating="4.5"
+                aria-label="Evaluacion del paper"
+            >
+                <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-purple mb-2">Evaluacion del paper</p>
+                <div class="flex flex-col items-center gap-1 mb-3">
+                    <div class="mf-stars-display text-2xl" aria-hidden="true"><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-half">★</span></div>
+                    <p class="font-body text-sm text-metabolic-charcoal/80">
+                        Calidad editorial: <strong id="mf-editorial-score">4.5</strong>/5
+                    </p>
+                </div>
+                <p class="font-body text-xs text-metabolic-charcoal/60 mb-2">Tu evaluacion (0 a 5 estrellas)</p>
+                <div class="mf-stars-input" role="radiogroup" aria-label="Califica este paper">
+                    <button type="button" class="mf-star" data-value="1" aria-label="1 estrella">★</button>
+                    <button type="button" class="mf-star" data-value="2" aria-label="2 estrellas">★</button>
+                    <button type="button" class="mf-star" data-value="3" aria-label="3 estrellas">★</button>
+                    <button type="button" class="mf-star" data-value="4" aria-label="4 estrellas">★</button>
+                    <button type="button" class="mf-star" data-value="5" aria-label="5 estrellas">★</button>
+                </div>
+                <p class="font-body text-xs text-metabolic-charcoal/55 mt-2" id="mf-rating-status">
+                    Promedio lectores: <span id="mf-avg-score">—</span> · <span id="mf-vote-count">0</span> votos
+                </p>
+            </section>
+            <div class="flex items-center gap-5">
+                <a href="https://www.facebook.com/profile.php?id=61578818624346" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <img src="../assets/social/facebook.png" alt="Facebook" class="w-8 h-8 object-contain hover:opacity-80 transition-opacity">
+                </a>
+                <a href="https://www.instagram.com/metabolicfitness.cl/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <img src="../assets/social/instagram.png" alt="Instagram" class="w-8 h-8 object-contain hover:opacity-80 transition-opacity">
+                </a>
+                <a href="https://www.linkedin.com/company/metabolic-fitness-chile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <img src="../assets/social/linkedin.png" alt="LinkedIn" class="w-8 h-8 object-contain hover:opacity-80 transition-opacity">
+                </a>
+                <a href="https://chat.whatsapp.com/LuuhXQG6biV6mkYceIo7vk" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                    <img src="../assets/social/whatsapp.png" alt="WhatsApp" class="w-8 h-8 object-contain hover:opacity-80 transition-opacity">
+                </a>
+            </div>
+            <a href="https://www.metabolicfitness.cl" class="inline-block">
+                <img src="../assets/logo-mf.png" alt="Metabolic Fitness" class="h-11 w-auto object-contain bg-transparent">
+            </a>
+            <p class="font-body text-metabolic-charcoal/60 text-sm text-center">
+                © 2026 Metabolic Fitness · Fisiologia Clinica del Ejercicio<br>
+                <a href="https://www.metabolicfitness.cl" class="hover:text-metabolic-purple transition-colors">www.metabolicfitness.cl</a>
+            </p>
+        </div>
+    </footer>
+    <script src="../js/blog-rating.js?v=2"></script>
+</body>
+</html>

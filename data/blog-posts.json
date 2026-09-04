@@ -1,5 +1,25 @@
 [
   {
+    "slug": "fisiologia-de-la-fatiga-y-recuperacion-desde-la-programacion-de-la-carga-hasta-la-remodelacion-neuromuscular",
+    "title": "Fisiología de la Fatiga y Recuperación: Desde la Programación de la Carga hasta la Remodelación Neuromuscular",
+    "category": "Clinica",
+    "category_color": "metabolic-cyan",
+    "gradient": "from-metabolic-cyan/20 to-metabolic-green/20",
+    "excerpt": "Analizamos cómo la densidad de la carga física, las fluctuaciones del ciclo hormonal y los procesos inflamatorios locales impactan de manera diferenciada la fatiga de los deportistas y pacientes. Una perspectiva clínica basada en la plasticidad neural y los límites estructurales de la recuperación celular.",
+    "published_at": "2026-09-04",
+    "image": "assets/blog/fisiologia-de-la-fatiga-y-recuperacion-desde-la-programacion-de-la-carga-hasta-la-remodelacion-neuromuscular.jpg",
+    "pdf": "blog/pdf/fisiologia-de-la-fatiga-y-recuperacion-desde-la-programacion-de-la-carga-hasta-la-remodelacion-neuromuscular.pdf",
+    "keywords": [
+      "fatiga neuromuscular",
+      "recuperación funcional",
+      "ciclo menstrual",
+      "plasticidad neural",
+      "inflamación tisular",
+      "dosificación de la carga"
+    ],
+    "rating": 4.5
+  },
+  {
     "slug": "manejo-metabolico-de-la-diabetes-tipo-2-y-prediabetes-evidencias-en-nutricion-crononutricion-y-medicina-de-precision",
     "title": "Manejo Metabólico de la Diabetes Tipo 2 y Prediabetes: Evidencias en Nutrición, Crononutrición y Medicina de Precisión",
     "category": "Clinica",
