@@ -44,6 +44,24 @@
         .mf-pdf-cta { background: #460877; color: #fff !important; display: inline-block; text-decoration: none; }
         .mf-pdf-cta:hover { background: #5a0a99; opacity: 1; }
         aside .mf-pdf-cta { display: block; width: 100%; }
+
+        .mf-rating-box {
+            width: 100%;
+            max-width: 28rem;
+            background: #FAFAFA;
+            border: 1px solid #E5E7EB;
+            border-radius: 1rem;
+            padding: 1.1rem 1.25rem;
+            text-align: center;
+        }
+        .mf-star { color: #D1D5DB; cursor: pointer; user-select: none; line-height: 1; }
+        .mf-star-on, .mf-star.mf-active, .mf-star.mf-hover { color: #F5B301; }
+        .mf-star-half { color: #F5B301; opacity: 0.55; }
+        .mf-star-off { color: #D1D5DB; }
+        .mf-stars-display .mf-star { cursor: default; }
+        .mf-stars-input { display: inline-flex; gap: 0.15rem; font-size: 1.85rem; }
+        .mf-stars-input button { background: none; border: none; padding: 0; cursor: pointer; }
+
     </style>
 </head>
 <body class="antialiased">
@@ -118,6 +136,37 @@
 
     <footer class="bg-white border-t border-gray-200 py-10 mt-8">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-5">
+            
+            <section
+                class="mf-rating-box"
+                id="mf-paper-rating"
+                data-slug="fisiologia-del-control-motor-y-sarcopenia-nuevos-desafios-en-la-prevencion-de-caidas"
+                data-editorial-rating="4.0"
+                aria-label="Evaluacion del paper"
+            >
+                <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-purple mb-2">Evaluacion del paper</p>
+                <div class="flex flex-col items-center gap-1 mb-3">
+                    <div class="mf-stars-display text-2xl" aria-hidden="true"><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-off">★</span></div>
+                    <p class="font-body text-sm text-metabolic-charcoal/80">
+                        Calidad editorial: <strong id="mf-editorial-score">4.0</strong>/5
+                    </p>
+                </div>
+                <p class="font-body text-xs text-metabolic-charcoal/60 mb-2">Tu evaluacion (0 a 5 estrellas)</p>
+                <div class="mf-stars-input" role="radiogroup" aria-label="Califica este paper">
+                    <button type="button" class="mf-star" data-value="1" aria-label="1 estrella">★</button>
+                    <button type="button" class="mf-star" data-value="2" aria-label="2 estrellas">★</button>
+                    <button type="button" class="mf-star" data-value="3" aria-label="3 estrellas">★</button>
+                    <button type="button" class="mf-star" data-value="4" aria-label="4 estrellas">★</button>
+                    <button type="button" class="mf-star" data-value="5" aria-label="5 estrellas">★</button>
+                </div>
+                <p class="font-body text-xs text-metabolic-charcoal/55 mt-2" id="mf-rating-status">
+                    Promedio lectores: <span id="mf-avg-score">—</span> · <span id="mf-vote-count">0</span> votos
+                </p>
+                <button type="button" id="mf-rating-clear" class="mt-2 font-body text-xs text-metabolic-purple hover:underline">
+                    Poner 0 estrellas / borrar mi voto
+                </button>
+            </section>
+
             <div class="flex items-center gap-5">
                 <a href="https://www.facebook.com/profile.php?id=61578818624346" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                     <img src="../assets/social/facebook.png" alt="Facebook" class="w-8 h-8 object-contain hover:opacity-80 transition-opacity">
@@ -141,5 +190,6 @@
             </p>
         </div>
     </footer>
+    <script src="../js/blog-rating.js?v=1"></script>
 </body>
 </html>

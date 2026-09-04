@@ -16,7 +16,8 @@
       "Control autonómico",
       "Prescripción del ejercicio",
       "Recuperación post-esfuerzo"
-    ]
+    ],
+    "rating": 4.5
   },
   {
     "slug": "desmitificando-el-tmao-en-la-sensibilidad-a-la-insulina-y-optimizando-la-transicion-en-diabetes-tipo-1-evidencia-clinica-y-conductual",
@@ -35,7 +36,8 @@
       "diabetes tipo 1",
       "Diabetes Care",
       "fisiologia metabolica"
-    ]
+    ],
+    "rating": 4.0
   },
   {
     "slug": "fisiologia-del-control-motor-y-sarcopenia-nuevos-desafios-en-la-prevencion-de-caidas",
@@ -55,6 +57,7 @@
       "diabetes tipo 2",
       "equilibrio postural",
       "MSSE"
-    ]
+    ],
+    "rating": 4.0
   }
 ]
