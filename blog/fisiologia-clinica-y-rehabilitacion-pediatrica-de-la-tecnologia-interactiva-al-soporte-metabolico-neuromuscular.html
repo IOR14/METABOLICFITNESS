@@ -7,218 +7,260 @@
     <meta name="description" content="Un análisis clínico sobre el entrenamiento bimanual digital en parálisis cerebral unilateral, intervenciones prenatales de telesalud para lactantes, y estrategias neuromusculares y de entrenamiento de fuerza progresivo para preservar la funcionalidad y combatir la kinesiofobia.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/mf-system.css?v=7">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'metabolic-green': '#5CB85C',
+                        'metabolic-charcoal': '#404041',
+                        'metabolic-cyan': '#00AEEF',
+                        'metabolic-purple': '#460877',
+                        'metabolic-bg': '#FFFFFF',
+                        'metabolic-bg-secondary': '#FAFAFA',
+                    },
+                    fontFamily: {
+                        'heading': ['Montserrat', 'sans-serif'],
+                        'body': ['Open Sans', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body { font-family: 'Open Sans', sans-serif; color: #404041; background: #FAFAFA; }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+        .article-content p { margin-bottom: 1.15rem; line-height: 1.9; font-size: 1.05rem; text-align: justify; hyphens: auto; }
+        .article-content h2 { margin-top: 2.2rem; margin-bottom: 0.9rem; font-weight: 700; font-size: 1.45rem; color: #460877; text-align: left; }
+        .article-content ul { list-style: disc; padding-left: 1.4rem; margin-bottom: 1rem; }
+        .article-content li { margin-bottom: 0.45rem; line-height: 1.75; text-align: justify; }
+        .justified { text-align: justify; hyphens: auto; }
+        .abstract-box { border-left: 5px solid #5CB85C; background: linear-gradient(90deg, #F3FBF3 0%, #FFFFFF 100%); }
+        .clinical-box { border: 1px solid #5CB85C33; background: #F8FFF8; box-shadow: 0 10px 30px rgba(92,184,92,0.08); }
+        .sidebar-card { background: white; border: 1px solid #E5E7EB; box-shadow: 0 8px 24px rgba(70,8,119,0.06); }
+        .keyword-chip { display: inline-block; background: rgba(255,255,255,0.14); color: #fff; border: 1px solid rgba(255,255,255,0.22); border-radius: 999px; padding: 0.28rem 0.75rem; font-size: 0.7rem; letter-spacing: 0.04em; text-transform: uppercase; font-family: Montserrat, sans-serif; font-weight: 600; }
+        .mf-pdf-cta {
+            background: #460877 !important;
+            color: #fff !important;
+            display: inline-block;
+            text-decoration: none !important;
+            border: none;
+            cursor: pointer;
+        }
+        .mf-pdf-cta:hover { background: #5a0a99 !important; }
+        aside .mf-pdf-cta { display: block; width: 100%; box-sizing: border-box; text-align: center; }
+        .mf-rating-box {
+            width: 100%;
+            max-width: 28rem;
+            background: #FAFAFA;
+            border: 1px solid #E5E7EB;
+            border-radius: 1rem;
+            padding: 1.1rem 1.25rem;
+            text-align: center;
+        }
+        .mf-star { color: #D1D5DB; cursor: pointer; user-select: none; line-height: 1; }
+        .mf-star-on, .mf-star.mf-active, .mf-star.mf-hover { color: #F5B301; }
+        .mf-star-half { color: #F5B301; opacity: 0.55; }
+        .mf-star-off { color: #D1D5DB; }
+        .mf-stars-display .mf-star { cursor: default; }
+        .mf-stars-input { display: inline-flex; gap: 0.15rem; font-size: 1.85rem; }
+        .mf-stars-input button { background: none; border: none; padding: 0; cursor: pointer; }
+        .mf-article-header { position: sticky; top: 0; z-index: 50; background: #460877; }
+        .mf-article-nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+        }
+        .mf-article-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem;
+            margin-left: auto;
+        }
+        .mf-back-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0.55rem 0.9rem;
+            border-radius: 0.6rem;
+            background: rgba(255,255,255,0.14);
+            color: #fff !important;
+            text-decoration: none !important;
+            font-weight: 600;
+            white-space: nowrap;
+            position: relative;
+            z-index: 2;
+        }
+        .mf-back-link:hover { background: rgba(255,255,255,0.22); }
+        .mf-header-pdf {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0.55rem 0.9rem;
+            border-radius: 0.6rem;
+            background: #5CB85C !important;
+            color: #fff !important;
+            text-decoration: none !important;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        @media (max-width: 640px) {
+            .mf-article-header { position: sticky; top: 0; }
+            .mf-article-nav { flex-direction: column; align-items: stretch; gap: 0.65rem; }
+            .mf-article-actions {
+                margin-left: 0;
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .mf-back-link, .mf-header-pdf {
+                width: 100%;
+                flex: none;
+                touch-action: manipulation;
+                -webkit-tap-highlight-color: rgba(255,255,255,0.25);
+            }
+            .mf-logo-link { pointer-events: auto; }
+            .mf-logo-link img { max-width: 170px !important; height: 2.5rem !important; }
+            .article-hero { grid-template-columns: 1fr !important; min-height: 0 !important; }
+            .article-hero-copy { padding: 1.25rem !important; }
+            .article-hero-copy h1 { font-size: 1.45rem !important; line-height: 1.25 !important; }
+            .article-hero-media { min-height: 12rem !important; }
+            .article-hero-fade { display: none !important; }
+            main.mf-article-main { padding-top: 1.25rem !important; padding-bottom: 2rem !important; }
+            .keyword-chip { font-size: 0.62rem; padding: 0.22rem 0.55rem; }
+        }
+    </style>
 </head>
-<body class="mf-page">
+<body class="antialiased">
+    <header class="mf-article-header text-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <nav class="mf-article-nav" aria-label="Navegacion del articulo">
+                <a href="../blog.html" class="mf-logo-link flex items-center gap-2 min-w-0">
+                    <img src="../assets/brand/logo-mf-horizontal-white-nav.png" alt="Metabolic Fitness" class="h-10 sm:h-12 w-auto max-w-[220px] object-contain object-left">
+                    <span class="font-heading font-bold text-sm hidden md:inline text-white/95">Paper Cientificos</span>
+                </a>
+                <div class="mf-article-actions">
+                    <a href="../blog.html" class="mf-back-link font-body text-sm">← Volver al blog</a>
+                    <a href="pdf/fisiologia-clinica-y-rehabilitacion-pediatrica-de-la-tecnologia-interactiva-al-soporte-metabolico-neuromuscular.pdf" download class="mf-header-pdf font-body text-sm">Descargar PDF</a>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-<div class="mf-util" role="navigation" aria-label="Accesos rapidos">
-  <div class="mf-util-inner">
-    <a href="../portal.html">Portal Alumnos</a>
-    <span class="mf-util-sep">|</span>
-    <a href="../acceso-pacientes.html">Acceso Pacientes</a>
-    <span class="mf-util-sep">|</span>
-    <a href="../blog.html">Paper Cientificos</a>
-  </div>
-</div>
-<header class="mf-nav mf-nav--dark" id="mf-nav">
-  <div class="mf-nav-inner">
-    <a class="mf-logo" href="/" aria-label="Metabolic Fitness">
-      <img src="../assets/brand/logo-mf-horizontal-white-nav.png" alt="Metabolic Fitness" width="220" height="80">
-    </a>
-    <nav class="mf-nav-links" aria-label="Principal">
-      <div class="mf-drop">
-        <a class="mf-link" href="../tratamiento.html">Clinica <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></a>
-        <div class="mf-drop-panel"><div class="mf-drop-card">
-          <p class="mf-drop-label">Para el paciente</p>
-          <a href="../tratamiento.html">Programas Metabolicos</a>
-          <a href="../tratamiento.html#fisiologia">Fisiologia del Ejercicio</a>
-        </div></div>
-      </div>
-      <div class="mf-drop">
-        <a class="mf-link" href="../academia.html">Academia <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></a>
-        <div class="mf-drop-panel"><div class="mf-drop-card">
-          <p class="mf-drop-label">Para el profesional</p>
-          <a href="../academia.html">Diplomados & Certificaciones</a>
-          <a href="../aprendizaje-ia.html">Aprendizaje con IA</a>
-          <a href="../mentoria-casos.html">Mentoria de Casos</a>
-          <a href="../webinars.html">Webinars</a>
-        </div></div>
-      </div>
-      <div class="mf-drop">
-        <a class="mf-link" href="../carlos-saavedra.html">Carlos Saavedra <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></a>
-        <div class="mf-drop-panel"><div class="mf-drop-card">
-          <p class="mf-drop-label">Portal clinico</p>
-          <a href="../carlos-saavedra.html">Portal & biografia</a>
-          <a href="../1x2x3.html">Metodo 1x2x3</a>
-        </div></div>
-      </div>
-      <div class="mf-drop">
-        <a class="mf-link" href="../blog.html">Investigacion <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></a>
-        <div class="mf-drop-panel"><div class="mf-drop-card">
-          <p class="mf-drop-label">Science Hub</p>
-          <a href="../blog.html">Paper Cientificos</a>
-          <a href="../biblioteca-evidencia.html">Biblioteca de Evidencia</a>
-          <a href="../calculadoras.html">Calculadoras</a>
-        </div></div>
-      </div>
-      <a class="mf-cta" href="../evaluacion.html">Agendar evaluacion</a>
-    </nav>
-    <button type="button" class="mf-burger" id="mf-burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mf-mobile">
-      <svg data-icon="open" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-      <svg data-icon="close" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-    </button>
-  </div>
-  <div class="mf-mobile" id="mf-mobile">
-    <div class="mf-mobile-wrap">
-      <button type="button" class="mf-mobile-acc" aria-expanded="false">Clinica</button>
-      <div class="mf-mobile-sub">
-        <a href="../tratamiento.html">Programas Metabolicos</a>
-        <a href="../tratamiento.html#fisiologia">Fisiologia del Ejercicio</a>
-      </div>
-      <button type="button" class="mf-mobile-acc" aria-expanded="false">Academia</button>
-      <div class="mf-mobile-sub">
-        <a href="../academia.html">Diplomados & Certificaciones</a>
-        <a href="../aprendizaje-ia.html">Aprendizaje con IA</a>
-        <a href="../mentoria-casos.html">Mentoria de Casos</a>
-        <a href="../webinars.html">Webinars</a>
-      </div>
-      <button type="button" class="mf-mobile-acc" aria-expanded="false">Carlos Saavedra</button>
-      <div class="mf-mobile-sub">
-        <a href="../carlos-saavedra.html">Portal & biografia</a>
-        <a href="../1x2x3.html">Metodo 1x2x3</a>
-      </div>
-      <button type="button" class="mf-mobile-acc" aria-expanded="false">Investigacion</button>
-      <div class="mf-mobile-sub">
-        <a href="../blog.html">Paper Cientificos</a>
-        <a href="../biblioteca-evidencia.html">Biblioteca de Evidencia</a>
-        <a href="../calculadoras.html">Calculadoras</a>
-      </div>
-      <a href="../evaluacion.html" style="color:#fff;background:#5CB85C;justify-content:center;margin:0.85rem 1rem;border-radius:0.35rem;">Agendar evaluacion</a>
-    </div>
-  </div>
-</header>
+    <section class="relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 sm:pt-8">
+            <div class="article-hero rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl bg-white grid lg:grid-cols-[1.05fr_0.95fr] min-h-[22rem]">
+                <div class="article-hero-copy p-6 sm:p-12 flex flex-col justify-center bg-[#460877] text-white order-2 lg:order-1">
+                    <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
+                        <span class="px-3 py-1 rounded-full bg-white text-metabolic-purple text-xs font-heading font-semibold uppercase tracking-wide">Clinica</span>
+                        <span class="text-xs font-body text-white/80">2026-09-05</span>
+                        <span class="text-xs font-body text-white/80">5 min de lectura</span>
+                    </div>
+                    <h1 class="font-heading font-bold text-2xl sm:text-[2.35rem] leading-tight">Fisiología clínica y rehabilitación pediátrica: de la tecnología interactiva al soporte metabólico neuromuscular</h1>
+                    <div class="mt-5 flex flex-wrap gap-2"><span class="keyword-chip">Parálisis Cerebral</span><span class="keyword-chip">Kinect</span><span class="keyword-chip">Rehabilitación Pediátrica</span><span class="keyword-chip">Fuerza Progresiva</span><span class="keyword-chip">Neurodinámica</span><span class="keyword-chip">Kinesiofobia</span></div>
+                </div>
+                <div class="article-hero-media relative min-h-[14rem] order-1 lg:order-2">
+                    <img src="../assets/blog/fisiologia-clinica-y-rehabilitacion-pediatrica-de-la-tecnologia-interactiva-al-soporte-metabolico-neuromuscular.jpg" alt="Fisiología clínica y rehabilitación pediátrica: de la tecnología interactiva al soporte metabólico neuromuscular" class="w-full h-full object-cover">
+                    <div class="article-hero-fade absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#460877] to-transparent hidden lg:block"></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <main class="mf-article-main max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+        <div class="grid lg:grid-cols-12 gap-6 lg:gap-8">
+            <article class="lg:col-span-8 min-w-0">
+                <div class="abstract-box rounded-2xl p-5 sm:p-8 mb-6 sm:mb-8">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-green mb-3">Resumen ejecutivo</p>
+                    <p class="font-body text-base sm:text-lg leading-relaxed text-metabolic-charcoal/90 justified">Un análisis clínico sobre el entrenamiento bimanual digital en parálisis cerebral unilateral, intervenciones prenatales de telesalud para lactantes, y estrategias neuromusculares y de entrenamiento de fuerza progresivo para preservar la funcionalidad y combatir la kinesiofobia.</p>
+                </div>
 
-<div class="mf-article-toolbar">
-  <a class="mf-article-back" href="../blog.html">← Volver a Paper Cientificos</a>
-  <a class="mf-article-pdf-btn" href="pdf/fisiologia-clinica-y-rehabilitacion-pediatrica-de-la-tecnologia-interactiva-al-soporte-metabolico-neuromuscular.pdf" download>Descargar PDF</a>
-</div>
+                <div class="article-content font-body text-metabolic-charcoal/90 bg-white rounded-2xl p-5 sm:p-8 shadow-sm border border-gray-100">
+                    <p>La fisiología clínica aplicada y la rehabilitación infantil se encuentran en un punto de convergencia entre la digitalización, la dosificación precisa del ejercicio y el soporte metabólico. Para los médicos, kinesiólogos y fisiólogos del ejercicio en Chile y Latinoamérica, comprender cómo optimizar el desarrollo neuromuscular en la niñez, la seguridad en el lactante y la transición metabólica hacia la vida adulta es imperativo. Revistas de alto impacto como <strong>Archives of Physical Medicine and Rehabilitation</strong>, <strong>JAMA</strong> y <strong>The Lancet Diabetes & Endocrinology</strong> aportan evidencia de primer orden para guiar el diseño de intervenciones clínicas seguras y eficientes.</p><h2>Tecnología interactiva en neurorrehabilitación: Kinect versus terapia convencional</h2><p>En el manejo de la parálisis cerebral unilateral (PCU) en niños, el entrenamiento intensivo bimanual es crucial para restaurar la función del miembro superior. Un ensayo clínico aleatorizado y controlado, publicado en <strong>Archives of Physical Medicine and Rehabilitation (2026)</strong>, comparó los efectos del entrenamiento bimanual intensivo basado en Kinect (K-BIT) frente al entrenamiento bimanual intensivo guiado por un terapeuta (T-BIT) en niños con una edad media de aproximadamente 8 años. El protocolo consistió en una dosis de 36 horas totales de entrenamiento (2.25 horas por sesión, dos veces por semana durante 8 semanas) implementado en el entorno natural del niño (hogar o escuela).</p><p>Los resultados revelaron que el entrenamiento interactivo basado en Kinect es clínicamente comparable a la terapia convencional guiada por terapeutas en cuanto a mejoras en el control motor del miembro superior más afectado, la coordinación bimanual y el desempeño en actividades cotidianas. No obstante, se registraron adaptaciones motoras específicas según el estímulo recibido:</p><ul><li><strong>Velocidad de reacción:</strong> El grupo K-BIT demostró un tiempo de reacción significativamente más rápido en las tareas de alcanzar y agarrar (P = 0.03, con un tamaño del efecto de eta cuadrado parcial de 0.17), lo que indica que los desafíos de tiempo característicos de los videojuegos aceleran la preparación motora.</li><li><strong>Fluidez del movimiento:</strong> El grupo T-BIT alcanzó una mayor fluidez en tareas de alcance bimanual (P = 0.02, con un tamaño del efecto de eta cuadrado parcial de 0.21), debido al aporte propioceptivo de los objetos tangibles y a la retroalimentación manual provista por el terapeuta.</li></ul><p>Este hallazgo valida el uso de herramientas tecnológicas interactivas para disminuir la carga operativa de los centros de rehabilitación, sugiriendo que la adición de objetos reales con retroalimentación háptica en entornos de videojuegos podría optimizar tanto la velocidad como la fluidez motora.</p><h2>Salud infantil temprana: Intervenciones de telesalud y seguridad del lactante</h2><p>La promoción de la salud pediátrica comienza desde la etapa prenatal. En el ensayo clínico aleatorizado multicéntrico SMARTER, publicado en <strong>JAMA (2026)</strong>, se investigó el impacto de una intervención educativa de videos de sueño seguro enviados vía mensaje de texto a familias de bajos ingresos participantes del programa WIC en 18 estados.</p><p>Si bien la intervención no arrojó diferencias estadísticamente significativas en el indicador primario compuesto de prácticas de sueño a los 60 días del nacimiento, los análisis de variables secundarias revelaron que el inicio de la intervención de videos durante la fase prenatal (desde la semana 34 de gestación) aumentó significativamente la adopción de la posición supina exclusiva para dormir a los 60 días posparto frente al grupo de control (70.6% vs 60.9%; diferencia de riesgo ajustada de 9.7% [IC 95%, 3.8% a 15.0%]). Para los profesionales de la atención primaria, este hallazgo destaca el valor de implementar programas de telesalud y educación digital desde la gestación para incidir positivamente en las conductas de cuidado infantil y disminuir riesgos prevenibles en el lactante.</p><h2>Transición metabólica y preservación funcional en terapias de pérdida de peso</h2><p>En el manejo de la obesidad metabólica en la adolescencia tardía y juventud, la irrupción de las terapias basadas en incretinas (como los agonistas de los receptores GLP-1 y coagonistas GLP-1/GIP) ha redefinido las metas de pérdida de peso. No obstante, el consenso de la EASO, EFAD y ECPO, publicado en <strong>The Lancet Diabetes & Endocrinology (2026)</strong>, advierte que la rápida disminución del peso corporal, el menor apetito y las alteraciones gastrointestinales asociadas a estos fármacos generan riesgos sustanciales sobre la composición corporal y la capacidad funcional debido a la pérdida concomitante de masa muscular o masa libre de grasa.</p><p>Para los kinesiólogos y fisiólogos del ejercicio, el consenso establece directrices de intervención imperativas:</p><ul><li><strong>Entrenamiento de fuerza progresivo:</strong> Se prescribe como un componente obligatorio y concomitante a la farmacoterapia para preservar la masa libre de grasa y el rendimiento musculoesquelético.</li><li><strong>Soporte y monitorización nutricional:</strong> Es esencial monitorizar la ingesta proteica y la calidad general de la dieta para prevenir deficiencias de micronutrientes y sarcopenia inducida por el tratamiento.</li></ul><h2>Manejo de la disfunción neuromuscular y disminución de la kinesiofobia</h2><p>La capacidad de un paciente para participar en programas activos de ejercicio o tareas motoras finas depende del control del dolor neuropático y del miedo al movimiento. Un ensayo clínico publicado en <strong>Archives of Physical Medicine and Rehabilitation (2026)</strong> comparó la terapia neurodinámica manual (MNT) frente al manejo farmacológico convencional en adultos con síndrome del túnel carpiano leve a moderado.</p><p>Los datos evidenciaron que, aunque la terapia farmacológica con ibuprofeno-arginina (-19.3 mm en la escala visual analógica) y gabapentina (-10.0 mm) obtuvo una mayor disminución absoluta del dolor que la terapia neurodinámica manual (-4.7 mm), la MNT produjo mejoras clínicas significativas en la capacidad funcional del miembro superior y disminuyó sustancialmente la kinesiofobia (medida mediante la Tampa Scale for Kinesiophobia-17) en comparación con el grupo control en lista de espera. Controlar la kinesiofobia a través de movilización neural guiada abre una ventana terapéutica fundamental que permite al paciente reincorporarse con seguridad y confianza a sus actividades de la vida diaria y programas de ejercicio terapéutico estructurado.</p>
+                </div>
 
-<section class="mf-article-hero" aria-label="Portada del paper">
-  <div class="mf-article-hero-inner">
-    <div class="mf-article-hero-copy">
-      <div class="mf-article-kicker">
-        <span class="mf-article-cat">Clinica</span>
-        <span>2026-09-05</span>
-        <span>5 min de lectura</span>
-      </div>
-      <h1>Fisiología clínica y rehabilitación pediátrica: de la tecnología interactiva al soporte metabólico neuromuscular</h1>
-      <div class="mf-article-tags"><span class="mf-article-tag">Parálisis Cerebral</span><span class="mf-article-tag">Kinect</span><span class="mf-article-tag">Rehabilitación Pediátrica</span><span class="mf-article-tag">Fuerza Progresiva</span><span class="mf-article-tag">Neurodinámica</span><span class="mf-article-tag">Kinesiofobia</span></div>
-    </div>
-    <div class="mf-article-hero-media">
-      <img src="../assets/blog/fisiologia-clinica-y-rehabilitacion-pediatrica-de-la-tecnologia-interactiva-al-soporte-metabolico-neuromuscular.jpg" alt="Fisiología clínica y rehabilitación pediátrica: de la tecnología interactiva al soporte metabólico neuromuscular">
-    </div>
-  </div>
-</section>
+                <section class="clinical-box rounded-2xl p-6 mt-8"><h2 class="font-heading font-bold text-xl text-metabolic-charcoal mb-3">Implicaciones clinicas</h2><p class="font-body text-metabolic-charcoal/85 leading-relaxed justified">Para médicos y kinesiólogos en Latinoamérica, la neurorrehabilitación pediátrica y el entrenamiento funcional están migrando hacia modelos de exergaming digital y telesalud estructurada que reducen la carga del terapeuta sin sacrificar la efectividad. Asimismo, la prescripción de ejercicio de fuerza progresivo se consolida como un pilar clínico obligatorio para salvaguardar la masa libre de grasa y la salud metabólica en pacientes bajo terapia farmacológica de pérdida de peso acelerada, mientras que las técnicas de movilización neurodinámica mitigan la kinesiofobia facilitando un retorno seguro al movimiento activo.</p></section>
+                <section id="referencias" class="mt-12 pt-8 border-t border-gray-200"><h2 class="font-heading font-bold text-2xl text-metabolic-charcoal mb-6">Referencias</h2><ol class="space-y-4 list-none"><li class="border-l-4 border-metabolic-green pl-4 py-2"><p class="font-body text-sm text-metabolic-charcoal/90">Safe Sleep Video Intervention via Text Messaging to Low-Income Families: The SMARTER Randomized Clinical Trial. (JAMA, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42490082/" target="_blank" rel="noopener noreferrer" class="text-xs text-metabolic-cyan hover:underline break-all">https://pubmed.ncbi.nlm.nih.gov/42490082/</a></li><li class="border-l-4 border-metabolic-green pl-4 py-2"><p class="font-body text-sm text-metabolic-charcoal/90">Nutritional, functional, and psychological considerations for incretin-based therapies in adults-an EASO, EFAD, and ECPO Consensus Statement. (The lancet. Diabetes &amp; endocrinology, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42419343/" target="_blank" rel="noopener noreferrer" class="text-xs text-metabolic-cyan hover:underline break-all">https://pubmed.ncbi.nlm.nih.gov/42419343/</a></li><li class="border-l-4 border-metabolic-green pl-4 py-2"><p class="font-body text-sm text-metabolic-charcoal/90">Effectiveness Comparison of Kinect-Based and Therapist-Based Bimanual Intensive Training in Children With Unilateral Cerebral Palsy: A Randomized Controlled Trial. (Archives of physical medicine and rehabilitation, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42061601/" target="_blank" rel="noopener noreferrer" class="text-xs text-metabolic-cyan hover:underline break-all">https://pubmed.ncbi.nlm.nih.gov/42061601/</a></li><li class="border-l-4 border-metabolic-green pl-4 py-2"><p class="font-body text-sm text-metabolic-charcoal/90">Pharmacologic and Neurodynamic Interventions for Carpal Tunnel Syndrome: A Randomized Clinical Trial. (Archives of physical medicine and rehabilitation, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42009285/" target="_blank" rel="noopener noreferrer" class="text-xs text-metabolic-cyan hover:underline break-all">https://pubmed.ncbi.nlm.nih.gov/42009285/</a></li></ol></section>
+            </article>
 
-<main class="mf-article-main">
-  <article class="mf-article-body">
-    <div class="mf-article-panel mf-article-panel--abstract">
-      <p class="mf-article-label">Resumen ejecutivo</p>
-      <p class="mf-article-excerpt">Un análisis clínico sobre el entrenamiento bimanual digital en parálisis cerebral unilateral, intervenciones prenatales de telesalud para lactantes, y estrategias neuromusculares y de entrenamiento de fuerza progresivo para preservar la funcionalidad y combatir la kinesiofobia.</p>
-    </div>
+            <aside class="lg:col-span-4 space-y-6 min-w-0">
+                <div class="sidebar-card rounded-2xl p-5 sm:p-6">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-purple mb-4">Descarga profesional</p>
+                    <p class="font-body text-sm text-metabolic-charcoal/75 mb-4">Documento PDF con estructura editorial, logo Metabolic Fitness y referencias completas.</p>
+                    <a href="pdf/fisiologia-clinica-y-rehabilitacion-pediatrica-de-la-tecnologia-interactiva-al-soporte-metabolico-neuromuscular.pdf" download class="mf-pdf-cta text-center text-white px-4 py-3 rounded-xl font-body font-semibold" style="background:#460877;color:#fff;display:block;">Descargar articulo en PDF</a>
+                </div>
 
-    <div class="mf-article-content">
-      <p>La fisiología clínica aplicada y la rehabilitación infantil se encuentran en un punto de convergencia entre la digitalización, la dosificación precisa del ejercicio y el soporte metabólico. Para los médicos, kinesiólogos y fisiólogos del ejercicio en Chile y Latinoamérica, comprender cómo optimizar el desarrollo neuromuscular en la niñez, la seguridad en el lactante y la transición metabólica hacia la vida adulta es imperativo. Revistas de alto impacto como <strong>Archives of Physical Medicine and Rehabilitation</strong>, <strong>JAMA</strong> y <strong>The Lancet Diabetes & Endocrinology</strong> aportan evidencia de primer orden para guiar el diseño de intervenciones clínicas seguras y eficientes.</p><h2>Tecnología interactiva en neurorrehabilitación: Kinect versus terapia convencional</h2><p>En el manejo de la parálisis cerebral unilateral (PCU) en niños, el entrenamiento intensivo bimanual es crucial para restaurar la función del miembro superior. Un ensayo clínico aleatorizado y controlado, publicado en <strong>Archives of Physical Medicine and Rehabilitation (2026)</strong>, comparó los efectos del entrenamiento bimanual intensivo basado en Kinect (K-BIT) frente al entrenamiento bimanual intensivo guiado por un terapeuta (T-BIT) en niños con una edad media de aproximadamente 8 años. El protocolo consistió en una dosis de 36 horas totales de entrenamiento (2.25 horas por sesión, dos veces por semana durante 8 semanas) implementado en el entorno natural del niño (hogar o escuela).</p><p>Los resultados revelaron que el entrenamiento interactivo basado en Kinect es clínicamente comparable a la terapia convencional guiada por terapeutas en cuanto a mejoras en el control motor del miembro superior más afectado, la coordinación bimanual y el desempeño en actividades cotidianas. No obstante, se registraron adaptaciones motoras específicas según el estímulo recibido:</p><ul><li><strong>Velocidad de reacción:</strong> El grupo K-BIT demostró un tiempo de reacción significativamente más rápido en las tareas de alcanzar y agarrar (P = 0.03, con un tamaño del efecto de eta cuadrado parcial de 0.17), lo que indica que los desafíos de tiempo característicos de los videojuegos aceleran la preparación motora.</li><li><strong>Fluidez del movimiento:</strong> El grupo T-BIT alcanzó una mayor fluidez en tareas de alcance bimanual (P = 0.02, con un tamaño del efecto de eta cuadrado parcial de 0.21), debido al aporte propioceptivo de los objetos tangibles y a la retroalimentación manual provista por el terapeuta.</li></ul><p>Este hallazgo valida el uso de herramientas tecnológicas interactivas para disminuir la carga operativa de los centros de rehabilitación, sugiriendo que la adición de objetos reales con retroalimentación háptica en entornos de videojuegos podría optimizar tanto la velocidad como la fluidez motora.</p><h2>Salud infantil temprana: Intervenciones de telesalud y seguridad del lactante</h2><p>La promoción de la salud pediátrica comienza desde la etapa prenatal. En el ensayo clínico aleatorizado multicéntrico SMARTER, publicado en <strong>JAMA (2026)</strong>, se investigó el impacto de una intervención educativa de videos de sueño seguro enviados vía mensaje de texto a familias de bajos ingresos participantes del programa WIC en 18 estados.</p><p>Si bien la intervención no arrojó diferencias estadísticamente significativas en el indicador primario compuesto de prácticas de sueño a los 60 días del nacimiento, los análisis de variables secundarias revelaron que el inicio de la intervención de videos durante la fase prenatal (desde la semana 34 de gestación) aumentó significativamente la adopción de la posición supina exclusiva para dormir a los 60 días posparto frente al grupo de control (70.6% vs 60.9%; diferencia de riesgo ajustada de 9.7% [IC 95%, 3.8% a 15.0%]). Para los profesionales de la atención primaria, este hallazgo destaca el valor de implementar programas de telesalud y educación digital desde la gestación para incidir positivamente en las conductas de cuidado infantil y disminuir riesgos prevenibles en el lactante.</p><h2>Transición metabólica y preservación funcional en terapias de pérdida de peso</h2><p>En el manejo de la obesidad metabólica en la adolescencia tardía y juventud, la irrupción de las terapias basadas en incretinas (como los agonistas de los receptores GLP-1 y coagonistas GLP-1/GIP) ha redefinido las metas de pérdida de peso. No obstante, el consenso de la EASO, EFAD y ECPO, publicado en <strong>The Lancet Diabetes & Endocrinology (2026)</strong>, advierte que la rápida disminución del peso corporal, el menor apetito y las alteraciones gastrointestinales asociadas a estos fármacos generan riesgos sustanciales sobre la composición corporal y la capacidad funcional debido a la pérdida concomitante de masa muscular o masa libre de grasa.</p><p>Para los kinesiólogos y fisiólogos del ejercicio, el consenso establece directrices de intervención imperativas:</p><ul><li><strong>Entrenamiento de fuerza progresivo:</strong> Se prescribe como un componente obligatorio y concomitante a la farmacoterapia para preservar la masa libre de grasa y el rendimiento musculoesquelético.</li><li><strong>Soporte y monitorización nutricional:</strong> Es esencial monitorizar la ingesta proteica y la calidad general de la dieta para prevenir deficiencias de micronutrientes y sarcopenia inducida por el tratamiento.</li></ul><h2>Manejo de la disfunción neuromuscular y disminución de la kinesiofobia</h2><p>La capacidad de un paciente para participar en programas activos de ejercicio o tareas motoras finas depende del control del dolor neuropático y del miedo al movimiento. Un ensayo clínico publicado en <strong>Archives of Physical Medicine and Rehabilitation (2026)</strong> comparó la terapia neurodinámica manual (MNT) frente al manejo farmacológico convencional en adultos con síndrome del túnel carpiano leve a moderado.</p><p>Los datos evidenciaron que, aunque la terapia farmacológica con ibuprofeno-arginina (-19.3 mm en la escala visual analógica) y gabapentina (-10.0 mm) obtuvo una mayor disminución absoluta del dolor que la terapia neurodinámica manual (-4.7 mm), la MNT produjo mejoras clínicas significativas en la capacidad funcional del miembro superior y disminuyó sustancialmente la kinesiofobia (medida mediante la Tampa Scale for Kinesiophobia-17) en comparación con el grupo control en lista de espera. Controlar la kinesiofobia a través de movilización neural guiada abre una ventana terapéutica fundamental que permite al paciente reincorporarse con seguridad y confianza a sus actividades de la vida diaria y programas de ejercicio terapéutico estructurado.</p>
-    </div>
+                <div class="sidebar-card rounded-2xl p-6">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-green mb-4">Puntos clave</p>
+                    <ul class="space-y-3 font-body text-sm text-metabolic-charcoal/85"><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>El entrenamiento bimanual interactivo con Kinect (K-BIT) ofrece resultados motores y funcionales equiparables al tratamiento presencial con terapeuta (T-BIT) en niños con parálisis cerebral unilateral, optimizando el tiempo de reacción en tareas de alcance.</span></li><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>La educación prenatal mediante videos por mensaje de texto aumenta significativamente la adherencia a la posición supina exclusiva para el sueño del lactante a los 60 días posparto en familias de bajos ingresos.</span></li><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>Las intervenciones farmacológicas con incretinas para el control de la obesidad exigen la incorporación obligatoria de ejercicio de fuerza progresivo y metas proteicas para mitigar la pérdida de masa libre de grasa y preservar la funcionalidad musculoesquelética.</span></li><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>La terapia neurodinámica manual reduce eficazmente la kinesiofobia y mejora la funcionalidad en neuropatías compresivas del miembro superior, posicionándose como una herramienta terapéutica no farmacológica clave.</span></li></ul>
+                </div>
 
-    <section class="mf-article-clinical"><h2>Implicaciones clinicas</h2><p>Para médicos y kinesiólogos en Latinoamérica, la neurorrehabilitación pediátrica y el entrenamiento funcional están migrando hacia modelos de exergaming digital y telesalud estructurada que reducen la carga del terapeuta sin sacrificar la efectividad. Asimismo, la prescripción de ejercicio de fuerza progresivo se consolida como un pilar clínico obligatorio para salvaguardar la masa libre de grasa y la salud metabólica en pacientes bajo terapia farmacológica de pérdida de peso acelerada, mientras que las técnicas de movilización neurodinámica mitigan la kinesiofobia facilitando un retorno seguro al movimiento activo.</p></section>
-    <section id="referencias" class="mf-article-refs"><h2>Referencias</h2><ol><li><p>Safe Sleep Video Intervention via Text Messaging to Low-Income Families: The SMARTER Randomized Clinical Trial. (JAMA, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42490082/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/42490082/</a></li><li><p>Nutritional, functional, and psychological considerations for incretin-based therapies in adults-an EASO, EFAD, and ECPO Consensus Statement. (The lancet. Diabetes &amp; endocrinology, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42419343/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/42419343/</a></li><li><p>Effectiveness Comparison of Kinect-Based and Therapist-Based Bimanual Intensive Training in Children With Unilateral Cerebral Palsy: A Randomized Controlled Trial. (Archives of physical medicine and rehabilitation, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42061601/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/42061601/</a></li><li><p>Pharmacologic and Neurodynamic Interventions for Carpal Tunnel Syndrome: A Randomized Clinical Trial. (Archives of physical medicine and rehabilitation, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42009285/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/42009285/</a></li></ol></section>
-  </article>
+                <div class="sidebar-card rounded-2xl p-6">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-cyan mb-4">Evidencia de origen</p>
+                    <p class="font-body text-sm text-metabolic-charcoal/75">Articulo elaborado a partir de publicaciones recientes en revistas de alto impacto indexadas en PubMed.</p>
+                </div>
+            </aside>
+        </div>
+    </main>
 
-  <aside class="mf-article-aside" aria-label="Recursos del paper">
-    <div class="mf-article-panel mf-article-panel--ink">
-      <p class="mf-article-label">Descarga profesional</p>
-      <p class="mf-article-aside-note" style="color:rgba(255,255,255,0.68);margin-bottom:1rem;">PDF editorial con branding Metabolic Fitness y referencias completas.</p>
-      <a class="mf-article-pdf-btn" href="pdf/fisiologia-clinica-y-rehabilitacion-pediatrica-de-la-tecnologia-interactiva-al-soporte-metabolico-neuromuscular.pdf" download>Descargar articulo en PDF</a>
-    </div>
-    <div class="mf-article-panel">
-      <p class="mf-article-label">Puntos clave</p>
-      <ul class="mf-article-takeaways"><li>El entrenamiento bimanual interactivo con Kinect (K-BIT) ofrece resultados motores y funcionales equiparables al tratamiento presencial con terapeuta (T-BIT) en niños con parálisis cerebral unilateral, optimizando el tiempo de reacción en tareas de alcance.</li><li>La educación prenatal mediante videos por mensaje de texto aumenta significativamente la adherencia a la posición supina exclusiva para el sueño del lactante a los 60 días posparto en familias de bajos ingresos.</li><li>Las intervenciones farmacológicas con incretinas para el control de la obesidad exigen la incorporación obligatoria de ejercicio de fuerza progresivo y metas proteicas para mitigar la pérdida de masa libre de grasa y preservar la funcionalidad musculoesquelética.</li><li>La terapia neurodinámica manual reduce eficazmente la kinesiofobia y mejora la funcionalidad en neuropatías compresivas del miembro superior, posicionándose como una herramienta terapéutica no farmacológica clave.</li></ul>
-    </div>
-    <div class="mf-article-panel">
-      <p class="mf-article-label">Evidencia de origen</p>
-      <p class="mf-article-aside-note">Articulo elaborado a partir de publicaciones recientes en revistas de alto impacto indexadas en PubMed.</p>
-    </div>
-  </aside>
-</main>
-
-<div class="mf-article-rating-wrap">
-  <section
-    class="mf-rating-box"
-    id="mf-paper-rating"
-    data-slug="fisiologia-clinica-y-rehabilitacion-pediatrica-de-la-tecnologia-interactiva-al-soporte-metabolico-neuromuscular"
-    data-editorial-rating="4.5"
-    aria-label="Evaluacion del paper"
-  >
-    <p class="mf-article-label">Evaluacion del paper</p>
-    <div style="display:flex;flex-direction:column;align-items:center;gap:0.35rem;margin-bottom:0.85rem;">
-      <div class="mf-stars-display text-2xl" aria-hidden="true"><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-half">★</span></div>
-      <p style="margin:0;font-size:0.9rem;color:rgba(255,255,255,0.72);">
-        Calidad editorial: <strong id="mf-editorial-score">4.5</strong>/5
-      </p>
-    </div>
-    <p style="margin:0 0 0.45rem;font-size:0.78rem;color:rgba(255,255,255,0.5);">Tu evaluacion (0 a 5 estrellas)</p>
-    <div class="mf-stars-input" role="radiogroup" aria-label="Califica este paper">
-      <button type="button" class="mf-star" data-value="1" aria-label="1 estrella">★</button>
-      <button type="button" class="mf-star" data-value="2" aria-label="2 estrellas">★</button>
-      <button type="button" class="mf-star" data-value="3" aria-label="3 estrellas">★</button>
-      <button type="button" class="mf-star" data-value="4" aria-label="4 estrellas">★</button>
-      <button type="button" class="mf-star" data-value="5" aria-label="5 estrellas">★</button>
-    </div>
-    <p style="margin:0.65rem 0 0;font-size:0.78rem;color:rgba(255,255,255,0.45);" id="mf-rating-status">
-      Promedio lectores: <span id="mf-avg-score">—</span> · <span id="mf-vote-count">0</span> votos
-    </p>
-  </section>
-</div>
-
-
-<footer class="mf-footer">
-  <div class="mf-footer-grid">
-    <div class="mf-footer-col">
-      <img class="mf-footer-brand" src="../assets/brand/logo-mf-horizontal-white.png" alt="Metabolic Fitness">
-      <p style="font-size:0.95rem;line-height:1.55;margin:0;max-width:22rem;">Fisiología del Ejercicio Aplicada a la Clínica. Santiago, Chile.</p>
-      <p style="font-size:0.82rem;margin:0.65rem 0 0;opacity:0.7;">Israel Orellana Rodríguez - MSc. Fisiología Clínica Del Ejercicio. AI - Engineer</p>
-    </div>
-    <div class="mf-footer-col">
-      <h3>Explora</h3>
-      <a href="/">Inicio</a>
-      <a href="../carlos-saavedra.html">Carlos Saavedra</a>
-      <a href="../tratamiento.html">Tratamiento</a>
-      <a href="../academia.html">Academia</a>
-      <a href="../blog.html">Paper Cientificos</a>
-    </div>
-    <div class="mf-footer-col">
-      <h3>Contacto</h3>
-      <span style="font-size:0.9rem;">Santiago, Chile</span>
-      <a href="tel:+56910111167">+56 9 1011 1167</a>
-      <a href="mailto:contacto@metabolicfitness.cl">contacto@metabolicfitness.cl</a>
-    </div>
-    <div class="mf-footer-col">
-      <h3>Comunidad</h3>
-      <a href="https://chat.whatsapp.com/LuuhXQG6biV6mkYceIo7vk" target="_blank" rel="noopener">Grupo WhatsApp</a>
-      <a href="https://www.instagram.com/metabolicfitness.cl/" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://www.linkedin.com/company/115783375/" target="_blank" rel="noopener">LinkedIn</a>
-    </div>
-  </div>
-  <div class="mf-footer-copy">© 2026 Metabolic Fitness. Todos los derechos reservados.</div>
-</footer>
-<a class="mf-wa" href="https://wa.me/56910111167?text=Hola%2C%20quiero%20informacion%20sobre%20Metabolic%20Fitness" target="_blank" rel="noopener" aria-label="WhatsApp">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11 11 0 0 0 3.2 17.7L2 22l4.4-1.15A11 11 0 1 0 20.5 3.5zm-8.5 17a9 9 0 0 1-4.6-1.25l-.33-.2-2.6.68.7-2.53-.22-.34A9 9 0 1 1 12 20.5zm5.2-6.7c-.28-.14-1.65-.81-1.9-.9s-.44-.14-.63.14-.72.9-.88 1.08-.33.21-.6.07a7.4 7.4 0 0 1-2.17-1.34 8.1 8.1 0 0 1-1.5-1.86c-.16-.28 0-.43.12-.57.12-.12.28-.33.42-.5s.18-.28.28-.47.05-.35-.02-.5-.63-1.51-.86-2.07c-.23-.54-.46-.46-.63-.47h-.54c-.19 0-.5.07-.76.35s-1 1-1 2.42 1.02 2.8 1.16 3 .2.28 2.01 3.07c1.6 1.4 2.2 1.6 2.56 1.76.6.28 1.14.24 1.57.14.48-.1 1.65-.67 1.88-1.32.23-.65.23-1.2.16-1.32-.07-.11-.25-.18-.53-.32z"/></svg>
-</a>
-<script src="../js/mf-nav.js?v=3"></script>
-
-<script src="../js/blog-rating.js?v=2"></script>
+    <footer class="bg-white border-t border-gray-200 py-10 mt-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-5">
+            <section
+                class="mf-rating-box"
+                id="mf-paper-rating"
+                data-slug="fisiologia-clinica-y-rehabilitacion-pediatrica-de-la-tecnologia-interactiva-al-soporte-metabolico-neuromuscular"
+                data-editorial-rating="4.5"
+                aria-label="Evaluacion del paper"
+            >
+                <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-purple mb-2">Evaluacion del paper</p>
+                <div class="flex flex-col items-center gap-1 mb-3">
+                    <div class="mf-stars-display text-2xl" aria-hidden="true"><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-half">★</span></div>
+                    <p class="font-body text-sm text-metabolic-charcoal/80">
+                        Calidad editorial: <strong id="mf-editorial-score">4.5</strong>/5
+                    </p>
+                </div>
+                <p class="font-body text-xs text-metabolic-charcoal/60 mb-2">Tu evaluacion (0 a 5 estrellas)</p>
+                <div class="mf-stars-input" role="radiogroup" aria-label="Califica este paper">
+                    <button type="button" class="mf-star" data-value="1" aria-label="1 estrella">★</button>
+                    <button type="button" class="mf-star" data-value="2" aria-label="2 estrellas">★</button>
+                    <button type="button" class="mf-star" data-value="3" aria-label="3 estrellas">★</button>
+                    <button type="button" class="mf-star" data-value="4" aria-label="4 estrellas">★</button>
+                    <button type="button" class="mf-star" data-value="5" aria-label="5 estrellas">★</button>
+                </div>
+                <p class="font-body text-xs text-metabolic-charcoal/55 mt-2" id="mf-rating-status">
+                    Promedio lectores: <span id="mf-avg-score">—</span> · <span id="mf-vote-count">0</span> votos
+                </p>
+            </section>
+            <div class="flex items-center gap-5">
+                <a href="https://www.facebook.com/profile.php?id=61578818624346" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <img src="../assets/social/facebook.png" alt="Facebook" class="w-8 h-8 object-contain hover:opacity-80 transition-opacity">
+                </a>
+                <a href="https://www.instagram.com/metabolicfitness.cl/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <img src="../assets/social/instagram.png" alt="Instagram" class="w-8 h-8 object-contain hover:opacity-80 transition-opacity">
+                </a>
+                <a href="https://www.linkedin.com/company/metabolic-fitness-chile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <img src="../assets/social/linkedin.png" alt="LinkedIn" class="w-8 h-8 object-contain hover:opacity-80 transition-opacity">
+                </a>
+                <a href="https://chat.whatsapp.com/LuuhXQG6biV6mkYceIo7vk" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                    <img src="../assets/social/whatsapp.png" alt="WhatsApp" class="w-8 h-8 object-contain hover:opacity-80 transition-opacity">
+                </a>
+            </div>
+            <a href="https://www.metabolicfitness.cl" class="inline-block">
+                <img src="../assets/brand/logo-mf-horizontal.png" alt="Metabolic Fitness" class="h-10 w-auto object-contain bg-transparent">
+            </a>
+            <p class="font-body text-metabolic-charcoal/60 text-sm text-center">
+                © 2026 Metabolic Fitness · Fisiologia Clinica del Ejercicio<br>
+                <a href="https://www.metabolicfitness.cl" class="hover:text-metabolic-purple transition-colors">www.metabolicfitness.cl</a>
+            </p>
+        </div>
+    </footer>
+    <script src="../js/blog-rating.js?v=2"></script>
 </body>
 </html>
