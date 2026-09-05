@@ -14,27 +14,61 @@
       position: relative;
       min-height: min(88vh, 52rem);
       display: grid;
-      align-items: end;
+      grid-template-columns: 1fr;
       overflow: hidden;
       background: #0b0710;
       color: #fff;
     }
-    .cs-hero__media { position: absolute; inset: 0; }
-    .cs-hero__media img {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center top;
+    @media (min-width: 900px) {
+      .cs-hero {
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+        align-items: stretch;
+      }
     }
-    .cs-hero__veil {
-      position: absolute; inset: 0;
-      background:
-        linear-gradient(105deg, rgba(11,7,16,0.96) 0%, rgba(11,7,16,0.82) 42%, rgba(42,5,72,0.35) 72%, rgba(11,7,16,0.2) 100%),
-        linear-gradient(0deg, rgba(11,7,16,0.9) 0%, transparent 48%);
+    .cs-hero__media {
+      position: relative;
+      min-height: 18rem;
+      background: #0b0710;
+    }
+    @media (min-width: 900px) {
+      .cs-hero__media {
+        min-height: 100%;
+      }
+    }
+    .cs-hero__media img {
+      width: 100%;
+      height: 100%;
+      min-height: 18rem;
+      object-fit: cover;
+      object-position: 55% 15%;
+      display: block;
+    }
+    @media (min-width: 900px) {
+      .cs-hero__media img {
+        min-height: 100%;
+        object-position: 60% 10%;
+      }
     }
     .cs-hero__inner {
-      position: relative; z-index: 2;
-      width: min(88rem, 100%);
-      margin: 0 auto;
-      padding: 4.5rem 1.25rem 3.25rem;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      width: 100%;
+      margin: 0;
+      padding: 2.5rem 1.25rem 3rem;
+      background: #0b0710;
+      order: 1;
+    }
+    @media (min-width: 900px) {
+      .cs-hero__inner {
+        order: 0;
+        padding: 4.5rem 2rem 3.5rem 1.5rem;
+        justify-content: center;
+        background: #0b0710;
+      }
+      .cs-hero__media { order: 0; }
     }
     .cs-hero__kicker {
       font-size: 0.72rem; font-weight: 800;
@@ -44,17 +78,17 @@
     .cs-hero h1 {
       font-family: Syne, sans-serif;
       font-weight: 800;
-      font-size: clamp(2.4rem, 6vw, 4.6rem);
+      font-size: clamp(2.2rem, 5vw, 4rem);
       line-height: 0.95;
       letter-spacing: -0.04em;
-      max-width: 12ch;
+      max-width: 10ch;
       margin: 0 0 0.85rem;
     }
     .cs-hero h1 em { font-style: normal; color: #5CB85C; }
     .cs-hero__role {
       font-size: 1.05rem;
       color: rgba(255,255,255,0.78);
-      max-width: 34rem;
+      max-width: 28rem;
       margin: 0 0 1.5rem;
       line-height: 1.55;
     }
@@ -262,10 +296,6 @@
 </header>
 
 <section class="cs-hero" aria-label="Carlos Saavedra">
-  <div class="cs-hero__media" aria-hidden="true">
-    <img src="carlos-saavedra.png" alt="">
-  </div>
-  <div class="cs-hero__veil" aria-hidden="true"></div>
   <div class="cs-hero__inner">
     <p class="cs-hero__kicker">Portal clínico</p>
     <h1>Carlos Saavedra, <em>MSc</em></h1>
@@ -277,6 +307,9 @@
       <a class="mf-btn mf-btn--green" href="#biografia">Biografía</a>
       <a class="mf-btn mf-btn--ghost" href="#herramienta">Método 1×2×3</a>
     </div>
+  </div>
+  <div class="cs-hero__media">
+    <img src="carlos-saavedra.png" alt="Carlos Saavedra, MSc">
   </div>
 </section>
 
