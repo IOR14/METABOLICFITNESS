@@ -187,38 +187,92 @@
             }
         }
 
-        /* Próximo curso — Academia */
+        /* Catálogo de cursos — grilla */
+        .course-grid {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: 1fr;
+        }
+        @media (min-width: 960px) {
+            .course-grid { grid-template-columns: 1fr 1fr; gap: 1.75rem; align-items: stretch; }
+        }
         .course-hero {
             position: relative;
             overflow: hidden;
-            border-radius: 1.5rem;
-            background: linear-gradient(135deg, #1a0a2e 0%, #2d1050 45%, #0f2847 100%);
-            box-shadow: 0 24px 60px rgba(70, 8, 119, 0.22), 0 8px 24px rgba(0, 0, 0, 0.12);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border-radius: 0.45rem;
+            background: #0b0710;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 18px 50px rgba(11, 7, 16, 0.28);
         }
-        .course-hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(ellipse 80% 60% at 10% 20%, rgba(92, 184, 92, 0.12), transparent 55%),
-                radial-gradient(ellipse 60% 50% at 90% 80%, rgba(0, 174, 239, 0.10), transparent 50%);
-            pointer-events: none;
-        }
+        .course-hero::before { display: none; }
         .course-video-wrap {
             position: relative;
-            border-radius: 1rem;
             overflow: hidden;
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            background: #0a0a0a;
+            background: #050308;
             line-height: 0;
+            aspect-ratio: 16 / 10;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
         .course-video-wrap video {
             display: block;
             width: 100%;
-            height: auto;
-            object-fit: contain;
+            height: 100%;
+            object-fit: cover;
             object-position: center;
+        }
+        .course-body {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1.35rem 1.35rem 1.5rem;
+            flex: 1;
+            color: #fff;
+        }
+        .course-body h3 {
+            font-family: Syne, Montserrat, sans-serif;
+            font-weight: 800;
+            font-size: clamp(1.45rem, 2.4vw, 1.85rem);
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+            margin: 0;
+        }
+        .course-body h3 span { color: #5CB85C; }
+        .course-lead {
+            margin: 0;
+            color: rgba(255,255,255,0.72);
+            font-size: 0.95rem;
+            line-height: 1.55;
+        }
+        .course-focus-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: 0.55rem;
+        }
+        .course-actions {
+            margin-top: auto;
+            display: grid;
+            gap: 0.55rem;
+        }
+        .course-actions .row {
+            display: grid;
+            gap: 0.55rem;
+            grid-template-columns: 1fr;
+        }
+        @media (min-width: 520px) {
+            .course-actions .row { grid-template-columns: 1fr 1fr; }
+        }
+        .course-actions form { display:block; margin:0; }
+        .course-actions button,
+        .course-actions a.course-link {
+            width: 100%;
+            min-height: 2.85rem;
+            border-radius: 0.35rem;
+            font-size: 0.88rem;
         }
         .course-badge {
             display: inline-flex;
@@ -269,106 +323,115 @@
             color: #5CB85C;
         }
 
-        /* ===== Estética sistema de venta de cursos ===== */
         .academy-section {
             position: relative;
-            background:
-                radial-gradient(ellipse 55% 45% at 12% 0%, rgba(128, 0, 128, 0.06), transparent 60%),
-                radial-gradient(ellipse 50% 45% at 90% 15%, rgba(0, 174, 239, 0.06), transparent 55%),
-                radial-gradient(ellipse 60% 50% at 50% 100%, rgba(92, 184, 92, 0.05), transparent 60%),
-                linear-gradient(180deg, #ffffff 0%, #fafafa 100%);
+            background: #f4f1f7;
             overflow: hidden;
         }
         .academy-eyebrow {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            font-family: 'Montserrat', sans-serif;
+            font-family: Manrope, sans-serif;
             font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.18em;
+            font-weight: 800;
+            letter-spacing: 0.14em;
             text-transform: uppercase;
-            color: #800080;
-            background: rgba(128, 0, 128, 0.08);
-            border: 1px solid rgba(128, 0, 128, 0.18);
-            border-radius: 9999px;
-            padding: 0.4rem 1rem;
-            margin-bottom: 1.25rem;
+            color: #460877;
+            background: rgba(70, 8, 119, 0.08);
+            border: 1px solid rgba(70, 8, 119, 0.16);
+            border-radius: 0.35rem;
+            padding: 0.4rem 0.85rem;
+            margin-bottom: 1rem;
         }
         .academy-eyebrow-dot {
             width: 7px;
             height: 7px;
             border-radius: 50%;
-            background: #800080;
+            background: #5CB85C;
             animation: course-pulse 2s ease-in-out infinite;
         }
-        .academy-title-accent {
-            background: linear-gradient(90deg, #5CB85C, #00AEEF, #800080);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
+        .academy-title-accent { color: #460877; }
         .academy-divider {
-            width: 76px;
-            height: 4px;
+            width: 64px;
+            height: 3px;
             border-radius: 9999px;
-            margin: 1.5rem auto 0;
-            background: linear-gradient(90deg, #5CB85C, #00AEEF, #800080);
+            margin: 1.25rem auto 0;
+            background: #5CB85C;
         }
 
-        /* Tarjeta de curso: elevación al pasar el cursor + borde con brillo */
         .course-hero {
-            transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease;
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s ease;
         }
         .course-hero:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 34px 80px rgba(70, 8, 119, 0.30), 0 12px 30px rgba(0, 0, 0, 0.18);
+            transform: translateY(-4px);
+            border-color: rgba(92, 184, 92, 0.45);
         }
-        .course-hero::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            padding: 1px;
-            background: linear-gradient(135deg, rgba(92, 184, 92, 0.55), rgba(0, 174, 239, 0.25) 45%, rgba(128, 0, 128, 0.45));
-            -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-            -webkit-mask-composite: xor;
-                    mask-composite: exclude;
-            opacity: 0.45;
-            pointer-events: none;
-            transition: opacity 0.4s ease;
-            z-index: 1;
-        }
-        .course-hero:hover::after { opacity: 1; }
+        .course-hero::after { display: none; }
 
         .course-number {
-            font-family: 'Montserrat', sans-serif;
+            font-family: Manrope, sans-serif;
             font-weight: 800;
-            font-size: 0.7rem;
-            letter-spacing: 0.14em;
+            font-size: 0.68rem;
+            letter-spacing: 0.12em;
             color: rgba(255, 255, 255, 0.45);
+            text-transform: uppercase;
         }
 
-        /* CTA principal con efecto de brillo */
         .course-cta-primary {
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, #5CB85C 0%, #4CA84C 100%) !important;
-            box-shadow: 0 10px 26px rgba(92, 184, 92, 0.38);
+            background: #5CB85C !important;
+            box-shadow: none;
+            border: 0;
+            color: #fff;
+            font-weight: 800;
         }
-        .course-cta-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -130%;
-            width: 65%;
-            height: 100%;
-            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transform: skewX(-20deg);
-            transition: left 0.7s ease;
-            pointer-events: none;
+        .course-cta-primary::before { display: none; }
+        .course-cta-secondary {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.28);
+            font-weight: 700;
         }
-        .course-cta-primary:hover::before { left: 150%; }
+        .course-cta-secondary:hover { border-color: #fff; background: rgba(255,255,255,0.06); }
+        .course-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+            background: transparent;
+            color: rgba(255,255,255,0.85);
+            border: 1px solid rgba(255,255,255,0.18);
+            text-decoration: none;
+            font-weight: 700;
+        }
+        .course-link:hover { border-color: rgba(255,255,255,0.45); color: #fff; }
+        .course-price-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.35rem;
+            padding: 0.85rem 1rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+        .course-price-card p { margin: 0; }
+        .course-focus-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.55rem;
+            color: rgba(255, 255, 255, 0.78);
+            font-size: 0.86rem;
+            line-height: 1.4;
+        }
+        .course-focus-icon {
+            flex-shrink: 0;
+            width: 1.15rem;
+            height: 1.15rem;
+            margin-top: 0.1rem;
+            color: #5CB85C;
+        }
 
         /* Animación de entrada al hacer scroll */
         .reveal {
@@ -473,208 +536,153 @@
     </div>
   </div>
 </header>
-    <!-- Boton Volver al Inicio -->
-    <div class="pt-28 pb-4">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <a href="/" class="inline-flex items-center space-x-2 text-metabolic-charcoal hover:text-metabolic-purple transition-colors duration-200 font-body font-medium">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                </svg>
-                <span>Volver al Inicio</span>
-            </a>
-        </div>
+<section class="mf-page-hero">
+  <div class="mf-page-hero__inner">
+    <p class="mf-page-hero__kicker">Academia</p>
+    <h1>Formación profesional</h1>
+    <p>Programas clínicos en Fisiología del Ejercicio. Elige tu ruta e inscríbete.</p>
+  </div>
+</section>
+
+<section class="academy-section py-14 sm:py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-10 reveal">
+      <span class="academy-eyebrow"><span class="academy-eyebrow-dot"></span> Próximos programas</span>
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl text-metabolic-charcoal mb-3">
+        Metabolic <span class="academy-title-accent">Academy</span>
+      </h2>
+      <p class="font-body text-lg text-metabolic-charcoal/70 max-w-2xl mx-auto">
+        Dos formaciones activas. Misma inversión. Elige según tu práctica clínica.
+      </p>
+      <div class="academy-divider"></div>
     </div>
 
-    <section class="academy-section py-20 pt-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
-                <span class="academy-eyebrow"><span class="academy-eyebrow-dot"></span> Formación profesional certificada</span>
-                <h2 class="font-heading font-bold text-4xl sm:text-5xl text-metabolic-charcoal uppercase mb-4">
-                    Metabolic <span class="academy-title-accent">Academy</span>
-                </h2>
-                <p class="font-body text-xl text-metabolic-charcoal/70 max-w-3xl mx-auto">
-                    Programas de formación clínica en Fisiología del Ejercicio
-                </p>
-                <div class="academy-divider"></div>
-            </div>
-
-            <div class="course-hero p-6 sm:p-10 lg:p-12 reveal">
-                <div class="relative z-10 grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-                    <!-- Video -->
-                    <div class="course-video-wrap order-2 lg:order-1">
-                        <video id="course-promo-video" autoplay muted loop playsinline controls preload="auto" aria-label="Presentación del curso Fisiología del Adulto Mayor">
-                            <source src="Adulto%20Mayor.mp4" type="video/mp4">
-                            Tu navegador no soporta la reproducción de video.
-                        </video>
-                        <script>
-                            (function () {
-                                var v = document.getElementById('course-promo-video');
-                                if (!v) return;
-                                v.muted = true;
-                                v.defaultMuted = true;
-                                v.setAttribute('autoplay', '');
-                                var p = v.play();
-                                if (p && p.catch) p.catch(function () {});
-                            })();
-                        </script>
-                    </div>
-
-                    <!-- Contenido -->
-                    <div class="order-1 lg:order-2 text-white space-y-5">
-                        <div class="flex items-center justify-between gap-4">
-                            <span class="course-badge"><span class="course-badge-dot"></span> Próximo curso</span>
-                            <span class="course-number">PROGRAMA 01</span>
-                        </div>
-
-                        <div>
-                            <h3 class="font-heading font-bold text-3xl sm:text-4xl leading-tight mb-3">
-                                Fisiología del<br>
-                                <span class="text-transparent bg-clip-text bg-gradient-to-r from-metabolic-green to-metabolic-cyan">Adulto Mayor</span>
-                            </h3>
-                            <p class="font-body text-base sm:text-lg text-white/75 leading-relaxed max-w-xl">
-                                Formación clínica de alto nivel para prescribir ejercicio con precisión fisiológica en personas mayores. 
-                                Domina el envejecimiento activo desde la evidencia: sarcopenia, fragilidad, metabolismo y seguridad en la prescripción.
-                            </p>
-                        </div>
-
-                        <ul class="space-y-3 pt-1">
-                            <li class="course-focus-item">
-                                <svg class="course-focus-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <span><strong class="text-white font-semibold">Enfoque clínico:</strong> evaluación funcional, riesgo cardiovascular y prescripción individualizada en adultos mayores.</span>
-                            </li>
-                            <li class="course-focus-item">
-                                <svg class="course-focus-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <span><strong class="text-white font-semibold">Base fisiológica:</strong> cambios metabólicos, musculoesqueléticos y neuromusculares del envejecimiento aplicados al ejercicio.</span>
-                            </li>
-                            <li class="course-focus-item">
-                                <svg class="course-focus-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <span><strong class="text-white font-semibold">Evidencia Metabolic:</strong> protocolos validados para mejorar autonomía, fuerza y calidad de vida con respaldo científico.</span>
-                            </li>
-                        </ul>
-
-                        <div class="course-price-card flex flex-wrap items-center gap-4 sm:gap-6">
-                            <div>
-                                <p class="font-body text-xs uppercase tracking-wider text-white/50 mb-0.5">Inversión Chile</p>
-                                <p class="font-heading font-bold text-2xl sm:text-3xl text-white">$130.000 <span class="text-base font-semibold text-white/60">CLP</span></p>
-                            </div>
-                            <div class="hidden sm:block w-px h-10 bg-white/15"></div>
-                            <div>
-                                <p class="font-body text-xs uppercase tracking-wider text-white/50 mb-0.5">Internacional</p>
-                                <p class="font-heading font-bold text-2xl sm:text-3xl text-white">USD 150</p>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-col sm:flex-row flex-wrap gap-3 pt-1">
-                            <form method="POST" action="https://metabolicfitness.vercel.app/crear-checkout-session" data-mf-checkout class="inline">
-                                <input type="hidden" name="curso" value="adulto-mayor">
-                                <input type="hidden" name="moneda" value="usd">
-                                <input type="hidden" name="mode" value="payment">
-                                <button type="submit"
-                                        class="course-cta-primary inline-flex items-center justify-center gap-2 text-white px-7 py-3.5 rounded-xl font-body font-bold text-base hover:shadow-xl hover:scale-[1.02] transition-all">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                                    Pagar USD 150
-                                </button>
-                            </form>
-                            <form method="POST" action="https://metabolicfitness.vercel.app/crear-checkout-session" data-mf-checkout class="inline">
-                                <input type="hidden" name="curso" value="adulto-mayor">
-                                <input type="hidden" name="moneda" value="clp">
-                                <input type="hidden" name="mode" value="payment">
-                                <button type="submit"
-                                        class="inline-flex items-center justify-center gap-2 bg-white/10 text-white border border-white/25 px-7 py-3.5 rounded-xl font-body font-semibold text-base hover:bg-white/15 hover:border-white/40 transition-all">
-                                    Pagar $130.000 CLP
-                                </button>
-                            </form>
-                            <a href="https://drive.google.com/file/d/1zMG_6vmt2GBzPqATWJ32vZCfXKfIoh3E/view?usp=sharing"
-                               target="_blank" rel="noopener noreferrer"
-                               class="inline-flex items-center justify-center gap-2 bg-white/10 text-white border border-white/25 px-7 py-3.5 rounded-xl font-body font-semibold text-base hover:bg-white/15 hover:border-white/40 transition-all">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                                Ver programa completo
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="course-hero p-6 sm:p-10 lg:p-12 mt-10 reveal">
-                <div class="relative z-10 grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-                    <!-- Video -->
-                    <div class="course-video-wrap order-2 lg:order-1">
-                        <video id="pediatria-promo-video" autoplay loop playsinline controls preload="auto" aria-label="Presentación del programa Pediatría y Salud">
-                            <source src="Pediatr%C3%ADa%20%20y%20Salud.mp4" type="video/mp4">
-                            Tu navegador no soporta la reproducción de video.
-                        </video>
-                    </div>
-
-                    <!-- Contenido -->
-                    <div class="order-1 lg:order-2 text-white space-y-5">
-                        <div class="flex items-center justify-between gap-4">
-                            <span class="course-badge"><span class="course-badge-dot"></span> Nuevo programa</span>
-                            <span class="course-number">PROGRAMA 02</span>
-                        </div>
-
-                        <div>
-                            <h3 class="font-heading font-bold text-3xl sm:text-4xl leading-tight mb-3">
-                                <span class="text-transparent bg-clip-text bg-gradient-to-r from-metabolic-green to-metabolic-cyan">Pediatría y Salud</span>
-                            </h3>
-                            <p class="font-body text-base sm:text-lg text-white/75 leading-relaxed max-w-xl">
-                                Formación clínica para prescribir ejercicio y actividad física con base fisiológica en niños y adolescentes.
-                                Desarrollo, crecimiento y salud metabólica desde la infancia, aplicados a la práctica profesional.
-                            </p>
-                        </div>
-
-                        <ul class="space-y-3 pt-1">
-                            <li class="course-focus-item">
-                                <svg class="course-focus-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <span><strong class="text-white font-semibold">Fisiología pediátrica:</strong> desarrollo, crecimiento y maduración aplicados al ejercicio en niños y adolescentes.</span>
-                            </li>
-                            <li class="course-focus-item">
-                                <svg class="course-focus-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <span><strong class="text-white font-semibold">Fuerza y actividad segura:</strong> prescripción de entrenamiento de fuerza y ejercicio adaptado a cada etapa del desarrollo.</span>
-                            </li>
-                            <li class="course-focus-item">
-                                <svg class="course-focus-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <span><strong class="text-white font-semibold">Salud metabólica temprana:</strong> prevención de obesidad infantil y factores de riesgo con respaldo científico.</span>
-                            </li>
-                        </ul>
-
-                        <div class="course-price-card flex flex-wrap items-center gap-4 sm:gap-6">
-                            <div>
-                                <p class="font-body text-xs uppercase tracking-wider text-white/50 mb-0.5">Inversión Chile</p>
-                                <p class="font-heading font-bold text-2xl sm:text-3xl text-white">$130.000 <span class="text-base font-semibold text-white/60">CLP</span></p>
-                            </div>
-                            <div class="hidden sm:block w-px h-10 bg-white/15"></div>
-                            <div>
-                                <p class="font-body text-xs uppercase tracking-wider text-white/50 mb-0.5">Internacional</p>
-                                <p class="font-heading font-bold text-2xl sm:text-3xl text-white">USD 150</p>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-col sm:flex-row flex-wrap gap-3 pt-1">
-                            <form method="POST" action="https://metabolicfitness.vercel.app/crear-checkout-session" data-mf-checkout class="inline">
-                                <input type="hidden" name="curso" value="pediatria-salud">
-                                <input type="hidden" name="moneda" value="usd">
-                                <input type="hidden" name="mode" value="payment">
-                                <button type="submit"
-                                        class="course-cta-primary inline-flex items-center justify-center gap-2 text-white px-7 py-3.5 rounded-xl font-body font-bold text-base hover:shadow-xl hover:scale-[1.02] transition-all">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                                    Pagar USD 150
-                                </button>
-                            </form>
-                            <form method="POST" action="https://metabolicfitness.vercel.app/crear-checkout-session" data-mf-checkout class="inline">
-                                <input type="hidden" name="curso" value="pediatria-salud">
-                                <input type="hidden" name="moneda" value="clp">
-                                <input type="hidden" name="mode" value="payment">
-                                <button type="submit"
-                                        class="inline-flex items-center justify-center gap-2 bg-white/10 text-white border border-white/25 px-7 py-3.5 rounded-xl font-body font-semibold text-base hover:bg-white/15 hover:border-white/40 transition-all">
-                                    Pagar $130.000 CLP
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="course-grid">
+      <article class="course-hero reveal">
+        <div class="course-video-wrap">
+          <video id="course-promo-video" autoplay muted loop playsinline controls preload="auto" aria-label="Presentación del curso Fisiología del Adulto Mayor">
+            <source src="Adulto%20Mayor.mp4" type="video/mp4">
+          </video>
+          <script>
+            (function () {
+              var v = document.getElementById('course-promo-video');
+              if (!v) return;
+              v.muted = true;
+              v.defaultMuted = true;
+              var p = v.play();
+              if (p && p.catch) p.catch(function () {});
+            })();
+          </script>
         </div>
-    </section>
+        <div class="course-body">
+          <div class="flex items-center justify-between gap-3">
+            <span class="course-badge"><span class="course-badge-dot"></span> Próximo curso</span>
+            <span class="course-number">Programa 01</span>
+          </div>
+          <h3>Fisiología del <span>Adulto Mayor</span></h3>
+          <p class="course-lead">Prescripción de ejercicio con precisión fisiológica en personas mayores: sarcopenia, fragilidad, metabolismo y seguridad.</p>
+          <ul class="course-focus-list">
+            <li class="course-focus-item">
+              <svg class="course-focus-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <span><strong>Clínico:</strong> evaluación funcional y riesgo cardiovascular.</span>
+            </li>
+            <li class="course-focus-item">
+              <svg class="course-focus-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <span><strong>Fisiológico:</strong> cambios del envejecimiento aplicados al ejercicio.</span>
+            </li>
+            <li class="course-focus-item">
+              <svg class="course-focus-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <span><strong>Evidencia:</strong> protocolos para autonomía, fuerza y calidad de vida.</span>
+            </li>
+          </ul>
+          <div class="course-price-card">
+            <div>
+              <p class="font-body text-xs uppercase tracking-wider text-white/50 mb-0.5">Chile</p>
+              <p class="font-heading font-bold text-xl text-white">$130.000 <span class="text-sm font-semibold text-white/60">CLP</span></p>
+            </div>
+            <div>
+              <p class="font-body text-xs uppercase tracking-wider text-white/50 mb-0.5">Internacional</p>
+              <p class="font-heading font-bold text-xl text-white">USD 150</p>
+            </div>
+          </div>
+          <div class="course-actions">
+            <div class="row">
+              <form method="POST" action="https://metabolicfitness.vercel.app/crear-checkout-session" data-mf-checkout>
+                <input type="hidden" name="curso" value="adulto-mayor">
+                <input type="hidden" name="moneda" value="usd">
+                <input type="hidden" name="mode" value="payment">
+                <button type="submit" class="course-cta-primary inline-flex items-center justify-center gap-2 px-4 py-3">Pagar USD 150</button>
+              </form>
+              <form method="POST" action="https://metabolicfitness.vercel.app/crear-checkout-session" data-mf-checkout>
+                <input type="hidden" name="curso" value="adulto-mayor">
+                <input type="hidden" name="moneda" value="clp">
+                <input type="hidden" name="mode" value="payment">
+                <button type="submit" class="course-cta-secondary inline-flex items-center justify-center gap-2 px-4 py-3">Pagar $130.000 CLP</button>
+              </form>
+            </div>
+            <a class="course-link px-4 py-3" href="https://drive.google.com/file/d/1zMG_6vmt2GBzPqATWJ32vZCfXKfIoh3E/view?usp=sharing" target="_blank" rel="noopener noreferrer">Ver programa completo</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="course-hero reveal">
+        <div class="course-video-wrap">
+          <video id="pediatria-promo-video" autoplay loop playsinline controls preload="auto" aria-label="Presentación del programa Pediatría y Salud">
+            <source src="Pediatr%C3%ADa%20%20y%20Salud.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="course-body">
+          <div class="flex items-center justify-between gap-3">
+            <span class="course-badge"><span class="course-badge-dot"></span> Nuevo programa</span>
+            <span class="course-number">Programa 02</span>
+          </div>
+          <h3><span>Pediatría y Salud</span></h3>
+          <p class="course-lead">Ejercicio y actividad física con base fisiológica en niños y adolescentes: desarrollo, crecimiento y salud metabólica.</p>
+          <ul class="course-focus-list">
+            <li class="course-focus-item">
+              <svg class="course-focus-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <span><strong>Fisiología pediátrica:</strong> maduración aplicada al ejercicio.</span>
+            </li>
+            <li class="course-focus-item">
+              <svg class="course-focus-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <span><strong>Fuerza segura:</strong> entrenamiento adaptado a cada etapa.</span>
+            </li>
+            <li class="course-focus-item">
+              <svg class="course-focus-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <span><strong>Salud temprana:</strong> prevención de obesidad infantil.</span>
+            </li>
+          </ul>
+          <div class="course-price-card">
+            <div>
+              <p class="font-body text-xs uppercase tracking-wider text-white/50 mb-0.5">Chile</p>
+              <p class="font-heading font-bold text-xl text-white">$130.000 <span class="text-sm font-semibold text-white/60">CLP</span></p>
+            </div>
+            <div>
+              <p class="font-body text-xs uppercase tracking-wider text-white/50 mb-0.5">Internacional</p>
+              <p class="font-heading font-bold text-xl text-white">USD 150</p>
+            </div>
+          </div>
+          <div class="course-actions">
+            <div class="row">
+              <form method="POST" action="https://metabolicfitness.vercel.app/crear-checkout-session" data-mf-checkout>
+                <input type="hidden" name="curso" value="pediatria-salud">
+                <input type="hidden" name="moneda" value="usd">
+                <input type="hidden" name="mode" value="payment">
+                <button type="submit" class="course-cta-primary inline-flex items-center justify-center gap-2 px-4 py-3">Pagar USD 150</button>
+              </form>
+              <form method="POST" action="https://metabolicfitness.vercel.app/crear-checkout-session" data-mf-checkout>
+                <input type="hidden" name="curso" value="pediatria-salud">
+                <input type="hidden" name="moneda" value="clp">
+                <input type="hidden" name="mode" value="payment">
+                <button type="submit" class="course-cta-secondary inline-flex items-center justify-center gap-2 px-4 py-3">Pagar $130.000 CLP</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
 <footer class="mf-footer">
   <div class="mf-footer-grid">
     <div class="mf-footer-col">
