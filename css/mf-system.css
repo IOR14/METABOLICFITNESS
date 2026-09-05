@@ -848,13 +848,27 @@ a.mf-proof__item:hover { transform: translateY(-1px); }
 .mf-article-cat {
   display: inline-flex;
   align-items: center;
-  padding: 0.35rem 0.65rem;
-  background: var(--mf-green);
-  color: #fff;
-  border-radius: var(--mf-radius);
+  padding: 0;
+  background: transparent;
+  color: var(--mf-green);
+  border-radius: 0;
   font-weight: 800;
   letter-spacing: 0.1em;
 }
+.mf-article-hero-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.7);
+}
+.mf-article-hero-rating .mf-stars-display {
+  display: inline-flex;
+  gap: 0.05rem;
+  font-size: 1rem;
+  line-height: 1;
+}
+.mf-article-hero-rating .mf-star { cursor: default; }
 .mf-article-hero h1 {
   margin: 0;
   font-family: var(--mf-font-display);
