@@ -1209,5 +1209,24 @@
             modal.addEventListener('click', (e) => { if (e.target === modal) modalClose.click(); });
         })();
     </script>
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        if (params.get('embed') !== '1') return;
+        document.documentElement.classList.add('mf-embed');
+        document.body.classList.add('mf-embed');
+        var hide = ['.mf-util', '#mf-nav', '.mf-footer', '.mf-wa', '.pt-28'];
+        hide.forEach(function (sel) {
+          document.querySelectorAll(sel).forEach(function (el) { el.style.display = 'none'; });
+        });
+        document.body.style.paddingTop = '0';
+        var app = document.getElementById('method-123-app');
+        if (app) {
+          app.style.minHeight = '100vh';
+          app.style.paddingTop = '1.25rem';
+          app.scrollIntoView({ block: 'start' });
+        }
+      })();
+    </script>
 </body>
 </html>

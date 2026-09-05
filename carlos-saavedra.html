@@ -159,6 +159,25 @@
       gap: 0.75rem;
       margin-top: 1.5rem;
     }
+    .cs-tool {
+      background: #f4f1f7;
+      border-top: 1px solid #e8e4ee;
+      padding: 0;
+    }
+    .cs-tool__frame {
+      width: min(88rem, 100%);
+      margin: 0 auto;
+      padding: 1rem 0.75rem 2rem;
+    }
+    .cs-tool__frame iframe {
+      width: 100%;
+      min-height: 85vh;
+      height: 920px;
+      border: 1px solid #e8e4ee;
+      border-radius: 0.35rem;
+      background: #fafafa;
+      display: block;
+    }
   </style>
 </head>
 <body class="mf-page">
@@ -256,7 +275,7 @@
     </p>
     <div class="cs-cta-row">
       <a class="mf-btn mf-btn--green" href="#biografia">Biografía</a>
-      <a class="mf-btn mf-btn--ghost" href="#metodo">Método 1×2×3</a>
+      <a class="mf-btn mf-btn--ghost" href="#herramienta">Método 1×2×3</a>
     </div>
   </div>
 </section>
@@ -333,10 +352,22 @@
       reproducible en clínica, academia y práctica.
     </p>
     <div class="cs-cta-row">
-      <a class="mf-btn mf-btn--green" href="1x2x3.html">Abrir herramienta 1×2×3</a>
+      <a class="mf-btn mf-btn--green" href="#herramienta">Abrir herramienta 1×2×3</a>
       <a class="mf-btn mf-btn--ghost" href="academia.html">Ver cursos de Academia</a>
       <a class="mf-btn mf-btn--ghost" href="evaluacion.html">Agendar evaluación</a>
     </div>
+  </div>
+</section>
+
+<section class="cs-tool" id="herramienta" aria-label="Herramienta Método 1×2×3">
+  <div class="cs-tool__frame">
+    <iframe
+      id="mf-123-tool"
+      title="Herramienta Método 1×2×3"
+      src="1x2x3.html?embed=1#method-123-app"
+      loading="eager"
+      referrerpolicy="same-origin"
+    ></iframe>
   </div>
 </section>
 
