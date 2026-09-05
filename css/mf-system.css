@@ -501,6 +501,17 @@ body.mf-page h4 {
   font-size: 0.9rem;
   line-height: 1.4;
 }
+a.mf-proof__item {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  padding: 0.35rem 0;
+  border-radius: var(--mf-radius);
+  transition: color 0.2s ease, transform 0.2s var(--mf-ease);
+}
+a.mf-proof__item:hover strong { color: var(--mf-green); }
+a.mf-proof__item:hover span { color: rgba(255,255,255,0.85); }
+a.mf-proof__item:hover { transform: translateY(-1px); }
 
 /* —— Page hero for landings —— */
 .mf-page-hero {
