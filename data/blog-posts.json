@@ -20,6 +20,46 @@
     "rating": 4.5
   },
   {
+    "slug": "fisiologia-de-la-fatiga-y-recuperacion-desde-la-programacion-de-la-carga-hasta-la-remodelacion-neuromuscular",
+    "title": "Fisiología de la Fatiga y Recuperación: Desde la Programación de la Carga hasta la Remodelación Neuromuscular",
+    "category": "Clinica",
+    "category_color": "metabolic-cyan",
+    "gradient": "from-metabolic-cyan/20 to-metabolic-green/20",
+    "excerpt": "Analizamos cómo la densidad de la carga física, las fluctuaciones del ciclo hormonal y los procesos inflamatorios locales impactan de manera diferenciada la fatiga de los deportistas y pacientes. Una perspectiva clínica basada en la plasticidad neural y los límites estructurales de la recuperación celular.",
+    "published_at": "2026-09-04",
+    "image": "assets/blog/fisiologia-de-la-fatiga-y-recuperacion-desde-la-programacion-de-la-carga-hasta-la-remodelacion-neuromuscular.jpg",
+    "pdf": "blog/pdf/fisiologia-de-la-fatiga-y-recuperacion-desde-la-programacion-de-la-carga-hasta-la-remodelacion-neuromuscular.pdf",
+    "keywords": [
+      "fatiga neuromuscular",
+      "recuperación funcional",
+      "ciclo menstrual",
+      "plasticidad neural",
+      "inflamación tisular",
+      "dosificación de la carga"
+    ],
+    "rating": 4.5
+  },
+  {
+    "slug": "manejo-metabolico-de-la-diabetes-tipo-2-y-prediabetes-evidencias-en-nutricion-crononutricion-y-medicina-de-precision",
+    "title": "Manejo Metabólico de la Diabetes Tipo 2 y Prediabetes: Evidencias en Nutrición, Crononutrición y Medicina de Precisión",
+    "category": "Clinica",
+    "category_color": "metabolic-cyan",
+    "gradient": "from-metabolic-cyan/20 to-metabolic-green/20",
+    "excerpt": "Análisis clínico de la evidencia científica más reciente en torno al ayuno intermitente (TRE), las limitaciones de la subtipificación en diabetes tipo 2 y el impacto fisiológico de la Dieta Mediterránea. Ofrecemos pautas de aplicación directa para el diseño de intervenciones en salud metabólica.",
+    "published_at": "2026-09-04",
+    "image": "assets/blog/manejo-metabolico-de-la-diabetes-tipo-2-y-prediabetes-evidencias-en-nutricion-crononutricion-y-medicina-de-precision.jpg",
+    "pdf": "blog/pdf/manejo-metabolico-de-la-diabetes-tipo-2-y-prediabetes-evidencias-en-nutricion-crononutricion-y-medicina-de-precision.pdf",
+    "keywords": [
+      "diabetes tipo 2",
+      "prediabetes",
+      "restricción de tiempo",
+      "dieta mediterránea",
+      "fisiología clínica",
+      "medicina de precisión"
+    ],
+    "rating": 4.0
+  },
+  {
     "slug": "variabilidad-de-la-frecuencia-cardiaca-y-control-autonomico-en-la-fisiologia-clinica-rigor-metodologico-y-prescripcion-del-ejercicio",
     "title": "Variabilidad de la Frecuencia Cardíaca y Control Autonómico en la Fisiología Clínica: Rigor Metodológico y Prescripción del Ejercicio",
     "category": "Clinica",
