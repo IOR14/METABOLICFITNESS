@@ -256,17 +256,17 @@ body.mf-page h4 {
   inset: 0;
   z-index: 0;
 }
-.mf-home-hero__media img {
+.mf-home-hero__media img,
+.mf-home-hero__media video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
-  transform: scale(1.04);
-  animation: mf-ken 18s var(--mf-ease) infinite alternate;
+  object-position: center center;
+  display: block;
 }
-@keyframes mf-ken {
-  from { transform: scale(1.04) translate3d(0,0,0); }
-  to { transform: scale(1.1) translate3d(-1.5%, -1%, 0); }
+.mf-home-hero__media video {
+  transform: none;
+  pointer-events: none;
 }
 .mf-home-hero__veil {
   position: absolute;
