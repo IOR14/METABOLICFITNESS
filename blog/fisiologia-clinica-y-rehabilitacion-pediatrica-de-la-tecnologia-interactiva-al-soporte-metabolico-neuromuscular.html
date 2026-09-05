@@ -71,7 +71,13 @@
         .mf-stars-display .mf-star { cursor: default; }
         .mf-stars-input { display: inline-flex; gap: 0.15rem; font-size: 1.85rem; }
         .mf-stars-input button { background: none; border: none; padding: 0; cursor: pointer; }
-        .mf-article-header { position: sticky; top: 0; z-index: 50; background: #460877; }
+        .mf-article-header { position: sticky; top: 0; z-index: 50; background: linear-gradient(105deg, #08060c 0%, #14081f 42%, #2a0548 78%, #3b0a66 100%); }
+        .article-hero-copy {
+            background: linear-gradient(115deg, #08060c 0%, #16091f 38%, #2a0548 72%, #3b0a66 100%) !important;
+        }
+        .article-hero-fade {
+            background: linear-gradient(to right, #16091f 0%, transparent 100%) !important;
+        }
         .mf-article-nav {
             display: flex;
             flex-wrap: wrap;
@@ -161,7 +167,7 @@
     <section class="relative">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 sm:pt-8">
             <div class="article-hero rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl bg-white grid lg:grid-cols-[1.05fr_0.95fr] min-h-[22rem]">
-                <div class="article-hero-copy p-6 sm:p-12 flex flex-col justify-center bg-[#460877] text-white order-2 lg:order-1">
+                <div class="article-hero-copy p-6 sm:p-12 flex flex-col justify-center text-white order-2 lg:order-1">
                     <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
                         <span class="px-3 py-1 rounded-full bg-white text-metabolic-purple text-xs font-heading font-semibold uppercase tracking-wide">Clinica</span>
                         <span class="text-xs font-body text-white/80">2026-09-05</span>
@@ -172,7 +178,7 @@
                 </div>
                 <div class="article-hero-media relative min-h-[14rem] order-1 lg:order-2">
                     <img src="../assets/blog/fisiologia-clinica-y-rehabilitacion-pediatrica-de-la-tecnologia-interactiva-al-soporte-metabolico-neuromuscular.jpg" alt="Fisiología clínica y rehabilitación pediátrica: de la tecnología interactiva al soporte metabólico neuromuscular" class="w-full h-full object-cover">
-                    <div class="article-hero-fade absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#460877] to-transparent hidden lg:block"></div>
+                    <div class="article-hero-fade absolute inset-y-0 left-0 w-24 hidden lg:block"></div>
                 </div>
             </div>
         </div>
