@@ -1,5 +1,6 @@
 (function () {
   var grid = document.getElementById('blog-posts-grid');
+  var featured = document.getElementById('blog-featured');
   if (!grid) return;
 
   fetch('data/blog-posts.json?v=' + Date.now())
@@ -8,7 +9,6 @@
       return response.json();
     })
     .then(function (posts) {
-      // Solo papers con articulo real (slug + imagen o pdf)
       posts = (posts || []).filter(function (post) {
         return post && post.slug && (post.image || post.pdf);
       });
@@ -18,61 +18,106 @@
         return;
       }
 
-      grid.innerHTML = posts.map(renderCard).join('');
+      posts.sort(function (a, b) {
+        return String(b.published_at || '').localeCompare(String(a.published_at || ''));
+      });
+
+      var latest = posts[0];
+      var rest = posts.slice(1);
+
+      if (featured) {
+        featured.innerHTML = renderFeatured(latest);
+      }
+      grid.innerHTML = rest.map(renderCard).join('');
     })
     .catch(function () {
       grid.innerHTML =
         '<p class="col-span-full text-center font-body text-metabolic-charcoal/70">No se pudieron cargar los articulos del blog.</p>';
     });
 
-  function renderCard(post) {
-    var color = post.category_color || 'metabolic-green';
+  function renderFeatured(post) {
     var href = 'blog/' + encodeURIComponent(post.slug) + '.html';
+    var image = post.image ? escapeHtml(post.image) + '?v=11' : '';
     var date = post.published_at ? formatDate(post.published_at) : '';
-    var image = post.image ? escapeHtml(post.image) : '';
-    var hero = image
-      ? '<img src="' + image + '?v=11" alt="' + escapeHtml(post.title) + '" class="w-full h-full object-cover">'
-      : '<div class="w-full h-full bg-gradient-to-br from-metabolic-green/20 to-metabolic-cyan/20 flex items-center justify-center">' +
-          '<svg class="w-16 h-16 text-' + color + '" fill="none" stroke="currentColor" viewBox="0 0 24 24">' +
-            '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>' +
-          '</svg>' +
-        '</div>';
-
-    var pdfLink = post.pdf
-      ? '<a href="' + escapeHtml(post.pdf) + '" download class="inline-flex items-center px-3 py-1.5 rounded-lg text-white text-xs font-heading font-semibold" style="background:#460877;">Descargar PDF</a>'
+    var stars = renderStars(post.rating);
+    var pdf = post.pdf
+      ? '<a class="pdf" href="' + escapeHtml(post.pdf) + '" download>Descargar PDF</a>'
       : '';
-
-    var rating = typeof post.rating === 'number' ? post.rating : null;
-    var stars = '';
-    if (rating != null) {
-      var full = Math.floor(rating);
-      var half = rating - full >= 0.5 ? 1 : 0;
-      var empty = 5 - full - half;
-      stars = '<div class="flex items-center gap-1 mb-2" title="Evaluacion ' + rating.toFixed(1) + '/5">';
-      for (var i = 0; i < full; i++) stars += '<span style="color:#F5B301;">★</span>';
-      if (half) stars += '<span style="color:#F5B301;opacity:0.55;">★</span>';
-      for (var j = 0; j < empty; j++) stars += '<span style="color:#D1D5DB;">★</span>';
-      stars += '<span class="text-xs font-body text-metabolic-charcoal/50 ml-1">' + rating.toFixed(1) + '</span></div>';
-    }
-
     return (
-      '<article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all border border-gray-100">' +
-        '<div class="h-52 overflow-hidden">' + hero + '</div>' +
-        '<div class="p-6">' +
-          '<div class="flex items-center justify-between gap-3 mb-2">' +
-            '<span class="text-xs font-heading font-semibold text-' + color + ' uppercase">' + escapeHtml(post.category) + '</span>' +
-            (date ? '<span class="text-xs font-body text-metabolic-charcoal/50">' + date + '</span>' : '') +
-          '</div>' +
+      '<article class="mf-paper-featured">' +
+        (image
+          ? '<a href="' + href + '"><img src="' + image + '" alt="' + escapeHtml(post.title) + '"></a>'
+          : '<div></div>') +
+        '<div class="mf-paper-featured-body">' +
+          '<div class="mf-paper-meta"><span class="mf-paper-cat">' +
+            escapeHtml(post.category || 'Clinica') +
+          '</span>' +
+          (date ? '<span>' + date + '</span>' : '') +
+          '<span>Mas reciente</span></div>' +
           stars +
-          '<h3 class="font-heading font-bold text-xl text-metabolic-charcoal mt-2 mb-3 line-clamp-2">' + escapeHtml(post.title) + '</h3>' +
-          '<p class="font-body text-metabolic-charcoal/70 text-sm mb-4 line-clamp-3">' + escapeHtml(post.excerpt) + '</p>' +
-          '<div class="flex items-center justify-between gap-3">' +
-            '<a href="' + href + '" class="text-metabolic-green font-body font-semibold text-sm hover:underline">Leer articulo →</a>' +
-            pdfLink +
+          '<h2 class="mf-paper-title" style="font-size:1.45rem;margin-top:0.35rem;">' +
+            escapeHtml(post.title) +
+          '</h2>' +
+          '<p class="mf-paper-excerpt">' + escapeHtml(post.excerpt || '') + '</p>' +
+          '<div class="mf-paper-actions">' +
+            '<a class="read" href="' + href + '">Leer articulo →</a>' +
+            pdf +
           '</div>' +
         '</div>' +
       '</article>'
     );
+  }
+
+  function renderCard(post) {
+    var href = 'blog/' + encodeURIComponent(post.slug) + '.html';
+    var date = post.published_at ? formatDate(post.published_at) : '';
+    var image = post.image ? escapeHtml(post.image) + '?v=11' : '';
+    var stars = renderStars(post.rating);
+    var pdf = post.pdf
+      ? '<a class="pdf" href="' + escapeHtml(post.pdf) + '" download>Descargar PDF</a>'
+      : '';
+    var hero = image
+      ? '<a href="' + href + '"><img src="' + image + '" alt="' + escapeHtml(post.title) + '"></a>'
+      : '<div style="height:11.5rem;background:#f7f5f9;"></div>';
+
+    return (
+      '<article class="mf-paper-card">' +
+        hero +
+        '<div class="mf-paper-card-body">' +
+          '<div class="mf-paper-meta"><span class="mf-paper-cat">' +
+            escapeHtml(post.category || 'Clinica') +
+          '</span>' +
+          (date ? '<span>' + date + '</span>' : '') +
+          '</div>' +
+          stars +
+          '<h3 class="mf-paper-title">' + escapeHtml(post.title) + '</h3>' +
+          '<p class="mf-paper-excerpt">' + truncate(escapeHtml(post.excerpt || ''), 160) + '</p>' +
+          '<div class="mf-paper-actions">' +
+            '<a class="read" href="' + href + '">Leer articulo →</a>' +
+            pdf +
+          '</div>' +
+        '</div>' +
+      '</article>'
+    );
+  }
+
+  function renderStars(rating) {
+    if (typeof rating !== 'number') return '';
+    var full = Math.floor(rating);
+    var half = rating - full >= 0.5 ? 1 : 0;
+    var empty = 5 - full - half;
+    var html = '<div class="mf-paper-meta" style="margin-bottom:0.35rem;" title="Evaluacion ' + rating.toFixed(1) + '/5">';
+    var i;
+    for (i = 0; i < full; i++) html += '<span style="color:#F5B301;">★</span>';
+    if (half) html += '<span style="color:#F5B301;opacity:0.55;">★</span>';
+    for (i = 0; i < empty; i++) html += '<span style="color:#D1D5DB;">★</span>';
+    html += '<span style="margin-left:0.25rem;">' + rating.toFixed(1) + '</span></div>';
+    return html;
+  }
+
+  function truncate(text, max) {
+    if (!text || text.length <= max) return text;
+    return text.slice(0, max - 1).replace(/\s+\S*$/, '') + '…';
   }
 
   function formatDate(isoDate) {
