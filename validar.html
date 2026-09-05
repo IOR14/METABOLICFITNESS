@@ -315,7 +315,7 @@
         const mobileMenu = document.getElementById('mobile-menu');
         const menuIcon = document.getElementById('menu-icon');
         const closeIcon = document.getElementById('close-icon');
-        mobileMenuBtn.addEventListener('click', () => {
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', () => {
             const isOpen = mobileMenu.classList.contains('mobile-menu-open');
             if (isOpen) { mobileMenu.classList.remove('mobile-menu-open'); menuIcon.classList.remove('hidden'); closeIcon.classList.add('hidden'); }
             else { mobileMenu.classList.add('mobile-menu-open'); menuIcon.classList.add('hidden'); closeIcon.classList.remove('hidden'); }

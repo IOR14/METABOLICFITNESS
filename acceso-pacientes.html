@@ -413,7 +413,7 @@
         let lastScroll = 0;
         window.addEventListener('scroll', () => {
             const currentScroll = window.pageYOffset;
-            if (currentScroll > 20) { navbar.classList.remove('navbar-default'); navbar.classList.add('navbar-scrolled'); }
+            if (!navbar) return; if (currentScroll > 20) { navbar.classList.remove('navbar-default'); navbar.classList.add('navbar-scrolled'); }
             else { navbar.classList.remove('navbar-scrolled'); navbar.classList.add('navbar-default'); }
             lastScroll = currentScroll;
         });
@@ -421,12 +421,12 @@
         const mobileMenu = document.getElementById('mobile-menu');
         const menuIcon = document.getElementById('menu-icon');
         const closeIcon = document.getElementById('close-icon');
-        mobileMenuBtn.addEventListener('click', () => {
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', () => {
             const isOpen = mobileMenu.classList.contains('mobile-menu-open');
             if (isOpen) { mobileMenu.classList.remove('mobile-menu-open'); menuIcon.classList.remove('hidden'); closeIcon.classList.add('hidden'); }
             else { mobileMenu.classList.add('mobile-menu-open'); menuIcon.classList.add('hidden'); closeIcon.classList.remove('hidden'); }
         });
-        mobileMenu.querySelectorAll('a').forEach(link => {
+        if (mobileMenu) mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => { mobileMenu.classList.remove('mobile-menu-open'); menuIcon.classList.remove('hidden'); closeIcon.classList.add('hidden'); });
         });
         document.querySelectorAll('.mobile-dropdown-btn').forEach(btn => {
