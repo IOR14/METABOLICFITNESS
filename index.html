@@ -3,276 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metabolic Fitness - Fisiología Clínica del Ejercicio</title>
-    <meta name="description" content="Plataforma líder mundial en Fisiología Clínica del Ejercicio. Tratamiento integral de la obesidad y academia profesional.">
-    
-    <!-- Google Fonts -->
+    <title>Metabolic Fitness — Fisiología Clínica del Ejercicio</title>
+    <meta name="description" content="Fisiología clínica del ejercicio: tratamiento metabólico basado en evidencia y formación profesional de alto estándar.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Tailwind Custom Configuration -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'metabolic-green': '#5CB85C',
-                        'metabolic-charcoal': '#404041',
-                        'metabolic-cyan': '#00AEEF',
-                        'metabolic-purple': '#460877',
-                        'metabolic-bg': '#FFFFFF',
-                        'metabolic-bg-secondary': '#FAFAFA',
-                        'metabolic-footer': '#F5F5F5',
-                    },
-                    fontFamily: {
-                        'heading': ['Montserrat', 'sans-serif'],
-                        'body': ['Open Sans', 'sans-serif'],
-                    },
-                },
-            },
-        }
-    </script>
-    
-    <style>
-        body {
-            font-family: 'Open Sans', sans-serif;
-            color: #404041;
-            background-color: #FFFFFF;
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        .navbar-scrolled {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(12px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-        }
-        
-        .navbar-default {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(8px);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04);
-        }
-        
-        @keyframes scroll-bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(10px); }
-        }
-        
-        .scroll-indicator {
-            animation: scroll-bounce 1.5s infinite;
-        }
-        
-        @keyframes fade-in-up {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .fade-in-up {
-            animation: fade-in-up 0.8s ease-out forwards;
-        }
-        
-        .mobile-menu-enter {
-            max-height: 0;
-            opacity: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
-        }
-        
-        .mobile-menu-open {
-            max-height: 1200px;
-            opacity: 1;
-            overflow-y: auto;
-        }
-        
-        /* Nav dropdowns - desktop */
-        .nav-dropdown {
-            display: none;
-            min-width: 260px;
-        }
-        .nav-item-group:hover .nav-dropdown {
-            display: block;
-        }
-        
-        /* Mobile nav accordion */
-        .mobile-dropdown-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.25s ease-out;
-        }
-        .mobile-dropdown-content.open {
-            max-height: 400px;
-        }
-        .dropdown-arrow {
-            transition: transform 0.2s ease;
-        }
-        .dropdown-arrow.rotate-180 {
-            transform: rotate(180deg);
-        }
-        
-        /* Hero Montage - Glassmorphism & Silhouette */
-        .hero-montage-bg {
-            background: linear-gradient(135deg, #f8faf9 0%, #eef5f2 35%, #f0f4f8 70%, #fafbfc 100%);
-        }
-        .hero-silhouette {
-            filter: brightness(0) saturate(100%);
-            opacity: 0.9;
-        }
-        .hero-silhouette-wrapper {
-            background: linear-gradient(180deg, rgba(94,184,92,0.06) 0%, transparent 50%, rgba(0,174,239,0.05) 100%);
-        }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.45);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(255, 255, 255, 0.65);
-            box-shadow: 0 8px 32px rgba(64, 64, 65, 0.08), inset 0 1px 0 rgba(255,255,255,0.8);
-        }
-        .glass-card-subtle {
-            background: rgba(255, 255, 255, 0.35);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 6px 24px rgba(64, 64, 65, 0.06);
-        }
-        @keyframes float-soft {
-            0%, 100% { transform: translateY(0) translateX(0); }
-            50% { transform: translateY(-6px) translateX(2px); }
-        }
-        @keyframes float-soft-alt {
-            0%, 100% { transform: translateY(0) translateX(0); }
-            50% { transform: translateY(4px) translateX(-3px); }
-        }
-        .float-soft { animation: float-soft 5s ease-in-out infinite; }
-        .float-soft-alt { animation: float-soft-alt 6s ease-in-out infinite; }
-        .hero-node-dot { fill: #5CB85C; opacity: 0.4; }
-        .hero-node-line { stroke: #5CB85C; stroke-width: 0.5; opacity: 0.25; }
-        .hero-graph-line { stroke: #00AEEF; stroke-width: 1.2; fill: none; opacity: 0.7; }
-        
-        .logo-transparent {
-            background: transparent;
-            mix-blend-mode: normal;
-        }
-        
-        .logo-transparent img {
-            background: transparent;
-        }
-        
-        /* WhatsApp Button */
-        .whatsapp-button {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            width: 64px;
-            height: 64px;
-            background: linear-gradient(155deg, #5CB85C 0%, #4ba572 42%, #800080 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            border: 2px solid rgba(255, 255, 255, 0.9);
-            box-shadow: 0 10px 28px rgba(128, 0, 128, 0.38), 0 4px 10px rgba(92, 184, 92, 0.30);
-            z-index: 999;
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
-            text-decoration: none;
-            animation: whatsapp-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-        }
-
-        @keyframes whatsapp-in {
-            0% { transform: scale(0) rotate(-30deg); opacity: 0; }
-            100% { transform: scale(1) rotate(0); opacity: 1; }
-        }
-
-        /* Brillo superior tipo cristal */
-        .whatsapp-button::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 50%;
-            background: radial-gradient(circle at 32% 24%, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.05) 45%, transparent 62%);
-            pointer-events: none;
-        }
-
-        /* Anillo pulsante en tonos de marca */
-        .whatsapp-button::after {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            border-radius: 50%;
-            box-shadow: 0 0 0 0 rgba(128, 0, 128, 0.40);
-            animation: whatsapp-pulse 2.6s ease-out infinite;
-            pointer-events: none;
-        }
-
-        @keyframes whatsapp-pulse {
-            0% { box-shadow: 0 0 0 0 rgba(128, 0, 128, 0.40); }
-            70% { box-shadow: 0 0 0 18px rgba(92, 184, 92, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(92, 184, 92, 0); }
-        }
-
-        .whatsapp-button:hover {
-            transform: scale(1.12) translateY(-3px);
-            box-shadow: 0 16px 34px rgba(128, 0, 128, 0.48), 0 6px 16px rgba(92, 184, 92, 0.42);
-        }
-
-        .whatsapp-button svg {
-            width: 36px;
-            height: 36px;
-            fill: white;
-            position: relative;
-            z-index: 1;
-            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.22));
-        }
-
-        @media (max-width: 768px) {
-            
-            .whatsapp-button {
-                bottom: 20px;
-            }
-        }
-    </style>
-
-    <link rel="stylesheet" href="css/mf-system.css?v=1">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/mf-system.css?v=2">
     <!-- GA4: reemplaza G-XXXXXXXX cuando tengas el Measurement ID
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXX');</script>
     -->
 </head>
-<body class="mf-page antialiased">
-        <div class="mf-util" role="navigation" aria-label="Accesos rapidos">
+<body class="mf-page">
+<div class="mf-util" role="navigation" aria-label="Accesos rápidos">
   <div class="mf-util-inner">
     <a href="portal.html">Portal Alumnos</a>
     <span class="mf-util-sep">|</span>
     <a href="acceso-pacientes.html">Acceso Pacientes</a>
     <span class="mf-util-sep">|</span>
-    <a href="blog.html">Paper Cientificos</a>
+    <a href="blog.html">Paper Científicos</a>
   </div>
 </div>
-<header class="mf-nav mf-nav--light" id="mf-nav">
+<header class="mf-nav mf-nav--dark" id="mf-nav">
   <div class="mf-nav-inner">
     <a class="mf-logo" href="index.html" aria-label="Metabolic Fitness">
-      <img src="assets/brand/logo-mf-horizontal-nav.png" alt="Metabolic Fitness" width="220" height="80">
+      <img src="assets/brand/logo-mf-horizontal-white-nav.png" alt="Metabolic Fitness" width="220" height="80">
     </a>
     <nav class="mf-nav-links" aria-label="Principal">
       <div class="mf-drop">
-        <a class="mf-link" href="tratamiento.html">Clinica <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></a>
+        <a class="mf-link" href="tratamiento.html">Clínica <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></a>
         <div class="mf-drop-panel"><div class="mf-drop-card">
           <p class="mf-drop-label">Para el paciente</p>
-          <a href="tratamiento.html">Programas Metabolicos</a>
-          <a href="tratamiento.html#fisiologia">Fisiologia del Ejercicio</a>
+          <a href="tratamiento.html">Programas Metabólicos</a>
+          <a href="tratamiento.html#fisiologia">Fisiología del Ejercicio</a>
           <a href="evaluacion.html">Agendar Telemedicina</a>
         </div></div>
       </div>
@@ -282,183 +45,139 @@
           <p class="mf-drop-label">Para el profesional</p>
           <a href="academia.html">Diplomados & Certificaciones</a>
           <a href="aprendizaje-ia.html">Aprendizaje con IA</a>
-          <a href="mentoria-casos.html">Mentoria de Casos</a>
-          <a href="1x2x3.html">Metodo 1x2x3</a>
+          <a href="mentoria-casos.html">Mentoría de Casos</a>
+          <a href="1x2x3.html">Método 1×2×3</a>
         </div></div>
       </div>
       <div class="mf-drop">
-        <a class="mf-link" href="blog.html">Investigacion <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></a>
+        <a class="mf-link" href="blog.html">Investigación <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></a>
         <div class="mf-drop-panel"><div class="mf-drop-card">
           <p class="mf-drop-label">Science Hub</p>
-          <a href="blog.html">Paper Cientificos</a>
+          <a href="blog.html">Paper Científicos</a>
           <a href="biblioteca-evidencia.html">Biblioteca de Evidencia</a>
           <a href="calculadoras.html">Calculadoras</a>
           <a href="webinars.html">Webinars</a>
         </div></div>
       </div>
-      <a class="mf-cta" href="evaluacion.html">Agendar evaluacion</a>
+      <a class="mf-cta" href="evaluacion.html">Agendar evaluación</a>
     </nav>
-    <button type="button" class="mf-burger" id="mf-burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mf-mobile">
+    <button type="button" class="mf-burger" id="mf-burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mf-mobile">
       <svg data-icon="open" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
       <svg data-icon="close" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
     </button>
   </div>
   <div class="mf-mobile" id="mf-mobile">
     <div class="mf-mobile-wrap">
-      <button type="button" class="mf-mobile-acc" aria-expanded="false">Clinica</button>
+      <button type="button" class="mf-mobile-acc" aria-expanded="false">Clínica</button>
       <div class="mf-mobile-sub">
-        <a href="tratamiento.html">Programas Metabolicos</a>
-        <a href="tratamiento.html#fisiologia">Fisiologia del Ejercicio</a>
+        <a href="tratamiento.html">Programas Metabólicos</a>
+        <a href="tratamiento.html#fisiologia">Fisiología del Ejercicio</a>
         <a href="evaluacion.html">Agendar Telemedicina</a>
       </div>
       <button type="button" class="mf-mobile-acc" aria-expanded="false">Academia</button>
       <div class="mf-mobile-sub">
         <a href="academia.html">Diplomados & Certificaciones</a>
         <a href="aprendizaje-ia.html">Aprendizaje con IA</a>
-        <a href="mentoria-casos.html">Mentoria de Casos</a>
-        <a href="1x2x3.html">Metodo 1x2x3</a>
+        <a href="mentoria-casos.html">Mentoría de Casos</a>
+        <a href="1x2x3.html">Método 1×2×3</a>
       </div>
-      <button type="button" class="mf-mobile-acc" aria-expanded="false">Investigacion</button>
+      <button type="button" class="mf-mobile-acc" aria-expanded="false">Investigación</button>
       <div class="mf-mobile-sub">
-        <a href="blog.html">Paper Cientificos</a>
+        <a href="blog.html">Paper Científicos</a>
         <a href="biblioteca-evidencia.html">Biblioteca de Evidencia</a>
         <a href="calculadoras.html">Calculadoras</a>
         <a href="webinars.html">Webinars</a>
       </div>
-      <a href="evaluacion.html" style="color:#fff;background:#5CB85C;justify-content:center;margin:0.75rem 1rem;border-radius:0.55rem;">Agendar evaluacion</a>
+      <a href="evaluacion.html" style="color:#fff;background:#5CB85C;justify-content:center;margin:0.85rem 1rem;border-radius:0.35rem;">Agendar evaluación</a>
     </div>
   </div>
 </header>
 
-    <!-- Hero Section - Fondo blanco (guía); palabra impactante en morado -->
-    <section class="relative min-h-screen flex items-center justify-center bg-white overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 relative z-10 w-full">
-            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                <!-- Text Content -->
-                <div class="space-y-8 fade-in-up order-2 lg:order-1">
-                    <div class="space-y-5">
-                        <img src="assets/brand/logo-mf-horizontal.png" alt="Metabolic Fitness" class="h-14 sm:h-16 w-auto object-contain">
-                        <h1 class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-metabolic-charcoal leading-tight">
-                            Fisiologia Clinica
-                            <span class="block text-metabolic-purple">del Ejercicio</span>
-                        </h1>
-                        <p class="font-body text-lg text-metabolic-charcoal/80 leading-relaxed max-w-xl">
-                            Ciencia medica y movimiento humano, con intervenciones clinicas basadas en evidencia
-                            y formacion profesional de alto estandar.
-                        </p>
-                    </div>
-                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                        <a href="tratamiento.html" class="group bg-metabolic-green text-white px-8 py-4 rounded-md font-body font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-2">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                            <span>Soy Paciente</span>
-                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
-                        </a>
-                        <a href="academia.html" class="group bg-white text-metabolic-purple border-2 border-metabolic-purple px-8 py-4 rounded-md font-body font-semibold text-lg shadow-md hover:shadow-lg hover:bg-metabolic-purple/5 transition-all duration-300 flex items-center justify-center space-x-2">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path></svg>
-                            <span>Soy Profesional</span>
-                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
-                        </a>
-                    </div>
-                </div>
+<section class="mf-home-hero" aria-label="Portada">
+  <div class="mf-home-hero__media" aria-hidden="true">
+    <img src="carlos-saavedra.png" alt="">
+  </div>
+  <div class="mf-home-hero__veil" aria-hidden="true"></div>
+  <div class="mf-home-hero__grid" aria-hidden="true"></div>
+  <div class="mf-home-hero__inner">
+    <img class="mf-home-brand" src="assets/brand/logo-mf-horizontal-white.png" alt="Metabolic Fitness">
+    <h1>Fisiología clínica <em>sin adornos</em></h1>
+    <p class="mf-home-hero__lead">
+      Intervención metabólica basada en evidencia y formación profesional de alto estándar.
+      Ciencia aplicada al cuerpo real.
+    </p>
+    <div class="mf-home-ctas">
+      <a class="mf-btn mf-btn--green" href="tratamiento.html">Soy paciente</a>
+      <a class="mf-btn mf-btn--ghost" href="academia.html">Soy profesional</a>
+    </div>
+  </div>
+</section>
 
-                <!-- Hero Image Montage: Dr. silueta + UI flotante -->
-                <div class="relative order-1 lg:order-2 min-h-[420px] lg:min-h-[520px] flex items-center justify-center overflow-visible">
-                    <!-- Fondo abstracto limpio -->
-                    <div class="absolute inset-0 hero-silhouette-wrapper rounded-2xl overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-white/40"></div>
-                        <div class="absolute top-1/4 left-1/4 w-48 h-48 bg-metabolic-green/5 rounded-full blur-3xl"></div>
-                        <div class="absolute bottom-1/4 right-1/4 w-40 h-40 bg-metabolic-cyan/5 rounded-full blur-3xl"></div>
-                        <!-- Nodos tipo red neural (subtle) -->
-                        <svg class="absolute inset-0 w-full h-full pointer-events-none" style="opacity:0.35" preserveAspectRatio="xMidYMid slice" viewBox="0 0 100 100">
-                            <circle cx="18" cy="22" r="2.5" fill="#5CB85C" opacity="0.4"/>
-                            <circle cx="82" cy="28" r="2" fill="#5CB85C" opacity="0.4"/>
-                            <circle cx="78" cy="68" r="2" fill="#00AEEF" opacity="0.35"/>
-                            <circle cx="22" cy="72" r="2.5" fill="#00AEEF" opacity="0.35"/>
-                            <line x1="18" y1="22" x2="82" y2="28" stroke="#5CB85C" stroke-width="0.4" opacity="0.25"/>
-                            <line x1="78" y1="68" x2="22" y2="72" stroke="#00AEEF" stroke-width="0.4" opacity="0.2"/>
-                        </svg>
-                    </div>
+<section class="mf-proof" aria-label="Pilares">
+  <div class="mf-proof__inner">
+    <div class="mf-proof__item">
+      <strong>Clínica</strong>
+      <span>Programas metabólicos con evaluación y seguimiento.</span>
+    </div>
+    <div class="mf-proof__item">
+      <strong>Academia</strong>
+      <span>Formación continua para profesionales de la salud.</span>
+    </div>
+    <div class="mf-proof__item">
+      <strong>Investigación</strong>
+      <span>Paper científicos traducidos a decisión clínica.</span>
+    </div>
+  </div>
+</section>
 
-                    <!-- Retrato enmarcado del Dr. Carlos Saavedra -->
-                    <div class="relative z-10 flex items-center justify-center">
-                        <div class="absolute -inset-4 bg-gradient-to-br from-metabolic-green/30 via-transparent to-metabolic-purple/30 rounded-[2rem] blur-2xl"></div>
-                        <div class="relative w-[260px] h-[260px] sm:w-[300px] sm:h-[300px] lg:w-[380px] lg:h-[380px] rounded-3xl overflow-hidden border-4 border-white shadow-2xl ring-1 ring-metabolic-purple/10">
-                            <img src="carlos-saavedra.png" alt="Carlos Saavedra - Fisiología Clínica del Ejercicio" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <!-- Fallback si no carga la imagen -->
-                            <div class="hidden w-full h-full bg-metabolic-bg-secondary items-center justify-center">
-                                <svg class="w-1/2 h-1/2" viewBox="0 0 200 320" fill="#404041" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                    <path d="M100 40c-12 0-22 10-22 22s10 22 22 22 22-10 22-22-10-22-22-22z"/>
-                                    <path d="M65 88h70v90c0 4-2 8-5 10l-30 20-30-20c-3-2-5-6-5-10V88z"/>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
+<section class="mf-split" aria-label="Rutas">
+  <a class="mf-split__panel mf-split__panel--clinic" href="tratamiento.html">
+    <span class="mf-split__kicker">Pacientes</span>
+    <h2>Tratamiento metabólico</h2>
+    <p>Obesidad, diabetes, sarcopenia y rendimiento: intervención fisiológica con criterio clínico.</p>
+    <span class="mf-split__go">Entrar a Clínica →</span>
+  </a>
+  <a class="mf-split__panel mf-split__panel--academy" href="academia.html">
+    <span class="mf-split__kicker">Profesionales</span>
+    <h2>Academia & método</h2>
+    <p>Diplomados, mentoría de casos y el método 1×2×3 para prescribir con rigor.</p>
+    <span class="mf-split__go">Entrar a Academia →</span>
+  </a>
+</section>
 
-                    <!-- Tarjetas glassmorphism flotantes -->
-                    <!-- 1. Gráfico metabólico -->
-                    <div class="glass-card absolute top-[8%] right-0 lg:right-[5%] w-28 lg:w-36 rounded-xl p-3 float-soft">
-                        <svg viewBox="0 0 80 36" class="w-full h-10 text-metabolic-cyan" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <defs><linearGradient id="heroGraphFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00AEEF"/><stop offset="100%" stop-color="#00AEEF" stop-opacity="0"/></linearGradient></defs>
-                            <path class="hero-graph-line" d="M0 28 Q12 24 20 22 T40 20 T60 16 T80 8" opacity="0.8"/>
-                            <path d="M0 28 Q12 24 20 22 T40 20 T60 16 T80 8 L80 36 L0 36 Z" fill="url(#heroGraphFill)" opacity="0.12"/>
-                        </svg>
-                        <p class="font-body text-[10px] lg:text-xs text-metabolic-charcoal/70 mt-1 font-semibold uppercase tracking-wider">VO₂</p>
-                    </div>
+<section class="mf-band">
+  <div class="mf-band__inner">
+    <div>
+      <h2>La evidencia no se queda en el paper</h2>
+      <p>
+        Publicamos síntesis clínicas accionables: lo que importa para evaluar, prescribir y seguir.
+        Sin ruido. Con fuentes.
+      </p>
+    </div>
+    <div class="mf-band__actions">
+      <a class="mf-btn mf-btn--ink" href="blog.html">Paper Científicos</a>
+      <a class="mf-btn mf-btn--outline" href="evaluacion.html">Agendar evaluación</a>
+    </div>
+  </div>
+</section>
 
-                    <!-- 2. Molécula minimalista -->
-                    <div class="glass-card absolute top-[35%] left-0 lg:left-0 w-24 lg:w-28 rounded-xl p-3 float-soft-alt">
-                        <svg viewBox="0 0 40 40" class="w-10 h-10 mx-auto" fill="none" stroke="#5CB85C" stroke-width="1.2" opacity="0.75">
-                            <circle cx="20" cy="20" r="14"/><circle cx="20" cy="8" r="4"/><circle cx="32" cy="20" r="4"/><circle cx="20" cy="32" r="4"/><circle cx="8" cy="20" r="4"/>
-                            <line x1="20" y1="12" x2="20" y2="28"/><line x1="28" y1="20" x2="12" y2="20"/><line x1="25" y1="11" x2="15" y2="29"/><line x1="15" y1="11" x2="25" y2="29"/>
-                        </svg>
-                        <p class="font-body text-[10px] lg:text-xs text-metabolic-charcoal/70 mt-1 font-semibold uppercase tracking-wider text-center">Biomarc.</p>
-                    </div>
-
-                    <!-- 3. Nodos red clínica -->
-                    <div class="glass-card-subtle absolute bottom-[22%] right-[2%] lg:right-[8%] w-24 lg:w-32 rounded-xl p-3 float-soft">
-                        <svg viewBox="0 0 48 32" class="w-full h-8" fill="none" stroke="#5CB85C" stroke-width="0.8" opacity="0.6">
-                            <circle cx="8" cy="8" r="3"/><circle cx="40" cy="8" r="3"/><circle cx="24" cy="24" r="3"/>
-                            <line x1="8" y1="8" x2="24" y2="24"/><line x1="40" y1="8" x2="24" y2="24"/><line x1="8" y1="8" x2="40" y2="8"/>
-                        </svg>
-                        <p class="font-body text-[10px] lg:text-xs text-metabolic-charcoal/70 mt-1 font-semibold uppercase tracking-wider">Red clínica</p>
-                    </div>
-
-                    <!-- 4. Curva tipo ECG / metabolismo -->
-                    <div class="glass-card-subtle absolute bottom-[8%] left-[2%] lg:left-[4%] w-28 lg:w-36 rounded-xl p-3 float-soft-alt">
-                        <svg viewBox="0 0 90 28" class="w-full h-8" fill="none" stroke="#00AEEF" stroke-width="1" stroke-linecap="round" opacity="0.7">
-                            <path d="M0 14 h8 v-4 h4 v6 h6 v-6 h4 v4 h8 v-2 h6 v4 h6 v-4 h8 v2 h6 v-4 h4 v6 h6 v-6 h8 v4 h4"/>
-                        </svg>
-                        <p class="font-body text-[10px] lg:text-xs text-metabolic-charcoal/70 mt-1 font-semibold uppercase tracking-wider">Metabolismo</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
-            <div class="scroll-indicator w-6 h-10 border-2 border-metabolic-charcoal/30 rounded-full flex justify-center relative">
-                <div class="scroll-indicator w-1.5 h-3 bg-metabolic-green rounded-full mt-2"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer (títulos sección en morado; franja inferior morada con texto blanco) -->
-    <footer class="mf-footer">
+<footer class="mf-footer">
   <div class="mf-footer-grid">
     <div class="mf-footer-col">
-      <img src="assets/brand/logo-mf-stacked.png" alt="Metabolic Fitness" style="height:4.5rem;width:auto;object-fit:contain;margin-bottom:0.75rem;">
-      <p style="font-size:0.9rem;color:#6b6b6d;line-height:1.5;margin:0;">Fisiologia aplicada a la clinica.</p>
-      <p style="font-size:0.8rem;color:#6b6b6d;margin:0.5rem 0 0;">Carlos Saavedra, MSc · Israel Orellana, MSc — Co fundadores.</p>
+      <img class="mf-footer-brand" src="assets/brand/logo-mf-horizontal-white.png" alt="Metabolic Fitness">
+      <p style="font-size:0.95rem;line-height:1.55;margin:0;max-width:22rem;">Fisiología aplicada a la clínica. Santiago, Chile.</p>
+      <p style="font-size:0.82rem;margin:0.65rem 0 0;opacity:0.7;">Carlos Saavedra, MSc · Israel Orellana, MSc — Co fundadores.</p>
     </div>
     <div class="mf-footer-col">
       <h3>Explora</h3>
       <a href="index.html">Inicio</a>
       <a href="tratamiento.html">Tratamiento</a>
       <a href="academia.html">Academia</a>
-      <a href="blog.html">Paper Cientificos</a>
+      <a href="blog.html">Paper Científicos</a>
     </div>
     <div class="mf-footer-col">
       <h3>Contacto</h3>
-      <span style="color:#6b6b6d;font-size:0.9rem;">Santiago, Chile</span>
+      <span style="font-size:0.9rem;">Santiago, Chile</span>
       <a href="tel:+56910111167">+56 9 1011 1167</a>
       <a href="mailto:contacto@metabolicfitness.cl">contacto@metabolicfitness.cl</a>
     </div>
@@ -474,6 +193,6 @@
 <a class="mf-wa" href="https://wa.me/56910111167?text=Hola%2C%20quiero%20informacion%20sobre%20Metabolic%20Fitness" target="_blank" rel="noopener" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11 11 0 0 0 3.2 17.7L2 22l4.4-1.15A11 11 0 1 0 20.5 3.5zm-8.5 17a9 9 0 0 1-4.6-1.25l-.33-.2-2.6.68.7-2.53-.22-.34A9 9 0 1 1 12 20.5zm5.2-6.7c-.28-.14-1.65-.81-1.9-.9s-.44-.14-.63.14-.72.9-.88 1.08-.33.21-.6.07a7.4 7.4 0 0 1-2.17-1.34 8.1 8.1 0 0 1-1.5-1.86c-.16-.28 0-.43.12-.57.12-.12.28-.33.42-.5s.18-.28.28-.47.05-.35-.02-.5-.63-1.51-.86-2.07c-.23-.54-.46-.46-.63-.47h-.54c-.19 0-.5.07-.76.35s-1 1-1 2.42 1.02 2.8 1.16 3 .2.28 2.01 3.07c1.6 1.4 2.2 1.6 2.56 1.76.6.28 1.14.24 1.57.14.48-.1 1.65-.67 1.88-1.32.23-.65.23-1.2.16-1.32-.07-.11-.25-.18-.53-.32z"/></svg>
 </a>
-<script src="js/mf-nav.js?v=1"></script>
+<script src="js/mf-nav.js?v=2"></script>
 </body>
 </html>

@@ -188,14 +188,17 @@
         }
     </style>
 
-    <link rel="stylesheet" href="css/mf-system.css?v=1">
+    <link rel="stylesheet" href="css/mf-system.css?v=2">
     <!-- GA4: reemplaza G-XXXXXXXX cuando tengas el Measurement ID
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXX');</script>
     -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 </head>
 <body class="mf-page antialiased">
-    <div class="mf-util" role="navigation" aria-label="Accesos rapidos">
+
+<div class="mf-util" role="navigation" aria-label="Accesos rapidos">
   <div class="mf-util-inner">
     <a href="portal.html">Portal Alumnos</a>
     <span class="mf-util-sep">|</span>
@@ -204,10 +207,10 @@
     <a href="blog.html">Paper Cientificos</a>
   </div>
 </div>
-<header class="mf-nav mf-nav--light" id="mf-nav">
+<header class="mf-nav mf-nav--dark" id="mf-nav">
   <div class="mf-nav-inner">
     <a class="mf-logo" href="index.html" aria-label="Metabolic Fitness">
-      <img src="assets/brand/logo-mf-horizontal-nav.png" alt="Metabolic Fitness" width="220" height="80">
+      <img src="assets/brand/logo-mf-horizontal-white-nav.png" alt="Metabolic Fitness" width="220" height="80">
     </a>
     <nav class="mf-nav-links" aria-label="Principal">
       <div class="mf-drop">
@@ -268,7 +271,85 @@
         <a href="calculadoras.html">Calculadoras</a>
         <a href="webinars.html">Webinars</a>
       </div>
-      <a href="evaluacion.html" style="color:#fff;background:#5CB85C;justify-content:center;margin:0.75rem 1rem;border-radius:0.55rem;">Agendar evaluacion</a>
+      <a href="evaluacion.html" style="color:#fff;background:#5CB85C;justify-content:center;margin:0.85rem 1rem;border-radius:0.35rem;">Agendar evaluacion</a>
+    </div>
+  </div>
+</header>
+
+    <div class="mf-util" role="navigation" aria-label="Accesos rapidos">
+  <div class="mf-util-inner">
+    <a href="portal.html">Portal Alumnos</a>
+    <span class="mf-util-sep">|</span>
+    <a href="acceso-pacientes.html">Acceso Pacientes</a>
+    <span class="mf-util-sep">|</span>
+    <a href="blog.html">Paper Cientificos</a>
+  </div>
+</div>
+<header class="mf-nav mf-nav--dark" id="mf-nav">
+  <div class="mf-nav-inner">
+    <a class="mf-logo" href="index.html" aria-label="Metabolic Fitness">
+      <img src="assets/brand/logo-mf-horizontal-white-nav.png" alt="Metabolic Fitness" width="220" height="80">
+    </a>
+    <nav class="mf-nav-links" aria-label="Principal">
+      <div class="mf-drop">
+        <a class="mf-link" href="tratamiento.html">Clinica <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></a>
+        <div class="mf-drop-panel"><div class="mf-drop-card">
+          <p class="mf-drop-label">Para el paciente</p>
+          <a href="tratamiento.html">Programas Metabolicos</a>
+          <a href="tratamiento.html#fisiologia">Fisiologia del Ejercicio</a>
+          <a href="evaluacion.html">Agendar Telemedicina</a>
+        </div></div>
+      </div>
+      <div class="mf-drop">
+        <a class="mf-link" href="academia.html">Academia <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></a>
+        <div class="mf-drop-panel"><div class="mf-drop-card">
+          <p class="mf-drop-label">Para el profesional</p>
+          <a href="academia.html">Diplomados & Certificaciones</a>
+          <a href="aprendizaje-ia.html">Aprendizaje con IA</a>
+          <a href="mentoria-casos.html">Mentoria de Casos</a>
+          <a href="1x2x3.html">Metodo 1x2x3</a>
+        </div></div>
+      </div>
+      <div class="mf-drop">
+        <a class="mf-link" href="blog.html">Investigacion <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></a>
+        <div class="mf-drop-panel"><div class="mf-drop-card">
+          <p class="mf-drop-label">Science Hub</p>
+          <a href="blog.html">Paper Cientificos</a>
+          <a href="biblioteca-evidencia.html">Biblioteca de Evidencia</a>
+          <a href="calculadoras.html">Calculadoras</a>
+          <a href="webinars.html">Webinars</a>
+        </div></div>
+      </div>
+      <a class="mf-cta" href="evaluacion.html">Agendar evaluacion</a>
+    </nav>
+    <button type="button" class="mf-burger" id="mf-burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mf-mobile">
+      <svg data-icon="open" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <svg data-icon="close" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="mf-mobile" id="mf-mobile">
+    <div class="mf-mobile-wrap">
+      <button type="button" class="mf-mobile-acc" aria-expanded="false">Clinica</button>
+      <div class="mf-mobile-sub">
+        <a href="tratamiento.html">Programas Metabolicos</a>
+        <a href="tratamiento.html#fisiologia">Fisiologia del Ejercicio</a>
+        <a href="evaluacion.html">Agendar Telemedicina</a>
+      </div>
+      <button type="button" class="mf-mobile-acc" aria-expanded="false">Academia</button>
+      <div class="mf-mobile-sub">
+        <a href="academia.html">Diplomados & Certificaciones</a>
+        <a href="aprendizaje-ia.html">Aprendizaje con IA</a>
+        <a href="mentoria-casos.html">Mentoria de Casos</a>
+        <a href="1x2x3.html">Metodo 1x2x3</a>
+      </div>
+      <button type="button" class="mf-mobile-acc" aria-expanded="false">Investigacion</button>
+      <div class="mf-mobile-sub">
+        <a href="blog.html">Paper Cientificos</a>
+        <a href="biblioteca-evidencia.html">Biblioteca de Evidencia</a>
+        <a href="calculadoras.html">Calculadoras</a>
+        <a href="webinars.html">Webinars</a>
+      </div>
+      <a href="evaluacion.html" style="color:#fff;background:#5CB85C;justify-content:center;margin:0.85rem 1rem;border-radius:0.35rem;">Agendar evaluacion</a>
     </div>
   </div>
 </header>
@@ -387,9 +468,9 @@
 <footer class="mf-footer">
   <div class="mf-footer-grid">
     <div class="mf-footer-col">
-      <img src="assets/brand/logo-mf-stacked.png" alt="Metabolic Fitness" style="height:4.5rem;width:auto;object-fit:contain;margin-bottom:0.75rem;">
-      <p style="font-size:0.9rem;color:#6b6b6d;line-height:1.5;margin:0;">Fisiologia aplicada a la clinica.</p>
-      <p style="font-size:0.8rem;color:#6b6b6d;margin:0.5rem 0 0;">Carlos Saavedra, MSc · Israel Orellana, MSc — Co fundadores.</p>
+      <img class="mf-footer-brand" src="assets/brand/logo-mf-horizontal-white.png" alt="Metabolic Fitness">
+      <p style="font-size:0.95rem;line-height:1.55;margin:0;max-width:22rem;">Fisiologia aplicada a la clinica. Santiago, Chile.</p>
+      <p style="font-size:0.82rem;margin:0.65rem 0 0;opacity:0.7;">Carlos Saavedra, MSc · Israel Orellana, MSc — Co fundadores.</p>
     </div>
     <div class="mf-footer-col">
       <h3>Explora</h3>
@@ -400,7 +481,7 @@
     </div>
     <div class="mf-footer-col">
       <h3>Contacto</h3>
-      <span style="color:#6b6b6d;font-size:0.9rem;">Santiago, Chile</span>
+      <span style="font-size:0.9rem;">Santiago, Chile</span>
       <a href="tel:+56910111167">+56 9 1011 1167</a>
       <a href="mailto:contacto@metabolicfitness.cl">contacto@metabolicfitness.cl</a>
     </div>
@@ -416,8 +497,8 @@
 <a class="mf-wa" href="https://wa.me/56910111167?text=Hola%2C%20quiero%20informacion%20sobre%20Metabolic%20Fitness" target="_blank" rel="noopener" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11 11 0 0 0 3.2 17.7L2 22l4.4-1.15A11 11 0 1 0 20.5 3.5zm-8.5 17a9 9 0 0 1-4.6-1.25l-.33-.2-2.6.68.7-2.53-.22-.34A9 9 0 1 1 12 20.5zm5.2-6.7c-.28-.14-1.65-.81-1.9-.9s-.44-.14-.63.14-.72.9-.88 1.08-.33.21-.6.07a7.4 7.4 0 0 1-2.17-1.34 8.1 8.1 0 0 1-1.5-1.86c-.16-.28 0-.43.12-.57.12-.12.28-.33.42-.5s.18-.28.28-.47.05-.35-.02-.5-.63-1.51-.86-2.07c-.23-.54-.46-.46-.63-.47h-.54c-.19 0-.5.07-.76.35s-1 1-1 2.42 1.02 2.8 1.16 3 .2.28 2.01 3.07c1.6 1.4 2.2 1.6 2.56 1.76.6.28 1.14.24 1.57.14.48-.1 1.65-.67 1.88-1.32.23-.65.23-1.2.16-1.32-.07-.11-.25-.18-.53-.32z"/></svg>
 </a>
-<script src="js/mf-nav.js?v=1"></script>
-<!-- WhatsApp Button -->
+<script src="js/mf-nav.js?v=2"></script>
+ <!-- WhatsApp Button -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/supabase-config.js"></script>
     <script>
