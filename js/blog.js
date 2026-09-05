@@ -14,7 +14,7 @@
       });
       if (!posts.length) {
         grid.innerHTML =
-          '<p class="col-span-full text-center font-body text-metabolic-charcoal/70">Aun no hay articulos publicados.</p>';
+          '<p class="mf-blog-empty">Aun no hay articulos publicados.</p>';
         return;
       }
 
@@ -32,7 +32,7 @@
     })
     .catch(function () {
       grid.innerHTML =
-        '<p class="col-span-full text-center font-body text-metabolic-charcoal/70">No se pudieron cargar los articulos del blog.</p>';
+        '<p class="mf-blog-empty">No se pudieron cargar los articulos del blog.</p>';
     });
 
   function renderFeatured(post) {
@@ -78,7 +78,7 @@
       : '';
     var hero = image
       ? '<a href="' + href + '"><img src="' + image + '" alt="' + escapeHtml(post.title) + '"></a>'
-      : '<div style="height:11.5rem;background:#f7f5f9;"></div>';
+      : '<div style="height:11.5rem;background:#1a1224;"></div>';
 
     return (
       '<article class="mf-paper-card">' +
@@ -110,7 +110,7 @@
     var i;
     for (i = 0; i < full; i++) html += '<span style="color:#F5B301;">★</span>';
     if (half) html += '<span style="color:#F5B301;opacity:0.55;">★</span>';
-    for (i = 0; i < empty; i++) html += '<span style="color:#D1D5DB;">★</span>';
+    for (i = 0; i < empty; i++) html += '<span style="color:rgba(255,255,255,0.22);">★</span>';
     html += '<span style="margin-left:0.25rem;">' + rating.toFixed(1) + '</span></div>';
     return html;
   }

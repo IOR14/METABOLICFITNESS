@@ -7,222 +7,271 @@
     <meta name="description" content="Una revisión científica exhaustiva sobre la interpretación clínica de la variabilidad de la frecuencia cardíaca (VFC), los factores que afectan su reproducibilidad y cómo las nuevas terapias y modalidades de ejercicio modulan la función autonómica, el metaboreflejo y la recuperación en poblaciones clínicas.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/mf-system.css?v=8">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'metabolic-green': '#5CB85C',
+                        'metabolic-charcoal': '#404041',
+                        'metabolic-cyan': '#00AEEF',
+                        'metabolic-purple': '#460877',
+                        'metabolic-bg': '#FFFFFF',
+                        'metabolic-bg-secondary': '#FAFAFA',
+                    },
+                    fontFamily: {
+                        'heading': ['Montserrat', 'sans-serif'],
+                        'body': ['Open Sans', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body { font-family: 'Open Sans', sans-serif; color: #404041; background: #FAFAFA; }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+        .article-content p { margin-bottom: 1.15rem; line-height: 1.9; font-size: 1.05rem; text-align: justify; hyphens: auto; }
+        .article-content h2 { margin-top: 2.2rem; margin-bottom: 0.9rem; font-weight: 700; font-size: 1.45rem; color: #460877; text-align: left; }
+        .article-content ul { list-style: disc; padding-left: 1.4rem; margin-bottom: 1rem; }
+        .article-content li { margin-bottom: 0.45rem; line-height: 1.75; text-align: justify; }
+        .justified { text-align: justify; hyphens: auto; }
+        .abstract-box { border-left: 5px solid #5CB85C; background: linear-gradient(90deg, #F3FBF3 0%, #FFFFFF 100%); }
+        .clinical-box { border: 1px solid #5CB85C33; background: #F8FFF8; box-shadow: 0 10px 30px rgba(92,184,92,0.08); }
+        .sidebar-card { background: white; border: 1px solid #E5E7EB; box-shadow: 0 8px 24px rgba(70,8,119,0.06); }
+        .keyword-chip { display: inline-block; background: rgba(255,255,255,0.14); color: #fff; border: 1px solid rgba(255,255,255,0.22); border-radius: 999px; padding: 0.28rem 0.75rem; font-size: 0.7rem; letter-spacing: 0.04em; text-transform: uppercase; font-family: Montserrat, sans-serif; font-weight: 600; }
+        .mf-pdf-cta {
+            background: #460877 !important;
+            color: #fff !important;
+            display: inline-block;
+            text-decoration: none !important;
+            border: none;
+            cursor: pointer;
+        }
+        .mf-pdf-cta:hover { background: #5a0a99 !important; }
+        aside .mf-pdf-cta { display: block; width: 100%; box-sizing: border-box; text-align: center; }
+
+        .mf-rating-box {
+            width: 100%;
+            max-width: 28rem;
+            background: #FAFAFA;
+            border: 1px solid #E5E7EB;
+            border-radius: 1rem;
+            padding: 1.1rem 1.25rem;
+            text-align: center;
+        }
+        .mf-star { color: #D1D5DB; cursor: pointer; user-select: none; line-height: 1; }
+        .mf-star-on, .mf-star.mf-active, .mf-star.mf-hover { color: #F5B301; }
+        .mf-star-half { color: #F5B301; opacity: 0.55; }
+        .mf-star-off { color: #D1D5DB; }
+        .mf-stars-display .mf-star { cursor: default; }
+        .mf-stars-input { display: inline-flex; gap: 0.15rem; font-size: 1.85rem; }
+        .mf-stars-input button { background: none; border: none; padding: 0; cursor: pointer; }
+
+
+        .mf-article-header { position: sticky; top: 0; z-index: 50; background: #460877; }
+        .mf-article-nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+        }
+        .mf-article-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem;
+            margin-left: auto;
+        }
+        .mf-back-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0.55rem 0.9rem;
+            border-radius: 0.6rem;
+            background: rgba(255,255,255,0.14);
+            color: #fff !important;
+            text-decoration: none !important;
+            font-weight: 600;
+            white-space: nowrap;
+            position: relative;
+            z-index: 2;
+        }
+        .mf-back-link:hover { background: rgba(255,255,255,0.22); }
+        .mf-header-pdf {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0.55rem 0.9rem;
+            border-radius: 0.6rem;
+            background: #5CB85C !important;
+            color: #fff !important;
+            text-decoration: none !important;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        @media (max-width: 640px) {
+            .mf-article-header { position: sticky; top: 0; }
+            .mf-article-nav { flex-direction: column; align-items: stretch; gap: 0.65rem; }
+            .mf-article-actions {
+                margin-left: 0;
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .mf-back-link, .mf-header-pdf {
+                width: 100%;
+                flex: none;
+                touch-action: manipulation;
+                -webkit-tap-highlight-color: rgba(255,255,255,0.25);
+            }
+            .mf-logo-link { pointer-events: auto; }
+            .mf-logo-link img { max-width: 170px !important; height: 2.5rem !important; }
+            .article-hero { grid-template-columns: 1fr !important; min-height: 0 !important; }
+            .article-hero-copy { padding: 1.25rem !important; }
+            .article-hero-copy h1 { font-size: 1.45rem !important; line-height: 1.25 !important; }
+            .article-hero-media { min-height: 12rem !important; }
+            .article-hero-fade { display: none !important; }
+            main.mf-article-main { padding-top: 1.25rem !important; padding-bottom: 2rem !important; }
+            .keyword-chip { font-size: 0.62rem; padding: 0.22rem 0.55rem; }
+        }
+
+    </style>
 </head>
-<body class="mf-page">
+<body class="antialiased">
+            <header class="mf-article-header text-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <nav class="mf-article-nav" aria-label="Navegacion del articulo">
+                <a href="../blog.html" class="mf-logo-link flex items-center gap-2 min-w-0">
+                    <img src="../assets/logo-mf-white.png" alt="Metabolic Fitness" class="h-10 sm:h-12 w-auto max-w-[200px] object-contain object-left">
+                    <span class="font-heading font-bold text-sm hidden md:inline text-white/95">Paper Cientificos</span>
+                </a>
+                <div class="mf-article-actions">
+                    <a href="../blog.html" class="mf-back-link font-body text-sm">← Volver al blog</a>
+                    <a href="pdf/variabilidad-de-la-frecuencia-cardiaca-y-control-autonomico-en-la-fisiologia-clinica-rigor-metodologico-y-prescripcion-del-ejercicio.pdf" download class="mf-header-pdf font-body text-sm">Descargar PDF</a>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-<div class="mf-util" role="navigation" aria-label="Accesos rapidos">
-  <div class="mf-util-inner">
-    <a href="../portal.html">Portal Alumnos</a>
-    <span class="mf-util-sep">|</span>
-    <a href="../acceso-pacientes.html">Acceso Pacientes</a>
-    <span class="mf-util-sep">|</span>
-    <a href="../blog.html">Paper Cientificos</a>
-  </div>
+    <section class="relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+            <div class="article-hero rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl bg-white grid lg:grid-cols-[1.05fr_0.95fr] min-h-[22rem]">
+                <div class="article-hero-copy p-6 sm:p-12 flex flex-col justify-center bg-[#460877] text-white order-2 lg:order-1">
+                    <div class="flex flex-wrap items-center gap-3 mb-5">
+                        <span class="px-3 py-1 rounded-full bg-white text-metabolic-purple text-xs font-heading font-semibold uppercase tracking-wide">Clinica</span>
+                        <span class="text-xs font-body text-white/80">2026-09-03</span>
+                        <span class="text-xs font-body text-white/80">5 min de lectura</span>
+                    </div>
+                    <h1 class="font-heading font-bold text-3xl sm:text-[2.35rem] leading-tight">Variabilidad de la Frecuencia Cardíaca y Control Autonómico en la Fisiología Clínica: Rigor Metodológico y Prescripción del Ejercicio</h1>
+                    <div class="mt-5 flex flex-wrap gap-2"><span class="keyword-chip">Variabilidad de la frecuencia cardíaca</span><span class="keyword-chip">Fisiología cardiovascular</span><span class="keyword-chip">Metaboreflejo muscular</span><span class="keyword-chip">Control autonómico</span><span class="keyword-chip">Prescripción del ejercicio</span><span class="keyword-chip">Recuperación post-esfuerzo</span></div>
+                </div>
+                <div class="article-hero-media relative min-h-[16rem] sm:min-h-[22rem] order-1 lg:order-2 bg-[#0b1220]">
+                    <img src="../assets/blog/vfc-autonomic-cover.jpg?v=1" alt="Control autonomico cardiaco: simpatico y parasimpatico" class="w-full h-full object-cover">
+                    <div class="article-hero-fade absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#460877] to-transparent hidden lg:block"></div>
+                </div>
 </div>
-<header class="mf-nav mf-nav--dark" id="mf-nav">
-  <div class="mf-nav-inner">
-    <a class="mf-logo" href="/" aria-label="Metabolic Fitness">
-      <img src="../assets/brand/logo-mf-horizontal-white-nav.png" alt="Metabolic Fitness" width="220" height="80">
-    </a>
-    <nav class="mf-nav-links" aria-label="Principal">
-      <div class="mf-drop">
-        <a class="mf-link" href="../tratamiento.html">Clinica <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></a>
-        <div class="mf-drop-panel"><div class="mf-drop-card">
-          <p class="mf-drop-label">Para el paciente</p>
-          <a href="../tratamiento.html">Programas Metabolicos</a>
-          <a href="../tratamiento.html#fisiologia">Fisiologia del Ejercicio</a>
-        </div></div>
-      </div>
-      <div class="mf-drop">
-        <a class="mf-link" href="../academia.html">Academia <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></a>
-        <div class="mf-drop-panel"><div class="mf-drop-card">
-          <p class="mf-drop-label">Para el profesional</p>
-          <a href="../academia.html">Diplomados & Certificaciones</a>
-          <a href="../aprendizaje-ia.html">Aprendizaje con IA</a>
-          <a href="../mentoria-casos.html">Mentoria de Casos</a>
-          <a href="../webinars.html">Webinars</a>
-        </div></div>
-      </div>
-      <div class="mf-drop">
-        <a class="mf-link" href="../carlos-saavedra.html">Carlos Saavedra <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></a>
-        <div class="mf-drop-panel"><div class="mf-drop-card">
-          <p class="mf-drop-label">Portal clinico</p>
-          <a href="../carlos-saavedra.html">Portal & biografia</a>
-          <a href="../1x2x3.html">Metodo 1x2x3</a>
-        </div></div>
-      </div>
-      <div class="mf-drop">
-        <a class="mf-link" href="../blog.html">Investigacion <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></a>
-        <div class="mf-drop-panel"><div class="mf-drop-card">
-          <p class="mf-drop-label">Science Hub</p>
-          <a href="../blog.html">Paper Cientificos</a>
-          <a href="../biblioteca-evidencia.html">Biblioteca de Evidencia</a>
-          <a href="../calculadoras.html">Calculadoras</a>
-        </div></div>
-      </div>
-      <a class="mf-cta" href="../evaluacion.html">Agendar evaluacion</a>
-    </nav>
-    <button type="button" class="mf-burger" id="mf-burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mf-mobile">
-      <svg data-icon="open" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-      <svg data-icon="close" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-    </button>
-  </div>
-  <div class="mf-mobile" id="mf-mobile">
-    <div class="mf-mobile-wrap">
-      <button type="button" class="mf-mobile-acc" aria-expanded="false">Clinica</button>
-      <div class="mf-mobile-sub">
-        <a href="../tratamiento.html">Programas Metabolicos</a>
-        <a href="../tratamiento.html#fisiologia">Fisiologia del Ejercicio</a>
-      </div>
-      <button type="button" class="mf-mobile-acc" aria-expanded="false">Academia</button>
-      <div class="mf-mobile-sub">
-        <a href="../academia.html">Diplomados & Certificaciones</a>
-        <a href="../aprendizaje-ia.html">Aprendizaje con IA</a>
-        <a href="../mentoria-casos.html">Mentoria de Casos</a>
-        <a href="../webinars.html">Webinars</a>
-      </div>
-      <button type="button" class="mf-mobile-acc" aria-expanded="false">Carlos Saavedra</button>
-      <div class="mf-mobile-sub">
-        <a href="../carlos-saavedra.html">Portal & biografia</a>
-        <a href="../1x2x3.html">Metodo 1x2x3</a>
-      </div>
-      <button type="button" class="mf-mobile-acc" aria-expanded="false">Investigacion</button>
-      <div class="mf-mobile-sub">
-        <a href="../blog.html">Paper Cientificos</a>
-        <a href="../biblioteca-evidencia.html">Biblioteca de Evidencia</a>
-        <a href="../calculadoras.html">Calculadoras</a>
-      </div>
-      <a href="../evaluacion.html" style="color:#fff;background:#5CB85C;justify-content:center;margin:0.85rem 1rem;border-radius:0.35rem;">Agendar evaluacion</a>
-    </div>
-  </div>
-</header>
+        </div>
+    </section>
 
+    <main class="mf-article-main max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+        <div class="grid lg:grid-cols-12 gap-6 lg:gap-8">
+            <article class="lg:col-span-8 min-w-0">
+                <div class="abstract-box rounded-2xl p-6 sm:p-8 mb-8">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-green mb-3">Resumen ejecutivo</p>
+                    <p class="font-body text-lg leading-relaxed text-metabolic-charcoal/90 justified">Una revisión científica exhaustiva sobre la interpretación clínica de la variabilidad de la frecuencia cardíaca (VFC), los factores que afectan su reproducibilidad y cómo las nuevas terapias y modalidades de ejercicio modulan la función autonómica, el metaboreflejo y la recuperación en poblaciones clínicas.</p>
+                </div>
 
-<div class="mf-article-toolbar">
-  <a class="mf-article-back" href="../blog.html">← Volver a Paper Cientificos</a>
-  <a class="mf-article-pdf-btn" href="pdf/variabilidad-de-la-frecuencia-cardiaca-y-control-autonomico-en-la-fisiologia-clinica-rigor-metodologico-y-prescripcion-del-ejercicio.pdf" download>Descargar PDF</a>
-</div>
+                <figure class="mb-6 sm:mb-8 rounded-2xl overflow-hidden border border-gray-100 bg-[#0b1220] shadow-sm">
+                    <img src="../assets/blog/vfc-autonomic.png?v=1" alt="Infografia: corazon con control simpatico (+) y parasimpatico (-)" class="w-full h-auto object-contain">
+                    <figcaption class="px-4 py-3 bg-white font-body text-xs sm:text-sm text-metabolic-charcoal/70">Figura. Balance autonómico cardiaco: rama simpática (+) y parasimpática (−) sobre el control de la frecuencia y la VFC.</figcaption>
+                </figure>
 
-<section class="mf-article-hero" aria-label="Portada del paper">
-  <div class="mf-article-hero-inner">
-    <div class="mf-article-hero-copy">
-      <div class="mf-article-kicker">
-        <span class="mf-article-cat">Clinica</span>
-        <span>03/09/2026</span>
-        <span>5 min de lectura</span>
-      </div>
-      <div class="mf-article-hero-rating" title="Evaluacion 0.0/5">
-        <div class="mf-stars-display text-2xl" aria-hidden="true"><span class="mf-star mf-star-off">★</span><span class="mf-star mf-star-off">★</span><span class="mf-star mf-star-off">★</span><span class="mf-star mf-star-off">★</span><span class="mf-star mf-star-off">★</span></div>
-        <span>0.0</span>
-      </div>
-      <h1>Variabilidad de la Frecuencia Cardíaca y Control Autonómico en la Fisiología Clínica: Rigor Metodológico y Prescripción del Ejercicio</h1>
-      <div class="mf-article-tags"><span class="mf-article-tag">Variabilidad de la frecuencia cardíaca</span><span class="mf-article-tag">Fisiología cardiovascular</span><span class="mf-article-tag">Metaboreflejo muscular</span><span class="mf-article-tag">Control autonómico</span><span class="mf-article-tag">Prescripción del ejercicio</span><span class="mf-article-tag">Recuperación post-esfuerzo</span></div>
-    </div>
-    <div class="mf-article-hero-media">
-      <img src="../assets/blog/variabilidad-de-la-frecuencia-cardiaca-y-control-autonomico-en-la-fisiologia-clinica-rigor-metodologico-y-prescripcion-del-ejercicio.jpg" alt="Variabilidad de la Frecuencia Cardíaca y Control Autonómico en la Fisiología Clínica: Rigor Metodológico y Prescripción del Ejercicio">
-    </div>
-  </div>
-</section>
+                <div class="article-content font-body text-metabolic-charcoal/90 bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-100">
+                    <p>La variabilidad de la frecuencia cardíaca (VFC) ha emergido como una herramienta fundamental en la evaluación de la salud cardiovascular y el rendimiento físico. Su adopción se ha acelerado de manera exponencial debido a la ubiquidad de los dispositivos portátiles y sensores vestibles (wearables) en la práctica clínica y de campo. Sin embargo, su interpretación requiere bases fisiológicas sólidas y un análisis metodológico crítico para evitar conclusiones sesgadas o clínicamente erróneas.</p><h2>Contexto científico: Rigor y límites de la VFC</h2><p>De acuerdo con las guías de consenso publicadas en el <strong>American Journal of Physiology. Heart and Circulatory Physiology</strong> (2026), la VFC posee una utilidad demostrada para la estratificación de riesgo cardiovascular en humanos. No obstante, el documento establece una advertencia crucial para los profesionales del área: la VFC no debe ser empleada como un marcador directo de la actividad simpática cardíaca o del balance simpatovagal. Aunque las variables en el dominio del tiempo y el análisis espectral reflejan de forma precisa la modulación respiratoria de la actividad vagal (parasimpática), se requiere extrema precaución para no sobreinterpretar estos datos bajo el constructo simplista de <strong>tono vagal</strong>.</p><p>La reproducibilidad y validez de la evaluación de la VFC dependen de una serie de factores modificables y no modificables que deben ser rigurosamente controlados. Entre los factores intrínsecos del paciente destacan la edad, el sexo y el origen étnico, además de variables modificables como el nivel de condición física y la práctica habitual de ejercicio. En el aspecto metodológico, los resultados se ven fuertemente influenciados por la tecnología del registro (electrocardiografía frente a fotopletismografía), la duración de la toma de datos, el entorno de medición (laboratorio controlado frente a mediciones de campo) y, de manera crítica, por la frecuencia y profundidad de la respiración del sujeto durante la evaluación.</p><h2>Hallazgos principales en la modulación autonómica y patología cardiovascular</h2><ul><li><strong>Disfunción del metaboreflejo muscular:</strong> Según revisiones científicas de 2026, la alteración de este reflejo es un factor determinante del desequilibrio autonómico y la intolerancia al ejercicio en pacientes con patología cardiovascular. Al amplificar o atenuar las respuestas simpáticas, hemodinámicas y ventilatorias frente a la acumulación de metabolitos en el músculo esquelético activo, empeora la perfusión periférica y desajusta la relación entre el aporte y consumo de oxígeno, aumentando la sintomatología durante el esfuerzo.</li><li><strong>Recalibración mediante el entrenamiento físico:</strong> Se ha demostrado que la rehabilitación cardíaca y la prescripción adaptada de ejercicio logran modular el metaboreflejo. El entrenamiento aeróbico mejora el equilibrio simpatovagal, el control ventilatorio y la eficiencia metabólica. Por su parte, el entrenamiento de fuerza y el entrenamiento de los músculos inspiratorios inducen adaptaciones periféricas y vasculares complementarias que mejoran el control reflejo respiratorio.</li><li><strong>Dinámica de recuperación post-ejercicio en miocardiopatías:</strong> En pacientes con miocardiopatía hipertrófica obstructiva (MHO), el ensayo clínico fase 3 MAPLE-HCM (publicado en <strong>JAMA Cardiology</strong>, 2026) demostró que el tratamiento con aficamten supera al metoprolol (betabloqueante estándar) al optimizar múltiples fases del ejercicio. Los pacientes tratados con aficamten mejoraron significativamente la pendiente de ventilación/producción de dióxido de carbono (VE/VCO2) y el umbral anaeróbico. Además, redujeron en 11 segundos el tiempo requerido para que el consumo de oxígeno (VO2) se recuperara un 12.5% post-ejercicio, lo que evidencia una optimización en la cinética de recuperación cardíaca.</li><li><strong>Rendimiento metabólico y variabilidad en diabetes:</strong> En adultos con diabetes tipo 1, la investigación clínica aleatorizada (publicada en <strong>Diabetologia</strong>, 2026) evidenció que el ejercicio de intervalos de alta intensidad (HIIE) induce una respuesta fisiológica aguda mayor en comparación con el ejercicio moderado continuo (CONT) de igual carga mecánica, reflejada en mayor consumo de oxígeno y frecuencia cardíaca. Sin embargo, el HIIE protegió de manera significativa contra el descenso de la glucosa capilar durante el esfuerzo, sobre todo en estado postabsortivo (ayuno), reduciendo además el tiempo en rango de hipoglucemia clínicamente relevante (menor a 3.0 mmol/l) durante las 24 horas posteriores.</li></ul><h2>Aplicación en fisiología clínica y kinesiología</h2><p>Para los profesionales dedicados a la kinesiología y la fisiología clínica del ejercicio en Chile y Latinoamérica, estos hallazgos redefinen las pautas de evaluación y prescripción de entrenamiento. En primer lugar, la utilización de la VFC como indicador de estrés o fatiga debe realizarse bajo protocolos estrictamente estandarizados. Se debe registrar el método de captura y controlar el patrón respiratorio para evitar falsas lecturas de recuperación autonómica.</p><p>En segundo lugar, la dosificación de la carga de ejercicio en pacientes con patologías cardiovasculares o metabólicas no debe basarse únicamente en fórmulas teóricas de frecuencia cardíaca, especialmente si el paciente utiliza fármacos que alteran la respuesta cronotrópica (como el metoprolol, el cual demostró inducir caídas severas del VO2 pico en el ensayo clínico MAPLE-HCM). Es crucial prescribir ejercicio alineado con los umbrales ventilatorios individuales para incidir positivamente sobre el metaboreflejo muscular y restaurar el control autonómico cardíaco.</p><p>Por último, el uso de modalidades más exigentes como el HIIE puede ser incorporado de manera segura y supervisada en pacientes estables. En personas con diabetes tipo 1, prescribir sesiones de HIIE preferentemente en un estado postabsortivo representa una estrategia protectora robusta para evitar hipoglucemias inducidas por el ejercicio, permitiendo obtener ganancias cardiorrespiratorias superiores sin comprometer la estabilidad glucémica ni sobrecargar negativamente los mecanismos de recuperación autonómica.</p>
+                </div>
 
-<main class="mf-article-main">
-  <article class="mf-article-body">
-    <div class="mf-article-panel mf-article-panel--abstract">
-      <p class="mf-article-label">Resumen ejecutivo</p>
-      <p class="mf-article-excerpt">Una revisión científica exhaustiva sobre la interpretación clínica de la variabilidad de la frecuencia cardíaca (VFC), los factores que afectan su reproducibilidad y cómo las nuevas terapias y modalidades de ejercicio modulan la función autonómica, el metaboreflejo y la recuperación en poblaciones clínicas.</p>
-    </div>
+                <section class="clinical-box rounded-2xl p-6 mt-8"><h2 class="font-heading font-bold text-xl text-metabolic-charcoal mb-3">Implicaciones clinicas</h2><p class="font-body text-metabolic-charcoal/85 leading-relaxed justified">Para médicos, kinesiólogos y fisiólogos clínicos en Latinoamérica, la evaluación de la VFC exige estandarizar rigurosamente factores técnicos como el patrón respiratorio y el tipo de registro (ECG vs. PPG) para evitar interpretaciones erróneas de la modulación vagal. Asimismo, la prescripción del ejercicio debe orientarse de forma individualizada y basada en mecanismos fisiológicos: la integración de entrenamiento aeróbico, de fuerza y respiratorio permite mitigar el desequilibrio autonómico mediante la recalibración del metaboreflejo. Finalmente, en pacientes con diabetes tipo 1, el HIIE supervisado en estado postabsortivo emerge como una estrategia segura y eficaz para optimizar el estímulo cardiovascular reduciendo sustancialmente el riesgo de hipoglucemia tardía.</p></section>
+                <section id="referencias" class="mt-12 pt-8 border-t border-gray-200"><h2 class="font-heading font-bold text-2xl text-metabolic-charcoal mb-6">Referencias</h2><ol class="space-y-4 list-none"><li class="border-l-4 border-metabolic-green pl-4 py-2"><p class="font-body text-sm text-metabolic-charcoal/90">Guidelines for rigor and reproducibility of heart rate variability within human cardiovascular research. (American journal of physiology. Heart and circulatory physiology, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42495990/" target="_blank" rel="noopener noreferrer" class="text-xs text-metabolic-cyan hover:underline break-all">https://pubmed.ncbi.nlm.nih.gov/42495990/</a></li><li class="border-l-4 border-metabolic-green pl-4 py-2"><p class="font-body text-sm text-metabolic-charcoal/90">The protective effect of high-intensity interval exercise compared with continuous moderate exercise on glycaemic decline is more pronounced in the postabsorptive vs postprandial state in adults with type 1 diabetes: a randomised crossover trial. (Diabetologia, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42262529/" target="_blank" rel="noopener noreferrer" class="text-xs text-metabolic-cyan hover:underline break-all">https://pubmed.ncbi.nlm.nih.gov/42262529/</a></li><li class="border-l-4 border-metabolic-green pl-4 py-2"><p class="font-body text-sm text-metabolic-charcoal/90">Exercise Performance With Aficamten vs Metoprolol in Obstructive Hypertrophic Cardiomyopathy: The MAPLE-HCM Randomized Clinical Trial. (JAMA cardiology, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42307914/" target="_blank" rel="noopener noreferrer" class="text-xs text-metabolic-cyan hover:underline break-all">https://pubmed.ncbi.nlm.nih.gov/42307914/</a></li><li class="border-l-4 border-metabolic-green pl-4 py-2"><p class="font-body text-sm text-metabolic-charcoal/90">Muscle metaboreflex dysfunction in cardiovascular disease. (American journal of physiology. Heart and circulatory physiology, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42294636/" target="_blank" rel="noopener noreferrer" class="text-xs text-metabolic-cyan hover:underline break-all">https://pubmed.ncbi.nlm.nih.gov/42294636/</a></li></ol></section>
+            </article>
 
-    <div class="mf-article-content">
-      <p>La variabilidad de la frecuencia cardíaca (VFC) ha emergido como una herramienta fundamental en la evaluación de la salud cardiovascular y el rendimiento físico. Su adopción se ha acelerado de manera exponencial debido a la ubiquidad de los dispositivos portátiles y sensores vestibles (wearables) en la práctica clínica y de campo. Sin embargo, su interpretación requiere bases fisiológicas sólidas y un análisis metodológico crítico para evitar conclusiones sesgadas o clínicamente erróneas.</p><h2>Contexto científico: Rigor y límites de la VFC</h2><p>De acuerdo con las guías de consenso publicadas en el <strong>American Journal of Physiology. Heart and Circulatory Physiology</strong> (2026), la VFC posee una utilidad demostrada para la estratificación de riesgo cardiovascular en humanos. No obstante, el documento establece una advertencia crucial para los profesionales del área: la VFC no debe ser empleada como un marcador directo de la actividad simpática cardíaca o del balance simpatovagal. Aunque las variables en el dominio del tiempo y el análisis espectral reflejan de forma precisa la modulación respiratoria de la actividad vagal (parasimpática), se requiere extrema precaución para no sobreinterpretar estos datos bajo el constructo simplista de <strong>tono vagal</strong>.</p><p>La reproducibilidad y validez de la evaluación de la VFC dependen de una serie de factores modificables y no modificables que deben ser rigurosamente controlados. Entre los factores intrínsecos del paciente destacan la edad, el sexo y el origen étnico, además de variables modificables como el nivel de condición física y la práctica habitual de ejercicio. En el aspecto metodológico, los resultados se ven fuertemente influenciados por la tecnología del registro (electrocardiografía frente a fotopletismografía), la duración de la toma de datos, el entorno de medición (laboratorio controlado frente a mediciones de campo) y, de manera crítica, por la frecuencia y profundidad de la respiración del sujeto durante la evaluación.</p><h2>Hallazgos principales en la modulación autonómica y patología cardiovascular</h2><ul><li><strong>Disfunción del metaboreflejo muscular:</strong> Según revisiones científicas de 2026, la alteración de este reflejo es un factor determinante del desequilibrio autonómico y la intolerancia al ejercicio en pacientes con patología cardiovascular. Al amplificar o atenuar las respuestas simpáticas, hemodinámicas y ventilatorias frente a la acumulación de metabolitos en el músculo esquelético activo, empeora la perfusión periférica y desajusta la relación entre el aporte y consumo de oxígeno, aumentando la sintomatología durante el esfuerzo.</li><li><strong>Recalibración mediante el entrenamiento físico:</strong> Se ha demostrado que la rehabilitación cardíaca y la prescripción adaptada de ejercicio logran modular el metaboreflejo. El entrenamiento aeróbico mejora el equilibrio simpatovagal, el control ventilatorio y la eficiencia metabólica. Por su parte, el entrenamiento de fuerza y el entrenamiento de los músculos inspiratorios inducen adaptaciones periféricas y vasculares complementarias que mejoran el control reflejo respiratorio.</li><li><strong>Dinámica de recuperación post-ejercicio en miocardiopatías:</strong> En pacientes con miocardiopatía hipertrófica obstructiva (MHO), el ensayo clínico fase 3 MAPLE-HCM (publicado en <strong>JAMA Cardiology</strong>, 2026) demostró que el tratamiento con aficamten supera al metoprolol (betabloqueante estándar) al optimizar múltiples fases del ejercicio. Los pacientes tratados con aficamten mejoraron significativamente la pendiente de ventilación/producción de dióxido de carbono (VE/VCO2) y el umbral anaeróbico. Además, redujeron en 11 segundos el tiempo requerido para que el consumo de oxígeno (VO2) se recuperara un 12.5% post-ejercicio, lo que evidencia una optimización en la cinética de recuperación cardíaca.</li><li><strong>Rendimiento metabólico y variabilidad en diabetes:</strong> En adultos con diabetes tipo 1, la investigación clínica aleatorizada (publicada en <strong>Diabetologia</strong>, 2026) evidenció que el ejercicio de intervalos de alta intensidad (HIIE) induce una respuesta fisiológica aguda mayor en comparación con el ejercicio moderado continuo (CONT) de igual carga mecánica, reflejada en mayor consumo de oxígeno y frecuencia cardíaca. Sin embargo, el HIIE protegió de manera significativa contra el descenso de la glucosa capilar durante el esfuerzo, sobre todo en estado postabsortivo (ayuno), reduciendo además el tiempo en rango de hipoglucemia clínicamente relevante (menor a 3.0 mmol/l) durante las 24 horas posteriores.</li></ul><h2>Aplicación en fisiología clínica y kinesiología</h2><p>Para los profesionales dedicados a la kinesiología y la fisiología clínica del ejercicio en Chile y Latinoamérica, estos hallazgos redefinen las pautas de evaluación y prescripción de entrenamiento. En primer lugar, la utilización de la VFC como indicador de estrés o fatiga debe realizarse bajo protocolos estrictamente estandarizados. Se debe registrar el método de captura y controlar el patrón respiratorio para evitar falsas lecturas de recuperación autonómica.</p><p>En segundo lugar, la dosificación de la carga de ejercicio en pacientes con patologías cardiovasculares o metabólicas no debe basarse únicamente en fórmulas teóricas de frecuencia cardíaca, especialmente si el paciente utiliza fármacos que alteran la respuesta cronotrópica (como el metoprolol, el cual demostró inducir caídas severas del VO2 pico en el ensayo clínico MAPLE-HCM). Es crucial prescribir ejercicio alineado con los umbrales ventilatorios individuales para incidir positivamente sobre el metaboreflejo muscular y restaurar el control autonómico cardíaco.</p><p>Por último, el uso de modalidades más exigentes como el HIIE puede ser incorporado de manera segura y supervisada en pacientes estables. En personas con diabetes tipo 1, prescribir sesiones de HIIE preferentemente en un estado postabsortivo representa una estrategia protectora robusta para evitar hipoglucemias inducidas por el ejercicio, permitiendo obtener ganancias cardiorrespiratorias superiores sin comprometer la estabilidad glucémica ni sobrecargar negativamente los mecanismos de recuperación autonómica.</p>
-    </div>
+            <aside class="lg:col-span-4 space-y-6 min-w-0">
+                <div class="sidebar-card rounded-2xl p-6">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-purple mb-4">Descarga profesional</p>
+                    <p class="font-body text-sm text-metabolic-charcoal/75 mb-4">Documento PDF con estructura editorial, logo Metabolic Fitness y referencias completas.</p>
+                    <a href="pdf/variabilidad-de-la-frecuencia-cardiaca-y-control-autonomico-en-la-fisiologia-clinica-rigor-metodologico-y-prescripcion-del-ejercicio.pdf" download class="mf-pdf-cta text-center text-white px-4 py-3 rounded-xl font-body font-semibold" style="background:#460877;color:#fff;display:block;">Descargar articulo en PDF</a>
+                </div>
 
-    <section class="mf-article-clinical"><h2>Implicaciones clinicas</h2><p>Para médicos, kinesiólogos y fisiólogos clínicos en Latinoamérica, la evaluación de la VFC exige estandarizar rigurosamente factores técnicos como el patrón respiratorio y el tipo de registro (ECG vs. PPG) para evitar interpretaciones erróneas de la modulación vagal. Asimismo, la prescripción del ejercicio debe orientarse de forma individualizada y basada en mecanismos fisiológicos: la integración de entrenamiento aeróbico, de fuerza y respiratorio permite mitigar el desequilibrio autonómico mediante la recalibración del metaboreflejo. Finalmente, en pacientes con diabetes tipo 1, el HIIE supervisado en estado postabsortivo emerge como una estrategia segura y eficaz para optimizar el estímulo cardiovascular reduciendo sustancialmente el riesgo de hipoglucemia tardía.</p></section>
-    <section id="referencias" class="mf-article-refs"><h2>Referencias</h2><ol><li><p>Guidelines for rigor and reproducibility of heart rate variability within human cardiovascular research. (American journal of physiology. Heart and circulatory physiology, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42495990/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/42495990/</a></li><li><p>The protective effect of high-intensity interval exercise compared with continuous moderate exercise on glycaemic decline is more pronounced in the postabsorptive vs postprandial state in adults with type 1 diabetes: a randomised crossover trial. (Diabetologia, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42262529/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/42262529/</a></li><li><p>Exercise Performance With Aficamten vs Metoprolol in Obstructive Hypertrophic Cardiomyopathy: The MAPLE-HCM Randomized Clinical Trial. (JAMA cardiology, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42307914/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/42307914/</a></li><li><p>Muscle metaboreflex dysfunction in cardiovascular disease. (American journal of physiology. Heart and circulatory physiology, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42294636/" target="_blank" rel="noopener noreferrer">https://pubmed.ncbi.nlm.nih.gov/42294636/</a></li></ol></section>
-  </article>
+                <div class="sidebar-card rounded-2xl p-6">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-green mb-4">Puntos clave</p>
+                    <ul class="space-y-3 font-body text-sm text-metabolic-charcoal/85"><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>La VFC es útil para la estratificación de riesgo cardiovascular, pero no representa un marcador específico de flujo simpático cardíaco o balance simpatovagal.</span></li><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>La disfunción del metaboreflejo muscular es clave en la intolerancia al ejercicio en cardiopatías y puede recalibrarse mediante entrenamiento aeróbico, de fuerza y respiratorio.</span></li><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>En miocardiopatía hipertrófica obstructiva, el uso de aficamten mejora significativamente el umbral anaeróbico y reduce el tiempo de recuperación de oxígeno post-esfuerzo en comparación con metoprolol.</span></li><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>El ejercicio de intervalos de alta intensidad (HIIE) induce mayor demanda fisiológica pero ejerce un rol protector contra la hipoglucemia en diabetes tipo 1, especialmente en estado postabsortivo.</span></li></ul>
+                </div>
 
-  <aside class="mf-article-aside" aria-label="Recursos del paper">
-    <div class="mf-article-panel mf-article-panel--ink">
-      <p class="mf-article-label">Descarga profesional</p>
-      <p class="mf-article-aside-note" style="color:rgba(255,255,255,0.68);margin-bottom:1rem;">PDF editorial con branding Metabolic Fitness y referencias completas.</p>
-      <a class="mf-article-pdf-btn" href="pdf/variabilidad-de-la-frecuencia-cardiaca-y-control-autonomico-en-la-fisiologia-clinica-rigor-metodologico-y-prescripcion-del-ejercicio.pdf" download>Descargar articulo en PDF</a>
-    </div>
-    <div class="mf-article-panel">
-      <p class="mf-article-label">Puntos clave</p>
-      <ul class="mf-article-takeaways"><li>La VFC es útil para la estratificación de riesgo cardiovascular, pero no representa un marcador específico de flujo simpático cardíaco o balance simpatovagal.</li><li>La disfunción del metaboreflejo muscular es clave en la intolerancia al ejercicio en cardiopatías y puede recalibrarse mediante entrenamiento aeróbico, de fuerza y respiratorio.</li><li>En miocardiopatía hipertrófica obstructiva, el uso de aficamten mejora significativamente el umbral anaeróbico y reduce el tiempo de recuperación de oxígeno post-esfuerzo en comparación con metoprolol.</li><li>El ejercicio de intervalos de alta intensidad (HIIE) induce mayor demanda fisiológica pero ejerce un rol protector contra la hipoglucemia en diabetes tipo 1, especialmente en estado postabsortivo.</li></ul>
-    </div>
-    <div class="mf-article-panel">
-      <p class="mf-article-label">Evidencia de origen</p>
-      <p class="mf-article-aside-note">Articulo elaborado a partir de publicaciones recientes en revistas de alto impacto indexadas en PubMed.</p>
-    </div>
-  </aside>
-</main>
+                <div class="sidebar-card rounded-2xl p-6">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-cyan mb-4">Evidencia de origen</p>
+                    <p class="font-body text-sm text-metabolic-charcoal/75">Articulo elaborado a partir de publicaciones recientes en revistas de alto impacto indexadas en PubMed.</p>
+                </div>
+            </aside>
+        </div>
+    </main>
 
-<div class="mf-article-rating-wrap">
-  <section
-    class="mf-rating-box"
-    id="mf-paper-rating"
-    data-slug="variabilidad-de-la-frecuencia-cardiaca-y-control-autonomico-en-la-fisiologia-clinica-rigor-metodologico-y-prescripcion-del-ejercicio"
-    data-editorial-rating="0.0"
-    aria-label="Evaluacion del paper"
-  >
-    <p class="mf-article-label">Evaluacion del paper</p>
-    <div style="display:flex;flex-direction:column;align-items:center;gap:0.35rem;margin-bottom:0.85rem;">
-      <div class="mf-stars-display text-2xl" aria-hidden="true"><span class="mf-star mf-star-off">★</span><span class="mf-star mf-star-off">★</span><span class="mf-star mf-star-off">★</span><span class="mf-star mf-star-off">★</span><span class="mf-star mf-star-off">★</span></div>
-      <p style="margin:0;font-size:0.9rem;color:rgba(28,27,31,0.75);">
-        Calidad editorial: <strong id="mf-editorial-score">0.0</strong>/5
-      </p>
-    </div>
-    <p style="margin:0 0 0.45rem;font-size:0.78rem;color:rgba(28,27,31,0.55);">Tu evaluacion (0 a 5 estrellas)</p>
-    <div class="mf-stars-input" role="radiogroup" aria-label="Califica este paper">
-      <button type="button" class="mf-star" data-value="1" aria-label="1 estrella">★</button>
-      <button type="button" class="mf-star" data-value="2" aria-label="2 estrellas">★</button>
-      <button type="button" class="mf-star" data-value="3" aria-label="3 estrellas">★</button>
-      <button type="button" class="mf-star" data-value="4" aria-label="4 estrellas">★</button>
-      <button type="button" class="mf-star" data-value="5" aria-label="5 estrellas">★</button>
-    </div>
-    <p style="margin:0.65rem 0 0;font-size:0.78rem;color:rgba(28,27,31,0.5);" id="mf-rating-status">
-      Promedio lectores: <span id="mf-avg-score">—</span> · <span id="mf-vote-count">0</span> votos
-    </p>
-  </section>
-</div>
+    <footer class="bg-white border-t border-gray-200 py-10 mt-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-5">
+            
+            <section
+                class="mf-rating-box"
+                id="mf-paper-rating"
+                data-slug="variabilidad-de-la-frecuencia-cardiaca-y-control-autonomico-en-la-fisiologia-clinica-rigor-metodologico-y-prescripcion-del-ejercicio"
+                data-editorial-rating="4.5"
+                aria-label="Evaluacion del paper"
+            >
+                <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-purple mb-2">Evaluacion del paper</p>
+                <div class="flex flex-col items-center gap-1 mb-3">
+                    <div class="mf-stars-display text-2xl" aria-hidden="true"><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-half">★</span></div>
+                    <p class="font-body text-sm text-metabolic-charcoal/80">
+                        Calidad editorial: <strong id="mf-editorial-score">4.5</strong>/5
+                    </p>
+                </div>
+                <p class="font-body text-xs text-metabolic-charcoal/60 mb-2">Tu evaluacion (0 a 5 estrellas)</p>
+                <div class="mf-stars-input" role="radiogroup" aria-label="Califica este paper">
+                    <button type="button" class="mf-star" data-value="1" aria-label="1 estrella">★</button>
+                    <button type="button" class="mf-star" data-value="2" aria-label="2 estrellas">★</button>
+                    <button type="button" class="mf-star" data-value="3" aria-label="3 estrellas">★</button>
+                    <button type="button" class="mf-star" data-value="4" aria-label="4 estrellas">★</button>
+                    <button type="button" class="mf-star" data-value="5" aria-label="5 estrellas">★</button>
+                </div>
+                <p class="font-body text-xs text-metabolic-charcoal/55 mt-2" id="mf-rating-status">
+                    Promedio lectores: <span id="mf-avg-score">—</span> · <span id="mf-vote-count">0</span> votos
+                </p>
+            </section>
 
-
-<footer class="mf-footer">
-  <div class="mf-footer-grid">
-    <div class="mf-footer-col">
-      <img class="mf-footer-brand" src="../assets/brand/logo-mf-horizontal-white.png" alt="Metabolic Fitness">
-      <p style="font-size:0.95rem;line-height:1.55;margin:0;max-width:22rem;">Fisiología del Ejercicio Aplicada a la Clínica. Santiago, Chile.</p>
-      <p style="font-size:0.82rem;margin:0.65rem 0 0;opacity:0.7;">Israel Orellana Rodríguez - MSc. Fisiología Clínica Del Ejercicio. AI - Engineer</p>
-    </div>
-    <div class="mf-footer-col">
-      <h3>Explora</h3>
-      <a href="/">Inicio</a>
-      <a href="../carlos-saavedra.html">Carlos Saavedra</a>
-      <a href="../tratamiento.html">Tratamiento</a>
-      <a href="../academia.html">Academia</a>
-      <a href="../blog.html">Paper Cientificos</a>
-    </div>
-    <div class="mf-footer-col">
-      <h3>Contacto</h3>
-      <span style="font-size:0.9rem;">Santiago, Chile</span>
-      <a href="tel:+56910111167">+56 9 1011 1167</a>
-      <a href="mailto:contacto@metabolicfitness.cl">contacto@metabolicfitness.cl</a>
-    </div>
-    <div class="mf-footer-col">
-      <h3>Comunidad</h3>
-      <a href="https://chat.whatsapp.com/LuuhXQG6biV6mkYceIo7vk" target="_blank" rel="noopener">Grupo WhatsApp</a>
-      <a href="https://www.instagram.com/metabolicfitness.cl/" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://www.linkedin.com/company/115783375/" target="_blank" rel="noopener">LinkedIn</a>
-    </div>
-  </div>
-  <div class="mf-footer-copy">© 2026 Metabolic Fitness. Todos los derechos reservados.</div>
-</footer>
-<a class="mf-wa" href="https://wa.me/56910111167?text=Hola%2C%20quiero%20informacion%20sobre%20Metabolic%20Fitness" target="_blank" rel="noopener" aria-label="WhatsApp">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11 11 0 0 0 3.2 17.7L2 22l4.4-1.15A11 11 0 1 0 20.5 3.5zm-8.5 17a9 9 0 0 1-4.6-1.25l-.33-.2-2.6.68.7-2.53-.22-.34A9 9 0 1 1 12 20.5zm5.2-6.7c-.28-.14-1.65-.81-1.9-.9s-.44-.14-.63.14-.72.9-.88 1.08-.33.21-.6.07a7.4 7.4 0 0 1-2.17-1.34 8.1 8.1 0 0 1-1.5-1.86c-.16-.28 0-.43.12-.57.12-.12.28-.33.42-.5s.18-.28.28-.47.05-.35-.02-.5-.63-1.51-.86-2.07c-.23-.54-.46-.46-.63-.47h-.54c-.19 0-.5.07-.76.35s-1 1-1 2.42 1.02 2.8 1.16 3 .2.28 2.01 3.07c1.6 1.4 2.2 1.6 2.56 1.76.6.28 1.14.24 1.57.14.48-.1 1.65-.67 1.88-1.32.23-.65.23-1.2.16-1.32-.07-.11-.25-.18-.53-.32z"/></svg>
-</a>
-<script src="../js/mf-nav.js?v=3"></script>
-
-<script src="../js/blog-rating.js?v=2"></script>
+            <div class="flex items-center gap-5">
+                <a href="https://www.facebook.com/profile.php?id=61578818624346" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <img src="../assets/social/facebook.png" alt="Facebook" class="w-8 h-8 object-contain hover:opacity-80 transition-opacity">
+                </a>
+                <a href="https://www.instagram.com/metabolicfitness.cl/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <img src="../assets/social/instagram.png" alt="Instagram" class="w-8 h-8 object-contain hover:opacity-80 transition-opacity">
+                </a>
+                <a href="https://www.linkedin.com/company/metabolic-fitness-chile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <img src="../assets/social/linkedin.png" alt="LinkedIn" class="w-8 h-8 object-contain hover:opacity-80 transition-opacity">
+                </a>
+                <a href="https://chat.whatsapp.com/LuuhXQG6biV6mkYceIo7vk" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                    <img src="../assets/social/whatsapp.png" alt="WhatsApp" class="w-8 h-8 object-contain hover:opacity-80 transition-opacity">
+                </a>
+            </div>
+            <a href="https://www.metabolicfitness.cl" class="inline-block">
+                <img src="../assets/logo-mf.png" alt="Metabolic Fitness" class="h-11 w-auto object-contain bg-transparent">
+            </a>
+            <p class="font-body text-metabolic-charcoal/60 text-sm text-center">
+                © 2026 Metabolic Fitness · Fisiologia Clinica del Ejercicio<br>
+                <a href="https://www.metabolicfitness.cl" class="hover:text-metabolic-purple transition-colors">www.metabolicfitness.cl</a>
+            </p>
+        </div>
+    </footer>
+    <script src="../js/blog-rating.js?v=2"></script>
 </body>
 </html>
