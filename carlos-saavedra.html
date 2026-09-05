@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carlos Saavedra, MSc — Metabolic Fitness</title>
+  <meta name="description" content="Portal de Carlos Saavedra, MSc. Fisiología del Ejercicio, metabolismo energético y el Método 1×2×3.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/mf-system.css?v=3">
+  <style>
+    .cs-hero {
+      position: relative;
+      min-height: min(88vh, 52rem);
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      background: #0b0710;
+      color: #fff;
+    }
+    .cs-hero__media { position: absolute; inset: 0; }
+    .cs-hero__media img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+    }
+    .cs-hero__veil {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(105deg, rgba(11,7,16,0.96) 0%, rgba(11,7,16,0.82) 42%, rgba(42,5,72,0.35) 72%, rgba(11,7,16,0.2) 100%),
+        linear-gradient(0deg, rgba(11,7,16,0.9) 0%, transparent 48%);
+    }
+    .cs-hero__inner {
+      position: relative; z-index: 2;
+      width: min(88rem, 100%);
+      margin: 0 auto;
+      padding: 4.5rem 1.25rem 3.25rem;
+    }
+    .cs-hero__kicker {
+      font-size: 0.72rem; font-weight: 800;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: #5CB85C; margin: 0 0 0.85rem;
+    }
+    .cs-hero h1 {
+      font-family: Syne, sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.4rem, 6vw, 4.6rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      max-width: 12ch;
+      margin: 0 0 0.85rem;
+    }
+    .cs-hero h1 em { font-style: normal; color: #5CB85C; }
+    .cs-hero__role {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.78);
+      max-width: 34rem;
+      margin: 0 0 1.5rem;
+      line-height: 1.55;
+    }
+    .cs-section {
+      padding: 4rem 1.25rem;
+    }
+    .cs-section__inner {
+      width: min(88rem, 100%);
+      margin: 0 auto;
+    }
+    .cs-section h2 {
+      font-family: Syne, sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin: 0 0 1rem;
+      color: #1c1b1f;
+    }
+    .cs-section p {
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: #6b6b6d;
+      margin: 0 0 1rem;
+      max-width: 46rem;
+    }
+    .cs-bio {
+      background: #fff;
+      border-top: 1px solid #e8e4ee;
+      border-bottom: 1px solid #e8e4ee;
+    }
+    .cs-bio__grid {
+      display: grid;
+      gap: 2rem;
+    }
+    @media (min-width: 900px) {
+      .cs-bio__grid { grid-template-columns: 1.15fr 0.85fr; align-items: start; gap: 3rem; }
+    }
+    .cs-facts {
+      display: grid;
+      gap: 0.75rem;
+    }
+    .cs-fact {
+      border: 1px solid #e8e4ee;
+      background: #f4f1f7;
+      padding: 1rem 1.15rem;
+      border-radius: 0.35rem;
+    }
+    .cs-fact strong {
+      display: block;
+      font-family: Syne, sans-serif;
+      font-size: 0.95rem;
+      color: #460877;
+      margin-bottom: 0.25rem;
+    }
+    .cs-fact span { font-size: 0.92rem; color: #6b6b6d; line-height: 1.45; }
+    .cs-method {
+      background: #0b0710;
+      color: #fff;
+    }
+    .cs-method h2 { color: #fff; }
+    .cs-method p { color: rgba(255,255,255,0.72); }
+    .cs-pillars {
+      display: grid;
+      gap: 1rem;
+      margin: 2rem 0 1.5rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 768px) {
+      .cs-pillars { grid-template-columns: repeat(3, 1fr); }
+    }
+    .cs-pillar {
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      padding: 1.5rem 1.25rem;
+      border-radius: 0.35rem;
+    }
+    .cs-pillar__n {
+      font-family: Syne, sans-serif;
+      font-weight: 800;
+      font-size: 2.6rem;
+      line-height: 1;
+      color: #5CB85C;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.55rem;
+    }
+    .cs-pillar h3 {
+      font-family: Syne, sans-serif;
+      font-size: 1.15rem;
+      margin: 0 0 0.45rem;
+      letter-spacing: -0.02em;
+    }
+    .cs-pillar p {
+      margin: 0;
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.68);
+      max-width: none;
+    }
+    .cs-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+  </style>
+</head>
+<body class="mf-page">
+<div class="mf-util" role="navigation" aria-label="Accesos rapidos">
+  <div class="mf-util-inner">
+    <a href="portal.html">Portal Alumnos</a>
+    <span class="mf-util-sep">|</span>
+    <a href="acceso-pacientes.html">Acceso Pacientes</a>
+    <span class="mf-util-sep">|</span>
+    <a href="blog.html">Paper Cientificos</a>
+  </div>
+</div>
+<header class="mf-nav mf-nav--dark" id="mf-nav">
+  <div class="mf-nav-inner">
+    <a class="mf-logo" href="/" aria-label="Metabolic Fitness">
+      <img src="assets/brand/logo-mf-horizontal-white-nav.png?v=3" alt="Metabolic Fitness" width="220" height="80">
+    </a>
+    <nav class="mf-nav-links" aria-label="Principal">
+      <div class="mf-drop">
+        <a class="mf-link" href="tratamiento.html">Clinica <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></a>
+        <div class="mf-drop-panel"><div class="mf-drop-card">
+          <p class="mf-drop-label">Para el paciente</p>
+          <a href="tratamiento.html">Programas Metabolicos</a>
+          <a href="tratamiento.html#fisiologia">Fisiologia del Ejercicio</a>
+          <a href="evaluacion.html">Agendar Telemedicina</a>
+        </div></div>
+      </div>
+      <div class="mf-drop">
+        <a class="mf-link" href="academia.html">Academia <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></a>
+        <div class="mf-drop-panel"><div class="mf-drop-card">
+          <p class="mf-drop-label">Para el profesional</p>
+          <a href="academia.html">Diplomados & Certificaciones</a>
+          <a href="carlos-saavedra.html">Carlos Saavedra</a>
+          <a href="1x2x3.html">Metodo 1x2x3</a>
+          <a href="aprendizaje-ia.html">Aprendizaje con IA</a>
+          <a href="mentoria-casos.html">Mentoria de Casos</a>
+        </div></div>
+      </div>
+      <div class="mf-drop">
+        <a class="mf-link" href="blog.html">Investigacion <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></a>
+        <div class="mf-drop-panel"><div class="mf-drop-card">
+          <p class="mf-drop-label">Science Hub</p>
+          <a href="blog.html">Paper Cientificos</a>
+          <a href="biblioteca-evidencia.html">Biblioteca de Evidencia</a>
+          <a href="calculadoras.html">Calculadoras</a>
+          <a href="webinars.html">Webinars</a>
+        </div></div>
+      </div>
+      <a class="mf-cta" href="evaluacion.html">Agendar evaluacion</a>
+    </nav>
+    <button type="button" class="mf-burger" id="mf-burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mf-mobile">
+      <svg data-icon="open" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <svg data-icon="close" class="hidden" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="mf-mobile" id="mf-mobile">
+    <div class="mf-mobile-wrap">
+      <button type="button" class="mf-mobile-acc" aria-expanded="false">Clinica</button>
+      <div class="mf-mobile-sub">
+        <a href="tratamiento.html">Programas Metabolicos</a>
+        <a href="tratamiento.html#fisiologia">Fisiologia del Ejercicio</a>
+        <a href="evaluacion.html">Agendar Telemedicina</a>
+      </div>
+      <button type="button" class="mf-mobile-acc" aria-expanded="false">Academia</button>
+      <div class="mf-mobile-sub">
+        <a href="academia.html">Diplomados & Certificaciones</a>
+        <a href="carlos-saavedra.html">Carlos Saavedra</a>
+        <a href="1x2x3.html">Metodo 1x2x3</a>
+        <a href="aprendizaje-ia.html">Aprendizaje con IA</a>
+        <a href="mentoria-casos.html">Mentoria de Casos</a>
+      </div>
+      <button type="button" class="mf-mobile-acc" aria-expanded="false">Investigacion</button>
+      <div class="mf-mobile-sub">
+        <a href="blog.html">Paper Cientificos</a>
+        <a href="biblioteca-evidencia.html">Biblioteca de Evidencia</a>
+        <a href="calculadoras.html">Calculadoras</a>
+        <a href="webinars.html">Webinars</a>
+      </div>
+      <a href="evaluacion.html" style="color:#fff;background:#5CB85C;justify-content:center;margin:0.85rem 1rem;border-radius:0.35rem;">Agendar evaluacion</a>
+    </div>
+  </div>
+</header>
+
+<section class="cs-hero" aria-label="Carlos Saavedra">
+  <div class="cs-hero__media" aria-hidden="true">
+    <img src="carlos-saavedra.png" alt="">
+  </div>
+  <div class="cs-hero__veil" aria-hidden="true"></div>
+  <div class="cs-hero__inner">
+    <p class="cs-hero__kicker">Portal clínico</p>
+    <h1>Carlos Saavedra, <em>MSc</em></h1>
+    <p class="cs-hero__role">
+      Fisiología del Ejercicio · Metabolismo energético · Université Laval, Canadá.
+      Co-fundador de Metabolic Fitness y autor del Método 1×2×3.
+    </p>
+    <div class="cs-cta-row">
+      <a class="mf-btn mf-btn--green" href="#biografia">Biografía</a>
+      <a class="mf-btn mf-btn--ghost" href="#metodo">Método 1×2×3</a>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section cs-bio" id="biografia">
+  <div class="cs-section__inner cs-bio__grid">
+    <div>
+      <h2>Biografía</h2>
+      <p>
+        Carlos Saavedra, MSc, es especialista en metabolismo energético y Fisiología del Ejercicio
+        aplicada a enfermedades metabólicas. Su formación en la Université Laval (Canadá) y más de
+        15 años entre investigación y clínica lo posicionan como referente en evaluación funcional
+        y prescripción del ejercicio con base científica.
+      </p>
+      <p>
+        En Metabolic Fitness lidera la línea clínica y académica: traduce fisiología a decisión
+        terapéutica, forma profesionales de la salud y sostiene un estándar de rigor donde el
+        ejercicio se trata como intervención clínica medible, no como consigna genérica de “actividad física”.
+      </p>
+      <p>
+        Su trabajo conecta obesidad, diabetes, sarcopenia, rendimiento y envejecimiento activo con
+        protocolos claros, seguimiento y evidencia aplicable en consulta y sala.
+      </p>
+    </div>
+    <div class="cs-facts">
+      <div class="cs-fact">
+        <strong>Formación</strong>
+        <span>MSc · Université Laval, Canadá</span>
+      </div>
+      <div class="cs-fact">
+        <strong>Especialidad</strong>
+        <span>Fisiología del Ejercicio y metabolismo energético</span>
+      </div>
+      <div class="cs-fact">
+        <strong>Trayectoria</strong>
+        <span>+15 años en investigación, clínica y formación profesional</span>
+      </div>
+      <div class="cs-fact">
+        <strong>Rol en Metabolic Fitness</strong>
+        <span>Co-fundador · Líder clínico y académico</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section cs-method" id="metodo">
+  <div class="cs-section__inner">
+    <h2>Método 1×2×3</h2>
+    <p>
+      Protocolo creado y enseñado por Carlos Saavedra para organizar el trabajo de fuerza con
+      precisión fisiológica: un minuto de estímulo, dos de recuperación y tres series. Simple de
+      recordar, exigente de ejecutar, diseñado para dosificar carga sin improvisar.
+    </p>
+    <div class="cs-pillars">
+      <div class="cs-pillar">
+        <div class="cs-pillar__n">1</div>
+        <h3>Minuto de trabajo</h3>
+        <p>Contracción controlada y enfoque muscular claro. El estímulo es corto, denso y medible.</p>
+      </div>
+      <div class="cs-pillar">
+        <div class="cs-pillar__n">2</div>
+        <h3>Minutos de descanso</h3>
+        <p>Recuperación suficiente para sostener calidad técnica y rendimiento en la siguiente serie.</p>
+      </div>
+      <div class="cs-pillar">
+        <div class="cs-pillar__n">3</div>
+        <h3>Series</h3>
+        <p>Volumen acotado para progresar con criterio clínico, no con fatiga acumulada sin sentido.</p>
+      </div>
+    </div>
+    <p>
+      El método se aplica a tren superior e inferior, con selección de ejercicios por enfoque muscular
+      (máquina, peso libre o carga corporal). Está pensado para profesionales que necesitan un marco
+      reproducible en clínica, academia y práctica.
+    </p>
+    <div class="cs-cta-row">
+      <a class="mf-btn mf-btn--green" href="1x2x3.html">Abrir herramienta 1×2×3</a>
+      <a class="mf-btn mf-btn--ghost" href="academia.html">Ver cursos de Academia</a>
+      <a class="mf-btn mf-btn--ghost" href="evaluacion.html">Agendar evaluación</a>
+    </div>
+  </div>
+</section>
+
+<section class="mf-band">
+  <div class="mf-band__inner">
+    <div>
+      <h2>Formación y clínica bajo el mismo criterio</h2>
+      <p>
+        Desde este portal puedes pasar al método interactivo, a los programas de Academia
+        o agendar una evaluación con el estándar Metabolic Fitness.
+      </p>
+    </div>
+    <div class="mf-band__actions">
+      <a class="mf-btn mf-btn--ink" href="mentoria-casos.html">Mentoría de casos</a>
+      <a class="mf-btn mf-btn--outline" href="nosotros.html">El equipo</a>
+    </div>
+  </div>
+</section>
+
+<footer class="mf-footer">
+  <div class="mf-footer-grid">
+    <div class="mf-footer-col">
+      <img class="mf-footer-brand" src="assets/brand/logo-mf-horizontal-white.png?v=3" alt="Metabolic Fitness">
+      <p style="font-size:0.95rem;line-height:1.55;margin:0;max-width:22rem;">Fisiología del Ejercicio Aplicada a la Clínica. Santiago, Chile.</p>
+      <p style="font-size:0.82rem;margin:0.65rem 0 0;opacity:0.7;">Israel Orellana Rodríguez - MSc. Fisiología Clínica Del Ejercicio. AI - Engineer</p>
+    </div>
+    <div class="mf-footer-col">
+      <h3>Explora</h3>
+      <a href="/">Inicio</a>
+      <a href="carlos-saavedra.html">Carlos Saavedra</a>
+      <a href="academia.html">Academia</a>
+      <a href="1x2x3.html">Método 1×2×3</a>
+    </div>
+    <div class="mf-footer-col">
+      <h3>Contacto</h3>
+      <span style="font-size:0.9rem;">Santiago, Chile</span>
+      <a href="tel:+56910111167">+56 9 1011 1167</a>
+      <a href="mailto:contacto@metabolicfitness.cl">contacto@metabolicfitness.cl</a>
+    </div>
+    <div class="mf-footer-col">
+      <h3>Comunidad</h3>
+      <a href="https://chat.whatsapp.com/LuuhXQG6biV6mkYceIo7vk" target="_blank" rel="noopener">Grupo WhatsApp</a>
+      <a href="https://www.instagram.com/metabolicfitness.cl/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/company/115783375/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+  <div class="mf-footer-copy">© 2026 Metabolic Fitness. Todos los derechos reservados.</div>
+</footer>
+<a class="mf-wa" href="https://wa.me/56910111167?text=Hola%2C%20quiero%20informacion%20sobre%20Metabolic%20Fitness" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11 11 0 0 0 3.2 17.7L2 22l4.4-1.15A11 11 0 1 0 20.5 3.5zm-8.5 17a9 9 0 0 1-4.6-1.25l-.33-.2-2.6.68.7-2.53-.22-.34A9 9 0 1 1 12 20.5zm5.2-6.7c-.28-.14-1.65-.81-1.9-.9s-.44-.14-.63.14-.72.9-.88 1.08-.33.21-.6.07a7.4 7.4 0 0 1-2.17-1.34 8.1 8.1 0 0 1-1.5-1.86c-.16-.28 0-.43.12-.57.12-.12.28-.33.42-.5s.18-.28.28-.47.05-.35-.02-.5-.63-1.51-.86-2.07c-.23-.54-.46-.46-.63-.47h-.54c-.19 0-.5.07-.76.35s-1 1-1 2.42 1.02 2.8 1.16 3 .2.28 2.01 3.07c1.6 1.4 2.2 1.6 2.56 1.76.6.28 1.14.24 1.57.14.48-.1 1.65-.67 1.88-1.32.23-.65.23-1.2.16-1.32-.07-.11-.25-.18-.53-.32z"/></svg>
+</a>
+<script src="js/mf-nav.js?v=3"></script>
+</body>
+</html>
