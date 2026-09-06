@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/brand/mf-favicon.ico?v=3" sizes="any">
+    <link rel="icon" type="image/png" href="/assets/brand/mf-favicon-32.png?v=3" sizes="32x32">
+    <link rel="apple-touch-icon" href="/assets/brand/mf-apple-touch-icon.png?v=3">
+    <title>Fisiología de la Carga, Fatiga y Recuperación: Nuevos Paradigmas en el Control de Cargas e Inflamación - Metabolic Fitness</title>
+    <meta name="description" content="Analizamos cómo la dosificación de la carga externa, la fatiga neuromuscular en esfuerzos de alta intensidad y la inflamación miocárdica mediada por receptores de mineralocorticoides redefinen la recuperación clínica. Además, evaluamos críticamente el uso de algoritmos para la predicción de lesiones en poblaciones expuestas a alto estrés físico.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'metabolic-green': '#5CB85C',
+                        'metabolic-charcoal': '#404041',
+                        'metabolic-cyan': '#00AEEF',
+                        'metabolic-purple': '#460877',
+                        'metabolic-bg': '#FFFFFF',
+                        'metabolic-bg-secondary': '#FAFAFA',
+                    },
+                    fontFamily: {
+                        'heading': ['Montserrat', 'sans-serif'],
+                        'body': ['Open Sans', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body { font-family: 'Open Sans', sans-serif; color: #404041; background: #FAFAFA; }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+        .article-content p { margin-bottom: 1.15rem; line-height: 1.9; font-size: 1.05rem; text-align: justify; hyphens: auto; }
+        .article-content h2 { margin-top: 2.2rem; margin-bottom: 0.9rem; font-weight: 700; font-size: 1.45rem; color: #460877; text-align: left; }
+        .article-content ul { list-style: disc; padding-left: 1.4rem; margin-bottom: 1rem; }
+        .article-content li { margin-bottom: 0.45rem; line-height: 1.75; text-align: justify; }
+        .justified { text-align: justify; hyphens: auto; }
+        .abstract-box { border-left: 5px solid #5CB85C; background: linear-gradient(90deg, #F3FBF3 0%, #FFFFFF 100%); }
+        .clinical-box { border: 1px solid #5CB85C33; background: #F8FFF8; box-shadow: 0 10px 30px rgba(92,184,92,0.08); }
+        .sidebar-card { background: white; border: 1px solid #E5E7EB; box-shadow: 0 8px 24px rgba(70,8,119,0.06); }
+        .keyword-chip { display: inline-block; background: rgba(255,255,255,0.14); color: #fff; border: 1px solid rgba(255,255,255,0.22); border-radius: 999px; padding: 0.28rem 0.75rem; font-size: 0.7rem; letter-spacing: 0.04em; text-transform: uppercase; font-family: Montserrat, sans-serif; font-weight: 600; }
+        .mf-pdf-cta {
+            background: #460877 !important;
+            color: #fff !important;
+            display: inline-block;
+            text-decoration: none !important;
+            border: none;
+            cursor: pointer;
+        }
+        .mf-pdf-cta:hover { background: #5a0a99 !important; }
+        aside .mf-pdf-cta { display: block; width: 100%; box-sizing: border-box; text-align: center; }
+        .mf-rating-box {
+            width: 100%;
+            max-width: 28rem;
+            background: #FAFAFA;
+            border: 1px solid #E5E7EB;
+            border-radius: 1rem;
+            padding: 1.1rem 1.25rem;
+            text-align: center;
+        }
+        .mf-star { color: #D1D5DB; cursor: pointer; user-select: none; line-height: 1; }
+        .mf-star-on, .mf-star.mf-active, .mf-star.mf-hover { color: #F5B301; }
+        .mf-star-half { color: #F5B301; opacity: 0.55; }
+        .mf-star-off { color: #D1D5DB; }
+        .mf-stars-display .mf-star { cursor: default; }
+        .mf-stars-input { display: inline-flex; gap: 0.15rem; font-size: 1.85rem; }
+        .mf-stars-input button { background: none; border: none; padding: 0; cursor: pointer; }
+        .mf-article-header { position: sticky; top: 0; z-index: 50; background: linear-gradient(105deg, #08060c 0%, #14081f 42%, #2a0548 78%, #3b0a66 100%); }
+        .article-hero-copy {
+            background: linear-gradient(115deg, #08060c 0%, #16091f 38%, #2a0548 72%, #3b0a66 100%) !important;
+        }
+        .article-hero-fade {
+            background: linear-gradient(to right, #16091f 0%, transparent 100%) !important;
+        }
+        .mf-article-nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+        }
+        .mf-article-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem;
+            margin-left: auto;
+        }
+        .mf-back-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0.55rem 0.9rem;
+            border-radius: 0.6rem;
+            background: rgba(255,255,255,0.14);
+            color: #fff !important;
+            text-decoration: none !important;
+            font-weight: 600;
+            white-space: nowrap;
+            position: relative;
+            z-index: 2;
+        }
+        .mf-back-link:hover { background: rgba(255,255,255,0.22); }
+        .mf-header-pdf {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0.55rem 0.9rem;
+            border-radius: 0.6rem;
+            background: #5CB85C !important;
+            color: #fff !important;
+            text-decoration: none !important;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        @media (max-width: 640px) {
+            .mf-article-header { position: sticky; top: 0; }
+            .mf-article-nav { flex-direction: column; align-items: stretch; gap: 0.65rem; }
+            .mf-article-actions {
+                margin-left: 0;
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .mf-back-link, .mf-header-pdf {
+                width: 100%;
+                flex: none;
+                touch-action: manipulation;
+                -webkit-tap-highlight-color: rgba(255,255,255,0.25);
+            }
+            .mf-logo-link { pointer-events: auto; }
+            .mf-logo-link img { max-width: 170px !important; height: 2.5rem !important; }
+            .article-hero { grid-template-columns: 1fr !important; min-height: 0 !important; }
+            .article-hero-copy { padding: 1.25rem !important; }
+            .article-hero-copy h1 { font-size: 1.45rem !important; line-height: 1.25 !important; }
+            .article-hero-media { min-height: 12rem !important; }
+            .article-hero-fade { display: none !important; }
+            main.mf-article-main { padding-top: 1.25rem !important; padding-bottom: 2rem !important; }
+            .keyword-chip { font-size: 0.62rem; padding: 0.22rem 0.55rem; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <header class="mf-article-header text-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <nav class="mf-article-nav" aria-label="Navegacion del articulo">
+                <a href="../blog.html" class="mf-logo-link flex items-center gap-2 min-w-0">
+                    <img src="../assets/brand/logo-mf-nav-white.png?v=4" alt="Metabolic Fitness" class="h-10 sm:h-12 w-auto max-w-[220px] object-contain object-left">
+                    <span class="font-heading font-bold text-sm hidden md:inline text-white/95">Paper Cientificos</span>
+                </a>
+                <div class="mf-article-actions">
+                    <a href="../blog.html" class="mf-back-link font-body text-sm">← Volver al blog</a>
+                    <a href="pdf/fisiologia-de-la-carga-fatiga-y-recuperacion-nuevos-paradigmas-en-el-control-de-cargas-e-inflamacion.pdf" download class="mf-header-pdf font-body text-sm">Descargar PDF</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 sm:pt-8">
+            <div class="article-hero rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl bg-white grid lg:grid-cols-[1.05fr_0.95fr] min-h-[22rem]">
+                <div class="article-hero-copy p-6 sm:p-12 flex flex-col justify-center text-white order-2 lg:order-1">
+                    <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
+                        <span class="px-3 py-1 rounded-full bg-white text-metabolic-purple text-xs font-heading font-semibold uppercase tracking-wide">Clinica</span>
+                        <span class="text-xs font-body text-white/80">2026-09-06</span>
+                        <span class="text-xs font-body text-white/80">4 min de lectura</span>
+                    </div>
+                    <h1 class="font-heading font-bold text-2xl sm:text-[2.35rem] leading-tight">Fisiología de la Carga, Fatiga y Recuperación: Nuevos Paradigmas en el Control de Cargas e Inflamación</h1>
+                    <div class="mt-5 flex flex-wrap gap-2"><span class="keyword-chip">Carga de entrenamiento</span><span class="keyword-chip">Fatiga neuromuscular</span><span class="keyword-chip">Inflamación miocárdica</span><span class="keyword-chip">Entrenamiento compensatorio</span><span class="keyword-chip">Prevención de lesiones</span><span class="keyword-chip">Fisiología clínica</span></div>
+                </div>
+                <div class="article-hero-media relative min-h-[14rem] order-1 lg:order-2">
+                    <img src="../assets/blog/fisiologia-de-la-carga-fatiga-y-recuperacion-nuevos-paradigmas-en-el-control-de-cargas-e-inflamacion.jpg" alt="Fisiología de la Carga, Fatiga y Recuperación: Nuevos Paradigmas en el Control de Cargas e Inflamación" class="w-full h-full object-cover">
+                    <div class="article-hero-fade absolute inset-y-0 left-0 w-24 hidden lg:block"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="mf-article-main max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+        <div class="grid lg:grid-cols-12 gap-6 lg:gap-8">
+            <article class="lg:col-span-8 min-w-0">
+                <div class="abstract-box rounded-2xl p-5 sm:p-8 mb-6 sm:mb-8">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-green mb-3">Resumen ejecutivo</p>
+                    <p class="font-body text-base sm:text-lg leading-relaxed text-metabolic-charcoal/90 justified">Analizamos cómo la dosificación de la carga externa, la fatiga neuromuscular en esfuerzos de alta intensidad y la inflamación miocárdica mediada por receptores de mineralocorticoides redefinen la recuperación clínica. Además, evaluamos críticamente el uso de algoritmos para la predicción de lesiones en poblaciones expuestas a alto estrés físico.</p>
+                </div>
+
+                <div class="article-content font-body text-metabolic-charcoal/90 bg-white rounded-2xl p-5 sm:p-8 shadow-sm border border-gray-100">
+                    <p>En el ámbito de la fisiología clínica del ejercicio, la intersección entre la carga de entrenamiento, los mecanismos inflamatorios sistémicos y la fatiga neuromuscular representa uno de los desafíos más complejos y vigentes. Comprender cómo responden los diferentes tejidos —desde el miocardio ante el estrés humoral hasta el sistema musculoesquelético frente al esfuerzo dinámico— es crucial para prescribir estrategias de recuperación eficaces y evitar el sobreentrenamiento. En esta revisión editorial, analizamos la evidencia más reciente publicada en prestigiosas revistas del área para ofrecer una visión clínica aplicada a médicos, kinesiólogos y fisiólogos del ejercicio en Chile y Latinoamérica.</p><h2>Contexto cientifico</h2><p>La evaluación continua de la fatiga y los procesos inflamatorios requiere un abordaje multifactorial. Por un lado, el ejercicio concurrente de alta intensidad impone una severa fatiga metabólica y neuromuscular, obligando al sistema cardiovascular a operar cerca de sus límites de adaptación. Por otro lado, la exposición a cargas asimétricas de entrenamiento en deportes colectivos puede desencadenar desadaptaciones funcionales si no se gestionan adecuadamente mediante estímulos compensatorios. A nivel molecular, la activación persistente de vías inflamatorias en el miocardio y la incapacidad de predecir de forma fidedigna el riesgo de lesiones mediante algoritmos estandarizados resaltan la necesidad de refinar nuestros criterios de monitoreo fisiológico.</p><h2>Hallazgos principales</h2><ul><li><strong>Fatiga neuromuscular en eventos concurrentes:</strong> El estudio 'HYScience' publicado en el International Journal of Sports Physiology and Performance (2026) demostró que durante una competencia oficial de HYROX PRO MEN, los atletas experimentan una pérdida progresiva de la velocidad de carrera, cayendo de 16.13 km/h en el primer segmento de 1 km a 13.58 km/h en el octavo, con el ritmo más bajo registrado en la zona de transición o 'Roxzone' (10.52 km/h). La intensidad media running se mantuvo a niveles submáximos correspondientes al 84.13% del VT2 y al 76.33% de la vVO2max, evidenciando que sostener una mayor intensidad relativa respecto al VT2 es el factor clave para optimizar el rendimiento.</li><li><strong>Eficacia del entrenamiento compensatorio:</strong> Una investigación en futbolistas profesionales de 25 años (IJSPP, 2026) reveló que la aplicación de entrenamiento compensatorio (ejercicio interválico de alta intensidad de aproximadamente 925 metros) post-partido mitiga significativamente las brechas en la carga externa de velocidad entre titulares y no titulares. Los suplentes sin minutos (G2) y aquellos con minutos limitados (G3) aumentaron sustancialmente su distancia a alta velocidad (HSR) de 33 a 261 metros y de 143 a 318 metros respectivamente, aproximando sus valores a los de los titulares (585 metros).</li><li><strong>Inflamación miocárdica mediada por receptores:</strong> De acuerdo con una revisión en la revista Hypertension (2026), la activación inapropiada de los receptores de mineralocorticoides (MR) por exceso de aldosterona induce inflamación miocárdica y fibrosis. Los antagonistas de estos receptores (MRAs), incluyendo los nuevos compuestos no esteroideos, atenúan de forma directa esta inflamación y remodelación adversa en el tejido miocárdico e inmune, superando los beneficios de la simple reducción de la presión arterial.</li><li><strong>Falla en la predicción algorítmica de lesiones:</strong> Un riguroso estudio de validación externa en 308 paracaidistas militares seguido durante un año de exposición (Medicine and Science in Sports and Exercise, 2026) determinó que un algoritmo diseñado para predecir lesiones musculoesqueléticas falló notablemente en su fase de validación independiente. El modelo obtuvo un área bajo la curva (AUC) de solo 0.59, con un 30.7% de la cohorte lesionada, demostrando que estos modelos predictivos cerrados no justifican su implementación clínica en entornos de alta exigencia física.</li></ul><h2>Aplicacion en fisiologia clinica</h2><p>Para los profesionales en Chile y Latinoamérica, estos hallazgos proporcionan pautas de aplicación directa. En primer lugar, la fatiga acumulada en competencias concurrentes de alta intensidad debe gestionarse entendiendo que los atletas regulan su ritmo de forma submáxima en relación con sus umbrales ventilatorios, lo que requiere estrategias de recuperación enfocadas en la restauración glucogénica y neuromuscular inmediata. En segundo lugar, el uso de entrenamiento compensatorio post-partido en futbolistas suplentes es una herramienta práctica invaluable para estandarizar el estímulo semanal y prevenir lesiones por picos agudos de carga al reincorporarse a la competencia activa. Finalmente, la ineficacia de los modelos algorítmicos rígidos para predecir lesiones resalta la importancia de la evaluación clínica directa y personalizada, monitoreando las vías inflamatorias y protegiendo incluso la salud miocárdica frente a procesos de estrés e inflamación dependientes de mineralocorticoides.</p>
+                </div>
+
+                <section class="clinical-box rounded-2xl p-6 mt-8"><h2 class="font-heading font-bold text-xl text-metabolic-charcoal mb-3">Implicaciones clinicas</h2><p class="font-body text-metabolic-charcoal/85 leading-relaxed justified">Para los profesionales de la salud y el movimiento en Latinoamérica, estos hallazgos sugieren abandonar la confianza ciega en algoritmos predictivos genéricos y priorizar el monitoreo fisiológico continuo. La dosificación precisa de la carga a través de estrategias como el entrenamiento compensatorio post-partido es esencial para mantener la homogeneidad adaptativa en el plantel, mientras que la comprensión de los mecanismos inflamatorios mediocárdicos subyacentes abre nuevas perspectivas sobre la protección cardiovascular y sistémica en atletas de resistencia y personal sometido a alta exigencia física.</p></section>
+                <section id="referencias" class="mt-12 pt-8 border-t border-gray-200"><h2 class="font-heading font-bold text-2xl text-metabolic-charcoal mb-6">Referencias</h2><ol class="space-y-4 list-none"><li class="border-l-4 border-metabolic-green pl-4 py-2"><p class="font-body text-sm text-metabolic-charcoal/90">Role of Mineralocorticoid Receptors in Cardiovascular Disease. (Hypertension (Dallas, Tex. : 1979), 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42333473/" target="_blank" rel="noopener noreferrer" class="text-xs text-metabolic-cyan hover:underline break-all">https://pubmed.ncbi.nlm.nih.gov/42333473/</a></li><li class="border-l-4 border-metabolic-green pl-4 py-2"><p class="font-body text-sm text-metabolic-charcoal/90">Relative Running Intensity and Pacing During an Official HYROX PRO MEN Competition: The HYScience Study. (International journal of sports physiology and performance, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42697540/" target="_blank" rel="noopener noreferrer" class="text-xs text-metabolic-cyan hover:underline break-all">https://pubmed.ncbi.nlm.nih.gov/42697540/</a></li><li class="border-l-4 border-metabolic-green pl-4 py-2"><p class="font-body text-sm text-metabolic-charcoal/90">Effects of the Compensatory Training Strategy on External Speed Load Between Starter and Nonstarter Soccer Players. (International journal of sports physiology and performance, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42697538/" target="_blank" rel="noopener noreferrer" class="text-xs text-metabolic-cyan hover:underline break-all">https://pubmed.ncbi.nlm.nih.gov/42697538/</a></li><li class="border-l-4 border-metabolic-green pl-4 py-2"><p class="font-body text-sm text-metabolic-charcoal/90">External Validation of an Injury Risk Prediction Algorithm in US Army Paratroopers. (Medicine and science in sports and exercise, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42696677/" target="_blank" rel="noopener noreferrer" class="text-xs text-metabolic-cyan hover:underline break-all">https://pubmed.ncbi.nlm.nih.gov/42696677/</a></li></ol></section>
+            </article>
+
+            <aside class="lg:col-span-4 space-y-6 min-w-0">
+                <div class="sidebar-card rounded-2xl p-5 sm:p-6">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-purple mb-4">Descarga profesional</p>
+                    <p class="font-body text-sm text-metabolic-charcoal/75 mb-4">Documento PDF con estructura editorial, logo Metabolic Fitness y referencias completas.</p>
+                    <a href="pdf/fisiologia-de-la-carga-fatiga-y-recuperacion-nuevos-paradigmas-en-el-control-de-cargas-e-inflamacion.pdf" download class="mf-pdf-cta text-center text-white px-4 py-3 rounded-xl font-body font-semibold" style="background:#460877;color:#fff;display:block;">Descargar articulo en PDF</a>
+                </div>
+
+                <div class="sidebar-card rounded-2xl p-6">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-green mb-4">Puntos clave</p>
+                    <ul class="space-y-3 font-body text-sm text-metabolic-charcoal/85"><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>La fatiga neuromuscular en eventos concurrentes (HYROX) genera una caída progresiva del ritmo de carrera, manteniéndose a intensidades submáximas respecto al VT2 (84.13%) y la vVO2max (76.33%).</span></li><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>El entrenamiento compensatorio post-partido en futbolistas profesionales equilibra eficazmente las disparidades de carga de alta velocidad (HSR) entre jugadores titulares y suplentes.</span></li><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>La activación inapropiada de los receptores de mineralocorticoides (MR) induce inflamación miocárdica y fibrosis, destacando el papel protector de los MRAs frente al daño cardiovascular crónico.</span></li><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>Los modelos predictivos algorítmicos para riesgo de lesiones muestran una pobre capacidad de discriminación (AUC 0.59) en validaciones externas, limitando su utilidad clínica práctica.</span></li></ul>
+                </div>
+
+                <div class="sidebar-card rounded-2xl p-6">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-cyan mb-4">Evidencia de origen</p>
+                    <p class="font-body text-sm text-metabolic-charcoal/75">Articulo elaborado a partir de publicaciones recientes en revistas de alto impacto indexadas en PubMed.</p>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-gray-200 py-10 mt-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-5">
+            <section
+                class="mf-rating-box"
+                id="mf-paper-rating"
+                data-slug="fisiologia-de-la-carga-fatiga-y-recuperacion-nuevos-paradigmas-en-el-control-de-cargas-e-inflamacion"
+                data-editorial-rating="4.5"
+                aria-label="Evaluacion del paper"
+            >
+                <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-purple mb-2">Evaluacion del paper</p>
+                <div class="flex flex-col items-center gap-1 mb-3">
+                    <div class="mf-stars-display text-2xl" aria-hidden="true"><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-half">★</span></div>
+                    <p class="font-body text-sm text-metabolic-charcoal/80">
+                        Calidad editorial: <strong id="mf-editorial-score">4.5</strong>/5
+                    </p>
+                </div>
+                <p class="font-body text-xs text-metabolic-charcoal/60 mb-2">Tu evaluacion (0 a 5 estrellas)</p>
+                <div class="mf-stars-input" role="radiogroup" aria-label="Califica este paper">
+                    <button type="button" class="mf-star" data-value="1" aria-label="1 estrella">★</button>
+                    <button type="button" class="mf-star" data-value="2" aria-label="2 estrellas">★</button>
+                    <button type="button" class="mf-star" data-value="3" aria-label="3 estrellas">★</button>
+                    <button type="button" class="mf-star" data-value="4" aria-label="4 estrellas">★</button>
+                    <button type="button" class="mf-star" data-value="5" aria-label="5 estrellas">★</button>
+                </div>
+                <p class="font-body text-xs text-metabolic-charcoal/55 mt-2" id="mf-rating-status">
+                    Promedio lectores: <span id="mf-avg-score">—</span> · <span id="mf-vote-count">0</span> votos
+                </p>
+            </section>
+            <div class="flex items-center gap-5">
+                <a href="https://www.facebook.com/profile.php?id=61578818624346" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <img src="../assets/social/facebook.png" alt="Facebook" class="w-8 h-8 object-contain hover:opacity-80 transition-opacity">
+                </a>
+                <a href="https://www.instagram.com/metabolicfitness.cl/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <img src="../assets/social/instagram.png" alt="Instagram" class="w-8 h-8 object-contain hover:opacity-80 transition-opacity">
+                </a>
+                <a href="https://www.linkedin.com/company/metabolic-fitness-chile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <img src="../assets/social/linkedin.png" alt="LinkedIn" class="w-8 h-8 object-contain hover:opacity-80 transition-opacity">
+                </a>
+                <a href="https://chat.whatsapp.com/LuuhXQG6biV6mkYceIo7vk" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                    <img src="../assets/social/whatsapp.png" alt="WhatsApp" class="w-8 h-8 object-contain hover:opacity-80 transition-opacity">
+                </a>
+            </div>
+            <a href="https://www.metabolicfitness.cl" class="inline-block">
+                <img src="../assets/brand/logo-mf-horizontal.png" alt="Metabolic Fitness" class="h-10 w-auto object-contain bg-transparent">
+            </a>
+            <p class="font-body text-metabolic-charcoal/60 text-sm text-center">
+                © 2026 Metabolic Fitness · Fisiologia Clinica del Ejercicio<br>
+                <a href="https://www.metabolicfitness.cl" class="hover:text-metabolic-purple transition-colors">www.metabolicfitness.cl</a>
+            </p>
+        </div>
+    </footer>
+    <script src="../js/blog-rating.js?v=2"></script>
+</body>
+</html>

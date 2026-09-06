@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/brand/mf-favicon.ico?v=3" sizes="any">
+    <link rel="icon" type="image/png" href="/assets/brand/mf-favicon-32.png?v=3" sizes="32x32">
+    <link rel="apple-touch-icon" href="/assets/brand/mf-apple-touch-icon.png?v=3">
+    <title>La Neurociencia Aplicada al Ejercicio Clínico: Sinergia entre Función Cognitiva, Salud Mental y Adherencia - Metabolic Fitness</title>
+    <meta name="description" content="Un análisis profundo de la evidencia clínica reciente que revela cómo el ejercicio físico y los enfoques biopsicosociales optimizan la función cognitiva, modulan la activación cerebral y superan las barreras psicológicas y motoras en poblaciones con patologías complejas.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'metabolic-green': '#5CB85C',
+                        'metabolic-charcoal': '#404041',
+                        'metabolic-cyan': '#00AEEF',
+                        'metabolic-purple': '#460877',
+                        'metabolic-bg': '#FFFFFF',
+                        'metabolic-bg-secondary': '#FAFAFA',
+                    },
+                    fontFamily: {
+                        'heading': ['Montserrat', 'sans-serif'],
+                        'body': ['Open Sans', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body { font-family: 'Open Sans', sans-serif; color: #404041; background: #FAFAFA; }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+        .article-content p { margin-bottom: 1.15rem; line-height: 1.9; font-size: 1.05rem; text-align: justify; hyphens: auto; }
+        .article-content h2 { margin-top: 2.2rem; margin-bottom: 0.9rem; font-weight: 700; font-size: 1.45rem; color: #460877; text-align: left; }
+        .article-content ul { list-style: disc; padding-left: 1.4rem; margin-bottom: 1rem; }
+        .article-content li { margin-bottom: 0.45rem; line-height: 1.75; text-align: justify; }
+        .justified { text-align: justify; hyphens: auto; }
+        .abstract-box { border-left: 5px solid #5CB85C; background: linear-gradient(90deg, #F3FBF3 0%, #FFFFFF 100%); }
+        .clinical-box { border: 1px solid #5CB85C33; background: #F8FFF8; box-shadow: 0 10px 30px rgba(92,184,92,0.08); }
+        .sidebar-card { background: white; border: 1px solid #E5E7EB; box-shadow: 0 8px 24px rgba(70,8,119,0.06); }
+        .keyword-chip { display: inline-block; background: rgba(255,255,255,0.14); color: #fff; border: 1px solid rgba(255,255,255,0.22); border-radius: 999px; padding: 0.28rem 0.75rem; font-size: 0.7rem; letter-spacing: 0.04em; text-transform: uppercase; font-family: Montserrat, sans-serif; font-weight: 600; }
+        .mf-pdf-cta {
+            background: #460877 !important;
+            color: #fff !important;
+            display: inline-block;
+            text-decoration: none !important;
+            border: none;
+            cursor: pointer;
+        }
+        .mf-pdf-cta:hover { background: #5a0a99 !important; }
+        aside .mf-pdf-cta { display: block; width: 100%; box-sizing: border-box; text-align: center; }
+        .mf-rating-box {
+            width: 100%;
+            max-width: 28rem;
+            background: #FAFAFA;
+            border: 1px solid #E5E7EB;
+            border-radius: 1rem;
+            padding: 1.1rem 1.25rem;
+            text-align: center;
+        }
+        .mf-star { color: #D1D5DB; cursor: pointer; user-select: none; line-height: 1; }
+        .mf-star-on, .mf-star.mf-active, .mf-star.mf-hover { color: #F5B301; }
+        .mf-star-half { color: #F5B301; opacity: 0.55; }
+        .mf-star-off { color: #D1D5DB; }
+        .mf-stars-display .mf-star { cursor: default; }
+        .mf-stars-input { display: inline-flex; gap: 0.15rem; font-size: 1.85rem; }
+        .mf-stars-input button { background: none; border: none; padding: 0; cursor: pointer; }
+        .mf-article-header { position: sticky; top: 0; z-index: 50; background: linear-gradient(105deg, #08060c 0%, #14081f 42%, #2a0548 78%, #3b0a66 100%); }
+        .article-hero-copy {
+            background: linear-gradient(115deg, #08060c 0%, #16091f 38%, #2a0548 72%, #3b0a66 100%) !important;
+        }
+        .article-hero-fade {
+            background: linear-gradient(to right, #16091f 0%, transparent 100%) !important;
+        }
+        .mf-article-nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+        }
+        .mf-article-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem;
+            margin-left: auto;
+        }
+        .mf-back-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0.55rem 0.9rem;
+            border-radius: 0.6rem;
+            background: rgba(255,255,255,0.14);
+            color: #fff !important;
+            text-decoration: none !important;
+            font-weight: 600;
+            white-space: nowrap;
+            position: relative;
+            z-index: 2;
+        }
+        .mf-back-link:hover { background: rgba(255,255,255,0.22); }
+        .mf-header-pdf {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0.55rem 0.9rem;
+            border-radius: 0.6rem;
+            background: #5CB85C !important;
+            color: #fff !important;
+            text-decoration: none !important;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        @media (max-width: 640px) {
+            .mf-article-header { position: sticky; top: 0; }
+            .mf-article-nav { flex-direction: column; align-items: stretch; gap: 0.65rem; }
+            .mf-article-actions {
+                margin-left: 0;
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .mf-back-link, .mf-header-pdf {
+                width: 100%;
+                flex: none;
+                touch-action: manipulation;
+                -webkit-tap-highlight-color: rgba(255,255,255,0.25);
+            }
+            .mf-logo-link { pointer-events: auto; }
+            .mf-logo-link img { max-width: 170px !important; height: 2.5rem !important; }
+            .article-hero { grid-template-columns: 1fr !important; min-height: 0 !important; }
+            .article-hero-copy { padding: 1.25rem !important; }
+            .article-hero-copy h1 { font-size: 1.45rem !important; line-height: 1.25 !important; }
+            .article-hero-media { min-height: 12rem !important; }
+            .article-hero-fade { display: none !important; }
+            main.mf-article-main { padding-top: 1.25rem !important; padding-bottom: 2rem !important; }
+            .keyword-chip { font-size: 0.62rem; padding: 0.22rem 0.55rem; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <header class="mf-article-header text-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <nav class="mf-article-nav" aria-label="Navegacion del articulo">
+                <a href="../blog.html" class="mf-logo-link flex items-center gap-2 min-w-0">
+                    <img src="../assets/brand/logo-mf-nav-white.png?v=4" alt="Metabolic Fitness" class="h-10 sm:h-12 w-auto max-w-[220px] object-contain object-left">
+                    <span class="font-heading font-bold text-sm hidden md:inline text-white/95">Paper Cientificos</span>
+                </a>
+                <div class="mf-article-actions">
+                    <a href="../blog.html" class="mf-back-link font-body text-sm">← Volver al blog</a>
+                    <a href="pdf/la-neurociencia-aplicada-al-ejercicio-clinico-sinergia-entre-funcion-cognitiva-salud-mental-y-adherencia.pdf" download class="mf-header-pdf font-body text-sm">Descargar PDF</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 sm:pt-8">
+            <div class="article-hero rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl bg-white grid lg:grid-cols-[1.05fr_0.95fr] min-h-[22rem]">
+                <div class="article-hero-copy p-6 sm:p-12 flex flex-col justify-center text-white order-2 lg:order-1">
+                    <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
+                        <span class="px-3 py-1 rounded-full bg-white text-metabolic-purple text-xs font-heading font-semibold uppercase tracking-wide">Clinica</span>
+                        <span class="text-xs font-body text-white/80">2026-09-06</span>
+                        <span class="text-xs font-body text-white/80">5 min de lectura</span>
+                    </div>
+                    <h1 class="font-heading font-bold text-2xl sm:text-[2.35rem] leading-tight">La Neurociencia Aplicada al Ejercicio Clínico: Sinergia entre Función Cognitiva, Salud Mental y Adherencia</h1>
+                    <div class="mt-5 flex flex-wrap gap-2"><span class="keyword-chip">neurociencia del ejercicio</span><span class="keyword-chip">fisiología clínica</span><span class="keyword-chip">deterioro cognitivo</span><span class="keyword-chip">enfoque biopsicosocial</span><span class="keyword-chip">adherencia del paciente</span><span class="keyword-chip">rehabilitación integral</span></div>
+                </div>
+                <div class="article-hero-media relative min-h-[14rem] order-1 lg:order-2">
+                    <img src="../assets/blog/la-neurociencia-aplicada-al-ejercicio-clinico-sinergia-entre-funcion-cognitiva-salud-mental-y-adherencia.jpg" alt="La Neurociencia Aplicada al Ejercicio Clínico: Sinergia entre Función Cognitiva, Salud Mental y Adherencia" class="w-full h-full object-cover">
+                    <div class="article-hero-fade absolute inset-y-0 left-0 w-24 hidden lg:block"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="mf-article-main max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+        <div class="grid lg:grid-cols-12 gap-6 lg:gap-8">
+            <article class="lg:col-span-8 min-w-0">
+                <div class="abstract-box rounded-2xl p-5 sm:p-8 mb-6 sm:mb-8">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-green mb-3">Resumen ejecutivo</p>
+                    <p class="font-body text-base sm:text-lg leading-relaxed text-metabolic-charcoal/90 justified">Un análisis profundo de la evidencia clínica reciente que revela cómo el ejercicio físico y los enfoques biopsicosociales optimizan la función cognitiva, modulan la activación cerebral y superan las barreras psicológicas y motoras en poblaciones con patologías complejas.</p>
+                </div>
+
+                <div class="article-content font-body text-metabolic-charcoal/90 bg-white rounded-2xl p-5 sm:p-8 shadow-sm border border-gray-100">
+                    <p>En la práctica clínica actual de la fisiología del ejercicio, la brecha entre la neurobiología y la prescripción terapéutica se está cerrando rápidamente. Ya no consideramos al movimiento únicamente como un estímulo metabólico u osteomuscular; hoy entendemos el ejercicio como un potente modulador de la plasticidad cerebral, el estado de ánimo y el comportamiento humano. Para los profesionales de la salud en Chile y Latinoamérica, integrar este enfoque biopsicosocial es indispensable para diseñar intervenciones efectivas y sostenibles en pacientes con patologías crónicas, neurodegenerativas y autoinmunes.</p><h2>Eficiencia neural y adaptaciones cognitivas frente al ejercicio</h2><p>Uno de los hallazgos más destacados en la neurociencia del ejercicio proviene de investigaciones publicadas en el <strong>Archives of Physical Medicine and Rehabilitation</strong>. Un ensayo clínico controlado aleatorizado evaluó el impacto comparativo del entrenamiento cognitivo frente al entrenamiento físico (30 minutos por sesión, 3 sesiones por semana durante 8 semanas) en adultos mayores de 65 años con deterioro cognitivo leve o demencia leve.</p><p>Los resultados revelaron distinciones críticas en los mecanismos de adaptación. Mientras que el grupo de entrenamiento cognitivo mostró una reducción en la activación de la corteza prefrontal (medida mediante espectroscopía de infrarrojo cercano funcional, fNIRS), sugiriendo un aumento en la eficiencia neural, el grupo de entrenamiento físico demostró mejoras funcionales y cognitivas sobresalientes. El entrenamiento físico no solo mejoró significativamente la cognición global (medida por ADAS-Cog), la flexibilidad cognitiva y la fluidez verbal, sino que fue <strong>la única estrategia que logró superar la diferencia mínima clínicamente importante (MCID) en la escala ADAS-Cog</strong> en comparación con el grupo control. Además, este grupo mostró una mejoría notable en la movilidad funcional mediante la prueba Timed Up and Go, consolidando al ejercicio como una terapia integral indiscutible.</p><h2>Sintomatología depresiva y funcionalidad como barreras de adherencia</h2><p>La implementación exitosa de un programa de fisiología clínica no solo depende de la dosis fisiológica óptima, sino de la capacidad del paciente para mantener la adherencia. En este escenario, la salud mental y la funcionalidad física basal juegan un papel determinante. Un estudio de cohorte publicado en la prestigiosa revista <strong>Diabetes Care</strong> analizó los factores predictores de deserción en pacientes que utilizaban dispositivos de descarga para úlceras de pie diabético.</p><p>Los análisis multivariados demostraron de forma contundente que una velocidad de marcha más lenta (OR 1.16) y, especialmente, <strong>la presencia de síntomas depresivos elevados (OR 1.52) predicen de manera independiente la deserción de los pacientes</strong> en los protocolos de intervención. El estudio evidenció que un modelo de evaluación multidimensional que integra variables clínicas, funcionales y psicosociales posee una alta capacidad de discriminación (AUC 0.81). No obstante, un hallazgo de enorme valor clínico fue que el grupo que utilizó botas inteligentes con sistemas de retroalimentación y recordatorios de adherencia en tiempo real presentó tasas de deserción significativamente menores, demostrando cómo la tecnología aplicada puede actuar como un facilitador conductual y de salud mental frente a la vulnerabilidad del paciente.</p><h2>El modelo biopsicosocial y la ruptura de paradigmas en patologías complejas</h2><p>El tratamiento de enfermedades crónicas con alta carga sintomática requiere enfoques que superen el dualismo cuerpo-mente. Un ejemplo de esto es el estudio del enfoque de Terapia de Ejercicio Cognitivo (BETY), un modelo basado en el paradigma biopsicosocial evaluado en pacientes con el síndrome de Sjögren primario, publicado en el <strong>Archives of Physical Medicine and Rehabilitation</strong>. Este ensayo clínico demostró que la aplicación de sesiones de 60 minutos, 3 veces por semana durante 12 semanas, tanto en formato grupal como individual, generó mejoras significativas en el estado biopsicosocial general de los pacientes.</p><p>Los dos formatos de entrega de BETY lograron reducciones en el índice reportado por los pacientes para el síndrome de Sjögren (ESSPRI) que <strong>superaron el umbral de la diferencia mínima clínicamente importante (igual o mayor a 1 punto)</strong>, reduciendo la fatiga, el dolor y la sequedad, sin registrarse ningún evento adverso. Este éxito clínico resalta la viabilidad de usar el ejercicio no solo para mejorar variables fisiológicas aisladas, sino para modular la percepción central del dolor y los síntomas del paciente.</p><p>Por otro lado, la necesidad de romper paradigmas históricos restrictivos se hace evidente en patologías neuromusculares como la distrofia muscular facioescapulohumeral (FSHD). Según una revisión crítica en el <strong>European Journal of Applied Physiology</strong>, la prescripción de ejercicio físico en estos pacientes ha sido históricamente evitada debido al temor infundado de generar debilidad por sobreesfuerzo y daño muscular exacerbado. No obstante, la evidencia científica actual demuestra que la inactividad física impuesta promueve un círculo vicioso de desacondicionamiento, pérdida de autonomía y deterioro de la calidad de vida. Identificar modalidades seguras de entrenamiento aeróbico y combinado, adaptadas a la variabilidad clínica de cada paciente, constituye una prioridad fisiológica para preservar su funcionalidad.</p><h2>Conclusiones para la práctica clínica</h2><ul><li><strong>Prescribir con enfoque multidimensional:</strong> La aptitud física y la función ejecutiva están interconectadas; el entrenamiento físico optimiza la función cerebral de manera directa y clínicamente significativa.</li><li><strong>Evaluar la salud mental basal:</strong> Detectar síntomas depresivos y limitaciones de movilidad de forma temprana permite anticipar la falta de adherencia y diseñar estrategias de acompañamiento personalizadas o tecnológicas.</li><li><strong>Implementar enfoques biopsicosociales:</strong> Herramientas como el modelo BETY demuestran que abordar la esfera psicológica, social y física del paciente de forma simultánea produce mejores resultados en patologías inflamatorias y reumáticas complejas.</li><li><strong>Desmitificar el ejercicio en enfermedades neuromusculares:</strong> En patologías como la FSHD, el reposo innecesario es más peligroso que el ejercicio dosificado; la clave reside en la monitorización y la personalización de la carga.</li></ul>
+                </div>
+
+                <section class="clinical-box rounded-2xl p-6 mt-8"><h2 class="font-heading font-bold text-xl text-metabolic-charcoal mb-3">Implicaciones clinicas</h2><p class="font-body text-metabolic-charcoal/85 leading-relaxed justified">Para médicos, kinesiólogos y fisiólogos del ejercicio en Latinoamérica, la prescripción de ejercicio debe trascender la mera dosificación de carga física. Es imperativo integrar la evaluación neurocognitiva, el tamizaje de síntomas depresivos y los modelos biopsicosociales. El diseño de programas debe contemplar tanto la eficiencia neural como el soporte conductual y tecnológico para mitigar la deserción y maximizar el impacto clínico real.</p></section>
+                <section id="referencias" class="mt-12 pt-8 border-t border-gray-200"><h2 class="font-heading font-bold text-2xl text-metabolic-charcoal mb-6">Referencias</h2><ol class="space-y-4 list-none"><li class="border-l-4 border-metabolic-green pl-4 py-2"><p class="font-body text-sm text-metabolic-charcoal/90">Predicting the Path to Attrition: Multidomain Risk Assessment in Diabetic Foot Ulcer Offloading Randomized Controlled Trials. (Diabetes care, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42411992/" target="_blank" rel="noopener noreferrer" class="text-xs text-metabolic-cyan hover:underline break-all">https://pubmed.ncbi.nlm.nih.gov/42411992/</a></li><li class="border-l-4 border-metabolic-green pl-4 py-2"><p class="font-body text-sm text-metabolic-charcoal/90">Physical exercise in facioscapulohumeral muscular dystrophy: state of the art and future challenges beyond common misconceptions. (European journal of applied physiology, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42390587/" target="_blank" rel="noopener noreferrer" class="text-xs text-metabolic-cyan hover:underline break-all">https://pubmed.ncbi.nlm.nih.gov/42390587/</a></li><li class="border-l-4 border-metabolic-green pl-4 py-2"><p class="font-body text-sm text-metabolic-charcoal/90">Comparing the Effects of Cognitive and Physical Training on Cognitive Function and Brain Activation in People With Mild Cognitive Impairment and Mild Dementia: A Randomized Controlled Trial. (Archives of physical medicine and rehabilitation, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42081986/" target="_blank" rel="noopener noreferrer" class="text-xs text-metabolic-cyan hover:underline break-all">https://pubmed.ncbi.nlm.nih.gov/42081986/</a></li><li class="border-l-4 border-metabolic-green pl-4 py-2"><p class="font-body text-sm text-metabolic-charcoal/90">Effectiveness of a Biopsychosocial-Based Exercise Approach Delivered in Group and Individual Formats in Primary Sjögren Disease: A Randomized Controlled Trial. (Archives of physical medicine and rehabilitation, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/41951150/" target="_blank" rel="noopener noreferrer" class="text-xs text-metabolic-cyan hover:underline break-all">https://pubmed.ncbi.nlm.nih.gov/41951150/</a></li></ol></section>
+            </article>
+
+            <aside class="lg:col-span-4 space-y-6 min-w-0">
+                <div class="sidebar-card rounded-2xl p-5 sm:p-6">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-purple mb-4">Descarga profesional</p>
+                    <p class="font-body text-sm text-metabolic-charcoal/75 mb-4">Documento PDF con estructura editorial, logo Metabolic Fitness y referencias completas.</p>
+                    <a href="pdf/la-neurociencia-aplicada-al-ejercicio-clinico-sinergia-entre-funcion-cognitiva-salud-mental-y-adherencia.pdf" download class="mf-pdf-cta text-center text-white px-4 py-3 rounded-xl font-body font-semibold" style="background:#460877;color:#fff;display:block;">Descargar articulo en PDF</a>
+                </div>
+
+                <div class="sidebar-card rounded-2xl p-6">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-green mb-4">Puntos clave</p>
+                    <ul class="space-y-3 font-body text-sm text-metabolic-charcoal/85"><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>El entrenamiento físico en adultos mayores con deterioro cognitivo mejora la cognición global, superando la diferencia mínima clínicamente importante (MCID) en la escala ADAS-Cog.</span></li><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>La sintomatología depresiva y la velocidad de marcha lenta son predictores independientes críticos de la deserción en intervenciones de rehabilitación clínica.</span></li><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>Los programas de ejercicio con enfoque biopsicosocial (como el modelo BETY) reducen significativamente la carga sintomática en patologías autoinmunes sin reportar efectos adversos.</span></li><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>Superar el temor histórico al sobreesfuerzo en miopatías complejas es clave para prescribir ejercicio seguro que evite el desacondicionamiento perjudicial.</span></li></ul>
+                </div>
+
+                <div class="sidebar-card rounded-2xl p-6">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-cyan mb-4">Evidencia de origen</p>
+                    <p class="font-body text-sm text-metabolic-charcoal/75">Articulo elaborado a partir de publicaciones recientes en revistas de alto impacto indexadas en PubMed.</p>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-gray-200 py-10 mt-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-5">
+            <section
+                class="mf-rating-box"
+                id="mf-paper-rating"
+                data-slug="la-neurociencia-aplicada-al-ejercicio-clinico-sinergia-entre-funcion-cognitiva-salud-mental-y-adherencia"
+                data-editorial-rating="4.5"
+                aria-label="Evaluacion del paper"
+            >
+                <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-purple mb-2">Evaluacion del paper</p>
+                <div class="flex flex-col items-center gap-1 mb-3">
+                    <div class="mf-stars-display text-2xl" aria-hidden="true"><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-half">★</span></div>
+                    <p class="font-body text-sm text-metabolic-charcoal/80">
+                        Calidad editorial: <strong id="mf-editorial-score">4.5</strong>/5
+                    </p>
+                </div>
+                <p class="font-body text-xs text-metabolic-charcoal/60 mb-2">Tu evaluacion (0 a 5 estrellas)</p>
+                <div class="mf-stars-input" role="radiogroup" aria-label="Califica este paper">
+                    <button type="button" class="mf-star" data-value="1" aria-label="1 estrella">★</button>
+                    <button type="button" class="mf-star" data-value="2" aria-label="2 estrellas">★</button>
+                    <button type="button" class="mf-star" data-value="3" aria-label="3 estrellas">★</button>
+                    <button type="button" class="mf-star" data-value="4" aria-label="4 estrellas">★</button>
+                    <button type="button" class="mf-star" data-value="5" aria-label="5 estrellas">★</button>
+                </div>
+                <p class="font-body text-xs text-metabolic-charcoal/55 mt-2" id="mf-rating-status">
+                    Promedio lectores: <span id="mf-avg-score">—</span> · <span id="mf-vote-count">0</span> votos
+                </p>
+            </section>
+            <div class="flex items-center gap-5">
+                <a href="https://www.facebook.com/profile.php?id=61578818624346" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <img src="../assets/social/facebook.png" alt="Facebook" class="w-8 h-8 object-contain hover:opacity-80 transition-opacity">
+                </a>
+                <a href="https://www.instagram.com/metabolicfitness.cl/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <img src="../assets/social/instagram.png" alt="Instagram" class="w-8 h-8 object-contain hover:opacity-80 transition-opacity">
+                </a>
+                <a href="https://www.linkedin.com/company/metabolic-fitness-chile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <img src="../assets/social/linkedin.png" alt="LinkedIn" class="w-8 h-8 object-contain hover:opacity-80 transition-opacity">
+                </a>
+                <a href="https://chat.whatsapp.com/LuuhXQG6biV6mkYceIo7vk" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                    <img src="../assets/social/whatsapp.png" alt="WhatsApp" class="w-8 h-8 object-contain hover:opacity-80 transition-opacity">
+                </a>
+            </div>
+            <a href="https://www.metabolicfitness.cl" class="inline-block">
+                <img src="../assets/brand/logo-mf-horizontal.png" alt="Metabolic Fitness" class="h-10 w-auto object-contain bg-transparent">
+            </a>
+            <p class="font-body text-metabolic-charcoal/60 text-sm text-center">
+                © 2026 Metabolic Fitness · Fisiologia Clinica del Ejercicio<br>
+                <a href="https://www.metabolicfitness.cl" class="hover:text-metabolic-purple transition-colors">www.metabolicfitness.cl</a>
+            </p>
+        </div>
+    </footer>
+    <script src="../js/blog-rating.js?v=2"></script>
+</body>
+</html>

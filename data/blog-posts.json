@@ -1,5 +1,205 @@
 [
   {
+    "slug": "nuevos-paradigmas-en-la-prevencion-de-caidas-del-entrenamiento-neuromuscular-inestable-a-la-integracion-sensoromotora-en-el-adulto-mayor",
+    "title": "Nuevos paradigmas en la prevención de caídas: del entrenamiento neuromuscular inestable a la integración sensoromotora en el adulto mayor",
+    "category": "Clinica",
+    "category_color": "metabolic-cyan",
+    "gradient": "from-metabolic-cyan/20 to-metabolic-green/20",
+    "excerpt": "Un análisis profundo de la evidencia clínica reciente de Gait & Posture y Diabetologia. Examinamos cómo el entrenamiento de fuerza en superficies inestables, el control reactivo mediante perturbaciones y la rehabilitación visuovestibular redefinen el manejo de la fragilidad, el dolor crónico y la prevención de caídas en adultos mayores.",
+    "published_at": "2026-09-06",
+    "image": "assets/blog/nuevos-paradigmas-en-la-prevencion-de-caidas-del-entrenamiento-neuromuscular-inestable-a-la-integracion-sensoromotora-en-el-adulto-mayor.jpg",
+    "pdf": "blog/pdf/nuevos-paradigmas-en-la-prevencion-de-caidas-del-entrenamiento-neuromuscular-inestable-a-la-integracion-sensoromotora-en-el-adulto-mayor.pdf",
+    "keywords": [
+      "envejecimiento",
+      "prevencion de caidas",
+      "fuerza inestable",
+      "control neuromuscular",
+      "sarcopenia",
+      "fisiologia clinica"
+    ],
+    "rating": 4.0
+  },
+  {
+    "slug": "fisiologia-aplicada-y-salud-publica-traduciendo-la-evidencia-metabolica-y-neuromuscular-a-la-clinica",
+    "title": "Fisiología aplicada y salud pública: Traduciendo la evidencia metabólica y neuromuscular a la clínica",
+    "category": "Clinica",
+    "category_color": "metabolic-cyan",
+    "gradient": "from-metabolic-cyan/20 to-metabolic-green/20",
+    "excerpt": "Analizamos la evidencia epidemiológica y clínica más reciente sobre intervenciones cardiometabólicas, entrenamiento reactivo y rehabilitación sensorio-motora. Traducimos hallazgos de alto impacto para kineisólogos, médicos y fisiólogos del ejercicio en Latinoamérica.",
+    "published_at": "2026-09-06",
+    "image": "assets/blog/fisiologia-aplicada-y-salud-publica-traduciendo-la-evidencia-metabolica-y-neuromuscular-a-la-clinica.jpg",
+    "pdf": "blog/pdf/fisiologia-aplicada-y-salud-publica-traduciendo-la-evidencia-metabolica-y-neuromuscular-a-la-clinica.pdf",
+    "keywords": [
+      "salud publica",
+      "fisiologia clinica",
+      "diabetes tipo 2",
+      "control postural",
+      "dolor cervical",
+      "ejercicio terapeutico"
+    ],
+    "rating": 4.0
+  },
+  {
+    "slug": "fisiologia-del-rendimiento-aerobico-y-economia-de-movimiento-de-la-bioenergetica-celular-a-la-prescripcion-en-clinica-y-campo",
+    "title": "Fisiología del rendimiento aeróbico y economía de movimiento: de la bioenergética celular a la prescripción en clínica y campo",
+    "category": "Clinica",
+    "category_color": "metabolic-cyan",
+    "gradient": "from-metabolic-cyan/20 to-metabolic-green/20",
+    "excerpt": "Un análisis avanzado sobre cómo la eficiencia mitocondrial, la disponibilidad de glucógeno y la precisión del estímulo de entrenamiento determinan la economía de movimiento y la homogeneidad de las adaptaciones en atletas y poblaciones activas.",
+    "published_at": "2026-09-06",
+    "image": "assets/blog/fisiologia-del-rendimiento-aerobico-y-economia-de-movimiento-de-la-bioenergetica-celular-a-la-prescripcion-en-clinica-y-campo.jpg",
+    "pdf": "blog/pdf/fisiologia-del-rendimiento-aerobico-y-economia-de-movimiento-de-la-bioenergetica-celular-a-la-prescripcion-en-clinica-y-campo.pdf",
+    "keywords": [
+      "fisiologia clinica",
+      "economia de movimiento",
+      "eficiencia mitocondrial",
+      "entrenamiento intervalico",
+      "disponibilidad de carbohidratos",
+      "monitoreo de carga"
+    ],
+    "rating": 4.0
+  },
+  {
+    "slug": "la-neurociencia-aplicada-al-ejercicio-clinico-sinergia-entre-funcion-cognitiva-salud-mental-y-adherencia",
+    "title": "La Neurociencia Aplicada al Ejercicio Clínico: Sinergia entre Función Cognitiva, Salud Mental y Adherencia",
+    "category": "Clinica",
+    "category_color": "metabolic-cyan",
+    "gradient": "from-metabolic-cyan/20 to-metabolic-green/20",
+    "excerpt": "Un análisis profundo de la evidencia clínica reciente que revela cómo el ejercicio físico y los enfoques biopsicosociales optimizan la función cognitiva, modulan la activación cerebral y superan las barreras psicológicas y motoras en poblaciones con patologías complejas.",
+    "published_at": "2026-09-06",
+    "image": "assets/blog/la-neurociencia-aplicada-al-ejercicio-clinico-sinergia-entre-funcion-cognitiva-salud-mental-y-adherencia.jpg",
+    "pdf": "blog/pdf/la-neurociencia-aplicada-al-ejercicio-clinico-sinergia-entre-funcion-cognitiva-salud-mental-y-adherencia.pdf",
+    "keywords": [
+      "neurociencia del ejercicio",
+      "fisiología clínica",
+      "deterioro cognitivo",
+      "enfoque biopsicosocial",
+      "adherencia del paciente",
+      "rehabilitación integral"
+    ],
+    "rating": 4.5
+  },
+  {
+    "slug": "fisiologia-de-la-carga-fatiga-y-recuperacion-nuevos-paradigmas-en-el-control-de-cargas-e-inflamacion",
+    "title": "Fisiología de la Carga, Fatiga y Recuperación: Nuevos Paradigmas en el Control de Cargas e Inflamación",
+    "category": "Clinica",
+    "category_color": "metabolic-cyan",
+    "gradient": "from-metabolic-cyan/20 to-metabolic-green/20",
+    "excerpt": "Analizamos cómo la dosificación de la carga externa, la fatiga neuromuscular en esfuerzos de alta intensidad y la inflamación miocárdica mediada por receptores de mineralocorticoides redefinen la recuperación clínica. Además, evaluamos críticamente el uso de algoritmos para la predicción de lesiones en poblaciones expuestas a alto estrés físico.",
+    "published_at": "2026-09-06",
+    "image": "assets/blog/fisiologia-de-la-carga-fatiga-y-recuperacion-nuevos-paradigmas-en-el-control-de-cargas-e-inflamacion.jpg",
+    "pdf": "blog/pdf/fisiologia-de-la-carga-fatiga-y-recuperacion-nuevos-paradigmas-en-el-control-de-cargas-e-inflamacion.pdf",
+    "keywords": [
+      "Carga de entrenamiento",
+      "Fatiga neuromuscular",
+      "Inflamación miocárdica",
+      "Entrenamiento compensatorio",
+      "Prevención de lesiones",
+      "Fisiología clínica"
+    ],
+    "rating": 4.5
+  },
+  {
+    "slug": "prescripcion-de-ejercicio-de-precision-en-poblaciones-clinicas-avances-en-neurobiomecanica-y-regulacion-metabolica",
+    "title": "Prescripción de ejercicio de precisión en poblaciones clínicas: Avances en neurobiomecánica y regulación metabólica",
+    "category": "Clinica",
+    "category_color": "metabolic-cyan",
+    "gradient": "from-metabolic-cyan/20 to-metabolic-green/20",
+    "excerpt": "Analizamos la evidencia más reciente de alto impacto para estructurar prescripciones clínicas basadas en el principio FITT, abordando desde la inestabilidad neuromuscular en artrosis de rodilla y el dolor cervical crónico, hasta el control glucémico y la prevención de caídas en el adulto mayor.",
+    "published_at": "2026-09-06",
+    "image": "assets/blog/prescripcion-de-ejercicio-de-precision-en-poblaciones-clinicas-avances-en-neurobiomecanica-y-regulacion-metabolica.jpg",
+    "pdf": "blog/pdf/prescripcion-de-ejercicio-de-precision-en-poblaciones-clinicas-avances-en-neurobiomecanica-y-regulacion-metabolica.pdf",
+    "keywords": [
+      "Prescripción FITT",
+      "Fisiología Clínica",
+      "Neuromuscular",
+      "Artrosis de rodilla",
+      "Dolor cervical",
+      "Metabolismo"
+    ],
+    "rating": 4.0
+  },
+  {
+    "slug": "prescripcion-de-ejercicio-de-precision-en-obesidad-y-adiposidad-disfuncional-del-musculo-a-la-salud-metabolica-y-cognitiva",
+    "title": "Prescripción de ejercicio de precisión en obesidad y adiposidad disfuncional: del músculo a la salud metabólica y cognitiva",
+    "category": "Clinica",
+    "category_color": "metabolic-cyan",
+    "gradient": "from-metabolic-cyan/20 to-metabolic-green/20",
+    "excerpt": "Análisis de alta evidencia sobre cómo el ejercicio de fuerza progresivo en tierra, el HIIT y el MICT optimizan la composición corporal, revierten la esteatosis hepática y mitigan síntomas neuropsiquiátricos en pacientes complejos.",
+    "published_at": "2026-09-06",
+    "image": "assets/blog/prescripcion-de-ejercicio-de-precision-en-obesidad-y-adiposidad-disfuncional-del-musculo-a-la-salud-metabolica-y-cognitiva.jpg",
+    "pdf": "blog/pdf/prescripcion-de-ejercicio-de-precision-en-obesidad-y-adiposidad-disfuncional-del-musculo-a-la-salud-metabolica-y-cognitiva.pdf",
+    "keywords": [
+      "composición corporal",
+      "fisiología clínica",
+      "ejercicio de fuerza",
+      "esteatosis hepática",
+      "salud metabólica",
+      "recomposición corporal"
+    ],
+    "rating": 4.5
+  },
+  {
+    "slug": "plasticidad-neuromuscular-y-optimizacion-de-la-fuerza-nuevas-pautas-de-prescripcion-clinica-y-deportiva",
+    "title": "Plasticidad neuromuscular y optimización de la fuerza: nuevas pautas de prescripción clínica y deportiva",
+    "category": "Clinica",
+    "category_color": "metabolic-cyan",
+    "gradient": "from-metabolic-cyan/20 to-metabolic-green/20",
+    "excerpt": "Un análisis crítico de la evidencia actual sobre las adaptaciones neuromusculares y tendinosas. Analizamos cómo la selección del tipo de acción isométrica, la unilateralidad, el entrenamiento de oclusión y la distribución del volumen redefinen la prescripción del ejercicio.",
+    "published_at": "2026-09-06",
+    "image": "assets/blog/plasticidad-neuromuscular-y-optimizacion-de-la-fuerza-nuevas-pautas-de-prescripcion-clinica-y-deportiva.jpg",
+    "pdf": "blog/pdf/plasticidad-neuromuscular-y-optimizacion-de-la-fuerza-nuevas-pautas-de-prescripcion-clinica-y-deportiva.pdf",
+    "keywords": [
+      "Fisiología neuromuscular",
+      "Entrenamiento isométrico",
+      "Restricción de flujo sanguíneo",
+      "Hipertrofia muscular",
+      "Entrenamiento unilateral",
+      "Tendón patelar"
+    ],
+    "rating": 4.0
+  },
+  {
+    "slug": "adaptaciones-cardiometabolicas-y-desafios-termorreguladores-en-poblaciones-clinicas-sinergia-entre-incretinas-ejercicio-y-terapias-termicas",
+    "title": "Adaptaciones Cardiometabólicas y Desafíos Termorreguladores en Poblaciones Clínicas: Sinergia entre Incretinas, Ejercicio y Terapias Térmicas",
+    "category": "Clinica",
+    "category_color": "metabolic-cyan",
+    "gradient": "from-metabolic-cyan/20 to-metabolic-green/20",
+    "excerpt": "Un análisis profundo sobre cómo los coadyuvantes farmacológicos modernos basados en incretinas (GLP-1 y Tirzepatida) optimizan el entorno cardiovascular, y cómo las demandas termorreguladoras y hemodinámicas del ejercicio en el calor y el calor pasivo exigen una estricta monitorización clínica.",
+    "published_at": "2026-09-06",
+    "image": "assets/blog/adaptaciones-cardiometabolicas-y-desafios-termorreguladores-en-poblaciones-clinicas-sinergia-entre-incretinas-ejercicio-y-terapias-termicas.jpg",
+    "pdf": "blog/pdf/adaptaciones-cardiometabolicas-y-desafios-termorreguladores-en-poblaciones-clinicas-sinergia-entre-incretinas-ejercicio-y-terapias-termicas.pdf",
+    "keywords": [
+      "fisiología clínica",
+      "terorregulación",
+      "incretinas",
+      "Tirzepatida",
+      "adaptaciones cardiovasculares",
+      "calor pasivo"
+    ],
+    "rating": 4.5
+  },
+  {
+    "slug": "fisiologia-aplicada-en-resistencia-a-la-insulina-nuevas-estrategias-de-contraccion-muscular-bioenergetica-y-sincronia-metabolica",
+    "title": "Fisiología aplicada en resistencia a la insulina: Nuevas estrategias de contracción muscular, bioenergética y sincronía metabólica",
+    "category": "Clinica",
+    "category_color": "metabolic-cyan",
+    "gradient": "from-metabolic-cyan/20 to-metabolic-green/20",
+    "excerpt": "Analizamos la evidencia científica de vanguardia sobre cómo el estímulo neuromuscular de baja carga mecánica y las intervenciones de restricción de tiempo protegen el eje vascular-metabólico-cerebral en pacientes con resistencia a la insulina.",
+    "published_at": "2026-09-06",
+    "image": "assets/blog/fisiologia-aplicada-en-resistencia-a-la-insulina-nuevas-estrategias-de-contraccion-muscular-bioenergetica-y-sincronia-metabolica.jpg",
+    "pdf": "blog/pdf/fisiologia-aplicada-en-resistencia-a-la-insulina-nuevas-estrategias-de-contraccion-muscular-bioenergetica-y-sincronia-metabolica.pdf",
+    "keywords": [
+      "resistencia a la insulina",
+      "fisiología del ejercicio",
+      "miocinas",
+      "electroestimulación",
+      "entrenamiento de fuerza",
+      "restricción de tiempo"
+    ],
+    "rating": 4.0
+  },
+  {
     "slug": "fisiologia-clinica-y-rehabilitacion-pediatrica-de-la-tecnologia-interactiva-al-soporte-metabolico-neuromuscular",
     "title": "Fisiología clínica y rehabilitación pediátrica: de la tecnología interactiva al soporte metabólico neuromuscular",
     "category": "Clinica",

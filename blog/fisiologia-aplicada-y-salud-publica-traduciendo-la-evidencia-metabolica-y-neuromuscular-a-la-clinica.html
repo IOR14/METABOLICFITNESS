@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/brand/mf-favicon.ico?v=3" sizes="any">
+    <link rel="icon" type="image/png" href="/assets/brand/mf-favicon-32.png?v=3" sizes="32x32">
+    <link rel="apple-touch-icon" href="/assets/brand/mf-apple-touch-icon.png?v=3">
+    <title>Fisiología aplicada y salud pública: Traduciendo la evidencia metabólica y neuromuscular a la clínica - Metabolic Fitness</title>
+    <meta name="description" content="Analizamos la evidencia epidemiológica y clínica más reciente sobre intervenciones cardiometabólicas, entrenamiento reactivo y rehabilitación sensorio-motora. Traducimos hallazgos de alto impacto para kineisólogos, médicos y fisiólogos del ejercicio en Latinoamérica.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'metabolic-green': '#5CB85C',
+                        'metabolic-charcoal': '#404041',
+                        'metabolic-cyan': '#00AEEF',
+                        'metabolic-purple': '#460877',
+                        'metabolic-bg': '#FFFFFF',
+                        'metabolic-bg-secondary': '#FAFAFA',
+                    },
+                    fontFamily: {
+                        'heading': ['Montserrat', 'sans-serif'],
+                        'body': ['Open Sans', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body { font-family: 'Open Sans', sans-serif; color: #404041; background: #FAFAFA; }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+        .article-content p { margin-bottom: 1.15rem; line-height: 1.9; font-size: 1.05rem; text-align: justify; hyphens: auto; }
+        .article-content h2 { margin-top: 2.2rem; margin-bottom: 0.9rem; font-weight: 700; font-size: 1.45rem; color: #460877; text-align: left; }
+        .article-content ul { list-style: disc; padding-left: 1.4rem; margin-bottom: 1rem; }
+        .article-content li { margin-bottom: 0.45rem; line-height: 1.75; text-align: justify; }
+        .justified { text-align: justify; hyphens: auto; }
+        .abstract-box { border-left: 5px solid #5CB85C; background: linear-gradient(90deg, #F3FBF3 0%, #FFFFFF 100%); }
+        .clinical-box { border: 1px solid #5CB85C33; background: #F8FFF8; box-shadow: 0 10px 30px rgba(92,184,92,0.08); }
+        .sidebar-card { background: white; border: 1px solid #E5E7EB; box-shadow: 0 8px 24px rgba(70,8,119,0.06); }
+        .keyword-chip { display: inline-block; background: rgba(255,255,255,0.14); color: #fff; border: 1px solid rgba(255,255,255,0.22); border-radius: 999px; padding: 0.28rem 0.75rem; font-size: 0.7rem; letter-spacing: 0.04em; text-transform: uppercase; font-family: Montserrat, sans-serif; font-weight: 600; }
+        .mf-pdf-cta {
+            background: #460877 !important;
+            color: #fff !important;
+            display: inline-block;
+            text-decoration: none !important;
+            border: none;
+            cursor: pointer;
+        }
+        .mf-pdf-cta:hover { background: #5a0a99 !important; }
+        aside .mf-pdf-cta { display: block; width: 100%; box-sizing: border-box; text-align: center; }
+        .mf-rating-box {
+            width: 100%;
+            max-width: 28rem;
+            background: #FAFAFA;
+            border: 1px solid #E5E7EB;
+            border-radius: 1rem;
+            padding: 1.1rem 1.25rem;
+            text-align: center;
+        }
+        .mf-star { color: #D1D5DB; cursor: pointer; user-select: none; line-height: 1; }
+        .mf-star-on, .mf-star.mf-active, .mf-star.mf-hover { color: #F5B301; }
+        .mf-star-half { color: #F5B301; opacity: 0.55; }
+        .mf-star-off { color: #D1D5DB; }
+        .mf-stars-display .mf-star { cursor: default; }
+        .mf-stars-input { display: inline-flex; gap: 0.15rem; font-size: 1.85rem; }
+        .mf-stars-input button { background: none; border: none; padding: 0; cursor: pointer; }
+        .mf-article-header { position: sticky; top: 0; z-index: 50; background: linear-gradient(105deg, #08060c 0%, #14081f 42%, #2a0548 78%, #3b0a66 100%); }
+        .article-hero-copy {
+            background: linear-gradient(115deg, #08060c 0%, #16091f 38%, #2a0548 72%, #3b0a66 100%) !important;
+        }
+        .article-hero-fade {
+            background: linear-gradient(to right, #16091f 0%, transparent 100%) !important;
+        }
+        .mf-article-nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+        }
+        .mf-article-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem;
+            margin-left: auto;
+        }
+        .mf-back-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0.55rem 0.9rem;
+            border-radius: 0.6rem;
+            background: rgba(255,255,255,0.14);
+            color: #fff !important;
+            text-decoration: none !important;
+            font-weight: 600;
+            white-space: nowrap;
+            position: relative;
+            z-index: 2;
+        }
+        .mf-back-link:hover { background: rgba(255,255,255,0.22); }
+        .mf-header-pdf {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0.55rem 0.9rem;
+            border-radius: 0.6rem;
+            background: #5CB85C !important;
+            color: #fff !important;
+            text-decoration: none !important;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        @media (max-width: 640px) {
+            .mf-article-header { position: sticky; top: 0; }
+            .mf-article-nav { flex-direction: column; align-items: stretch; gap: 0.65rem; }
+            .mf-article-actions {
+                margin-left: 0;
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .mf-back-link, .mf-header-pdf {
+                width: 100%;
+                flex: none;
+                touch-action: manipulation;
+                -webkit-tap-highlight-color: rgba(255,255,255,0.25);
+            }
+            .mf-logo-link { pointer-events: auto; }
+            .mf-logo-link img { max-width: 170px !important; height: 2.5rem !important; }
+            .article-hero { grid-template-columns: 1fr !important; min-height: 0 !important; }
+            .article-hero-copy { padding: 1.25rem !important; }
+            .article-hero-copy h1 { font-size: 1.45rem !important; line-height: 1.25 !important; }
+            .article-hero-media { min-height: 12rem !important; }
+            .article-hero-fade { display: none !important; }
+            main.mf-article-main { padding-top: 1.25rem !important; padding-bottom: 2rem !important; }
+            .keyword-chip { font-size: 0.62rem; padding: 0.22rem 0.55rem; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <header class="mf-article-header text-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <nav class="mf-article-nav" aria-label="Navegacion del articulo">
+                <a href="../blog.html" class="mf-logo-link flex items-center gap-2 min-w-0">
+                    <img src="../assets/brand/logo-mf-nav-white.png?v=4" alt="Metabolic Fitness" class="h-10 sm:h-12 w-auto max-w-[220px] object-contain object-left">
+                    <span class="font-heading font-bold text-sm hidden md:inline text-white/95">Paper Cientificos</span>
+                </a>
+                <div class="mf-article-actions">
+                    <a href="../blog.html" class="mf-back-link font-body text-sm">← Volver al blog</a>
+                    <a href="pdf/fisiologia-aplicada-y-salud-publica-traduciendo-la-evidencia-metabolica-y-neuromuscular-a-la-clinica.pdf" download class="mf-header-pdf font-body text-sm">Descargar PDF</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 sm:pt-8">
+            <div class="article-hero rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl bg-white grid lg:grid-cols-[1.05fr_0.95fr] min-h-[22rem]">
+                <div class="article-hero-copy p-6 sm:p-12 flex flex-col justify-center text-white order-2 lg:order-1">
+                    <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
+                        <span class="px-3 py-1 rounded-full bg-white text-metabolic-purple text-xs font-heading font-semibold uppercase tracking-wide">Clinica</span>
+                        <span class="text-xs font-body text-white/80">2026-09-06</span>
+                        <span class="text-xs font-body text-white/80">4 min de lectura</span>
+                    </div>
+                    <h1 class="font-heading font-bold text-2xl sm:text-[2.35rem] leading-tight">Fisiología aplicada y salud pública: Traduciendo la evidencia metabólica y neuromuscular a la clínica</h1>
+                    <div class="mt-5 flex flex-wrap gap-2"><span class="keyword-chip">salud publica</span><span class="keyword-chip">fisiologia clinica</span><span class="keyword-chip">diabetes tipo 2</span><span class="keyword-chip">control postural</span><span class="keyword-chip">dolor cervical</span><span class="keyword-chip">ejercicio terapeutico</span></div>
+                </div>
+                <div class="article-hero-media relative min-h-[14rem] order-1 lg:order-2">
+                    <img src="../assets/blog/fisiologia-aplicada-y-salud-publica-traduciendo-la-evidencia-metabolica-y-neuromuscular-a-la-clinica.jpg" alt="Fisiología aplicada y salud pública: Traduciendo la evidencia metabólica y neuromuscular a la clínica" class="w-full h-full object-cover">
+                    <div class="article-hero-fade absolute inset-y-0 left-0 w-24 hidden lg:block"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="mf-article-main max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+        <div class="grid lg:grid-cols-12 gap-6 lg:gap-8">
+            <article class="lg:col-span-8 min-w-0">
+                <div class="abstract-box rounded-2xl p-5 sm:p-8 mb-6 sm:mb-8">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-green mb-3">Resumen ejecutivo</p>
+                    <p class="font-body text-base sm:text-lg leading-relaxed text-metabolic-charcoal/90 justified">Analizamos la evidencia epidemiológica y clínica más reciente sobre intervenciones cardiometabólicas, entrenamiento reactivo y rehabilitación sensorio-motora. Traducimos hallazgos de alto impacto para kineisólogos, médicos y fisiólogos del ejercicio en Latinoamérica.</p>
+                </div>
+
+                <div class="article-content font-body text-metabolic-charcoal/90 bg-white rounded-2xl p-5 sm:p-8 shadow-sm border border-gray-100">
+                    <p>En el ámbito de la salud pública y la fisiología clínica del ejercicio, la traducción de hallazgos epidemiológicos a mensajes preventivos y estrategias terapéuticas aplicadas es fundamental para reducir el impacto de las patologías crónicas. Recientes investigaciones publicadas en revistas de gran prestigio, como <strong>Diabetologia</strong> y <strong>Gait & Posture</strong>, aportan evidencia científica robusta para refinar los enfoques de prescripción del ejercicio y las modificaciones del estilo de vida, abarcando desde el control metabólico hasta la optimización neuromuscular.</p><h2>Contexto científico</h2><p>Comprender la evolución y la etiología de las enfermedades crónicas a nivel poblacional es indispensable para fundamentar las decisiones clínicas. Como se expone en una revisión histórica en <strong>Diabetologia</strong>, cincuenta años de estudios de cohorte a nivel global (basados en poblaciones generales, grupos clínicos e intervenciones) han establecido las bases para el diagnóstico, tamizaje, factores de riesgo y fisiopatología de la diabetes tipo 2. Estas investigaciones observacionales complementan el trabajo experimental y guían el desarrollo de directrices globales hacia la medicina de precisión y la inteligencia artificial.</p><p>Paralelamente, el envejecimiento demográfico y los trastornos musculoesqueléticos representan un desafío crítico en salud pública. La pérdida del control motor reactivo y la presencia de dolor persistente deterioran el equilibrio y aumentan la discapacidad. Responder a estas demandas requiere comprender cómo las perturbaciones inesperadas del equilibrio y la integración de estímulos sensoriales (visuo-vestibulares) pueden ser entrenadas para restablecer la función y mitigar el riesgo de caídas en el largo plazo.</p><h2>Hallazgos principales</h2><ul><li><strong>Crononutrición y control de la glucosa:</strong> Un metanálisis de 10 ensayos clínicos aleatorizados (599 pacientes, duración media de 4 meses) publicado en <strong>Diabetologia</strong> analizó los efectos de restringir la ventana diaria de alimentación a menos de 12 horas (TRE) en prediabetes o diabetes tipo 2. En el análisis global, el TRE redujo la glucosa de ayuno en 0.30 mmol/l y disminuyó el peso corporal en 1.6 kg. Al segmentar por subpoblación, el TRE disminuyó la HbA1c en 0.09% puntos (0.93 mmol/mol) de forma selectiva en sujetos con prediabetes, sin mostrar efectos significativos sobre la HbA1c en diabetes tipo 2 (p=0.09). Los efectos sobre la sensibilidad insulínica y la función de las células beta permanecieron inconclusos.</li><li><strong>Entrenamiento de balance por perturbación (PBT):</strong> Una revisión de alcance en <strong>Gait & Posture</strong> recopiló 33 investigaciones enfocadas en el control del balance reactivo ante perturbaciones mecánicas en adultos sanos mayores de 65 años. Se identificaron metodologías diversas, con tropiezos en trotadora (11 estudios) y plataformas móviles (12 estudios) como las más frecuentes. A pesar de reportarse beneficios consistentes en el balance reactivo, los protocolos de una sola sesión fueron los más comunes (16 estudios), observándose una baja regularidad en el seguimiento posterior al entrenamiento y limitaciones para implementar estas intervenciones de manera estandarizada fuera del ambiente clínico de laboratorio.</li><li><strong>Rehabilitación del dolor cervical crónico:</strong> Un ensayo clínico aleatorizado controlado publicado en <strong>Gait & Posture</strong> investigó los efectos de asociar ejercicios visuo-vestibulares (VVE) a un protocolo de terapia manual y ejercicio terapéutico tradicional (MtE) en 58 adultos con dolor de al menos 3 meses de evolución. Luego de 12 sesiones en 6 semanas y un programa diario en el hogar, el grupo que sumó el componente visuo-vestibular (MtE-VVE) exhibió, en el control a las 12 semanas, mejoras significativamente superiores: reducción del dolor de actividad en 2.00 cm adicionales, mejora del tiempo de reacción bilateral en 1.70 segundos, disminución de la oscilación postural mediolateral con ojos abiertos en 0.50 mm, un índice de discapacidad cervical (NDI) 6.30 puntos menor, y mejoras en la resistencia de los flexores y extensores de cuello en 12.00 y 27.70 segundos respectivamente.</li></ul><h2>Aplicación en fisiología clínica</h2><p>Para los profesionales del movimiento humano y la salud cardiometabólica en Latinoamérica, este corpus de evidencia se traduce en tres líneas de acción claras. Primero, en el área metabólica, la restricción del tiempo de alimentación (TRE) se posiciona como una intervención de bajo costo y fácil adherencia para mejorar el control glucémico y coadyuvar en la pérdida de peso corporal, mostrando su máximo beneficio clínico en el manejo y prevención de la prediabetes.</p><p>Segundo, para la kinesiología gerontológica, es necesario transicionar el entrenamiento por perturbación reactiva (PBT) desde el laboratorio hacia la clínica mediante programas dosificados que desafíen los reflejos posturales inmediatos de los adultos mayores sanos, promoviendo adaptaciones de larga duración que eviten eventos de caída.</p><p>Tercero, en la rehabilitación traumatológica, el dolor cervical crónico no debe ser abordado únicamente desde una perspectiva muscular aislada. La incorporación sistemática de ejercicios visuo-vestibulares de fácil aplicación clínica desencadena una respuesta óptima de la agudeza sensorio-motora y el control neuromuscular, mejorando significativamente la calidad de vida, el tiempo de reacción y la funcionalidad de los pacientes.</p>
+                </div>
+
+                <section class="clinical-box rounded-2xl p-6 mt-8"><h2 class="font-heading font-bold text-xl text-metabolic-charcoal mb-3">Implicaciones clinicas</h2><p class="font-body text-metabolic-charcoal/85 leading-relaxed justified">La traducción de la evidencia epidemiológica a la práctica clínica exige un enfoque de precisión. Los profesionales de la salud en Chile y Latinoamérica deben integrar la crononutrición, como la restricción del tiempo de alimentación (TRE), para abordar tempranamente la prediabetes antes de que progrese a diabetes tipo 2 establecida. Simultáneamente, en el área de la rehabilitación física, deben adoptarse modelos neurofisiológicos avanzados que incorporen perturbaciones inesperadas para prevenir caídas en adultos mayores y estimulación visuo-vestibular específica para el manejo del dolor cervical persistente. Estas herramientas clínicas, sustentadas por literatura de alto impacto, permiten diseñar programas basados en adaptaciones fisiológicas reales.</p></section>
+                <section id="referencias" class="mt-12 pt-8 border-t border-gray-200"><h2 class="font-heading font-bold text-2xl text-metabolic-charcoal mb-6">Referencias</h2><ol class="space-y-4 list-none"><li class="border-l-4 border-metabolic-green pl-4 py-2"><p class="font-body text-sm text-metabolic-charcoal/90">A narrative review of what cohorts have taught us and how they have laid the foundation for much of our understanding of type 2 diabetes. (Diabetologia, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42644887/" target="_blank" rel="noopener noreferrer" class="text-xs text-metabolic-cyan hover:underline break-all">https://pubmed.ncbi.nlm.nih.gov/42644887/</a></li><li class="border-l-4 border-metabolic-green pl-4 py-2"><p class="font-body text-sm text-metabolic-charcoal/90">Methodological characteristics of perturbation-based balance training in healthy older adults: A scoping review. (Gait &amp; posture, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42594763/" target="_blank" rel="noopener noreferrer" class="text-xs text-metabolic-cyan hover:underline break-all">https://pubmed.ncbi.nlm.nih.gov/42594763/</a></li><li class="border-l-4 border-metabolic-green pl-4 py-2"><p class="font-body text-sm text-metabolic-charcoal/90">The effect of combining visuo-vestibular exercises with manual therapy and exercise on sensorimotor function in chronic neck pain: A randomized controlled trial. (Gait &amp; posture, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42541826/" target="_blank" rel="noopener noreferrer" class="text-xs text-metabolic-cyan hover:underline break-all">https://pubmed.ncbi.nlm.nih.gov/42541826/</a></li><li class="border-l-4 border-metabolic-green pl-4 py-2"><p class="font-body text-sm text-metabolic-charcoal/90">Effects of time-restricted eating on markers of glucose metabolism and regulation in individuals with prediabetes or type 2 diabetes: a systematic review and meta-analysis of randomised controlled trials. (Diabetologia, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42507108/" target="_blank" rel="noopener noreferrer" class="text-xs text-metabolic-cyan hover:underline break-all">https://pubmed.ncbi.nlm.nih.gov/42507108/</a></li></ol></section>
+            </article>
+
+            <aside class="lg:col-span-4 space-y-6 min-w-0">
+                <div class="sidebar-card rounded-2xl p-5 sm:p-6">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-purple mb-4">Descarga profesional</p>
+                    <p class="font-body text-sm text-metabolic-charcoal/75 mb-4">Documento PDF con estructura editorial, logo Metabolic Fitness y referencias completas.</p>
+                    <a href="pdf/fisiologia-aplicada-y-salud-publica-traduciendo-la-evidencia-metabolica-y-neuromuscular-a-la-clinica.pdf" download class="mf-pdf-cta text-center text-white px-4 py-3 rounded-xl font-body font-semibold" style="background:#460877;color:#fff;display:block;">Descargar articulo en PDF</a>
+                </div>
+
+                <div class="sidebar-card rounded-2xl p-6">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-green mb-4">Puntos clave</p>
+                    <ul class="space-y-3 font-body text-sm text-metabolic-charcoal/85"><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>Las cohortes epidemiológicas de las últimas cinco décadas han sentado las bases para el diagnóstico, tamizaje y fisiopatología de la diabetes tipo 2, abriendo paso a la medicina de precisión.</span></li><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>El ayuno restringido en el tiempo (TRE) reduce la glucosa en ayunas en pacientes metabólicos y disminuye la HbA1c de manera específica en la población con prediabetes.</span></li><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>El entrenamiento basado en perturbaciones mecánicas (PBT) mejora significativamente el balance reactivo en adultos mayores sanos, aunque se requiere mayor estandarización clínica.</span></li><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>Añadir ejercicios visuo-vestibulares a la terapia manual y al ejercicio estándar disminuye de forma sustancial el dolor cervical crónico, optimizando la estabilidad postural y la resistencia muscular.</span></li></ul>
+                </div>
+
+                <div class="sidebar-card rounded-2xl p-6">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-cyan mb-4">Evidencia de origen</p>
+                    <p class="font-body text-sm text-metabolic-charcoal/75">Articulo elaborado a partir de publicaciones recientes en revistas de alto impacto indexadas en PubMed.</p>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-gray-200 py-10 mt-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-5">
+            <section
+                class="mf-rating-box"
+                id="mf-paper-rating"
+                data-slug="fisiologia-aplicada-y-salud-publica-traduciendo-la-evidencia-metabolica-y-neuromuscular-a-la-clinica"
+                data-editorial-rating="4.0"
+                aria-label="Evaluacion del paper"
+            >
+                <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-purple mb-2">Evaluacion del paper</p>
+                <div class="flex flex-col items-center gap-1 mb-3">
+                    <div class="mf-stars-display text-2xl" aria-hidden="true"><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-off">★</span></div>
+                    <p class="font-body text-sm text-metabolic-charcoal/80">
+                        Calidad editorial: <strong id="mf-editorial-score">4.0</strong>/5
+                    </p>
+                </div>
+                <p class="font-body text-xs text-metabolic-charcoal/60 mb-2">Tu evaluacion (0 a 5 estrellas)</p>
+                <div class="mf-stars-input" role="radiogroup" aria-label="Califica este paper">
+                    <button type="button" class="mf-star" data-value="1" aria-label="1 estrella">★</button>
+                    <button type="button" class="mf-star" data-value="2" aria-label="2 estrellas">★</button>
+                    <button type="button" class="mf-star" data-value="3" aria-label="3 estrellas">★</button>
+                    <button type="button" class="mf-star" data-value="4" aria-label="4 estrellas">★</button>
+                    <button type="button" class="mf-star" data-value="5" aria-label="5 estrellas">★</button>
+                </div>
+                <p class="font-body text-xs text-metabolic-charcoal/55 mt-2" id="mf-rating-status">
+                    Promedio lectores: <span id="mf-avg-score">—</span> · <span id="mf-vote-count">0</span> votos
+                </p>
+            </section>
+            <div class="flex items-center gap-5">
+                <a href="https://www.facebook.com/profile.php?id=61578818624346" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <img src="../assets/social/facebook.png" alt="Facebook" class="w-8 h-8 object-contain hover:opacity-80 transition-opacity">
+                </a>
+                <a href="https://www.instagram.com/metabolicfitness.cl/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <img src="../assets/social/instagram.png" alt="Instagram" class="w-8 h-8 object-contain hover:opacity-80 transition-opacity">
+                </a>
+                <a href="https://www.linkedin.com/company/metabolic-fitness-chile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <img src="../assets/social/linkedin.png" alt="LinkedIn" class="w-8 h-8 object-contain hover:opacity-80 transition-opacity">
+                </a>
+                <a href="https://chat.whatsapp.com/LuuhXQG6biV6mkYceIo7vk" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                    <img src="../assets/social/whatsapp.png" alt="WhatsApp" class="w-8 h-8 object-contain hover:opacity-80 transition-opacity">
+                </a>
+            </div>
+            <a href="https://www.metabolicfitness.cl" class="inline-block">
+                <img src="../assets/brand/logo-mf-horizontal.png" alt="Metabolic Fitness" class="h-10 w-auto object-contain bg-transparent">
+            </a>
+            <p class="font-body text-metabolic-charcoal/60 text-sm text-center">
+                © 2026 Metabolic Fitness · Fisiologia Clinica del Ejercicio<br>
+                <a href="https://www.metabolicfitness.cl" class="hover:text-metabolic-purple transition-colors">www.metabolicfitness.cl</a>
+            </p>
+        </div>
+    </footer>
+    <script src="../js/blog-rating.js?v=2"></script>
+</body>
+</html>

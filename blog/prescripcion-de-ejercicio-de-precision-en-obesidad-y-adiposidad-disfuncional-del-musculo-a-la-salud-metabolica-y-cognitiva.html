@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/brand/mf-favicon.ico?v=3" sizes="any">
+    <link rel="icon" type="image/png" href="/assets/brand/mf-favicon-32.png?v=3" sizes="32x32">
+    <link rel="apple-touch-icon" href="/assets/brand/mf-apple-touch-icon.png?v=3">
+    <title>Prescripción de ejercicio de precisión en obesidad y adiposidad disfuncional: del músculo a la salud metabólica y cognitiva - Metabolic Fitness</title>
+    <meta name="description" content="Análisis de alta evidencia sobre cómo el ejercicio de fuerza progresivo en tierra, el HIIT y el MICT optimizan la composición corporal, revierten la esteatosis hepática y mitigan síntomas neuropsiquiátricos en pacientes complejos.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'metabolic-green': '#5CB85C',
+                        'metabolic-charcoal': '#404041',
+                        'metabolic-cyan': '#00AEEF',
+                        'metabolic-purple': '#460877',
+                        'metabolic-bg': '#FFFFFF',
+                        'metabolic-bg-secondary': '#FAFAFA',
+                    },
+                    fontFamily: {
+                        'heading': ['Montserrat', 'sans-serif'],
+                        'body': ['Open Sans', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body { font-family: 'Open Sans', sans-serif; color: #404041; background: #FAFAFA; }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+        .article-content p { margin-bottom: 1.15rem; line-height: 1.9; font-size: 1.05rem; text-align: justify; hyphens: auto; }
+        .article-content h2 { margin-top: 2.2rem; margin-bottom: 0.9rem; font-weight: 700; font-size: 1.45rem; color: #460877; text-align: left; }
+        .article-content ul { list-style: disc; padding-left: 1.4rem; margin-bottom: 1rem; }
+        .article-content li { margin-bottom: 0.45rem; line-height: 1.75; text-align: justify; }
+        .justified { text-align: justify; hyphens: auto; }
+        .abstract-box { border-left: 5px solid #5CB85C; background: linear-gradient(90deg, #F3FBF3 0%, #FFFFFF 100%); }
+        .clinical-box { border: 1px solid #5CB85C33; background: #F8FFF8; box-shadow: 0 10px 30px rgba(92,184,92,0.08); }
+        .sidebar-card { background: white; border: 1px solid #E5E7EB; box-shadow: 0 8px 24px rgba(70,8,119,0.06); }
+        .keyword-chip { display: inline-block; background: rgba(255,255,255,0.14); color: #fff; border: 1px solid rgba(255,255,255,0.22); border-radius: 999px; padding: 0.28rem 0.75rem; font-size: 0.7rem; letter-spacing: 0.04em; text-transform: uppercase; font-family: Montserrat, sans-serif; font-weight: 600; }
+        .mf-pdf-cta {
+            background: #460877 !important;
+            color: #fff !important;
+            display: inline-block;
+            text-decoration: none !important;
+            border: none;
+            cursor: pointer;
+        }
+        .mf-pdf-cta:hover { background: #5a0a99 !important; }
+        aside .mf-pdf-cta { display: block; width: 100%; box-sizing: border-box; text-align: center; }
+        .mf-rating-box {
+            width: 100%;
+            max-width: 28rem;
+            background: #FAFAFA;
+            border: 1px solid #E5E7EB;
+            border-radius: 1rem;
+            padding: 1.1rem 1.25rem;
+            text-align: center;
+        }
+        .mf-star { color: #D1D5DB; cursor: pointer; user-select: none; line-height: 1; }
+        .mf-star-on, .mf-star.mf-active, .mf-star.mf-hover { color: #F5B301; }
+        .mf-star-half { color: #F5B301; opacity: 0.55; }
+        .mf-star-off { color: #D1D5DB; }
+        .mf-stars-display .mf-star { cursor: default; }
+        .mf-stars-input { display: inline-flex; gap: 0.15rem; font-size: 1.85rem; }
+        .mf-stars-input button { background: none; border: none; padding: 0; cursor: pointer; }
+        .mf-article-header { position: sticky; top: 0; z-index: 50; background: linear-gradient(105deg, #08060c 0%, #14081f 42%, #2a0548 78%, #3b0a66 100%); }
+        .article-hero-copy {
+            background: linear-gradient(115deg, #08060c 0%, #16091f 38%, #2a0548 72%, #3b0a66 100%) !important;
+        }
+        .article-hero-fade {
+            background: linear-gradient(to right, #16091f 0%, transparent 100%) !important;
+        }
+        .mf-article-nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+        }
+        .mf-article-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem;
+            margin-left: auto;
+        }
+        .mf-back-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0.55rem 0.9rem;
+            border-radius: 0.6rem;
+            background: rgba(255,255,255,0.14);
+            color: #fff !important;
+            text-decoration: none !important;
+            font-weight: 600;
+            white-space: nowrap;
+            position: relative;
+            z-index: 2;
+        }
+        .mf-back-link:hover { background: rgba(255,255,255,0.22); }
+        .mf-header-pdf {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0.55rem 0.9rem;
+            border-radius: 0.6rem;
+            background: #5CB85C !important;
+            color: #fff !important;
+            text-decoration: none !important;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        @media (max-width: 640px) {
+            .mf-article-header { position: sticky; top: 0; }
+            .mf-article-nav { flex-direction: column; align-items: stretch; gap: 0.65rem; }
+            .mf-article-actions {
+                margin-left: 0;
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .mf-back-link, .mf-header-pdf {
+                width: 100%;
+                flex: none;
+                touch-action: manipulation;
+                -webkit-tap-highlight-color: rgba(255,255,255,0.25);
+            }
+            .mf-logo-link { pointer-events: auto; }
+            .mf-logo-link img { max-width: 170px !important; height: 2.5rem !important; }
+            .article-hero { grid-template-columns: 1fr !important; min-height: 0 !important; }
+            .article-hero-copy { padding: 1.25rem !important; }
+            .article-hero-copy h1 { font-size: 1.45rem !important; line-height: 1.25 !important; }
+            .article-hero-media { min-height: 12rem !important; }
+            .article-hero-fade { display: none !important; }
+            main.mf-article-main { padding-top: 1.25rem !important; padding-bottom: 2rem !important; }
+            .keyword-chip { font-size: 0.62rem; padding: 0.22rem 0.55rem; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <header class="mf-article-header text-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <nav class="mf-article-nav" aria-label="Navegacion del articulo">
+                <a href="../blog.html" class="mf-logo-link flex items-center gap-2 min-w-0">
+                    <img src="../assets/brand/logo-mf-nav-white.png?v=4" alt="Metabolic Fitness" class="h-10 sm:h-12 w-auto max-w-[220px] object-contain object-left">
+                    <span class="font-heading font-bold text-sm hidden md:inline text-white/95">Paper Cientificos</span>
+                </a>
+                <div class="mf-article-actions">
+                    <a href="../blog.html" class="mf-back-link font-body text-sm">← Volver al blog</a>
+                    <a href="pdf/prescripcion-de-ejercicio-de-precision-en-obesidad-y-adiposidad-disfuncional-del-musculo-a-la-salud-metabolica-y-cognitiva.pdf" download class="mf-header-pdf font-body text-sm">Descargar PDF</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 sm:pt-8">
+            <div class="article-hero rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl bg-white grid lg:grid-cols-[1.05fr_0.95fr] min-h-[22rem]">
+                <div class="article-hero-copy p-6 sm:p-12 flex flex-col justify-center text-white order-2 lg:order-1">
+                    <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
+                        <span class="px-3 py-1 rounded-full bg-white text-metabolic-purple text-xs font-heading font-semibold uppercase tracking-wide">Clinica</span>
+                        <span class="text-xs font-body text-white/80">2026-09-06</span>
+                        <span class="text-xs font-body text-white/80">5 min de lectura</span>
+                    </div>
+                    <h1 class="font-heading font-bold text-2xl sm:text-[2.35rem] leading-tight">Prescripción de ejercicio de precisión en obesidad y adiposidad disfuncional: del músculo a la salud metabólica y cognitiva</h1>
+                    <div class="mt-5 flex flex-wrap gap-2"><span class="keyword-chip">composición corporal</span><span class="keyword-chip">fisiología clínica</span><span class="keyword-chip">ejercicio de fuerza</span><span class="keyword-chip">esteatosis hepática</span><span class="keyword-chip">salud metabólica</span><span class="keyword-chip">recomposición corporal</span></div>
+                </div>
+                <div class="article-hero-media relative min-h-[14rem] order-1 lg:order-2">
+                    <img src="../assets/blog/prescripcion-de-ejercicio-de-precision-en-obesidad-y-adiposidad-disfuncional-del-musculo-a-la-salud-metabolica-y-cognitiva.jpg" alt="Prescripción de ejercicio de precisión en obesidad y adiposidad disfuncional: del músculo a la salud metabólica y cognitiva" class="w-full h-full object-cover">
+                    <div class="article-hero-fade absolute inset-y-0 left-0 w-24 hidden lg:block"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="mf-article-main max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+        <div class="grid lg:grid-cols-12 gap-6 lg:gap-8">
+            <article class="lg:col-span-8 min-w-0">
+                <div class="abstract-box rounded-2xl p-5 sm:p-8 mb-6 sm:mb-8">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-green mb-3">Resumen ejecutivo</p>
+                    <p class="font-body text-base sm:text-lg leading-relaxed text-metabolic-charcoal/90 justified">Análisis de alta evidencia sobre cómo el ejercicio de fuerza progresivo en tierra, el HIIT y el MICT optimizan la composición corporal, revierten la esteatosis hepática y mitigan síntomas neuropsiquiátricos en pacientes complejos.</p>
+                </div>
+
+                <div class="article-content font-body text-metabolic-charcoal/90 bg-white rounded-2xl p-5 sm:p-8 shadow-sm border border-gray-100">
+                    <p>El abordaje clínico del exceso de adiposidad y la disfunción cardiometabólica en América Latina exige una transición desde el simple enfoque del peso corporal hacia la optimización cualitativa de la composición corporal. La masa grasa ectópica y la pérdida de masa muscular constituyen factores de riesgo críticos para la salud cardiometabólica, hepática y cognitiva. Como profesionales de la fisiología clínica del ejercicio, la prescripción de actividad física debe fundamentarse en parámetros precisos de dosis-respuesta, viabilidad y especificidad según la población tratada, con el fin de inducir adaptaciones fisiológicas duraderas y mitigar comorbilidades sistémicas.</p><h2>Entrenamiento interválico de alta intensidad y continuo en MASLD</h2><p>La enfermedad hepática esteatótica asociada a disfunción metabólica (MASLD) representa una de las manifestaciones sistémicas más graves del exceso de adiposidad. Un metanálisis publicado en la prestigiosa revista <strong>Metabolism: clinical and experimental</strong> (2026), que evaluó 37 ensayos clínicos con 1546 participantes (51% mujeres), demostró que tanto el entrenamiento interválico de alta intensidad (HIIT) como el entrenamiento continuo de moderada intensidad (MICT) son estrategias altamente viables y seguras, reportando una adherencia del 83.4% y una tasa de finalización del 83.9%. El HIIT demostró mejoras significativas en la composición corporal (g de -0.94 a -0.52) y marcadores hepáticos (g de -1.06 a -0.50), mostrando una superioridad clínica en la reducción del colesterol total (g -0.44, p menor a 0.05). Por su parte, el MICT mejoró la composición corporal (g -0.84 a -0.60) y sus efectos fueron moderados por la edad, el índice de masa corporal (IMC) y parámetros de prescripción. De manera crucial para el diseño de programas, el análisis dosis-respuesta reveló que los beneficios en los biomarcadores de enzimas hepáticas emergen significativamente a partir de un umbral de 260 a 280 MET-minutos por sesión de MICT.</p><h2>Efectos comparativos del ejercicio en tierra versus acuático</h2><p>La selección del medio de entrenamiento es otra decisión clínica clave cuando se trabaja con pacientes con dolor crónico y exceso de adiposidad, como ocurre en la fibromialgia. En un estudio cuasi-experimental de seis meses publicado en <strong>Archives of physical medicine and rehabilitation</strong> (2026), se comparó el impacto del ejercicio en tierra (land-based) y en agua (water-based) en 250 mujeres. El entrenamiento en tierra demostró una clara superioridad al reducir el porcentaje de masa grasa (-2%) e incrementar la masa muscular (+1 kg), además de inducir mejoras postintervención en la fuerza de miembros inferiores (+3 repeticiones), fuerza de miembros superiores (+4 repeticiones), flexibilidad inferior (+4 cm), agilidad (-1 s) y resistencia cardiovascular (+43 metros) frente al cuidado habitual. En comparación, el ejercicio acuático solo mejoró la fuerza de ambos miembros y la agilidad, sin impacto significativo en la composición corporal masiva. A las 12 semanas de seguimiento sin supervisión, el grupo de entrenamiento en tierra mantuvo de forma sostenida sus ganancias en fuerza, flexibilidad y agilidad, demostrando que el estímulo gravitacional y de carga en tierra favorece adaptaciones de recomposición corporal y rendimiento funcional más prolongadas.</p><h2>Entrenamiento de fuerza y recomposición corporal en la mujer</h2><p>Para desmitificar las barreras de género y edad en la prescripción del entrenamiento de sobrecarga, una revisión sistemática con metanálisis de 126 estudios que involucró a 4019 mujeres (66.2% posmenopáusicas), publicada en el <strong>Journal of science and medicine in sport</strong> (2026), determinó que el entrenamiento de fuerza es una herramienta sumamente eficaz a lo largo de todo el ciclo vital. Las adaptaciones hipertróficas y de fuerza no se vieron limitadas por el estado hormonal: tanto las mujeres premenopáusicas (SMD 1.50) como las posmenopáusicas (SMD 1.46) aumentaron sustancialmente su fuerza muscular sin diferencias estadísticamente significativas entre grupos. En términos de recomposición de tejidos, el entrenamiento de fuerza disminuyó de forma significativa la masa grasa (SMD 0.30) e incrementó la masa funcional (SMD 0.27). Es de destacar que los análisis de regresión no hallaron asociaciones entre los resultados de fuerza o composición corporal y la edad, frecuencia de entrenamiento o duración de las intervenciones, sugiriendo que las pautas generales de entrenamiento de fuerza son transversales y altamente efectivas para la población femenina sin necesidad de rígidas distinciones etarias.</p><h2>Impacto neuropsiquiátrico y sistémico del entrenamiento de fuerza progresivo</h2><p>El exceso de adiposidad se asocia frecuentemente con disfunción microvascular y trastornos afectivos. Un ensayo clínico controlado publicado en el <strong>British journal of sports medicine</strong> (2026) evaluó el impacto de 12 meses de entrenamiento de fuerza progresivo (PRT) dos veces por semana, utilizando máquinas de aire presurizado y pesos libres, en adultos con deterioro cognitivo vascular subcortical (SVCI) secundario a enfermedad de pequeño vaso cerebral. Los resultados mostraron que el PRT disminuyó significativamente los síntomas depresivos medidos con la escala CESD-10, tanto a los 6 meses (diferencia media estimada de -3.17) como a los 12 meses (diferencia media de -4.25) en comparación con el grupo control de equilibrio y tono. Estos hallazgos reafirman que la prescripción del ejercicio de fuerza progresivo no solo genera adaptaciones estructurales musculares y de recomposición corporal, sino que también ejerce un potente efecto modulador sobre la neuroplasticidad y la salud mental en pacientes con alta carga de morbilidad vascular y metabólica.</p><h2>Aplicación en fisiología clínica</h2><p>Para los profesionales del ejercicio metabólico, la integración de estos hallazgos consolida la necesidad de prescribir programas híbridos. Se recomienda priorizar el entrenamiento en tierra para optimizar la masa muscular (+1 kg) y reducir la masa grasa (-2%), incorporando rutinas de fuerza progresiva transversales para mujeres de cualquier edad. En pacientes con comorbilidades metabólicas como MASLD, la combinación de HIIT para la reducción acelerada de lípidos sanguíneos y MICT dosificado por encima de los 260-280 MET-min por sesión maximiza la salud hepática. Finalmente, el ejercicio de sobrecarga dos veces por semana debe ser visto como una terapia neuroprotectora esencial capaz de disminuir la carga de sintomatología depresiva.</p>
+                </div>
+
+                <section class="clinical-box rounded-2xl p-6 mt-8"><h2 class="font-heading font-bold text-xl text-metabolic-charcoal mb-3">Implicaciones clinicas</h2><p class="font-body text-metabolic-charcoal/85 leading-relaxed justified">Para los fisiólogos y kinesiólogos clínicos, el manejo de pacientes con exceso de adiposidad debe priorizar un enfoque híbrido en tierra. Se sugiere prescribir entrenamiento de fuerza progresivo dos veces por semana para inducir adaptaciones de masa funcional y mitigar el deterioro cognitivo o afectivo. Este programa estructural de fuerza debe complementarse con entrenamiento interválico de alta intensidad (HIIT) para optimizar el perfil de lípidos sistémicos, junto con sesiones continuas de moderada intensidad (MICT) que alcancen un volumen mínimo de 260-280 MET-min por sesión si coexiste esteatosis hepática metabólica.</p></section>
+                <section id="referencias" class="mt-12 pt-8 border-t border-gray-200"><h2 class="font-heading font-bold text-2xl text-metabolic-charcoal mb-6">Referencias</h2><ol class="space-y-4 list-none"><li class="border-l-4 border-metabolic-green pl-4 py-2"><p class="font-body text-sm text-metabolic-charcoal/90">High-intensity interval training and moderate-intensity continuous training are effective, feasible, and safe for patients with metabolic dysfunction-associated steatotic liver disease (MASLD): A systematic review and meta-analysis. (Metabolism: clinical and experimental, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42297097/" target="_blank" rel="noopener noreferrer" class="text-xs text-metabolic-cyan hover:underline break-all">https://pubmed.ncbi.nlm.nih.gov/42297097/</a></li><li class="border-l-4 border-metabolic-green pl-4 py-2"><p class="font-body text-sm text-metabolic-charcoal/90">Effectiveness of a 6-Month Land-Based and Water-Based Exercise Intervention on Body Composition and Physical Fitness in Women With Fibromyalgia: The Al-Ándalus Quasi-experimental Study. (Archives of physical medicine and rehabilitation, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42013931/" target="_blank" rel="noopener noreferrer" class="text-xs text-metabolic-cyan hover:underline break-all">https://pubmed.ncbi.nlm.nih.gov/42013931/</a></li><li class="border-l-4 border-metabolic-green pl-4 py-2"><p class="font-body text-sm text-metabolic-charcoal/90">It&#x27;s never too late: The impact of resistance training on strength and body composition in females across the lifespan - A systematic review and meta-analysis. (Journal of science and medicine in sport, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/41963141/" target="_blank" rel="noopener noreferrer" class="text-xs text-metabolic-cyan hover:underline break-all">https://pubmed.ncbi.nlm.nih.gov/41963141/</a></li><li class="border-l-4 border-metabolic-green pl-4 py-2"><p class="font-body text-sm text-metabolic-charcoal/90">Resistance training and depressive symptoms in subcortical vascular cognitive impairment: secondary results of a randomised clinical trial. (British journal of sports medicine, 2026)</p><a href="https://pubmed.ncbi.nlm.nih.gov/42692806/" target="_blank" rel="noopener noreferrer" class="text-xs text-metabolic-cyan hover:underline break-all">https://pubmed.ncbi.nlm.nih.gov/42692806/</a></li></ol></section>
+            </article>
+
+            <aside class="lg:col-span-4 space-y-6 min-w-0">
+                <div class="sidebar-card rounded-2xl p-5 sm:p-6">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-purple mb-4">Descarga profesional</p>
+                    <p class="font-body text-sm text-metabolic-charcoal/75 mb-4">Documento PDF con estructura editorial, logo Metabolic Fitness y referencias completas.</p>
+                    <a href="pdf/prescripcion-de-ejercicio-de-precision-en-obesidad-y-adiposidad-disfuncional-del-musculo-a-la-salud-metabolica-y-cognitiva.pdf" download class="mf-pdf-cta text-center text-white px-4 py-3 rounded-xl font-body font-semibold" style="background:#460877;color:#fff;display:block;">Descargar articulo en PDF</a>
+                </div>
+
+                <div class="sidebar-card rounded-2xl p-6">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-green mb-4">Puntos clave</p>
+                    <ul class="space-y-3 font-body text-sm text-metabolic-charcoal/85"><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>Tanto el HIIT como el MICT reducen significativamente la adiposidad y mejoran los marcadores hepáticos en pacientes con MASLD, con el HIIT mostrando superioridad en la reducción del colesterol total.</span></li><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>El entrenamiento continuo de moderada intensidad (MICT) exhibe una respuesta dependiente de la dosis, requiriendo un umbral mínimo de 260 a 280 MET-min por sesión para mejorar de forma óptima los biomarcadores de enzimas hepáticas.</span></li><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>El entrenamiento de fuerza en tierra supera clínicamente al ejercicio acuático al reducir un 2% de masa grasa, aumentar 1 kg de masa muscular y sostener mejoras de fuerza y resistencia cardiovascular hasta por 12 semanas de seguimiento.</span></li><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>El entrenamiento de sobrecarga progresiva mejora la masa funcional y la fuerza a lo largo de todo el ciclo vital femenino sin distinción de edad o estado menopáusico, y reduce drásticamente la sintomatología depresiva a largo plazo en pacientes con compromiso vascular cerebral.</span></li></ul>
+                </div>
+
+                <div class="sidebar-card rounded-2xl p-6">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-cyan mb-4">Evidencia de origen</p>
+                    <p class="font-body text-sm text-metabolic-charcoal/75">Articulo elaborado a partir de publicaciones recientes en revistas de alto impacto indexadas en PubMed.</p>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-gray-200 py-10 mt-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-5">
+            <section
+                class="mf-rating-box"
+                id="mf-paper-rating"
+                data-slug="prescripcion-de-ejercicio-de-precision-en-obesidad-y-adiposidad-disfuncional-del-musculo-a-la-salud-metabolica-y-cognitiva"
+                data-editorial-rating="4.5"
+                aria-label="Evaluacion del paper"
+            >
+                <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-purple mb-2">Evaluacion del paper</p>
+                <div class="flex flex-col items-center gap-1 mb-3">
+                    <div class="mf-stars-display text-2xl" aria-hidden="true"><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-half">★</span></div>
+                    <p class="font-body text-sm text-metabolic-charcoal/80">
+                        Calidad editorial: <strong id="mf-editorial-score">4.5</strong>/5
+                    </p>
+                </div>
+                <p class="font-body text-xs text-metabolic-charcoal/60 mb-2">Tu evaluacion (0 a 5 estrellas)</p>
+                <div class="mf-stars-input" role="radiogroup" aria-label="Califica este paper">
+                    <button type="button" class="mf-star" data-value="1" aria-label="1 estrella">★</button>
+                    <button type="button" class="mf-star" data-value="2" aria-label="2 estrellas">★</button>
+                    <button type="button" class="mf-star" data-value="3" aria-label="3 estrellas">★</button>
+                    <button type="button" class="mf-star" data-value="4" aria-label="4 estrellas">★</button>
+                    <button type="button" class="mf-star" data-value="5" aria-label="5 estrellas">★</button>
+                </div>
+                <p class="font-body text-xs text-metabolic-charcoal/55 mt-2" id="mf-rating-status">
+                    Promedio lectores: <span id="mf-avg-score">—</span> · <span id="mf-vote-count">0</span> votos
+                </p>
+            </section>
+            <div class="flex items-center gap-5">
+                <a href="https://www.facebook.com/profile.php?id=61578818624346" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <img src="../assets/social/facebook.png" alt="Facebook" class="w-8 h-8 object-contain hover:opacity-80 transition-opacity">
+                </a>
+                <a href="https://www.instagram.com/metabolicfitness.cl/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <img src="../assets/social/instagram.png" alt="Instagram" class="w-8 h-8 object-contain hover:opacity-80 transition-opacity">
+                </a>
+                <a href="https://www.linkedin.com/company/metabolic-fitness-chile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <img src="../assets/social/linkedin.png" alt="LinkedIn" class="w-8 h-8 object-contain hover:opacity-80 transition-opacity">
+                </a>
+                <a href="https://chat.whatsapp.com/LuuhXQG6biV6mkYceIo7vk" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                    <img src="../assets/social/whatsapp.png" alt="WhatsApp" class="w-8 h-8 object-contain hover:opacity-80 transition-opacity">
+                </a>
+            </div>
+            <a href="https://www.metabolicfitness.cl" class="inline-block">
+                <img src="../assets/brand/logo-mf-horizontal.png" alt="Metabolic Fitness" class="h-10 w-auto object-contain bg-transparent">
+            </a>
+            <p class="font-body text-metabolic-charcoal/60 text-sm text-center">
+                © 2026 Metabolic Fitness · Fisiologia Clinica del Ejercicio<br>
+                <a href="https://www.metabolicfitness.cl" class="hover:text-metabolic-purple transition-colors">www.metabolicfitness.cl</a>
+            </p>
+        </div>
+    </footer>
+    <script src="../js/blog-rating.js?v=2"></script>
+</body>
+</html>
