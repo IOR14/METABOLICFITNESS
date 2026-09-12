@@ -48,7 +48,7 @@ DIPLOMAS = [
     {"orden": 1, "serial": "MF-AD-F01", "nombre": "Vicente Vidal", "origen": "1.pdf"},
     {"orden": 2, "serial": "MF-AD-F02", "nombre": "Cristina Barra", "origen": "2.pdf"},
     {"orden": 3, "serial": "MF-AD-F03", "nombre": "Karla Brigitte González Sánchez", "origen": "3.pdf"},
-    {"orden": 4, "serial": "MF-AD-F04", "nombre": "Karla Brigitte González Sánchez", "origen": "4.pdf"},
+    {"orden": 4, "serial": "MF-AD-F04", "nombre": "Ignacio Javier Calbete", "origen": "4.pdf"},
     {"orden": 5, "serial": "MF-AD-F05", "nombre": "Saúl Morales Aguas", "origen": "5.pdf"},
     {"orden": 6, "serial": "MF-AD-F06", "nombre": "Frida Licea Licona", "origen": "6.pdf"},
     {"orden": 7, "serial": "MF-AD-F07", "nombre": "José Luis Santana Vargas", "origen": "7.pdf"},

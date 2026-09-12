@@ -18,7 +18,7 @@ window.CERTIFICADOS = {
     "fecha": "01-09-2026"
   },
   "MF-AD-F04": {
-    "nombre_estudiante": "Karla Brigitte González Sánchez",
+    "nombre_estudiante": "Ignacio Javier Calbete",
     "curso": "Programa de Especialización — Fisiología del Ejercicio en el Adulto Mayor",
     "fecha": "01-09-2026"
   },
