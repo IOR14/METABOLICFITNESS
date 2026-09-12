@@ -1,6 +1,6 @@
 // Archivo generado automaticamente por exportar_datos_web.py
 // NO editar a mano. Para actualizar: python exportar_datos_web.py
-// version: 42 certificados hash:251306428e66
+// version: 46 certificados hash:5a45e9c59b13
 window.CERTIFICADOS = {
   "MF-AD-F01": {
     "nombre_estudiante": "Vicente Vidal",
@@ -76,6 +76,26 @@ window.CERTIFICADOS = {
     "nombre_estudiante": "Orlando Rodríguez",
     "curso": "Diploma Fisiología Celular del Ejercicio Aplicada a la Salud",
     "fecha": "01-09-2026"
+  },
+  "MF-FP-F01": {
+    "nombre_estudiante": "Saúl Morales Aguas",
+    "curso": "Programa de Especialización — Fisiología del Entrenamiento de Fuerza en Pediatría",
+    "fecha": "12-09-2026"
+  },
+  "MF-FP-F02": {
+    "nombre_estudiante": "José Luis Santana Vargas",
+    "curso": "Programa de Especialización — Fisiología del Entrenamiento de Fuerza en Pediatría",
+    "fecha": "12-09-2026"
+  },
+  "MF-FP-F03": {
+    "nombre_estudiante": "Rosaura Ocaña Meléndez",
+    "curso": "Programa de Especialización — Fisiología del Entrenamiento de Fuerza en Pediatría",
+    "fecha": "12-09-2026"
+  },
+  "MF-FP-F04": {
+    "nombre_estudiante": "Luis Alberto Astocaza Miranda",
+    "curso": "Programa de Especialización — Fisiología del Entrenamiento de Fuerza en Pediatría",
+    "fecha": "12-09-2026"
   },
   "MF-FRM-02": {
     "nombre_estudiante": "Antonio Ruíz",
