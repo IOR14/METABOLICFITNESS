@@ -1,6 +1,6 @@
 // Archivo generado automaticamente por exportar_datos_web.py
 // NO editar a mano. Para actualizar: python exportar_datos_web.py
-// version: 27 certificados (MF-FRM-28)
+// version: 35 certificados (MF-FRM-36)
 window.CERTIFICADOS = {
   "MF-FRM-02": {
     "nombre_estudiante": "Antonio Ruíz",
@@ -136,5 +136,45 @@ window.CERTIFICADOS = {
     "nombre_estudiante": "Silvia Sánchez Cárdenas",
     "curso": "Fisiología del Ejercicio Físico y de la Obesidad",
     "fecha": "08-08-2026"
+  },
+  "MF-FRM-29": {
+    "nombre_estudiante": "Vicente Vidal",
+    "curso": "Diploma en Fisiología Celular del Ejercicio Aplicada a la Salud",
+    "fecha": "09-03-2026"
+  },
+  "MF-FRM-30": {
+    "nombre_estudiante": "Luis Rogelio Gutiérrez Camacho",
+    "curso": "Diploma en Fisiología Celular del Ejercicio Aplicada a la Salud",
+    "fecha": "09-03-2026"
+  },
+  "MF-FRM-31": {
+    "nombre_estudiante": "Hernán Varela",
+    "curso": "Diploma en Fisiología Celular del Ejercicio Aplicada a la Salud",
+    "fecha": "09-03-2026"
+  },
+  "MF-FRM-32": {
+    "nombre_estudiante": "Ana Guzmán",
+    "curso": "Diploma en Fisiología Celular del Ejercicio Aplicada a la Salud",
+    "fecha": "09-03-2026"
+  },
+  "MF-FRM-33": {
+    "nombre_estudiante": "Cristina Barría",
+    "curso": "Diploma en Fisiología Celular del Ejercicio Aplicada a la Salud",
+    "fecha": "09-03-2026"
+  },
+  "MF-FRM-34": {
+    "nombre_estudiante": "David Barría",
+    "curso": "Diploma en Fisiología Celular del Ejercicio Aplicada a la Salud",
+    "fecha": "09-03-2026"
+  },
+  "MF-FRM-35": {
+    "nombre_estudiante": "Fernando González",
+    "curso": "Diploma en Fisiología Celular del Ejercicio Aplicada a la Salud",
+    "fecha": "09-03-2026"
+  },
+  "MF-FRM-36": {
+    "nombre_estudiante": "Orlando Rodríguez",
+    "curso": "Diploma en Fisiología Celular del Ejercicio Aplicada a la Salud",
+    "fecha": "09-03-2026"
   }
 };
