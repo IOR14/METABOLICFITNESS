@@ -1,215 +1,212 @@
-// Archivo generado automaticamente por exportar_datos_web.py
-// NO editar a mano. Para actualizar: python exportar_datos_web.py
-// version: 42 certificados hash:251306428e66
-window.CERTIFICADOS = {
+{
   "MF-AD-F01": {
-    "nombre_estudiante": "Vicente Vidal",
     "curso": "Programa de Especialización — Fisiología del Ejercicio en el Adulto Mayor",
-    "fecha": "01-09-2026"
+    "fecha": "01-09-2026",
+    "nombre_estudiante": "Vicente Vidal"
   },
   "MF-AD-F02": {
-    "nombre_estudiante": "Cristina Barra",
     "curso": "Programa de Especialización — Fisiología del Ejercicio en el Adulto Mayor",
-    "fecha": "01-09-2026"
+    "fecha": "01-09-2026",
+    "nombre_estudiante": "Cristina Barra"
   },
   "MF-AD-F03": {
-    "nombre_estudiante": "Karla Brigitte González Sánchez",
     "curso": "Programa de Especialización — Fisiología del Ejercicio en el Adulto Mayor",
-    "fecha": "01-09-2026"
+    "fecha": "01-09-2026",
+    "nombre_estudiante": "Karla Brigitte González Sánchez"
   },
   "MF-AD-F04": {
-    "nombre_estudiante": "Ignacio Javier Calbete",
     "curso": "Programa de Especialización — Fisiología del Ejercicio en el Adulto Mayor",
-    "fecha": "01-09-2026"
+    "fecha": "01-09-2026",
+    "nombre_estudiante": "Ignacio Javier Calbete"
   },
   "MF-AD-F05": {
-    "nombre_estudiante": "Saúl Morales Aguas",
     "curso": "Programa de Especialización — Fisiología del Ejercicio en el Adulto Mayor",
-    "fecha": "01-09-2026"
+    "fecha": "01-09-2026",
+    "nombre_estudiante": "Saúl Morales Aguas"
   },
   "MF-AD-F06": {
-    "nombre_estudiante": "Frida Licea Licona",
     "curso": "Programa de Especialización — Fisiología del Ejercicio en el Adulto Mayor",
-    "fecha": "01-09-2026"
+    "fecha": "01-09-2026",
+    "nombre_estudiante": "Frida Licea Licona"
   },
   "MF-AD-F07": {
-    "nombre_estudiante": "José Luis Santana Vargas",
     "curso": "Programa de Especialización — Fisiología del Ejercicio en el Adulto Mayor",
-    "fecha": "01-09-2026"
+    "fecha": "01-09-2026",
+    "nombre_estudiante": "José Luis Santana Vargas"
   },
   "MF-DP-F01": {
-    "nombre_estudiante": "Vicente Vidal",
     "curso": "Diploma Fisiología Celular del Ejercicio Aplicada a la Salud",
-    "fecha": "01-09-2026"
+    "fecha": "01-09-2026",
+    "nombre_estudiante": "Vicente Vidal"
   },
   "MF-DP-F02": {
-    "nombre_estudiante": "Luis Rogelio Gutiérrez Camacho",
     "curso": "Diploma Fisiología Celular del Ejercicio Aplicada a la Salud",
-    "fecha": "01-09-2026"
+    "fecha": "01-09-2026",
+    "nombre_estudiante": "Luis Rogelio Gutiérrez Camacho"
   },
   "MF-DP-F03": {
-    "nombre_estudiante": "Hannia Varela",
     "curso": "Diploma Fisiología Celular del Ejercicio Aplicada a la Salud",
-    "fecha": "01-09-2026"
+    "fecha": "01-09-2026",
+    "nombre_estudiante": "Hannia Varela"
   },
   "MF-DP-F04": {
-    "nombre_estudiante": "Alan Guzmán",
     "curso": "Diploma Fisiología Celular del Ejercicio Aplicada a la Salud",
-    "fecha": "01-09-2026"
+    "fecha": "01-09-2026",
+    "nombre_estudiante": "Alan Guzmán"
   },
   "MF-DP-F05": {
-    "nombre_estudiante": "Cristina Barra",
     "curso": "Diploma Fisiología Celular del Ejercicio Aplicada a la Salud",
-    "fecha": "01-09-2026"
+    "fecha": "01-09-2026",
+    "nombre_estudiante": "Cristina Barra"
   },
   "MF-DP-F06": {
-    "nombre_estudiante": "David Barria",
     "curso": "Diploma Fisiología Celular del Ejercicio Aplicada a la Salud",
-    "fecha": "01-09-2026"
+    "fecha": "01-09-2026",
+    "nombre_estudiante": "David Barria"
   },
   "MF-DP-F07": {
-    "nombre_estudiante": "Fernando González",
     "curso": "Diploma Fisiología Celular del Ejercicio Aplicada a la Salud",
-    "fecha": "01-09-2026"
+    "fecha": "01-09-2026",
+    "nombre_estudiante": "Fernando González"
   },
   "MF-DP-F08": {
-    "nombre_estudiante": "Orlando Rodríguez",
     "curso": "Diploma Fisiología Celular del Ejercicio Aplicada a la Salud",
-    "fecha": "01-09-2026"
+    "fecha": "01-09-2026",
+    "nombre_estudiante": "Orlando Rodríguez"
   },
   "MF-FRM-02": {
-    "nombre_estudiante": "Antonio Ruíz",
     "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
-    "fecha": "06-06-2026"
+    "fecha": "06-06-2026",
+    "nombre_estudiante": "Antonio Ruíz"
   },
   "MF-FRM-03": {
-    "nombre_estudiante": "Rícardo Escobar",
     "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
-    "fecha": "06-06-2026"
+    "fecha": "06-06-2026",
+    "nombre_estudiante": "Rícardo Escobar"
   },
   "MF-FRM-04": {
-    "nombre_estudiante": "Claudia Corrales",
     "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
-    "fecha": "06-06-2026"
+    "fecha": "06-06-2026",
+    "nombre_estudiante": "Claudia Corrales"
   },
   "MF-FRM-05": {
-    "nombre_estudiante": "Omar Potóchník",
     "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
-    "fecha": "06-06-2026"
+    "fecha": "06-06-2026",
+    "nombre_estudiante": "Omar Potóchník"
   },
   "MF-FRM-06": {
-    "nombre_estudiante": "Sofia Garfias",
     "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
-    "fecha": "06-06-2026"
+    "fecha": "06-06-2026",
+    "nombre_estudiante": "Sofia Garfias"
   },
   "MF-FRM-07": {
-    "nombre_estudiante": "Gerardo Alvarado",
     "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
-    "fecha": "06-06-2026"
+    "fecha": "06-06-2026",
+    "nombre_estudiante": "Gerardo Alvarado"
   },
   "MF-FRM-08": {
-    "nombre_estudiante": "Ixchelt Cuaranta",
     "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
-    "fecha": "06-06-2026"
+    "fecha": "06-06-2026",
+    "nombre_estudiante": "Ixchelt Cuaranta"
   },
   "MF-FRM-09": {
-    "nombre_estudiante": "Ramón Sepúlveda",
     "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
-    "fecha": "06-06-2026"
+    "fecha": "06-06-2026",
+    "nombre_estudiante": "Ramón Sepúlveda"
   },
   "MF-FRM-10": {
-    "nombre_estudiante": "Javier Calbete",
     "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
-    "fecha": "06-06-2026"
+    "fecha": "06-06-2026",
+    "nombre_estudiante": "Javier Calbete"
   },
   "MF-FRM-11": {
-    "nombre_estudiante": "Vícente Vídal",
     "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
-    "fecha": "06-06-2026"
+    "fecha": "06-06-2026",
+    "nombre_estudiante": "Vícente Vídal"
   },
   "MF-FRM-12": {
-    "nombre_estudiante": "Hannia Varela",
     "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
-    "fecha": "06-06-2026"
+    "fecha": "06-06-2026",
+    "nombre_estudiante": "Hannia Varela"
   },
   "MF-FRM-13": {
-    "nombre_estudiante": "Alan Gúzman",
     "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
-    "fecha": "06-06-2026"
+    "fecha": "06-06-2026",
+    "nombre_estudiante": "Alan Gúzman"
   },
   "MF-FRM-14": {
-    "nombre_estudiante": "Felix Miranda",
     "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
-    "fecha": "06-06-2026"
+    "fecha": "06-06-2026",
+    "nombre_estudiante": "Felix Miranda"
   },
   "MF-FRM-15": {
-    "nombre_estudiante": "David Barría",
     "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
-    "fecha": "06-06-2026"
+    "fecha": "06-06-2026",
+    "nombre_estudiante": "David Barría"
   },
   "MF-FRM-16": {
-    "nombre_estudiante": "Luis Rogelio Gutiérrez Camacho",
     "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
-    "fecha": "06-06-2026"
+    "fecha": "06-06-2026",
+    "nombre_estudiante": "Luis Rogelio Gutiérrez Camacho"
   },
   "MF-FRM-17": {
-    "nombre_estudiante": "Fernando González",
     "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
-    "fecha": "06-06-2026"
+    "fecha": "06-06-2026",
+    "nombre_estudiante": "Fernando González"
   },
   "MF-FRM-18": {
-    "nombre_estudiante": "Cristina Barra",
     "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
-    "fecha": "06-06-2026"
+    "fecha": "06-06-2026",
+    "nombre_estudiante": "Cristina Barra"
   },
   "MF-FRM-19": {
-    "nombre_estudiante": "Nohemi Escamilla",
     "curso": "Fisiología en Rehabilitación Metabólica - Método 1X2X3",
-    "fecha": "06-06-2026"
+    "fecha": "06-06-2026",
+    "nombre_estudiante": "Nohemi Escamilla"
   },
   "MF-FRM-20": {
-    "nombre_estudiante": "Vicente Bugueño Alfaro",
     "curso": "Fisiología del Ejercicio Físico y de la Obesidad",
-    "fecha": "08-08-2026"
+    "fecha": "08-08-2026",
+    "nombre_estudiante": "Vicente Bugueño Alfaro"
   },
   "MF-FRM-21": {
-    "nombre_estudiante": "Ana Colina Correa",
     "curso": "Fisiología del Ejercicio Físico y de la Obesidad",
-    "fecha": "08-08-2026"
+    "fecha": "08-08-2026",
+    "nombre_estudiante": "Ana Colina Correa"
   },
   "MF-FRM-22": {
-    "nombre_estudiante": "Hernán Carrasco",
     "curso": "Fisiología del Ejercicio Físico y de la Obesidad",
-    "fecha": "08-08-2026"
+    "fecha": "08-08-2026",
+    "nombre_estudiante": "Hernán Carrasco"
   },
   "MF-FRM-23": {
-    "nombre_estudiante": "Sofía Garfias Cruz",
     "curso": "Fisiología del Ejercicio Físico y de la Obesidad",
-    "fecha": "08-08-2026"
+    "fecha": "08-08-2026",
+    "nombre_estudiante": "Sofía Garfias Cruz"
   },
   "MF-FRM-24": {
-    "nombre_estudiante": "Eric Bello Bautista",
     "curso": "Fisiología del Ejercicio Físico y de la Obesidad",
-    "fecha": "08-08-2026"
+    "fecha": "08-08-2026",
+    "nombre_estudiante": "Eric Bello Bautista"
   },
   "MF-FRM-25": {
-    "nombre_estudiante": "Tatiana Ramírez de Plaza",
     "curso": "Fisiología del Ejercicio Físico y de la Obesidad",
-    "fecha": "08-08-2026"
+    "fecha": "08-08-2026",
+    "nombre_estudiante": "Tatiana Ramírez de Plaza"
   },
   "MF-FRM-26": {
-    "nombre_estudiante": "Nermari Aular",
     "curso": "Fisiología del Ejercicio Físico y de la Obesidad",
-    "fecha": "08-08-2026"
+    "fecha": "08-08-2026",
+    "nombre_estudiante": "Nermari Aular"
   },
   "MF-FRM-27": {
-    "nombre_estudiante": "Héctor Mario Bustos",
     "curso": "Fisiología del Ejercicio Físico y de la Obesidad",
-    "fecha": "08-08-2026"
+    "fecha": "08-08-2026",
+    "nombre_estudiante": "Héctor Mario Bustos"
   },
   "MF-FRM-28": {
-    "nombre_estudiante": "Silvia Sánchez Cárdenas",
     "curso": "Fisiología del Ejercicio Físico y de la Obesidad",
-    "fecha": "08-08-2026"
+    "fecha": "08-08-2026",
+    "nombre_estudiante": "Silvia Sánchez Cárdenas"
   }
-};
+}

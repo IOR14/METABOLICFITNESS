@@ -15,6 +15,7 @@ Resultado:
 """
 
 import os
+import hashlib
 import json
 import re
 import sqlite3
@@ -23,6 +24,7 @@ from database import DB_PATH
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 SALIDA_JS = os.path.join(BASE_DIR, "certificados-data.js")
+SALIDA_JSON = os.path.join(BASE_DIR, "certificados-data.json")
 VALIDAR_HTML = os.path.join(BASE_DIR, "validar.html")
 
 
@@ -76,10 +78,13 @@ def main():
         for fila in filas
     }
 
+    payload = json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True)
+    digest = hashlib.sha256(payload.encode("utf-8")).hexdigest()[:12]
+
     contenido = (
         "// Archivo generado automaticamente por exportar_datos_web.py\n"
         "// NO editar a mano. Para actualizar: python exportar_datos_web.py\n"
-        "// version: {} certificados ({})\n".format(len(data), max(data.keys()) if data else "none")
+        "// version: {} certificados hash:{}\n".format(len(data), digest)
         + "window.CERTIFICADOS = "
         + json.dumps(data, ensure_ascii=False, indent=2)
         + ";\n"
@@ -88,11 +93,14 @@ def main():
     with open(SALIDA_JS, "w", encoding="utf-8") as f:
         f.write(contenido)
 
-    ultimo = max(data.keys(), key=_serial_sort_key) if data else "none"
-    cache_tag = "{}-{}".format(len(data), ultimo)
+    with open(SALIDA_JSON, "w", encoding="utf-8") as f:
+        f.write(payload)
+
+    cache_tag = "{}-{}".format(len(data), digest)
     _actualizar_cache_validar_html(cache_tag)
 
     print("Archivo generado: {}".format(SALIDA_JS))
+    print("JSON generado: {}".format(SALIDA_JSON))
     print("Certificados exportados: {}".format(len(data)))
 
 

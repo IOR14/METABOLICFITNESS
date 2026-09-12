@@ -17,28 +17,39 @@
             .replace(/\s+/g, '');
     }
 
-    function buscarCertificado(serial) {
-        const certs = certsLocales();
+    function buscarEnMapa(certs, serial) {
+        if (!certs) return null;
         const key = normalizarSerial(serial);
         if (!key) return null;
-        if (certs[key]) return certs[key];
-        if (Object.prototype.hasOwnProperty.call(certs, serial) && certs[serial]) {
-            return certs[serial];
-        }
-        return null;
+        return certs[key] || null;
     }
 
-    /** Si el HTML trae ?v= antiguo, el navegador puede cachear certificados-data.js sin los seriales nuevos. */
+    function buscarCertificado(serial) {
+        return buscarEnMapa(certsLocales(), serial);
+    }
+
+    /** Datos actualizados desde JSON (evita caché con nombres viejos en certificados-data.js). */
+    function cargarCertificadosFresh() {
+        return fetch('certificados-data.json?v=' + Date.now(), { cache: 'no-store' })
+            .then(function (r) {
+                if (!r.ok) throw new Error('no-json');
+                return r.json();
+            })
+            .catch(function () {
+                return recargarDatosCertificados();
+            });
+    }
+
+    /** Fallback si falta el JSON: recarga el .js sin mezclar datos viejos. */
     function recargarDatosCertificados() {
         return new Promise(function (resolve) {
-            var prev = certsLocales();
             var s = document.createElement('script');
             s.src = 'certificados-data.js?v=' + Date.now();
             s.onload = function () {
-                resolve(Object.assign({}, prev, certsLocales()));
+                resolve(certsLocales());
             };
             s.onerror = function () {
-                resolve(prev);
+                resolve(certsLocales());
             };
             document.head.appendChild(s);
         });
@@ -176,12 +187,6 @@
             contenedor.innerHTML = vistaBuscador();
             return;
         }
-        var cert = buscarCertificado(serial);
-        if (cert) {
-            contenedor.innerHTML = vistaValido(serial, cert);
-            setTimeout(lanzarCelebracion, 50);
-            return;
-        }
 
         contenedor.innerHTML = '<div class="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 text-center font-body text-metabolic-charcoal/70">Validando...</div>';
 
@@ -212,8 +217,8 @@
             });
         }
 
-        recargarDatosCertificados().then(function (merged) {
-            cert = merged[serial] || buscarCertificado(serial);
+        cargarCertificadosFresh().then(function (certs) {
+            var cert = buscarEnMapa(certs, serial);
             if (cert) {
                 mostrarValido(cert);
                 return;
