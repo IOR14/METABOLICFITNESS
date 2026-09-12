@@ -16,12 +16,32 @@ Resultado:
 
 import os
 import json
+import re
 import sqlite3
 
 from database import DB_PATH
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 SALIDA_JS = os.path.join(BASE_DIR, "certificados-data.js")
+VALIDAR_HTML = os.path.join(BASE_DIR, "validar.html")
+
+
+def _actualizar_cache_validar_html(cache_tag: str) -> None:
+    """Fuerza recarga del JS de certificados en validar.html (evita caché del navegador)."""
+    if not os.path.isfile(VALIDAR_HTML):
+        return
+    with open(VALIDAR_HTML, encoding="utf-8") as f:
+        html = f.read()
+    nuevo = re.sub(
+        r'(certificados-data\.js\?v=)[^"\']+',
+        r"\g<1>" + cache_tag,
+        html,
+        count=1,
+    )
+    if nuevo != html:
+        with open(VALIDAR_HTML, "w", encoding="utf-8") as f:
+            f.write(nuevo)
+        print("Cache validar.html actualizado: certificados-data.js?v={}".format(cache_tag))
 
 
 def main():
@@ -52,6 +72,9 @@ def main():
 
     with open(SALIDA_JS, "w", encoding="utf-8") as f:
         f.write(contenido)
+
+    cache_tag = max(data.keys()) if data else "none"
+    _actualizar_cache_validar_html(cache_tag)
 
     print("Archivo generado: {}".format(SALIDA_JS))
     print("Certificados exportados: {}".format(len(data)))

@@ -6,7 +6,33 @@
     const contenedor = document.getElementById('resultado');
     if (!contenedor) return;
 
-    const CERTS = window.CERTIFICADOS || {};
+    function certsLocales() {
+        return window.CERTIFICADOS || {};
+    }
+
+    function buscarCertificado(serial) {
+        const certs = certsLocales();
+        if (certs[serial]) return certs[serial];
+        const alt = serial.replace(/\s+/g, '');
+        if (alt !== serial && certs[alt]) return certs[alt];
+        return null;
+    }
+
+    /** Si el HTML trae ?v= antiguo, el navegador puede cachear certificados-data.js sin los seriales nuevos. */
+    function recargarDatosCertificados() {
+        return new Promise(function (resolve) {
+            var prev = certsLocales();
+            var s = document.createElement('script');
+            s.src = 'certificados-data.js?v=' + Date.now();
+            s.onload = function () {
+                resolve(Object.assign({}, prev, certsLocales()));
+            };
+            s.onerror = function () {
+                resolve(prev);
+            };
+            document.head.appendChild(s);
+        });
+    }
 
     // Evita inyección de HTML al mostrar texto del usuario o de los datos.
     function esc(texto) {
@@ -142,15 +168,19 @@
             contenedor.innerHTML = vistaBuscador();
             return;
         }
-        const cert = CERTS[serial];
+        var cert = buscarCertificado(serial);
         if (cert) {
             contenedor.innerHTML = vistaValido(serial, cert);
             setTimeout(lanzarCelebracion, 50);
             return;
         }
 
-        // Fallback: certificados de rutas fisiológicas en Supabase
         contenedor.innerHTML = '<div class="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 text-center font-body text-metabolic-charcoal/70">Validando...</div>';
+
+        function mostrarValido(certData) {
+            contenedor.innerHTML = vistaValido(serial, certData);
+            setTimeout(lanzarCelebracion, 50);
+        }
 
         function tryCloud() {
             if (!window.MF_RUTAS || typeof MF_RUTAS.validarCodigo !== 'function') {
@@ -159,14 +189,13 @@
             }
             MF_RUTAS.validarCodigo(serial).then(function (row) {
                 if (row) {
-                    contenedor.innerHTML = vistaValido(serial, {
+                    mostrarValido({
                         nombre_estudiante: row.nombre_display,
                         curso: row.titulo_ruta,
                         fecha: row.completed_at
                             ? new Date(row.completed_at).toLocaleDateString('es-CL')
                             : ''
                     });
-                    setTimeout(lanzarCelebracion, 50);
                 } else {
                     contenedor.innerHTML = vistaInvalido(serial);
                 }
@@ -175,7 +204,14 @@
             });
         }
 
-        tryCloud();
+        recargarDatosCertificados().then(function (merged) {
+            cert = merged[serial] || null;
+            if (cert) {
+                mostrarValido(cert);
+                return;
+            }
+            tryCloud();
+        });
     }
 
     if (document.readyState === 'loading') {
