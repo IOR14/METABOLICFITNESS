@@ -1,6 +1,6 @@
 // Archivo generado automaticamente por exportar_datos_web.py
 // NO editar a mano. Para actualizar: python exportar_datos_web.py
-// version: 46 certificados hash:5a45e9c59b13
+// version: 47 certificados hash:730e5c7eafab
 window.CERTIFICADOS = {
   "MF-AD-F01": {
     "nombre_estudiante": "Vicente Vidal",
@@ -74,6 +74,11 @@ window.CERTIFICADOS = {
   },
   "MF-DP-F08": {
     "nombre_estudiante": "Orlando Rodríguez",
+    "curso": "Diploma Fisiología Celular del Ejercicio Aplicada a la Salud",
+    "fecha": "01-09-2026"
+  },
+  "MF-DP-F09": {
+    "nombre_estudiante": "Felix Miranda",
     "curso": "Diploma Fisiología Celular del Ejercicio Aplicada a la Salud",
     "fecha": "01-09-2026"
   },

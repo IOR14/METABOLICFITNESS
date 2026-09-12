@@ -3,7 +3,7 @@
 generar_diploma_celular_completo.py
 
 Genera QR + PDF con QR incrustado para el Diploma en Fisiología Celular
-(del zip oficial). Seriales impresos: MF-DP-F01 … MF-DP-F08.
+(del zip oficial). Seriales impresos: MF-DP-F01 … MF-DP-F09.
 
 Salida por alumno (carpeta ordenada):
     certificados_diploma_celular/01_MF-DP-F01_Nombre/
@@ -57,6 +57,7 @@ DIPLOMAS = [
     {"orden": 6, "serial": "MF-DP-F06", "nombre": "David Barria", "origen": "6.pdf"},
     {"orden": 7, "serial": "MF-DP-F07", "nombre": "Fernando González", "origen": "7.pdf"},
     {"orden": 8, "serial": "MF-DP-F08", "nombre": "Orlando Rodríguez", "origen": "8.pdf"},
+    {"orden": 9, "serial": "MF-DP-F09", "nombre": "Felix Miranda", "origen": "9.pdf"},
 ]
 
 # Posición calibrada (pt PDF): QR sobre la célula, sin tocar textos centrales
