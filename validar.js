@@ -10,11 +10,21 @@
         return window.CERTIFICADOS || {};
     }
 
+    function normalizarSerial(raw) {
+        return String(raw == null ? '' : raw)
+            .trim()
+            .toUpperCase()
+            .replace(/\s+/g, '');
+    }
+
     function buscarCertificado(serial) {
         const certs = certsLocales();
-        if (certs[serial]) return certs[serial];
-        const alt = serial.replace(/\s+/g, '');
-        if (alt !== serial && certs[alt]) return certs[alt];
+        const key = normalizarSerial(serial);
+        if (!key) return null;
+        if (certs[key]) return certs[key];
+        if (Object.prototype.hasOwnProperty.call(certs, serial) && certs[serial]) {
+            return certs[serial];
+        }
         return null;
     }
 
@@ -43,9 +53,7 @@
 
     function obtenerSerial() {
         const params = new URLSearchParams(window.location.search);
-        var serial = (params.get('serial') || '').trim();
-        if (serial) return serial.toUpperCase();
-        return '';
+        return normalizarSerial(params.get('serial') || '');
     }
 
     const COLORES_CONFETI = ['#5CB85C', '#800080', '#00AEEF', '#4ba572', '#FFD700', '#FFFFFF'];
@@ -205,7 +213,7 @@
         }
 
         recargarDatosCertificados().then(function (merged) {
-            cert = merged[serial] || null;
+            cert = merged[serial] || buscarCertificado(serial);
             if (cert) {
                 mostrarValido(cert);
                 return;

@@ -26,6 +26,15 @@ SALIDA_JS = os.path.join(BASE_DIR, "certificados-data.js")
 VALIDAR_HTML = os.path.join(BASE_DIR, "validar.html")
 
 
+def _serial_sort_key(serial: str):
+    """Orden lógico MF-FRM-NN / MF-DP-FNN para cache-bust."""
+    m = re.match(r"^MF-(FRM|DP)-F?(\d+)$", serial.strip().upper())
+    if not m:
+        return (9, serial)
+    fam = 0 if m.group(1) == "FRM" else 1
+    return (fam, int(m.group(2)))
+
+
 def _actualizar_cache_validar_html(cache_tag: str) -> None:
     """Fuerza recarga del JS de certificados en validar.html (evita caché del navegador)."""
     if not os.path.isfile(VALIDAR_HTML):
@@ -73,7 +82,8 @@ def main():
     with open(SALIDA_JS, "w", encoding="utf-8") as f:
         f.write(contenido)
 
-    cache_tag = max(data.keys()) if data else "none"
+    ultimo = max(data.keys(), key=_serial_sort_key) if data else "none"
+    cache_tag = "{}-{}".format(len(data), ultimo)
     _actualizar_cache_validar_html(cache_tag)
 
     print("Archivo generado: {}".format(SALIDA_JS))
