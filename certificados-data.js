@@ -1,7 +1,42 @@
 // Archivo generado automaticamente por exportar_datos_web.py
 // NO editar a mano. Para actualizar: python exportar_datos_web.py
-// version: 35 certificados (MF-FRM-28)
+// version: 42 certificados (MF-FRM-28)
 window.CERTIFICADOS = {
+  "MF-AD-F01": {
+    "nombre_estudiante": "Vicente Vidal",
+    "curso": "Programa de Especialización — Fisiología del Ejercicio en el Adulto Mayor",
+    "fecha": "01-09-2026"
+  },
+  "MF-AD-F02": {
+    "nombre_estudiante": "Cristina Barra",
+    "curso": "Programa de Especialización — Fisiología del Ejercicio en el Adulto Mayor",
+    "fecha": "01-09-2026"
+  },
+  "MF-AD-F03": {
+    "nombre_estudiante": "Karla Brigitte González Sánchez",
+    "curso": "Programa de Especialización — Fisiología del Ejercicio en el Adulto Mayor",
+    "fecha": "01-09-2026"
+  },
+  "MF-AD-F04": {
+    "nombre_estudiante": "Karla Brigitte González Sánchez",
+    "curso": "Programa de Especialización — Fisiología del Ejercicio en el Adulto Mayor",
+    "fecha": "01-09-2026"
+  },
+  "MF-AD-F05": {
+    "nombre_estudiante": "Saúl Morales Aguas",
+    "curso": "Programa de Especialización — Fisiología del Ejercicio en el Adulto Mayor",
+    "fecha": "01-09-2026"
+  },
+  "MF-AD-F06": {
+    "nombre_estudiante": "Frida Licea Licona",
+    "curso": "Programa de Especialización — Fisiología del Ejercicio en el Adulto Mayor",
+    "fecha": "01-09-2026"
+  },
+  "MF-AD-F07": {
+    "nombre_estudiante": "José Luis Santana Vargas",
+    "curso": "Programa de Especialización — Fisiología del Ejercicio en el Adulto Mayor",
+    "fecha": "01-09-2026"
+  },
   "MF-DP-F01": {
     "nombre_estudiante": "Vicente Vidal",
     "curso": "Diploma Fisiología Celular del Ejercicio Aplicada a la Salud",

@@ -27,12 +27,18 @@ VALIDAR_HTML = os.path.join(BASE_DIR, "validar.html")
 
 
 def _serial_sort_key(serial: str):
-    """Orden lógico MF-FRM-NN / MF-DP-FNN para cache-bust."""
-    m = re.match(r"^MF-(FRM|DP)-F?(\d+)$", serial.strip().upper())
-    if not m:
-        return (9, serial)
-    fam = 0 if m.group(1) == "FRM" else 1
-    return (fam, int(m.group(2)))
+    """Orden lógico MF-FRM / MF-DP / MF-AD para cache-bust."""
+    s = serial.strip().upper()
+    m = re.match(r"^MF-FRM-(\d+)$", s)
+    if m:
+        return (0, int(m.group(1)))
+    m = re.match(r"^MF-DP-F(\d+)$", s)
+    if m:
+        return (1, int(m.group(1)))
+    m = re.match(r"^MF-AD-F(\d+)$", s)
+    if m:
+        return (2, int(m.group(1)))
+    return (9, s)
 
 
 def _actualizar_cache_validar_html(cache_tag: str) -> None:
