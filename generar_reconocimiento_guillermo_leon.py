@@ -194,18 +194,19 @@ def _build_pdf(path_pdf: str, qr_bytes: bytes):
     )
     _draw_wrapped(c, cierre, cx, y, 520, "Arial", 9.5, 13, MUTED, "center")
 
-    # Firma izquierda (Carlos / academia)
+    # Firma izquierda (Director — Fundador)
     sig_x = 95
-    sig_y = 95
+    sig_y = 105
     c.setStrokeColorRGB(0.55, 0.55, 0.55)
     c.setLineWidth(0.8)
-    c.line(sig_x, sig_y + 18, sig_x + 170, sig_y + 18)
+    c.line(sig_x, sig_y + 18, sig_x + 200, sig_y + 18)
     c.setFillColorRGB(*(v / 255 for v in TEXT))
     c.setFont("Arial-Bold", 9)
-    c.drawString(sig_x, sig_y, "Carlos Saavedra MSc.")
+    c.drawString(sig_x, sig_y, "Israel Orellana R. MSc.")
     c.setFont("Arial", 8)
-    c.drawString(sig_x, sig_y - 12, "Univ. Laval, Canadá")
-    c.drawString(sig_x, sig_y - 24, "Metabolic Fitness Academy")
+    c.drawString(sig_x, sig_y - 12, "Fisiología Clínica Del Ejercicio")
+    c.drawString(sig_x, sig_y - 24, "IA Engineer")
+    c.drawString(sig_x, sig_y - 36, "Director — Fundador Metabolic Fitness")
 
     # QR derecha
     qr_size = 72
