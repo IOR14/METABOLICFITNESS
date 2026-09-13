@@ -1,6 +1,6 @@
 // Archivo generado automaticamente por exportar_datos_web.py
 // NO editar a mano. Para actualizar: python exportar_datos_web.py
-// version: 47 certificados hash:730e5c7eafab
+// version: 48 certificados hash:f71ab4b06658
 window.CERTIFICADOS = {
   "MF-AD-F01": {
     "nombre_estudiante": "Vicente Vidal",
@@ -236,5 +236,10 @@ window.CERTIFICADOS = {
     "nombre_estudiante": "Silvia Sánchez Cárdenas",
     "curso": "Fisiología del Ejercicio Físico y de la Obesidad",
     "fecha": "08-08-2026"
+  },
+  "MF-REC-GL01": {
+    "nombre_estudiante": "Dr. Guillermo León",
+    "curso": "Reconocimiento por su dedicación docente en Fisiología del Ejercicio en el Adulto Mayor y Fisiología del Entrenamiento de Fuerza en Pediatría",
+    "fecha": "13-09-2026"
   }
 };

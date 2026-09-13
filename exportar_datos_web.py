@@ -43,6 +43,9 @@ def _serial_sort_key(serial: str):
     m = re.match(r"^MF-FP-F(\d+)$", s)
     if m:
         return (3, int(m.group(1)))
+    m = re.match(r"^MF-REC-(.+)$", s)
+    if m:
+        return (4, m.group(1))
     return (9, s)
 
 
