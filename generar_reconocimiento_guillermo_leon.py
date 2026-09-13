@@ -39,6 +39,7 @@ BASE_URL = "https://www.metabolicfitness.cl"
 SALIDA = os.path.join(BASE_DIR, "certificados_reconocimiento", "MF-REC-GL01_Guillermo_Leon")
 CARPETA_QRS = os.path.join(BASE_DIR, "qrs_diplomas")
 LOGO = os.path.join(BASE_DIR, "assets", "brand", "logo-mf-horizontal-white.png")
+FIRMA = os.path.join(BASE_DIR, "assets", "firmas", "firma_israel_orellana.png")
 
 SERIAL = "MF-REC-GL01"
 NOMBRE = "Dr. Guillermo León"
@@ -197,6 +198,18 @@ def _build_pdf(path_pdf: str, qr_bytes: bytes):
     # Firma izquierda (Director — Fundador)
     sig_x = 95
     sig_y = 105
+    if os.path.isfile(FIRMA):
+        # Firma manuscrita encima de la línea
+        c.drawImage(
+            ImageReader(FIRMA),
+            sig_x + 10,
+            sig_y + 20,
+            width=150,
+            height=58,
+            mask="auto",
+            preserveAspectRatio=True,
+            anchor="sw",
+        )
     c.setStrokeColorRGB(0.55, 0.55, 0.55)
     c.setLineWidth(0.8)
     c.line(sig_x, sig_y + 18, sig_x + 200, sig_y + 18)
