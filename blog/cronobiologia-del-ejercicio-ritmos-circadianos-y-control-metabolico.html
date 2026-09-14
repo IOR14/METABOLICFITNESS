@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/brand/mf-favicon.ico?v=3" sizes="any">
+    <link rel="icon" type="image/png" href="/assets/brand/mf-favicon-32.png?v=3" sizes="32x32">
+    <link rel="apple-touch-icon" href="/assets/brand/mf-apple-touch-icon.png?v=3">
+    <title>Cronobiología del ejercicio: ritmos circadianos y control metabólico - Metabolic Fitness</title>
+    <meta name="description" content="Cómo el horario del entrenamiento influye en sensibilidad a la insulina, oxidación de sustratos, sueño y adherencia en poblaciones clínicas.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'metabolic-green': '#5CB85C',
+                        'metabolic-charcoal': '#404041',
+                        'metabolic-cyan': '#00AEEF',
+                        'metabolic-purple': '#460877',
+                        'metabolic-bg': '#FFFFFF',
+                        'metabolic-bg-secondary': '#FAFAFA',
+                    },
+                    fontFamily: {
+                        'heading': ['Montserrat', 'sans-serif'],
+                        'body': ['Open Sans', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+
+    <style>
+        body { font-family: 'Open Sans', sans-serif; color: #404041; background: #FAFAFA; }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+        .article-content p { margin-bottom: 1.15rem; line-height: 1.9; font-size: 1.05rem; text-align: justify; hyphens: auto; }
+        .article-content h2 { margin-top: 2.2rem; margin-bottom: 0.9rem; font-weight: 700; font-size: 1.45rem; color: #460877; text-align: left; }
+        .justified { text-align: justify; hyphens: auto; }
+        .abstract-box { border-left: 5px solid #5CB85C; background: linear-gradient(90deg, #F3FBF3 0%, #FFFFFF 100%); }
+        .clinical-box { border: 1px solid #5CB85C33; background: #F8FFF8; box-shadow: 0 10px 30px rgba(92,184,92,0.08); }
+        .sidebar-card { background: white; border: 1px solid #E5E7EB; box-shadow: 0 8px 24px rgba(70,8,119,0.06); }
+        .keyword-chip { display: inline-block; background: rgba(255,255,255,0.14); color: #fff; border: 1px solid rgba(255,255,255,0.22); border-radius: 999px; padding: 0.28rem 0.75rem; font-size: 0.7rem; letter-spacing: 0.04em; text-transform: uppercase; font-family: Montserrat, sans-serif; font-weight: 600; }
+        .mf-pdf-cta { background: #460877 !important; color: #fff !important; display: inline-block; text-decoration: none !important; }
+        .mf-pdf-cta:hover { background: #5a0a99 !important; }
+        aside .mf-pdf-cta { display: block; width: 100%; box-sizing: border-box; text-align: center; }
+        .mf-rating-box { width: 100%; max-width: 28rem; background: #FAFAFA; border: 1px solid #E5E7EB; border-radius: 1rem; padding: 1.1rem 1.25rem; text-align: center; }
+        .mf-star { color: #D1D5DB; cursor: pointer; user-select: none; line-height: 1; }
+        .mf-star-on { color: #F5B301; }
+        .mf-star-off { color: #D1D5DB; }
+        .mf-stars-display .mf-star { cursor: default; }
+        .mf-stars-input { display: inline-flex; gap: 0.15rem; font-size: 1.85rem; }
+        .mf-stars-input button { background: none; border: none; padding: 0; cursor: pointer; }
+        .mf-article-header { position: sticky; top: 0; z-index: 50; background: linear-gradient(105deg, #08060c 0%, #14081f 42%, #2a0548 78%, #3b0a66 100%); }
+        .article-hero-copy { background: linear-gradient(115deg, #08060c 0%, #16091f 38%, #2a0548 72%, #3b0a66 100%) !important; }
+        .article-hero-fade { background: linear-gradient(to right, #16091f 0%, transparent 100%) !important; }
+        .mf-article-nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; }
+        .mf-article-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-left: auto; }
+        .mf-back-link { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0.55rem 0.9rem; border-radius: 0.6rem; background: rgba(255,255,255,0.14); color: #fff !important; text-decoration: none !important; font-weight: 600; }
+        .mf-header-pdf { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0.55rem 0.9rem; border-radius: 0.6rem; background: #5CB85C !important; color: #fff !important; text-decoration: none !important; font-weight: 600; }
+        @media (max-width: 640px) {
+            .mf-article-actions { margin-left: 0; width: 100%; flex-direction: column; align-items: stretch; }
+            .mf-back-link, .mf-header-pdf { width: 100%; }
+            .article-hero { grid-template-columns: 1fr !important; }
+            .article-hero-copy h1 { font-size: 1.45rem !important; }
+            .article-hero-fade { display: none !important; }
+        }
+    </style>
+
+</head>
+<body class="antialiased">
+    <header class="mf-article-header text-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <nav class="mf-article-nav" aria-label="Navegacion del articulo">
+                <a href="../blog.html" class="mf-logo-link flex items-center gap-2 min-w-0">
+                    <img src="../assets/brand/logo-mf-nav-white.png?v=4" alt="Metabolic Fitness" class="h-10 sm:h-12 w-auto max-w-[200px] object-contain object-left">
+                    <span class="font-heading font-bold text-sm hidden md:inline text-white/95">Paper Cientificos</span>
+                </a>
+                <div class="mf-article-actions">
+                    <a href="../blog.html" class="mf-back-link font-body text-sm">← Volver al blog</a>
+                    <a href="pdf/cronobiologia-del-ejercicio-ritmos-circadianos-y-control-metabolico.pdf" download class="mf-header-pdf font-body text-sm">Descargar PDF</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+            <div class="article-hero rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl bg-white grid lg:grid-cols-[1.05fr_0.95fr] min-h-[22rem]">
+                <div class="article-hero-copy p-6 sm:p-12 flex flex-col justify-center text-white order-2 lg:order-1">
+                    <div class="flex flex-wrap items-center gap-3 mb-5">
+                        <span class="px-3 py-1 rounded-full bg-white text-metabolic-purple text-xs font-heading font-semibold uppercase tracking-wide">Clinica</span>
+                        <span class="text-xs font-body text-white/80">2026-09-14</span>
+                        <span class="text-xs font-body text-white/80">7 min de lectura</span>
+                    </div>
+                    <h1 class="font-heading font-bold text-3xl sm:text-[2.35rem] leading-tight">Cronobiología del ejercicio: ritmos circadianos y control metabólico</h1>
+                    <div class="mt-5 flex flex-wrap gap-2"><span class="keyword-chip">cronobiologia</span><span class="keyword-chip">ritmo circadiano</span><span class="keyword-chip">ejercicio</span><span class="keyword-chip">metabolismo</span><span class="keyword-chip">sueño</span><span class="keyword-chip">diabetes</span></div>
+                </div>
+                <div class="article-hero-media relative min-h-[14rem] order-1 lg:order-2">
+                    <img src="../assets/blog/cronobiologia-del-ejercicio-ritmos-circadianos-y-control-metabolico.jpg?v=1" alt="Cronobiología del ejercicio: ritmos circadianos y control metabólico" class="w-full h-full object-cover">
+                    <div class="article-hero-fade absolute inset-y-0 left-0 w-24 hidden lg:block"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="mf-article-main max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+        <div class="grid lg:grid-cols-12 gap-6 lg:gap-8">
+            <article class="lg:col-span-8 min-w-0">
+                <div class="abstract-box rounded-2xl p-6 sm:p-8 mb-8">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-green mb-3">Resumen ejecutivo</p>
+                    <p class="font-body text-lg leading-relaxed text-metabolic-charcoal/90 justified">El momento del día en que se entrena puede modular respuestas glucémicas, térmicas y autonómicas. Sin absolutismos, la cronobiología ofrece criterios para personalizar horarios según objetivo clínico, turno laboral y calidad de sueño.</p>
+                </div>
+                <div class="article-content font-body text-metabolic-charcoal/90 bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-100">
+                    <p>Esta síntesis clínica de Metabolic Fitness Academy traduce evidencia contemporánea en fisiología del ejercicio aplicada a criterios prácticos para médicos, kinesiólogos y fisiólogos clínicos en Latinoamérica.</p>
+                    <h2>Reloj biológico y respuesta al ejercicio</h2><p>El sistema circadiano regula secreción hormonal, temperatura y sensibilidad tisular a la insulina. Entrenar en distintos momentos del día puede cambiar la magnitud de la respuesta aguda de glucosa y la percepción de esfuerzo. En personas con diabetes o prediabetes, sesiones postprandiales tempranas suelen ayudar al control glucémico de ese período.</p><h2>Mañana, tarde o noche: no hay una sola respuesta</h2><p>Algunos estudios sugieren ventajas del ejercicio vespertino para ciertas adaptaciones metabólicas; otros muestran beneficios similares si el volumen semanal se cumple. Lo crítico es evitar que el entrenamiento nocturno intenso deteriore el sueño. En turnos rotativos, la consistencia relativa y la higiene de sueño pesan más que el 'horario ideal' teórico.</p><h2>Aplicación clínica</h2><p>Pregunte por horario laboral, calidad de sueño y patrón de comidas. Si el objetivo es glucemia postcomida, priorice actividad después de la comida principal. Si el objetivo es adherencia, elija el bloque horario más sostenible. Reevalúe somnolencia, recuperación y métricas (glucosa, RPE, HRV cuando esté disponible).</p>
+                </div>
+                <section class="clinical-box rounded-2xl p-6 mt-8">
+                    <h2 class="font-heading font-bold text-xl text-metabolic-charcoal mb-3">Implicaciones clinicas</h2>
+                    <p class="font-body text-metabolic-charcoal/85 leading-relaxed justified">Personalice el horario según objetivo (glucemia, rendimiento, sueño) y contexto del paciente. Evite HIIT muy tarde si afecta el descanso.</p>
+                </section>
+                <section id="referencias" class="mt-12 pt-8 border-t border-gray-200">
+                    <h2 class="font-heading font-bold text-2xl text-metabolic-charcoal mb-6">Referencias</h2>
+                    <ol class="space-y-4 list-none"><li class="border-l-4 border-metabolic-green pl-4 py-2"><p class="font-body text-sm text-metabolic-charcoal/90">Reviews on exercise chronobiology and glucose metabolism.</p></li><li class="border-l-4 border-metabolic-green pl-4 py-2"><p class="font-body text-sm text-metabolic-charcoal/90">Clinical guidance on physical activity timing in metabolic disease.</p></li></ol>
+                </section>
+            </article>
+            <aside class="lg:col-span-4 space-y-6 min-w-0">
+                <div class="sidebar-card rounded-2xl p-6">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-purple mb-4">Descarga profesional</p>
+                    <p class="font-body text-sm text-metabolic-charcoal/75 mb-4">Documento PDF con estructura editorial Metabolic Fitness.</p>
+                    <a href="pdf/cronobiologia-del-ejercicio-ritmos-circadianos-y-control-metabolico.pdf" download class="mf-pdf-cta block text-center text-white px-4 py-3 rounded-xl font-body font-semibold">Descargar articulo en PDF</a>
+                </div>
+                <div class="sidebar-card rounded-2xl p-6">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-green mb-4">Puntos clave</p>
+                    <ul class="space-y-3 font-body text-sm text-metabolic-charcoal/85"><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>El timing del ejercicio modula respuestas metabólicas y de sueño.</span></li><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>No existe un único horario óptimo para todos.</span></li><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>Postprandial puede ayudar al control glucémico de ese período.</span></li><li class="flex gap-3"><span class="text-metabolic-green font-bold">•</span><span>La sostenibilidad del horario supera al 'ideal teórico'.</span></li></ul>
+                </div>
+                <div class="sidebar-card rounded-2xl p-6">
+                    <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-cyan mb-4">Evidencia de origen</p>
+                    <p class="font-body text-sm text-metabolic-charcoal/75">Síntesis clínica elaborada por Metabolic Fitness Academy a partir de guías y revisiones contemporáneas de fisiología del ejercicio.</p>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-gray-200 py-10 mt-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-5">
+            <section class="mf-rating-box" id="mf-paper-rating" data-slug="cronobiologia-del-ejercicio-ritmos-circadianos-y-control-metabolico" data-editorial-rating="4.0" aria-label="Evaluacion del paper">
+                <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-purple mb-2">Evaluacion del paper</p>
+                <div class="flex flex-col items-center gap-1 mb-3">
+                    <div class="mf-stars-display text-2xl" aria-hidden="true"><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-on">★</span><span class="mf-star mf-star-off">★</span></div>
+                    <p class="font-body text-sm text-metabolic-charcoal/80">Calidad editorial: <strong id="mf-editorial-score">4.0</strong>/5</p>
+                </div>
+                <p class="font-body text-xs text-metabolic-charcoal/60 mb-2">Tu evaluacion (0 a 5 estrellas)</p>
+                <div class="mf-stars-input" role="radiogroup" aria-label="Califica este paper">
+                    <button type="button" class="mf-star" data-value="1" aria-label="1 estrella">★</button>
+                    <button type="button" class="mf-star" data-value="2" aria-label="2 estrellas">★</button>
+                    <button type="button" class="mf-star" data-value="3" aria-label="3 estrellas">★</button>
+                    <button type="button" class="mf-star" data-value="4" aria-label="4 estrellas">★</button>
+                    <button type="button" class="mf-star" data-value="5" aria-label="5 estrellas">★</button>
+                </div>
+                <p class="font-body text-xs text-metabolic-charcoal/55 mt-2" id="mf-rating-status">
+                    Promedio lectores: <span id="mf-avg-score">—</span> · <span id="mf-vote-count">0</span> votos
+                </p>
+            </section>
+            <a href="https://www.metabolicfitness.cl" class="inline-block">
+                <img src="../assets/brand/logo-mf-horizontal.png" alt="Metabolic Fitness" class="h-11 w-auto object-contain bg-transparent">
+            </a>
+            <p class="font-body text-metabolic-charcoal/60 text-sm text-center">
+                © 2026 Metabolic Fitness · Fisiologia Clinica del Ejercicio<br>
+                <a href="https://www.metabolicfitness.cl" class="hover:text-metabolic-purple transition-colors">www.metabolicfitness.cl</a>
+            </p>
+        </div>
+    </footer>
+    <script src="../js/blog-rating.js?v=2"></script>
+</body>
+</html>

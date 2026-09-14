@@ -1,5 +1,205 @@
 [
   {
+    "slug": "mitocondrias-ejercicio-e-insuficiencia-cardiaca-rehabilitacion-metabolica-de-precision",
+    "title": "Mitocondrias, ejercicio e insuficiencia cardíaca: rehabilitación metabólica de precisión",
+    "category": "Clinica",
+    "category_color": "metabolic-cyan",
+    "gradient": "from-metabolic-cyan/20 to-metabolic-green/20",
+    "excerpt": "Revisión clínica sobre cómo el entrenamiento aeróbico y de fuerza restauran la bioenergética mitocondrial, la capacidad oxidativa y la tolerancia al esfuerzo en pacientes con insuficiencia cardíaca.",
+    "published_at": "2026-09-14",
+    "image": "assets/blog/mitocondrias-ejercicio-e-insuficiencia-cardiaca-rehabilitacion-metabolica-de-precision.jpg",
+    "pdf": "blog/pdf/mitocondrias-ejercicio-e-insuficiencia-cardiaca-rehabilitacion-metabolica-de-precision.pdf",
+    "keywords": [
+      "mitocondrias",
+      "insuficiencia cardiaca",
+      "rehabilitacion cardiaca",
+      "bioenergetica",
+      "ejercicio clinico",
+      "fisiologia metabolica"
+    ],
+    "rating": 4.0
+  },
+  {
+    "slug": "entrenamiento-de-fuerza-y-salud-osea-en-mujeres-posmenopausicas-evidencia-clinica-aplicada",
+    "title": "Entrenamiento de fuerza y salud ósea en mujeres posmenopáusicas: evidencia clínica aplicada",
+    "category": "Clinica",
+    "category_color": "metabolic-cyan",
+    "gradient": "from-metabolic-cyan/20 to-metabolic-green/20",
+    "excerpt": "Análisis de cómo la sobrecarga mecánica progresiva, el impacto controlado y la nutrición proteica interactúan para preservar densidad mineral ósea y reducir riesgo de fractura.",
+    "published_at": "2026-09-14",
+    "image": "assets/blog/entrenamiento-de-fuerza-y-salud-osea-en-mujeres-posmenopausicas-evidencia-clinica-aplicada.jpg",
+    "pdf": "blog/pdf/entrenamiento-de-fuerza-y-salud-osea-en-mujeres-posmenopausicas-evidencia-clinica-aplicada.pdf",
+    "keywords": [
+      "osteoporosis",
+      "fuerza",
+      "posmenopausia",
+      "densidad osea",
+      "prevencion de fracturas",
+      "ejercicio terapeutico"
+    ],
+    "rating": 4.0
+  },
+  {
+    "slug": "hiit-versus-entrenamiento-continuo-en-hipertension-arterial-que-dice-la-fisiologia-clinica",
+    "title": "HIIT versus entrenamiento continuo en hipertensión arterial: qué dice la fisiología clínica",
+    "category": "Clinica",
+    "category_color": "metabolic-cyan",
+    "gradient": "from-metabolic-cyan/20 to-metabolic-green/20",
+    "excerpt": "Comparación práctica entre intervalado de alta intensidad y continuo moderado para reducir presión arterial, mejorar VO2 y adherencia en hipertensos.",
+    "published_at": "2026-09-14",
+    "image": "assets/blog/hiit-versus-entrenamiento-continuo-en-hipertension-arterial-que-dice-la-fisiologia-clinica.jpg",
+    "pdf": "blog/pdf/hiit-versus-entrenamiento-continuo-en-hipertension-arterial-que-dice-la-fisiologia-clinica.pdf",
+    "keywords": [
+      "hipertension",
+      "HIIT",
+      "entrenamiento continuo",
+      "presion arterial",
+      "rehabilitacion cardiovascular",
+      "fisiologia clinica"
+    ],
+    "rating": 4.0
+  },
+  {
+    "slug": "cronobiologia-del-ejercicio-ritmos-circadianos-y-control-metabolico",
+    "title": "Cronobiología del ejercicio: ritmos circadianos y control metabólico",
+    "category": "Clinica",
+    "category_color": "metabolic-cyan",
+    "gradient": "from-metabolic-cyan/20 to-metabolic-green/20",
+    "excerpt": "Cómo el horario del entrenamiento influye en sensibilidad a la insulina, oxidación de sustratos, sueño y adherencia en poblaciones clínicas.",
+    "published_at": "2026-09-14",
+    "image": "assets/blog/cronobiologia-del-ejercicio-ritmos-circadianos-y-control-metabolico.jpg",
+    "pdf": "blog/pdf/cronobiologia-del-ejercicio-ritmos-circadianos-y-control-metabolico.pdf",
+    "keywords": [
+      "cronobiologia",
+      "ritmo circadiano",
+      "ejercicio",
+      "metabolismo",
+      "sueño",
+      "diabetes"
+    ],
+    "rating": 4.0
+  },
+  {
+    "slug": "ejercicio-y-microbiota-intestinal-en-obesidad-puentes-entre-intestino-musculo-y-metabolismo",
+    "title": "Ejercicio y microbiota intestinal en obesidad: puentes entre intestino, músculo y metabolismo",
+    "category": "Clinica",
+    "category_color": "metabolic-cyan",
+    "gradient": "from-metabolic-cyan/20 to-metabolic-green/20",
+    "excerpt": "Síntesis sobre cómo el entrenamiento modifica la diversidad microbiana, la inflamación y la sensibilidad a la insulina en obesidad clínica.",
+    "published_at": "2026-09-14",
+    "image": "assets/blog/ejercicio-y-microbiota-intestinal-en-obesidad-puentes-entre-intestino-musculo-y-metabolismo.jpg",
+    "pdf": "blog/pdf/ejercicio-y-microbiota-intestinal-en-obesidad-puentes-entre-intestino-musculo-y-metabolismo.pdf",
+    "keywords": [
+      "microbiota",
+      "obesidad",
+      "ejercicio",
+      "inflamacion",
+      "eje intestino-musculo",
+      "metabolismo"
+    ],
+    "rating": 4.0
+  },
+  {
+    "slug": "prescripcion-de-ejercicio-en-epoc-capacidad-funcional-dispnea-y-fuerza-periferica",
+    "title": "Prescripción de ejercicio en EPOC: capacidad funcional, disnea y fuerza periférica",
+    "category": "Clinica",
+    "category_color": "metabolic-cyan",
+    "gradient": "from-metabolic-cyan/20 to-metabolic-green/20",
+    "excerpt": "Guía clínica para dosificar aeróbico y fuerza en EPOC, manejando disnea, desaturación y descondicionamiento muscular.",
+    "published_at": "2026-09-14",
+    "image": "assets/blog/prescripcion-de-ejercicio-en-epoc-capacidad-funcional-dispnea-y-fuerza-periferica.jpg",
+    "pdf": "blog/pdf/prescripcion-de-ejercicio-en-epoc-capacidad-funcional-dispnea-y-fuerza-periferica.pdf",
+    "keywords": [
+      "EPOC",
+      "rehabilitacion pulmonar",
+      "dispnea",
+      "fuerza periferica",
+      "ejercicio clinico",
+      "capacidad funcional"
+    ],
+    "rating": 4.0
+  },
+  {
+    "slug": "ejercicio-y-neuroplasticidad-en-enfermedad-de-parkinson-de-la-evidencia-a-la-sesion-clinica",
+    "title": "Ejercicio y neuroplasticidad en enfermedad de Parkinson: de la evidencia a la sesión clínica",
+    "category": "Clinica",
+    "category_color": "metabolic-cyan",
+    "gradient": "from-metabolic-cyan/20 to-metabolic-green/20",
+    "excerpt": "Cómo el ejercicio aeróbico, de fuerza y cognitivo-motor estimula plasticidad y mejora marcha, equilibrio y calidad de vida en Parkinson.",
+    "published_at": "2026-09-14",
+    "image": "assets/blog/ejercicio-y-neuroplasticidad-en-enfermedad-de-parkinson-de-la-evidencia-a-la-sesion-clinica.jpg",
+    "pdf": "blog/pdf/ejercicio-y-neuroplasticidad-en-enfermedad-de-parkinson-de-la-evidencia-a-la-sesion-clinica.pdf",
+    "keywords": [
+      "Parkinson",
+      "neuroplasticidad",
+      "ejercicio",
+      "marcha",
+      "equilibrio",
+      "rehabilitacion neurologica"
+    ],
+    "rating": 4.0
+  },
+  {
+    "slug": "sueno-recuperacion-e-inmunidad-en-deportistas-y-pacientes-clinicos-una-mirada-integrada",
+    "title": "Sueño, recuperación e inmunidad en deportistas y pacientes clínicos: una mirada integrada",
+    "category": "Clinica",
+    "category_color": "metabolic-cyan",
+    "gradient": "from-metabolic-cyan/20 to-metabolic-green/20",
+    "excerpt": "Relación entre privación de sueño, inflamación, rendimiento y adherencia al ejercicio en contextos clínicos y de rendimiento.",
+    "published_at": "2026-09-14",
+    "image": "assets/blog/sueno-recuperacion-e-inmunidad-en-deportistas-y-pacientes-clinicos-una-mirada-integrada.jpg",
+    "pdf": "blog/pdf/sueno-recuperacion-e-inmunidad-en-deportistas-y-pacientes-clinicos-una-mirada-integrada.pdf",
+    "keywords": [
+      "sueño",
+      "recuperacion",
+      "inmunidad",
+      "inflamacion",
+      "carga de entrenamiento",
+      "fisiologia clinica"
+    ],
+    "rating": 4.0
+  },
+  {
+    "slug": "fuerza-muscular-como-predictor-de-mortalidad-cardiometabolica-de-la-dinamometria-a-la-prescripcion",
+    "title": "Fuerza muscular como predictor de mortalidad cardiometabólica: de la dinamometría a la prescripción",
+    "category": "Clinica",
+    "category_color": "metabolic-cyan",
+    "gradient": "from-metabolic-cyan/20 to-metabolic-green/20",
+    "excerpt": "Evidencia que posiciona la fuerza de prensión y la fuerza de miembros inferiores como biomarcadores clínicos accionables.",
+    "published_at": "2026-09-14",
+    "image": "assets/blog/fuerza-muscular-como-predictor-de-mortalidad-cardiometabolica-de-la-dinamometria-a-la-prescripcion.jpg",
+    "pdf": "blog/pdf/fuerza-muscular-como-predictor-de-mortalidad-cardiometabolica-de-la-dinamometria-a-la-prescripcion.pdf",
+    "keywords": [
+      "fuerza muscular",
+      "mortalidad",
+      "dinamometria",
+      "sarcopenia",
+      "riesgo cardiometabolico",
+      "ejercicio de fuerza"
+    ],
+    "rating": 4.0
+  },
+  {
+    "slug": "ejercicio-en-oncologia-seguridad-dosis-y-recuperacion-funcional-durante-y-despues-del-tratamiento",
+    "title": "Ejercicio en oncología: seguridad, dosis y recuperación funcional durante y después del tratamiento",
+    "category": "Clinica",
+    "category_color": "metabolic-cyan",
+    "gradient": "from-metabolic-cyan/20 to-metabolic-green/20",
+    "excerpt": "Marco práctico para prescribir ejercicio en pacientes oncológicos, abordando fatiga, masa muscular y retorno a la función.",
+    "published_at": "2026-09-14",
+    "image": "assets/blog/ejercicio-en-oncologia-seguridad-dosis-y-recuperacion-funcional-durante-y-despues-del-tratamiento.jpg",
+    "pdf": "blog/pdf/ejercicio-en-oncologia-seguridad-dosis-y-recuperacion-funcional-durante-y-despues-del-tratamiento.pdf",
+    "keywords": [
+      "oncologia",
+      "ejercicio",
+      "fatiga relacionada al cancer",
+      "sarcopenia",
+      "rehabilitacion oncologica",
+      "seguridad"
+    ],
+    "rating": 4.0
+  },
+  {
     "slug": "nuevos-paradigmas-en-la-prevencion-de-caidas-del-entrenamiento-neuromuscular-inestable-a-la-integracion-sensoromotora-en-el-adulto-mayor",
     "title": "Nuevos paradigmas en la prevención de caídas: del entrenamiento neuromuscular inestable a la integración sensoromotora en el adulto mayor",
     "category": "Clinica",
