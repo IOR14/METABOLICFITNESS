@@ -37,7 +37,7 @@
 
   function renderFeatured(post) {
     var href = 'blog/' + encodeURIComponent(post.slug) + '.html';
-    var image = post.image ? escapeHtml(post.image) + '?v=13' : '';
+    var image = post.image ? escapeHtml(post.image) + '?v=14' : '';
     var date = post.published_at ? formatDate(post.published_at) : '';
     var stars = renderStars(post.rating);
     var pdf = post.pdf
@@ -71,7 +71,7 @@
   function renderCard(post) {
     var href = 'blog/' + encodeURIComponent(post.slug) + '.html';
     var date = post.published_at ? formatDate(post.published_at) : '';
-    var image = post.image ? escapeHtml(post.image) + '?v=13' : '';
+    var image = post.image ? escapeHtml(post.image) + '?v=14' : '';
     var stars = renderStars(post.rating);
     var pdf = post.pdf
       ? '<a class="pdf" href="' + escapeHtml(post.pdf) + '" download>Descargar PDF</a>'

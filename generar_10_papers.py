@@ -15,6 +15,9 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen import canvas
 
 from data.papers_rigor_content import PAPER_BODIES, PAPER_META
+from generar_infografias_10_papers import PAPERS as INFOGRAFIA_PAPERS
+
+INFOGRAFIA_BY_SLUG = {item["slug"]: item for item in INFOGRAFIA_PAPERS}
 
 BASE = Path(__file__).resolve().parent
 BATCH = BASE / "data" / "new-papers-batch.json"
@@ -227,6 +230,16 @@ def make_html(paper: dict, img_rel: str, pdf_rel: str) -> str:
     excerpt = html_lib.escape(paper["excerpt"])
     title = html_lib.escape(paper["title"])
     abstract = html_lib.escape(paper["abstract"])
+    info = INFOGRAFIA_BY_SLUG.get(slug)
+    infografia_html = ""
+    if info:
+        caption = html_lib.escape(info["caption"])
+        dark_name = info["file"].replace(".png", "-dark.png")
+        infografia_html = f"""
+                <figure class="mb-6 sm:mb-8 rounded-2xl overflow-hidden border border-gray-800 bg-black shadow-sm">
+                    <img src="../assets/infografias/{dark_name}?v=3" alt="{caption}" class="w-full h-auto object-contain bg-black">
+                    <figcaption class="px-4 py-3 bg-white font-body text-xs sm:text-sm text-metabolic-charcoal/70">{caption}</figcaption>
+                </figure>"""
 
     return f"""<!DOCTYPE html>
 <html lang="es">
@@ -293,7 +306,7 @@ def make_html(paper: dict, img_rel: str, pdf_rel: str) -> str:
                     <div class="mt-5 flex flex-wrap gap-2">{chips}</div>
                 </div>
                 <div class="article-hero-media relative min-h-[14rem] order-1 lg:order-2">
-                    <img src="../{img_rel}?v=2" alt="{title}" class="w-full h-full object-cover">
+                    <img src="../{img_rel}?v=3" alt="{title}" class="w-full h-full object-cover">
                     <div class="article-hero-fade absolute inset-y-0 left-0 w-24 hidden lg:block"></div>
                 </div>
             </div>
@@ -307,6 +320,7 @@ def make_html(paper: dict, img_rel: str, pdf_rel: str) -> str:
                     <p class="text-xs font-heading font-bold uppercase tracking-widest text-metabolic-green mb-3">Resumen ejecutivo</p>
                     <p class="font-body text-base sm:text-lg leading-relaxed text-metabolic-charcoal/90 justified">{abstract}</p>
                 </div>
+                {infografia_html}
                 <div class="article-content font-body text-metabolic-charcoal/90 bg-white rounded-2xl p-5 sm:p-8 shadow-sm border border-gray-100">
                     {intro}
                     {sections_html}
