@@ -576,8 +576,8 @@ a.mf-proof__item:hover { transform: translateY(-1px); }
   width: 100%;
   height: 100%;
   min-height: 16rem;
-  object-fit: cover;
-  background: #1a1224;
+  object-fit: contain;
+  background: #ffffff;
 }
 .mf-paper-featured-body { padding: 1.75rem 1.5rem; display: flex; flex-direction: column; justify-content: center; }
 .mf-paper-featured .mf-paper-title { color: #fff; font-size: 1.55rem; }
@@ -602,8 +602,8 @@ a.mf-proof__item:hover { transform: translateY(-1px); }
 .mf-paper-card img {
   width: 100%;
   height: 12rem;
-  object-fit: cover;
-  background: var(--mf-paper);
+  object-fit: contain;
+  background: #ffffff;
 }
 .mf-paper-card-body { padding: 1.2rem 1.25rem 1.35rem; display: flex; flex-direction: column; flex: 1; }
 .mf-paper-meta {
